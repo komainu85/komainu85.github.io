@@ -29,7 +29,7 @@ author:
 <p>[caption id="attachment_160" align="aligncenter" width="300"]<a href="http://mikerobbinssitecore.files.wordpress.com/2014/02/ecm.png"><img class="size-medium wp-image-160" alt="Sitecore Custom Tokens" src="{{ site.baseurl }}/assets/ecm.png?w=300" width="300" height="281" /></a> Sitecore Email Campaign Manager Custom Tokens[/caption]</li>
 <li>Get the message using the Sitecore API, replace the variables using the CustomPersonTokens dictionary and then trigger the send pipeline. The CustomPersonToken dictionary requires the key to be in<strong> lower case</strong> and requires the <strong>surrounding $$ to be removed</strong>.</li>
 </ol>
-```csharp
+``` csharp
 //Get the message using the Sitecore API<br />
 var mi = Sitecore.Modules.EmailCampaign.Factory.GetMessage(messageId);
 //Use the custom person token dictionary to replace the key with a string variable. Remember that the token key has to be lower case and remove the $$ surrounding the key<br />
