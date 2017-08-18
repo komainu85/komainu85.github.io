@@ -35,7 +35,7 @@ author:
 //Get the message using the Sitecore API
 var mi = Sitecore.Modules.EmailCampaign.Factory.GetMessage(messageId);
 //Use the custom person token dictionary to replace the key with a string variable. Remember that the token key has to be lower case and remove the $$ surrounding the key
-mi.CustomPersonTokens.Add(&quot;username&quot;, &quot;MikeTest&quot;);
+mi.CustomPersonTokens.Add("username", "MikeTest");
 //Send the message
 new AsyncSendingManager(mi).SendStandardMessage(contactFromName);
 {% endhighlight %}

@@ -21,8 +21,6 @@ meta:
   _edit_last: '53242770'
   twitter_cards_summary_img_size: a:6:{i:0;i:1920;i:1;i:1040;i:2;i:3;i:3;s:26:"width="1920"
     height="1040"";s:4:"bits";i:8;s:4:"mime";s:9:"image/png";}
-  
-  publicize_twitter_url: http://t.co/hSjV9n295y
   _wpas_done_4473872: '1'
   _publicize_done_external: a:1:{s:7:"twitter";a:1:{i:35759471;b:1;}}
   _wpas_skip_4473872: '1'
@@ -32,8 +30,6 @@ meta:
   _oembed_ab77a5a9368760a77a513b283e62eeea: "{{unknown}}"
   geo_public: '0'
 author:
-  
-
   display_name: Mike Robbins
   first_name: ''
   last_name: ''
@@ -42,41 +38,46 @@ author:
 <h2>The document</h2>
 <p>To be useful I wanted the importer to be able to split the docx file into fields within a Sitecore item rather than drop the entire contents into one rich text editor field. This became an issue, how could I tell which section of the document related to which field.</p>
 <p>The solution I came up was using the “Title” button in Microsoft Word to mark each section of the document. The title would match up exactly with the field name within Sitecore. Using this structure means that I could programmatically read all content between titles and know which field in Sitecore that content related too.</p>
-<p>[caption id="attachment_137" align="aligncenter" ]<a href="http://mikerobbinssitecore.files.wordpress.com/2013/10/sampledocument.png"><img class="size-medium wp-image-137" alt="Sample Document" src="{{ site.baseurl }}/assets/sampledocument.png"  height="162" /></a> Sample Document</p>
+<p>
+  <img class="size-medium wp-image-137" alt="Sample Document" src="{{ site.baseurl }}/assets/sampledocument.png" />
+<p>> Sample Document</p></p>
 <h2>Import Module</h2>
 <p>The actual Sitecore data importer module has a simple interface allowing the upload of a file to import (Sitecore data importer supports docx files, csv’s and a zip file containing docx files) . The module also takes the path where you want the items created and the template of the items you want to create.</p>
 <p>The main work of the importer parsing the docx file into fields is handled by the code below. Im using OpenXml to help read the docx format, and then iterating through each paragraph checking to see if it’s a title tag, storing the title in a variable and then grabbing the text paragraph(s). Each field name / value is stored in a dictionary which gets written out to the Sitecore API later on.  You can also upload a zip file containing multiple docx files which then gets uncompressed before passing each document off to this function.</p>
-<p>[caption id="attachment_138" align="aligncenter" ]<a href="http://mikerobbinssitecore.files.wordpress.com/2013/10/dataimporter.png"><img class="size-medium wp-image-138" alt="Sitecore  Data Importer" src="{{ site.baseurl }}/assets/dataimporter.png"  height="153" /></a> Sitecore Data Importer</p>
-<p>{% highlight csharp %}<br />
-public Dictionary<string, string> ExtractFields(string path)</p>
-<p>{</p>
-<p>var fields = new Dictionary<string, string>();</p>
-<p>using (var myDocument = WordprocessingDocument.Open(path, true))</p>
-<p>{</p>
-<p>var body = myDocument.MainDocumentPart.Document.Body;</p>
-<p>var dictionaryKey = &quot;&quot;;</p>
-<p>foreach (var paragraph in body.Where(paragraph => !string.IsNullOrEmpty(paragraph.InnerText)))</p>
-<p>{</p>
-<p>if (paragraph.InnerXml.Contains(&quot;w:val=\&quot;Title\&quot;&quot;))</p>
-<p>{</p>
-<p>dictionaryKey = paragraph.InnerText;</p>
-<p>}</p>
-<p>else</p>
-<p>{</p>
-<p>if (fields.ContainsKey(dictionaryKey))</p>
-<p>{</p>
-<p>fields[dictionaryKey] = fields[dictionaryKey].EndsWith(&quot;</p>&quot;) ? fields[dictionaryKey] + &quot;<p>&quot; + paragraph.InnerText + &quot;</p>&quot; : &quot;<p>&quot; + fields[dictionaryKey] + &quot;</p><p>&quot; + paragraph.InnerText + &quot;</p>&quot;;</p>
-<p>}</p>
-<p>else</p>
-<p>{</p>
-<p>fields.Add(dictionaryKey, paragraph.InnerText);</p>
-<p>}</p>
-<p>}</p>
-<p>}</p>
-<p>}</p>
-<p>return fields;</p>
-<p>}<br />
-{% endhighlight %}</p>
+<p>
+    <img alt="Sitecore  Data Importer" src="{{ site.baseurl }}/assets/dataimporter.png"/>
+  <p> Sitecore Data Importer</p>
+</p>
+<p>{% highlight csharp %}
+public Dictionary<string, string> ExtractFields(string path)
+{
+  var fields = new Dictionary<string, string>();
+  using (var myDocument = WordprocessingDocument.Open(path, true))
+  {
+    var body = myDocument.MainDocumentPart.Document.Body;
+    var dictionaryKey = "";
+    foreach (var paragraph in body.Where(paragraph => !string.IsNullOrEmpty(paragraph.InnerText)))
+    {
+      if (paragraph.InnerXml.Contains("w:val=\"Title\""))
+      {
+        dictionaryKey = paragraph.InnerText;
+      }
+      else
+      {
+        if (fields.ContainsKey(dictionaryKey))
+        {
+          fields[dictionaryKey] = fields[dictionaryKey].EndsWith("</p>") ? fields[dictionaryKey] + "<p>" + paragraph.InnerText + "</p>" : "<p>" + fields[dictionaryKey] + "</p><p>" + paragraph.InnerText + "</p>";
+        }
+        else
+        {
+          fields.Add(dictionaryKey, paragraph.InnerText);
+        }
+      }
+    }
+  }
+  return fields;
+}
+{% endhighlight %}
 <div>
 <h2>Source Code and Sitecore Marketplace</h2>
 </div>

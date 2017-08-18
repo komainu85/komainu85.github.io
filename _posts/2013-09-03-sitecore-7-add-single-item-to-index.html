@@ -43,7 +43,7 @@ public static void UpdateItemInIndex(Item item, string indexName)
 
   public static void DeleteItemInIndex(Item item, string indexName)
 {
-  var tempItem = (SitecoreIndexableItem)item;</p>
-  ContentSearchManager.GetIndex(indexName).Delete(tempItem.UniqueId);</p>
+  var tempItem = (SitecoreIndexableItem)item;
+  ContentSearchManager.GetIndex(indexName).Delete(tempItem.UniqueId);
 }
 {% endhighlight %}

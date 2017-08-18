@@ -39,32 +39,32 @@ author:
 <p>[caption id="attachment_256" align="aligncenter"  class=" "]<a href="https://mikerobbinssitecore.files.wordpress.com/2014/10/wffm.png"><img class="size-medium wp-image-256" src="{{ site.baseurl }}/assets/wffm.png" alt="Form Reports"  height="172" /></a> Form Reports</p>
 <p>The idea is to create a new Form within WFFM and instead of adding the form to the page, instead create an instance of the form in memory, complete form and post the data into the WFFM database.</p>
 <p>Below is a code sample (commented) of completing the Form and posting the data back programmatically.</p>
-<p>{% highlight csharp %}<br />
-public void SubmitToWFFM(ID formID, string username, string anotherString)<br />
-{<br />
+<p>{% highlight csharp %}
+public void SubmitToWFFM(ID formID, string username, string anotherString)
+{
 //Get form item by Item ID<br />
-Sitecore.Forms.Core.Data.FormItem formItem = Sitecore.Forms.Core.Data.FormItem.GetForm(formID);</p>
+Sitecore.Forms.Core.Data.FormItem formItem = Sitecore.Forms.Core.Data.FormItem.GetForm(formID);
 <p>//Get form fields of the WFFM<br />
-FieldItem[] formFields = formItem.Fields;</p>
+FieldItem[] formFields = formItem.Fields;
 <p>//Get all form fields of the form by name<br />
-FieldItem usernameField = formFields .FirstOrDefault(x =&amp;amp;gt; x.FieldDisplayName == &amp;quot;Username&amp;quot;);</p>
-<p>FieldItem anotherField = loggingFields.FirstOrDefault(x =&amp;gt; x.FieldDisplayName == &amp;quot;AnotherField&amp;quot;);</p>
+FieldItem usernameField = formFields .FirstOrDefault(x =&amp;amp;gt; x.FieldDisplayName == &amp;quot;Username&amp;quot;);
+<p>FieldItem anotherField = loggingFields.FirstOrDefault(x =&amp;gt; x.FieldDisplayName == &amp;quot;AnotherField&amp;quot;);
 <p>//Populate fields with values<br />
-ControlResult controlUsernameTerm = new ControlResult(usernameField.Name, username, null);<br />
-ControlResult controlAnotherField = new ControlResult(anotherField.Name, anotherString, null);</p>
+ControlResult controlUsernameTerm = new ControlResult(usernameField.Name, username, null);
+ControlResult controlAnotherField = new ControlResult(anotherField.Name, anotherString, null);
 <p>//Create collection of fields<br />
-AdaptedControlResult[] acr = new AdaptedControlResult[2];<br />
-acr[0] = new AdaptedControlResult(controlUsernameTerm, false);<br />
-acr[1] = new AdaptedControlResult(controlAnotherField, true);</p>
-<p>AdaptedResultList arl = new AdaptedResultList(acr);</p>
+AdaptedControlResult[] acr = new AdaptedControlResult[2];
+acr[0] = new AdaptedControlResult(controlUsernameTerm, false);
+acr[1] = new AdaptedControlResult(controlAnotherField, true);
+<p>AdaptedResultList arl = new AdaptedResultList(acr);
 <p>//Save form<br />
-SaveToDatabase dbSave = new SaveToDatabase();<br />
+SaveToDatabase dbSave = new SaveToDatabase();
 try<br />
-{<br />
+{
 dbSave.Execute(formId, arl, null);</pre></p>
-<p>catch (Exception ex)<br />
-{<br />
-Sitecore.Diagnostics.Log.Error(ex.Message, ex, this);<br />
-}<br />
-}<br />
+<p>catch (Exception ex)
+{
+Sitecore.Diagnostics.Log.Error(ex.Message, ex, this);
+}
+}
 {% endhighlight %}</p>

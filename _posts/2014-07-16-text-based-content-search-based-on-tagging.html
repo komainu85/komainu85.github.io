@@ -41,38 +41,38 @@ author:
 <p>[caption id="attachment_201" align="aligncenter" ]<a href="https://mikerobbinssitecore.files.wordpress.com/2014/07/luke.png"><img class="size-medium wp-image-201" src="{{ site.baseurl }}/assets/luke.png" alt="Luke Index View"  height="136" /></a> Luke Index View</p>
 <p>However Sitecore gives us the power to create computed fields in search indexes. This means we can create new fields within the index and programmatically create text into the index.</p>
 <p>This example below uses a computed field that instead of indexing the ID of the tag, instead adds the item name of each tag seperated by a space. This then allows you to perform a text based search against the tag. (Sitecore by default indexes the __Semantics field, so here i'm creating a new field in the index called "tags" not to override any standard Sitecore functionality)</p>
-<p>&nbsp;</p>
+<p>&nbsp;
 <h2>Computed Field Class</h2>
-<p>{% highlight csharp %}<br />
+<p>{% highlight csharp %}
 namespace MikeRobbins.CMS.ComputedFields<br />
-{<br />
+{
 public class Tags : IComputedIndexField<br />
-{<br />
-public object ComputeFieldValue(Sitecore.ContentSearch.IIndexable indexable)<br />
-{<br />
-var tags = new StringBuilder();</p>
-<p>Item obj = (Item)(indexable as SitecoreIndexableItem);</p>
-<p>if (obj != null)<br />
-{<br />
-var tagField = (Sitecore.Data.Fields.MultilistField)obj.Fields[&quot;__Semantics&quot;];</p>
-<p>if (tagField != null)<br />
-{<br />
-var items = tagField.GetItems();</p>
-<p>foreach (var item in items)<br />
-{<br />
-tags.Append(item.Name + &quot; &quot;);<br />
-}<br />
-}<br />
+{
+public object ComputeFieldValue(Sitecore.ContentSearch.IIndexable indexable)
+{
+var tags = new StringBuilder();
+<p>Item obj = (Item)(indexable as SitecoreIndexableItem);
+<p>if (obj != null)
+{
+var tagField = (Sitecore.Data.Fields.MultilistField)obj.Fields["__Semantics"];
+<p>if (tagField != null)
+{
+var items = tagField.GetItems();
+<p>foreach (var item in items)
+{
+tags.Append(item.Name + " ");
+}
+}
 }</p>
-<p>return tags.Length != 0? tags.ToString():null;<br />
+<p>return tags.Length != 0? tags.ToString():null;
 }</p>
-<p>public string FieldName { get; set; }<br />
-public string ReturnType { get; set; }<br />
-}<br />
-}<br />
+<p>public string FieldName { get; set; }
+public string ReturnType { get; set; }
+}
+}
 {% endhighlight %}</p>
 <h2>XML Config</h2>
 <p>Add this XML to the "AddComputedIndexField" section of your search index config.</p>
-<p>{% highlight xml %}<br />
-<field fieldName=&quot;tags&quot;                           >MikeRobbins.CMS.ComputedFields.Tags,MikeRobbins.CMS</field><br />
+<p>{% highlight xml %}
+<field fieldName="tags"                           >MikeRobbins.CMS.ComputedFields.Tags,MikeRobbins.CMS</field><br />
 {% endhighlight %}</p>

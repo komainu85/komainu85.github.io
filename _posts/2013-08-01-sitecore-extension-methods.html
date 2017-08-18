@@ -45,7 +45,7 @@ public static void UpdateItemInIndex(this Item item, string indexName)
 public static void PublishItem(this Item item)
 {
   var publishOptions = new PublishOptions(item.Database,
-  Database.GetDatabase(&quot;web&quot;),
+  Database.GetDatabase("web"),
   PublishMode.SingleItem,
   item.Language,
   DateTime.Now); // Create a publisher with the publishoptions

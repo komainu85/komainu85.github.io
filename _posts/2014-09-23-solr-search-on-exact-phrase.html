@@ -39,40 +39,40 @@ author:
 <p>Very brief code sample of how to perform a exact phrase match query in Solr.<!--more--></p>
 <p>Using the Solr Admin's Query tool to perform a search on a field, you will notice that Solr splits each word into a token to search on.</p>
 <p>[caption id="attachment_215" align="aligncenter"  class=" "]<a href="https://mikerobbinssitecore.files.wordpress.com/2014/09/solr-phrase-match-1.png"><img class="wp-image-215 size-medium" src="{{ site.baseurl }}/assets/solr-phrase-match-1.png" alt="Solr Phrase Match 1"  height="232" /></a> Solr Admin Query</p>
-<p>&nbsp;</p>
+<p>&nbsp;
 <p>Most of the time this is the desired functionality, however there could be times where you want to return results where the exact phrase is matched. If you perform a search wrapping quotes around the phrase within the Solr Admin Query tool, Solr will perform a query looking for an exact match on the phrase (see screenshot below, notice the reduced number of results).</p>
-<p>&nbsp;</p>
+<p>&nbsp;
 <p>[caption id="attachment_216" align="aligncenter"  class="  "]<a href="https://mikerobbinssitecore.files.wordpress.com/2014/09/solr-phrase-match-2.png"><img class="wp-image-216 size-medium" src="{{ site.baseurl }}/assets/solr-phrase-match-2.png" alt="Solr Phrase Match 2"  height="230" /></a> Solr Admin Phase Search With Quotes</p>
-<p>&nbsp;</p>
+<p>&nbsp;
 <p>Below is a code sample of how to perform a search using Sitecore 7's Content Search API's. The code checks whether the keywords searched upon start and end with quotes. If the quotes are present, the keywords are then passed into the search intact with the quotes present. If the quotes aren't present the keywords are split into an array on a space and the search is performed as normal.</p>
-<p>{% highlight csharp %}<br />
-private Expression<Func<SearchItem, bool>> GetKeywordFilters(string keywords)<br />
- {<br />
- var predicate = PredicateBuilder.True<SearchItem>();</p>
-<p> var keywordCollection = new List<string>();</p>
-<p> if (keywords.StartsWith(&quot;\&quot;&quot;) && keywords.EndsWith(&quot;\&quot;&quot;))<br />
- {<br />
- keywordCollection.Add(keywords);<br />
- }<br />
+<p>{% highlight csharp %}
+private Expression<Func<SearchItem, bool>> GetKeywordFilters(string keywords)
+ {
+ var predicate = PredicateBuilder.True<SearchItem>();
+<p> var keywordCollection = new List<string>();
+<p> if (keywords.StartsWith("\"") && keywords.EndsWith("\""))
+ {
+ keywordCollection.Add(keywords);
+ }
  else<br />
- {<br />
- keywordCollection = keywords.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).ToList();<br />
- }</p>
+ {
+ keywordCollection = keywords.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).ToList();
+}
 <p> var filters = keywordCollection.Aggregate(predicate, (current, keyword) =><br />
-current.Or(i => (i.Body.Equals(keyword)<br />
- || i.Title.Equals(keyword)<br />
-);</p>
-<p> return filters;<br />
- }<br />
+current.Or(i => (i.Body.Equals(keyword)
+ || i.Title.Equals(keyword)
+);
+<p> return filters;
+ }
 {% endhighlight %}</p>
-<p>{% highlight csharp %}<br />
-public SearchResult<SearchItem> Search(string keywords)<br />
+<p>{% highlight csharp %}
+public SearchResult<SearchItem> Search(string keywords)
  {</p>
-<p> using (var context = Sitecore.ContentSearch.ContentSearchManager.GetIndex(_searchIndex).CreateSearchContext())<br />
- {<br />
- var queryable = context.GetQueryable<SearchItem>();</p>
-<p> Expression<Func<SearchItem, bool>> filters;</p>
-<p> filters = GetKeywordFilters(keywords);<br />
- queryable = queryable.Where(filters);</p>
-<p> var results = queryable.GetResults();<br />
+<p> using (var context = Sitecore.ContentSearch.ContentSearchManager.GetIndex(_searchIndex).CreateSearchContext())
+ {
+ var queryable = context.GetQueryable<SearchItem>();
+<p> Expression<Func<SearchItem, bool>> filters;
+<p> filters = GetKeywordFilters(keywords);
+ queryable = queryable.Where(filters);
+<p> var results = queryable.GetResults();
  }{% endhighlight %}</p>

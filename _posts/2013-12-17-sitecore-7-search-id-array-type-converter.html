@@ -18,60 +18,54 @@ tags:
 meta:
   _edit_last: '53242770'
   _publicize_pending: '1'
-  publicize_google_plus_url: https://plus.google.com/113240140771005714369/posts/EzgVjbbqunX
   _wpas_done_5582732: '1'
-  _publicize_done_external: a:1:{s:11:"google_plus";a:1:{s:21:"113240140771005714369";b:1;}}
-  
-  publicize_twitter_url: http://t.co/kLkFLluC3X
   _wpas_done_4473872: '1'
-  publicize_linkedin_url: http://www.linkedin.com/updates?discuss=&scope=50486614&stype=M&topic=5818721061046751232&type=U&a=W59P
   _wpas_done_5582720: '1'
 author:
-  
-
   display_name: Mike Robbins
   first_name: ''
   last_name: ''
 ---
 <p>This is a simple type converter that allows you to convert a collection of Sitecore IDs stored in a Lucene search index into a List.</p>
-<p>{% highlight csharp %}<br />
-public class ListIDConverter : TypeConverter<br />
-    {<br />
-        public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)<br />
-        {<br />
-            if (sourceType == typeof(List<ID>))<br />
-            {<br />
-                return true;<br />
-            }</p>
-<p>            return base.CanConvertFrom(context, sourceType);<br />
-        }</p>
-<p>        public override bool CanConvertTo(ITypeDescriptorContext context, Type destinationType)<br />
-        {<br />
-            if (destinationType == typeof(List<string>))<br />
-            {<br />
-                return true;<br />
-            }<br />
-            return base.CanConvertTo(context, destinationType);<br />
-        }</p>
-<p>        public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)<br />
-        {<br />
-            var scIds = new List<ID>();</p>
-<p>            var ids = (List<string>) value;</p>
-<p>            foreach (var id in ids)<br />
-            {<br />
-                ID scId;<br />
-                if (ID.TryParse(id, out scId))<br />
-                {<br />
-                    scIds.Add(scId);<br />
-                }<br />
-            }</p>
-<p>            return scIds;<br />
-        }<br />
-    }<br />
-{% endhighlight %}</p>
+{% highlight csharp %}
+public class ListIDConverter : TypeConverter
+{
+    public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
+    {
+        if (sourceType == typeof(List<ID>))
+        {
+            return true;
+        }
+        return base.CanConvertFrom(context, sourceType);
+       }
+    public override bool CanConvertTo(ITypeDescriptorContext context, Type destinationType)
+    {
+        if (destinationType == typeof(List<string>))
+        {
+            return true;
+        }
+        return base.CanConvertTo(context, destinationType);
+    }
+
+    public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
+    {
+        var scIds = new List<ID>();
+        var ids = (List<string>) value;
+        foreach (var id in ids)
+        {
+            ID scId;
+            if (ID.TryParse(id, out scId))
+            {
+                scIds.Add(scId);
+            }
+        }
+        return scIds;
+    }
+}
+{% endhighlight %}
 <p>To use the Type converter decorate your public property with the TypeConverter in your Search Result class.</p>
-<p>{% highlight csharp %}<br />
-    [TypeConverter(typeof(ListIDConverter))]<br />
-        [IndexField(&quot;_templates&quot;)]<br />
-        public List<ID> Templates { get; set; }<br />
-{% endhighlight %}</p>
+{% highlight csharp %}
+[TypeConverter(typeof(ListIDConverter))]
+[IndexField("_templates")]
+public List<ID> Templates { get; set; }
+{% endhighlight %}

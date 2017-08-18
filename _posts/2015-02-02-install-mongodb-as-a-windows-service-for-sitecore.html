@@ -38,18 +38,18 @@ author:
 <li>Run Command Prompt as Admin. CD to the directory containing the bin directory of your MongoDB installation. Usually "C:\Program Files\MongoDB 2.6 Standard\bin" on a standard installation of MongoDB.</li>
 <li>Run the following script to install MongDB as a service.
 {% highlight bash %}
-mongod --dbpath &quot;PathToStoreMongoDbs&quot; --serviceName &quot;NameYouWantToCallTheService&quot; --logpath &quot;PathOfWhereToStoreLogFiles&quot; --logappend --install
+mongod --dbpath "PathToStoreMongoDbs" --serviceName "NameYouWantToCallTheService" --logpath "PathOfWhereToStoreLogFiles" --logappend --install
 {% endhighlight %}
 <p><strong>e.g.</strong></p>
 {% highlight bash %}
-mongod --dbpath &quot;C:\inetpub\wwwroot\MikeRobbins8\Databases&quot; --serviceName &quot;MikeRobbinsMongoDB&quot; --logpath &quot;C:\inetpub\wwwroot\MikeRobbins8\MongoDBLogs\mongodb.log&quot; --logappend --install
+mongod --dbpath "C:\inetpub\wwwroot\MikeRobbins8\Databases" --serviceName "MikeRobbinsMongoDB" --logpath "C:\inetpub\wwwroot\MikeRobbins8\MongoDBLogs\mongodb.log" --logappend --install
 {% endhighlight %}
 </li>
 <li>Within the services snap in you will see the MongoDB service listed where you can start and stop the service. The service will be installed with the name you specified, however the display name will be set to MongoDB.
 <p>[caption id="attachment_430" align="aligncenter" ]<a href="https://mikerobbinssitecore.files.wordpress.com/2015/02/mongodbservice.png"><img class="size-medium wp-image-430" src="{{ site.baseurl }}/assets/mongodbservice.png" alt="MongoDB Service"  height="170" /></a> MongoDB Service</li>
 <li>You can uninstall the MongoDB service using the following command.
 {% highlight bash %}
-mongod --serviceName &quot;MikeRobbinsMongoDB&quot; --remove
+mongod --serviceName "MikeRobbinsMongoDB" --remove
 {% endhighlight %}
 </li>
 </ol>

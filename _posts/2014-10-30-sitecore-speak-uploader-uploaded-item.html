@@ -34,10 +34,10 @@ author:
 <p>This method is only supported in Sitecore 7.1 rev. 140324 (7.1 Update-2). I raised this as a bug with Sitecore as Item Id's weren't returned, and its been fixed in this release.</p>
 {% highlight JavaScript %}
 initialize: function () {
-  //Subscribe to the &quot;upload-fileUploaded&quot; event of the Uploader.
+  //Subscribe to the "upload-fileUploaded" event of the Uploader.
   //This is called after each item is uploaded successfully to the media library.
   //Specify a function to handle the uploaded event.
-  this.on(&quot;upload-fileUploaded&quot;, fileUploaded, this);
+  this.on("upload-fileUploaded", fileUploaded, this);
   },
 {% endhighlight %}
 {% highlight JavaScript %}
