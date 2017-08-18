@@ -1,0 +1,95 @@
+---
+layout: post
+title: Web API Sitecore ID Formatter
+date: 2014-12-02 14:14:51.000000000 +00:00
+type: post
+published: true
+status: publish
+categories:
+- Sitecore
+- Web Item API
+tags:
+- Formatters
+- ID
+- JSON
+- Web API
+meta:
+  _wpas_skip_facebook: '1'
+  _wpas_skip_tumblr: '1'
+  _wpas_skip_path: '1'
+  _publicize_pending: '1'
+  publicize_google_plus_url: https://plus.google.com/113240140771005714369/posts/5XcSrR1xZ7u
+  publicize_linkedin_url: ''
+  _rest_api_published: '1'
+  _rest_api_client_id: "-1"
+  _wpas_done_5582732: '1'
+  _publicize_done_external: a:1:{s:11:"google_plus";a:1:{s:21:"113240140771005714369";b:1;}}
+  publicize_twitter_user: Sobek1985
+  publicize_twitter_url: http://t.co/lxtNfwqGm2
+  _wpas_done_4473872: '1'
+  _wpas_done_5582720: '1'
+  _edit_last: '53242770'
+  geo_public: '0'
+  _wpas_skip_5582732: '1'
+  _wpas_skip_4473872: '1'
+  _wpas_skip_5582720: '1'
+author:
+  login: sobek1985
+  email: sobek1985@gmail.com
+  display_name: Mike Robbins
+  first_name: ''
+  last_name: ''
+---
+<p>When using Web API, Sitecore ID's serialise with {} around the IDs. This can cause issues when working with JSON as this denotes objects encapsulation.<!--more--></p>
+<p>[caption id="attachment_307" align="aligncenter" width="300"]<a href="https://mikerobbinssitecore.files.wordpress.com/2014/12/json.png"><img class="size-medium wp-image-307" src="{{ site.baseurl }}/assets/json.png?w=300" alt="JSON Sitecore ID's" width="300" height="199" /></a> JSON Sitecore ID's[/caption]</p>
+<p>Below is a custom formatter to format Sitecore item IDs without the {}. This example has Web API registered to run alongside Web Item API.</p>
+<p>See Patrick Delancy's blog post about running Web API alongside Web Item API http://patrickdelancy.com/2013/08/sitecore-webapi-living-harmony/</p>
+<p>[caption id="attachment_311" align="aligncenter" width="300"]<a href="https://mikerobbinssitecore.files.wordpress.com/2014/12/jsonfixed.png"><img class="size-medium wp-image-311" src="{{ site.baseurl }}/assets/jsonfixed.png?w=300" alt="The corresponding JSON " width="300" height="162" /></a> The corresponding JSON[/caption]</p>
+<p>[code language="csharp"]<br />
+  public class RegisterWebApiRoute<br />
+    {<br />
+        public void Process(PipelineArgs args)<br />
+        {<br />
+            var config = GlobalConfiguration.Configuration;<br />
+            config.Routes.MapHttpRoute(&quot;DefaultApiRoute&quot;,<br />
+                                     &quot;mikerobbinsapi/{controller}/{id}&quot;,<br />
+                                     new { id = RouteParameter.Optional });</p>
+<p>            var appXmlType = config.Formatters.XmlFormatter.SupportedMediaTypes.FirstOrDefault(t =&gt; t.MediaType == &quot;application/xml&quot;);<br />
+            config.Formatters.XmlFormatter.SupportedMediaTypes.Remove(appXmlType);<br />
+           config.Formatters.JsonFormatter.SerializerSettings.Converters.Add(new IDConverter());<br />
+        }<br />
+    }<br />
+[/code]</p>
+<p>[code language="csharp"]<br />
+public class IDConverter : JsonConverter<br />
+   {<br />
+        public override bool CanConvert(Type objectType)<br />
+        {<br />
+            return objectType == typeof(ID);<br />
+        }<br />
+        public override bool CanRead<br />
+        {<br />
+            get<br />
+            {<br />
+                return false;<br />
+            }<br />
+        }<br />
+        public override bool CanWrite<br />
+        {<br />
+            get<br />
+            {<br />
+                return true;<br />
+            }<br />
+        }</p>
+<p>        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)<br />
+        {<br />
+            var id = (ID)value;<br />
+            writer.WriteValue(id.ToString().Replace(&quot;{&quot;, &quot;&quot;).Replace(&quot;}&quot;, &quot;&quot;).ToUpperInvariant());<br />
+        }</p>
+<p>        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)<br />
+        {<br />
+            // Default reader used<br />
+            throw new NotImplementedException();<br />
+        }<br />
+    }<br />
+[/code]</p>

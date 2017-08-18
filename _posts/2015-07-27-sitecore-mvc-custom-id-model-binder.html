@@ -1,0 +1,62 @@
+---
+layout: post
+title: Sitecore MVC Custom ID Model Binder
+date: 2015-07-27 13:31:02.000000000 +01:00
+type: post
+published: true
+status: publish
+categories:
+- Developer
+- Sitecore
+tags:
+- action
+- ASP.net
+- Controller
+- DefaultModelBinder
+- ID
+- Model Binder
+- Model Binding
+- ModelBinderType
+- MVC
+- Sitecore MVC
+- Web API
+meta:
+  _edit_last: '53242770'
+  geo_public: '0'
+  publicize_linkedin_url: https://www.linkedin.com/updates?discuss=&scope=50486614&stype=M&topic=6031410274756550656&type=U&a=_x0u
+  publicize_google_plus_url: https://plus.google.com/113240140771005714369/posts/DzjkuZHLWA1
+  _publicize_job_id: '13134711757'
+  _publicize_done_external: a:1:{s:7:"twitter";a:1:{i:4473872;s:55:"https://twitter.com/Sobek1985/status/625644582928158720";}}
+  _publicize_done_4570590: '1'
+  _wpas_done_4473872: '1'
+  publicize_twitter_user: Sobek1985
+  _publicize_done_5620599: '1'
+  _wpas_done_5582720: '1'
+  _publicize_done_5620617: '1'
+  _wpas_done_5582732: '1'
+  _wpas_skip_5582732: '1'
+  _wpas_skip_4473872: '1'
+  _wpas_skip_5582720: '1'
+author:
+  login: sobek1985
+  email: sobek1985@gmail.com
+  display_name: Mike Robbins
+  first_name: ''
+  last_name: ''
+---
+<p>In this post i'll explain how to create a custom Model binder in ASP.net to allow you to pass in a Sitecore ID in your controller action.</p>
+<p>For example the controller action below accepts a Sitecore ID, however .net doesn't know how to create the ID class from the form values passed to the action.<!--more--></p>
+<p>[code language="csharp"]<br />
+[HttpPost]<br />
+public void AddToShoppingBasket(ID itemId)<br />
+{</p>
+<p>  _basketRepository.Add(itemId);</p>
+<p>}<br />
+[/code]</p>
+<p>This is where custom Model bindings come into play. We are able to create a class that can handle the conversion from the form field value into a Sitecore ID class.</p>
+<ol>
+<li>Firstly we create the custom binder for our type (ID), this inherits from the default binder. We then handle the conversion from string to Sitecore ID.</li>
+<li>The new model binder needs to be added to the collection of Model binders. This means anytime an controller action has a parameters of type ID the custom binder is used to parse the parameter. This code can be added into the Global.asax or done as part of the <a href="http://haacked.com/archive/2010/05/16/three-hidden-extensibility-gems-in-asp-net-4.aspx/">PreApplicationStart</a>.</li>
+<li>Lastly I have included the unit test I wrote to test the method.</li>
+</ol>
+<p>https://gist.github.com/komainu85/47e841f888900145a95d</p>

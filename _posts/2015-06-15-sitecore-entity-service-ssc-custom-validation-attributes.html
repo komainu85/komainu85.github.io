@@ -1,0 +1,58 @@
+---
+layout: post
+title: Sitecore Entity Service SSC - Custom Validation Attributes
+date: 2015-06-15 09:10:00.000000000 +01:00
+type: post
+published: true
+status: publish
+categories:
+- Sitecore
+- Sitecore.services.client
+tags:
+- EntityService
+- JavaScript
+- Meta Data
+- Sitecore.Services.Client
+- SSC
+- Validation
+- ValidationAttribute
+meta:
+  _edit_last: '53242770'
+  geo_public: '0'
+  _post_restored_from: a:3:{s:20:"restored_revision_id";i:756;s:16:"restored_by_user";i:53242770;s:13:"restored_time";i:1432643336;}
+  _rest_api_published: '1'
+  _rest_api_client_id: "-1"
+  publicize_linkedin_url: https://www.linkedin.com/updates?discuss=&scope=50486614&stype=M&topic=6016124464658464768&type=U&a=M3BP
+  publicize_google_plus_url: https://plus.google.com/113240140771005714369/posts/f7L2NtN3UBN
+  _publicize_job_id: '11684391837'
+  _publicize_done_external: a:1:{s:7:"twitter";a:1:{i:4473872;s:55:"https://twitter.com/Sobek1985/status/610358771907362817";}}
+  _publicize_done_4570590: '1'
+  _wpas_done_4473872: '1'
+  publicize_twitter_user: Sobek1985
+  _publicize_done_5620599: '1'
+  _wpas_done_5582720: '1'
+  _publicize_done_5620617: '1'
+  _wpas_done_5582732: '1'
+  _wpas_skip_5582732: '1'
+  _wpas_skip_4473872: '1'
+  _wpas_skip_5582720: '1'
+author:
+  login: sobek1985
+  email: sobek1985@gmail.com
+  display_name: Mike Robbins
+  first_name: ''
+  last_name: ''
+---
+<p>One of the exciting features of Entity Service is the flexibility to create custom validation attributes for your model. As Sitecore.Services.Client (SSC) provides a framework based approach to creating services, and both server and client side APIs, validation can take place on both server and client side.<!--more--></p>
+<p>Validation on the server side is provided by standard .net validation attributes to return whether the property is valid. On the client side we can provide a JavaScript function for client side validation, the JavaScript is provided as part of the meta data of the service.</p>
+<p>The first part of adding validation to the model is to create our server side validation. Create a class implementing ValidationAttribute, on the IsValid method add the valdation code. In the example below i've created a validation attribute to check a DateTime is in the future.</p>
+<p>https://gist.github.com/komainu85/3cf4313940bf32a522b6</p>
+<p>On the client side, EntityService exposes a collection of validators that can we can add additional validators to. This collection is loaded from the meta data that Entity Service provides from the model. Create a JavaScript function that appends to the validators collection, providing the validator a name and a JavaScript function to perform the validation.</p>
+<p>An example of creating the client side validation can be seen below. The validator provides the same functionality as the server side above. The value parameter passed into the function comes from the value set in the model.</p>
+<p>Sitecore.Services.Client scans for JavaScript validation files within "sitecore/shell/client/Services/Assets/lib/extensions/validators/". Any custom JavaScript files need to be added into this directory.</p>
+<p>https://gist.github.com/komainu85/e3d4838bae76e3058099</p>
+<p>To provide Entity Service with both the client and server validation methods a meta data class is required. The ValidationMetaDataBase wires up the client and server side validation.</p>
+<p>The ValidationMetaDataBase is a generic class that takes a ValidationAttribute, so this allows wiring up the server side validation created above. To wire up the client side validator, on the constructor of the class, implement the base constructor passing in the name of the client side validation method.</p>
+<p>https://gist.github.com/komainu85/7e709f9d21f2ff4c3c1a</p>
+<p>Now the custom validation has been created, the properties of the model can be decorated with the custom ValidationAttribute.</p>
+<p>https://gist.github.com/komainu85/7ec2eb61f680956dc7b9</p>

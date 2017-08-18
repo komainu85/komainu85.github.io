@@ -1,0 +1,70 @@
+---
+layout: post
+title: Sitecore Content Editor Tabs In SPEAK
+date: 2015-07-14 13:47:19.000000000 +01:00
+type: post
+published: true
+status: publish
+categories:
+- Content Editor
+- Sitecore
+- SPEAK
+tags:
+- content editor
+- Editor
+- Sitecore 8
+- SSC
+meta:
+  _edit_last: '53242770'
+  geo_public: '0'
+  _wpas_skip_4473872: '1'
+  _publicize_done_external: a:1:{s:7:"twitter";a:1:{i:4473872;s:55:"https://twitter.com/Sobek1985/status/620937642624946176";}}
+  publicize_google_plus_url: https://plus.google.com/113240140771005714369/posts/S45bd85hJfs
+  _publicize_job_id: '12718174644'
+  _publicize_done_4570590: '1'
+  _wpas_done_4473872: '1'
+  publicize_twitter_user: Sobek1985
+  publicize_linkedin_url: https://www.linkedin.com/updates?discuss=&scope=50486614&stype=M&topic=6026703339004190720&type=U&a=uRdN
+  _publicize_done_5620599: '1'
+  _wpas_done_5582720: '1'
+  _publicize_done_5620617: '1'
+  _wpas_done_5582732: '1'
+  _wpas_skip_5582732: '1'
+  _wpas_skip_5582720: '1'
+author:
+  login: sobek1985
+  email: sobek1985@gmail.com
+  display_name: Mike Robbins
+  first_name: ''
+  last_name: ''
+---
+<p>Within the Sitecore Content Editor, the editor section can change context based on the type of Item you are editing. For example when a media folder item is selected, the view allows you to upload media files, a template item allow you to add fields etc. These areas are called editors.</p>
+<p>[caption id="attachment_806" align="aligncenter" width="300"]<a href="https://mikerobbinssitecore.files.wordpress.com/2015/07/media-editor.png"><img class="size-medium wp-image-806" src="{{ site.baseurl }}/assets/media-editor.png?w=300" alt="Media Editor" width="300" height="158" /></a> Media Editor[/caption]</p>
+<p>You can define and create your own custom editors within the Content Editor and specify the type of items it is applicable to.<!--more--></p>
+<h2>Creating the Editor</h2>
+<p>To create the logic for the custom editor you can either create a single page SPEAK application or a ASPX page or similar. The single page application is then Iframed into the Content Editor by Sitecore.</p>
+<p>As the custom editor will be displayed when you have chosen a Sitecore Item, you will want to know the context item that has been selected. Sitecore handles this for you, The Item id, context database, language and version number are passed to your Editor application as query string parameters.</p>
+<p>E.g. /sitecore/client/Robbins/Tabs/AdvancedUserTab?id=%7B03481639-AE05-4C9B-9540-2A05D0C36214%7D<br />
+&amp;la=en&amp;language=en&amp;vs=1&amp;version=1&amp;database=master&amp;readonly=0&amp;db=master</p>
+<p>[caption id="attachment_819" align="aligncenter" width="300"]<a href="https://mikerobbinssitecore.files.wordpress.com/2015/07/querystring.png"><img class="size-medium wp-image-819" src="{{ site.baseurl }}/assets/querystring.png?w=300" alt="Query String Parameters" width="300" height="159" /></a> Query String Parameters[/caption]</p>
+<p>You can also get access to the JavaScript of the Content Editor from within the IFramed Editor (using "parent.scForm" to get access to the parent window). This can be handy for refreshing the Content Editor or opening up new tabs.</p>
+<p>For example this code allows to trigger a new tab from within a Editor Iframe</p>
+<p>https://gist.github.com/komainu85/517a711f406dab937505</p>
+<h2>Edit Definitions</h2>
+<p>Editors are defined within the Core database within the following folder"/sitecore/content/Applications/Content Editor/Editors". Here we can create additional editor definitions, its recommended practice to create a new folder to hold your custom editors not to clash with Sitecore in future upgrades.</p>
+<p>A Editor item is made up of a few fields:</p>
+<ul>
+<li><strong>Header</strong>: This is the text thats displayed in the tab in the UI</li>
+<li><strong>Icon: </strong> Doesn't appear to be used.</li>
+<li><strong>Url: </strong>This is the URL of the application you want to Iframe as a Editor. This can be a SPEAK application, ASPX file or similar. For a SPEAK application in the following location in the Core database "/sitecore/client/Robbins/Tabs/AdvancedUserTab" the URL would be the same "/sitecore/client/Robbins/Tabs/AdvancedUserTab"</li>
+<li><strong>Refresh On Show: </strong>This checkbox causes the Iframed page to be refreshed every time its tab is selected.</li>
+</ul>
+<p>[caption id="attachment_813" align="aligncenter" width="300"]<a href="https://mikerobbinssitecore.files.wordpress.com/2015/07/custom-editor.png"><img class="size-medium wp-image-813" src="{{ site.baseurl }}/assets/custom-editor.png?w=300" alt="Custom Editor Definition" width="300" height="162" /></a> Custom Editor Definition[/caption]</p>
+<h2>Applying A Custom Tab</h2>
+<p>The last step is to apply the Editor to the required item templates that will display the custom Editor.</p>
+<p>Within the standard values of the template(s) you want to add the Editor too, update the Editors field within the Appearance tab to add in your custom editor.</p>
+<p>[caption id="attachment_826" align="aligncenter" width="300"]<a href="https://mikerobbinssitecore.files.wordpress.com/2015/07/add-editor.png"><img class="size-medium wp-image-826" src="{{ site.baseurl }}/assets/add-editor.png?w=300" alt="Add Custom Editor" width="300" height="159" /></a> Add Custom Editor[/caption]</p>
+<p>Whenever you select an item of this template type the Custom Editor will be loaded and displayed. As this is a Sitecore Item in the Core database you can also add security to lock access to the custom Editor if required.</p>
+<p>[caption id="attachment_828" align="aligncenter" width="300"]<a href="https://mikerobbinssitecore.files.wordpress.com/2015/07/custom-editor-displaying.png"><img class="size-medium wp-image-828" src="{{ site.baseurl }}/assets/custom-editor-displaying.png?w=300" alt="Custom Editor Item Editting" width="300" height="158" /></a> Custom Editor Item Editting[/caption]</p>
+<h2>Example Module</h2>
+<p>I have an example Custom Tab I have created with <a href="http://www.jonathanrobbins.co.uk">Jon Robbins</a> on <a href="https://github.com/komainu85/SitecoreContentEditorTabs">GitHub </a>and <a href="https://marketplace.sitecore.net/en/Modules/D/Datasources_Content_Editor_Tab.aspx">Sitecore Marketplace</a>.</p>

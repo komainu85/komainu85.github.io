@@ -1,0 +1,100 @@
+---
+layout: post
+title: Sitecore SPEAK List Component, Custom Tile and Knockout Databinding
+date: 2015-03-30 19:30:17.000000000 +01:00
+type: post
+published: true
+status: publish
+categories:
+- Sitecore
+- Sitecore.services.client
+- SPEAK
+tags:
+- Databinding
+- Entity Service
+- EntityService
+- Knockout
+- Knockout.js
+- List Component
+- ListComponent
+- Sitecore 8
+- Sitecore SPEAK
+- SSC
+meta:
+  geo_public: '0'
+  _edit_last: '53242770'
+  publicize_google_plus_url: https://plus.google.com/113240140771005714369/posts/MYCzT1GfU8d
+  _wpas_done_5582732: '1'
+  _publicize_done_external: a:1:{s:11:"google_plus";a:1:{s:21:"113240140771005714369";b:1;}}
+  publicize_twitter_user: Sobek1985
+  publicize_twitter_url: http://t.co/ouj9N5zRw6
+  _wpas_done_4473872: '1'
+  publicize_linkedin_url: https://www.linkedin.com/updates?discuss=&scope=50486614&stype=M&topic=5988377875991007242&type=U&a=KYkJ
+  _wpas_done_5582720: '1'
+  _oembed_19fcef5e9a9671db1ba32506aa03f2f5: "{{unknown}}"
+  _oembed_e7d064e3acc240e2b05003d97c5a55e8: "{{unknown}}"
+  _oembed_d0dc620cfef12ef63ad738ff8c438d90: "{{unknown}}"
+  _wpas_skip_5582732: '1'
+  _oembed_1bd82bc4c7060443174ec978126c5c49: "{{unknown}}"
+  _oembed_a7323cda4c6da9cfbd15afa6c7264eba: "{{unknown}}"
+  _oembed_7da4052f8c225a9e9ae16f27fbc9c655: "{{unknown}}"
+  _oembed_fade0fc1b73ba07827438f3846309496: "{{unknown}}"
+  _oembed_dc4629be5995fc2b818028c61ddb148f: "{{unknown}}"
+  _wpas_skip_4473872: '1'
+  _wpas_skip_5582720: '1'
+  _publicize_job_id: '22900594773'
+author:
+  login: sobek1985
+  email: sobek1985@gmail.com
+  display_name: Mike Robbins
+  first_name: ''
+  last_name: ''
+---
+<p>In this post I will walk through using the Sitecore SPEAK List Component using Knockout databinding and a custom tile to create a custom look and feel of the List component.<!--more--></p>
+<p>I'm assuming you have already got a SPEAK application or understand the basics of creating a SPEAK application. (There are some great posts on Sitecore SPEAK from <a title="http://mhwelander.net/category/speak/" href="http://mhwelander.net/category/speak/">Martina</a>&nbsp;if your new to SPEAK).</p>
+<p>[caption width="300" id="attachment_647" align="aligncenter"]<a href="https://mikerobbinssitecore.files.wordpress.com/2015/03/core-db.png"><img class="size-medium wp-image-647" src="{{ site.baseurl }}/assets/core-db.png?w=300" alt="Core DB SPEAK Component" width="300" height="249" /></a> Core DB SPEAK Component[/caption]</p>
+<p>In the presentation details of the component add a new List Component and create a datasource component (In my example here im using Query Data Source which i'm populating later using Entity Service).</p>
+<p>[caption width="300" id="attachment_648" align="aligncenter"]<a href="https://mikerobbinssitecore.files.wordpress.com/2015/03/list-component.png"><img class="size-medium wp-image-648" src="{{ site.baseurl }}/assets/list-component.png?w=300" alt="List Component" width="300" height="145" /></a> List Component[/caption]</p>
+<h3>List Component Rendering Properties</h3>
+<p>Within the rendering properties of the list component, this is where you can specify how the list component will render its data. There are three view models available in Sitecore 8 for the list component:</p>
+<ol>
+<li><strong>TileList</strong> - Displays results as a set of square tiles floated in a grid formation. You can also specify a custom title.</li>
+<li><strong>IconList</strong> - Displays icons for each of the sitecore items it renders out.</li>
+<li><strong>DetailList</strong> - This view renders the results out as a grid of results.</li>
+</ol>
+<p>To have full control over the appearance of how the results are rendered out by the list component we can use the TileList option.</p>
+<p>In the TileHtmlFileName field you can specify the location of a custom cshtml file. This cshtml file can dictate the HTML, styling and knockout databinding for a single item in the list component. This location is relative to the sitecore folder within your solution.</p>
+<p>Its a good idea to separate out our custom tiles from the standard sitecore folder of tile&nbsp;("sitecore\shell\client\Business Component Library\Layouts\Renderings\ListsAndGrids\ListControls\DefaultTile.cshtml") and create your own folder. You can also use this example tile as a template for creating your own tile.</p>
+<p>The TileHtmlFileName field allows you to specify a location of a custom CSS file for your custom tile. This follows the same pattern as the Html file above.</p>
+<p>Set the items property under Data Bindings to the items property of your datasource. This will provide your list component with its data.</p>
+<p>[caption width="225" id="attachment_651" align="aligncenter"]<a href="https://mikerobbinssitecore.files.wordpress.com/2015/03/listcontrolcomponent.png"><img class="size-medium wp-image-651" src="{{ site.baseurl }}/assets/listcontrolcomponent.png?w=225" alt="List Component Rendering Properties" width="225" height="300" /></a> List Component Rendering Properties[/caption]</p>
+<p>In your Visual Studio I replicate the folder structure of my custom tile that I specified in the&nbsp;TileHtmlFileName field, and add in a new cshtml for my tile.</p>
+<p>[caption width="300" id="attachment_654" align="aligncenter"]<a href="https://mikerobbinssitecore.files.wordpress.com/2015/03/custom-tile.png"><img class="size-medium wp-image-654" src="{{ site.baseurl }}/assets/custom-tile.png?w=300" alt="Custom Tile cshtml" width="300" height="128" /></a> Custom Tile cshtml[/caption]</p>
+<h3>Custom Tile and Knockout Databinding</h3>
+<p>In the custom tile cshtml file, this is where we can specify the html markup for an individual item bound to the list component via the datasource.</p>
+<p>Below is an example of the standard Sitecore tile that comes with a fresh install of Sitecore.</p>
+<p>https://gist.github.com/komainu85/8c22eb9a77cdc2422015</p>
+<p>When creating a custom tile, I usually copy this HTML to use as a template. This has the required HTML and CSS classes to look pretty good as a starting point.</p>
+<p>Knockout databinding works on standard html, by allowing you to databind attributes and inner elements&nbsp;to properties of&nbsp;the model that's provided by the datasource. In this example we are binding the following model to our list component from the datasource.</p>
+<p>We have the following properties:</p>
+<ul>
+<li><strong>itemId</strong> - The ID of the Sitecore item. Also needed for SPEAK components to support selected item events.</li>
+<li><strong>Path</strong> - Path to a image.</li>
+<li><strong>Name</strong> - Filename of the image</li>
+</ul>
+<p>https://gist.github.com/bc1c1b209ac198643ed5</p>
+<h3>Knockout Attribute Databinding</h3>
+<p>To use knockout for databinding, the syntax is to add&nbsp;a data-bind attribute to the HTML&nbsp;element. Within the data-bind attribute, we can tell knockout which HTML attribute we want to bind to which property&nbsp;in our model. Within the data-bind attribute, add attr to tell knockout we want to bind an attribute of the HTML element, we can tell knockout which attribute of the HTML&nbsp;tag we wish to databind followed by which property in the model we want to databind too.</p>
+<p>So take this case for example: One of the properties we have in our model is the path of the&nbsp;image. To display this in the tile we create a standard &lt;img&gt; HTML tag, however we want the src property to be set by knockout from the path property&nbsp;in our model (Note the property name is case sensitive).</p>
+<p>As you can see below we set the databind the src attribute of the img tag to the Path property&nbsp;in our model (The model coming from the datasource bound to the list component).</p>
+<p>https://gist.github.com/komainu85/fafadebf36698536ed97</p>
+<h3>Knockout Inner Text Databinding</h3>
+<p>Databinding to the inner text of a HTML element works very similar to databinding an attribute. We use the knockout data-bind attribute again, instead of using attr we use the text syntax followed by the property in the model we wish to databind.</p>
+<p>So in this example we want to use a span tag, and databind&nbsp;its inner text property to the Name property in the model.</p>
+<p>https://gist.github.com/komainu85/c8c05e02c7f682e4332b</p>
+<p>Below is the full markup for the&nbsp;custom tile.</p>
+<p>https://gist.github.com/komainu85/69321fad18778b7f6f9d</p>
+<h3>Example Project Source</h3>
+<p>An example SPEAK application is available on <a title="https://github.com/komainu85/WallpaperManager" href="https://github.com/komainu85/WallpaperManager">GitHub</a> demonstrating Knockout databinding and the SPEAK list component.</p>
+<h3>Master Sitecore</h3>
+<p>https://youtube.com/watch?v=ZKld8i7qX1A</p>

@@ -1,0 +1,55 @@
+---
+layout: post
+title: Sitecore Services Client ServicesApiController
+date: 2015-06-25 13:31:51.000000000 +01:00
+type: post
+published: true
+status: publish
+categories:
+- Sitecore
+- Sitecore.services.client
+tags:
+- ServiceApiController
+- ServicesApiController
+- Sitecore 7.5
+- Sitecore 8
+- Sitecore.Services.Client
+- SSC
+meta:
+  _edit_last: '53242770'
+  geo_public: '0'
+  _publicize_done_external: a:1:{s:7:"twitter";a:1:{i:4473872;s:55:"https://twitter.com/Sobek1985/status/614048391903875072";}}
+  _publicize_job_id: '12023092533'
+  _publicize_done_4570590: '1'
+  _wpas_done_4473872: '1'
+  publicize_twitter_user: Sobek1985
+  publicize_linkedin_url: https://www.linkedin.com/updates?discuss=&scope=50486614&stype=M&topic=6019814084764061696&type=U&a=1KWE
+  _publicize_done_5620599: '1'
+  _wpas_done_5582720: '1'
+  publicize_google_plus_url: https://plus.google.com/113240140771005714369/posts/E7F8sneTbJB
+  _publicize_done_5620617: '1'
+  _wpas_done_5582732: '1'
+  _wpas_skip_5582732: '1'
+  _wpas_skip_4473872: '1'
+  _wpas_skip_5582720: '1'
+author:
+  login: sobek1985
+  email: sobek1985@gmail.com
+  display_name: Mike Robbins
+  first_name: ''
+  last_name: ''
+---
+<p>With Sitecore 7.5 and now Sitecore 8, Sitecore.Services.Client (SSC) was introduced. This has given us a flexible and powerful framework for created Web API based rest services in Sitecore (See my introduction into <a href="http://mikerobbins.co.uk/2015/01/06/entityservice-sitecore-service-client/">Entity Service</a> (part of Sitecore.Services.Client))<!--more--></p>
+<p>Entity Service is powerful, offering the repository pattern to implement functionality such as FindAll, FindByID, Create, Delete and Update for a given Entity (Model).</p>
+<p>However, what happens if you want to create a completely bespoke Web API controller and don't need any of the functionality from the repository of Entity Service. Up until now we have done something similar to my blog article <a href="http://mikerobbins.co.uk/2015/04/12/add-custom-web-api-controller-to-sitecore-solution/">here </a>where we extend some Sitecore pipelines to register custom routes and abort those.</p>
+<h2>ServicesApiController</h2>
+<p>With Sitecore.Services.Client we now have another option available to us, ServicesApiController. ServicesApiController is a abstract class that sits on-top of the .NET ApiController, offering the same core functionality as the start controller. ServicesApiController sits within Sitecore.Services.Infrastructure so you need to make sure you include the DLL in your solution.</p>
+<p>The advantage of using ServicesApiController means we get all the security benefits and filters of Sitecore.Service.Client <a href="http://laubplusco.net/implementing-webapi-service-using-servicesapicontroller-sitecore-8/">Anders Laub </a>has a blog post talking about this.</p>
+<h2>ServicesController</h2>
+<p>If we don't want to extend the Sitecore pipelines to register routes for our custom controller, we can use another part of Sitecore.Services.Client - ServicesController. ServicesController is a attribute we can use to decorate our controllers, this then includes the controller is Sitecore.Services.Client routing.</p>
+<p>Decorating our controllers with this attribute means we no longer need to extend any of the Sitecore pipelines to configure the routing. Our custom controller will now use the Sitecore.Services.Client style routing my default.</p>
+<p>Eg. //HostName/sitecore/api/ssc/namespace-to-controller/{controller}/{id}/action.</p>
+<p>Below is an example of a custom controller using ServiceApiController together with ServicesController.</p>
+<p>https://gist.github.com/komainu85/964e060832998c579a54</p>
+<p>Here is the output from a web request to the controller action.</p>
+<p>[caption id="attachment_781" align="aligncenter" width="500"]<a href="https://mikerobbinssitecore.files.wordpress.com/2015/06/image1.png"><img class="wp-image-781" src="{{ site.baseurl }}/assets/image1.png?w=300" alt="JSON returned " width="500" height="208" /></a> JSON returned[/caption]</p>

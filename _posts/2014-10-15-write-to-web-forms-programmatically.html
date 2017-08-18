@@ -1,0 +1,70 @@
+---
+layout: post
+title: Write to Web Forms Programmatically
+date: 2014-10-15 08:56:04.000000000 +01:00
+type: post
+published: true
+status: publish
+categories:
+- Developer
+- Sitecore
+- WFFM
+tags:
+- developer
+- Web Forms For Marketers
+meta:
+  _edit_last: '53242770'
+  geo_public: '0'
+  _publicize_pending: '1'
+  publicize_google_plus_url: https://plus.google.com/113240140771005714369/posts/XV7dsf2t7ss
+  _wpas_done_5582732: '1'
+  _publicize_done_external: a:1:{s:11:"google_plus";a:1:{s:21:"113240140771005714369";b:1;}}
+  publicize_twitter_user: Sobek1985
+  publicize_twitter_url: http://t.co/pUFxNK0bHi
+  _wpas_done_4473872: '1'
+  publicize_linkedin_url: https://www.linkedin.com/updates?discuss=&scope=50486614&stype=M&topic=5928060529695297536&type=U&a=Yup-
+  _wpas_done_5582720: '1'
+  _wpas_skip_5582732: '1'
+  _wpas_skip_4473872: '1'
+  _wpas_skip_5582720: '1'
+author:
+  login: sobek1985
+  email: sobek1985@gmail.com
+  display_name: Mike Robbins
+  first_name: ''
+  last_name: ''
+---
+<p>Recently I had a requirement to capture a number of parameters from a users session and provide Sitecore administrators a way of reporting on this data and exporting the data to CSV for analysis.<!--more--></p>
+<p>The reporting within WFFM was exactly what I was looking to achieve. I wondered if I could tap into this programmatically and use WFFM as my analysis and exporting tool.</p>
+<p>[caption id="attachment_256" align="aligncenter" width="300" class=" "]<a href="https://mikerobbinssitecore.files.wordpress.com/2014/10/wffm.png"><img class="size-medium wp-image-256" src="{{ site.baseurl }}/assets/wffm.png?w=300" alt="Form Reports" width="300" height="172" /></a> Form Reports[/caption]</p>
+<p>The idea is to create a new Form within WFFM and instead of adding the form to the page, instead create an instance of the form in memory, complete form and post the data into the WFFM database.</p>
+<p>Below is a code sample (commented) of completing the Form and posting the data back programmatically.</p>
+<p>[code language="csharp"]<br />
+public void SubmitToWFFM(ID formID, string username, string anotherString)<br />
+{<br />
+//Get form item by Item ID<br />
+Sitecore.Forms.Core.Data.FormItem formItem = Sitecore.Forms.Core.Data.FormItem.GetForm(formID);</p>
+<p>//Get form fields of the WFFM<br />
+FieldItem[] formFields = formItem.Fields;</p>
+<p>//Get all form fields of the form by name<br />
+FieldItem usernameField = formFields .FirstOrDefault(x =&amp;amp;gt; x.FieldDisplayName == &amp;quot;Username&amp;quot;);</p>
+<p>FieldItem anotherField = loggingFields.FirstOrDefault(x =&amp;gt; x.FieldDisplayName == &amp;quot;AnotherField&amp;quot;);</p>
+<p>//Populate fields with values<br />
+ControlResult controlUsernameTerm = new ControlResult(usernameField.Name, username, null);<br />
+ControlResult controlAnotherField = new ControlResult(anotherField.Name, anotherString, null);</p>
+<p>//Create collection of fields<br />
+AdaptedControlResult[] acr = new AdaptedControlResult[2];<br />
+acr[0] = new AdaptedControlResult(controlUsernameTerm, false);<br />
+acr[1] = new AdaptedControlResult(controlAnotherField, true);</p>
+<p>AdaptedResultList arl = new AdaptedResultList(acr);</p>
+<p>//Save form<br />
+SaveToDatabase dbSave = new SaveToDatabase();<br />
+try<br />
+{<br />
+dbSave.Execute(formId, arl, null);&lt;/pre&gt;</p>
+<p>catch (Exception ex)<br />
+{<br />
+Sitecore.Diagnostics.Log.Error(ex.Message, ex, this);<br />
+}<br />
+}<br />
+[/code]</p>

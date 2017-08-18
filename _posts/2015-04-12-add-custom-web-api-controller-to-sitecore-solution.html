@@ -1,0 +1,39 @@
+---
+layout: post
+title: Add Custom Web API Controller to Sitecore Solution
+date: 2015-04-12 15:41:55.000000000 +01:00
+type: post
+published: true
+status: publish
+categories:
+- Developer
+- Sitecore
+tags:
+- Controller
+- developer
+- Web API
+meta:
+  geo_public: '0'
+  _edit_last: '53242770'
+  _wpas_skip_5582732: '1'
+  _wpas_skip_5582720: '1'
+  _wpas_skip_4473872: '1'
+  _oembed_8288e2eb425741d0abe243677d63fc0b: "{{unknown}}"
+  _oembed_d08e2bb20179d01a9af1181b2d1a4f76: "{{unknown}}"
+  _publicize_job_id: '22900580723'
+author:
+  login: sobek1985
+  email: sobek1985@gmail.com
+  display_name: Mike Robbins
+  first_name: ''
+  last_name: ''
+---
+<p>The below code snippet enables you to add a custom Web API controller to your sitecore solution.</p>
+<p><!--more--></p>
+<ol>
+<li>The first block of code registers the mapping for our custom controllers.</li>
+<li>Next we abort the sitecore httprequest pipeline for our custom controllers. Notice we ignore the "api/Sitecore" path, this is so we don't affect any of the existing sitecore controllers such as SPEAK, Entity Service and ItemService.</li>
+<li>Here I have created  a formatter for the Sitecore ID, this allows us to clean up the JSON formatting. I've described this method in the following blog post <a title="http://mikerobbins.co.uk/2014/12/02/web-api-sitecore-id-formatter/" href="http://mikerobbins.co.uk/2014/12/02/web-api-sitecore-id-formatter/">http://mikerobbins.co.uk/2014/12/02/web-api-sitecore-id-formatter/</a>. This is then registered in RegisterWebApiRoute class</li>
+<li>The patch include file to extend the httpRequestBegin processor to register our custom mapping.</li>
+</ol>
+<p>https://gist.github.com/komainu85/a9fc2a103b967181364e</p>

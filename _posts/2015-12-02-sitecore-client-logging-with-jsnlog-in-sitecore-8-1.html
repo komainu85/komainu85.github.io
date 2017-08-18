@@ -1,0 +1,65 @@
+---
+layout: post
+title: Sitecore Client Logging with JSNLog In Sitecore 8.1
+date: 2015-12-02 19:41:18.000000000 +00:00
+type: post
+published: true
+status: publish
+categories:
+- Developer
+- Sitecore
+tags:
+- Client Logging
+- ClientLog
+- JSNLog
+- Logging
+- Sitecore 8.1
+meta:
+  publicize_linkedin_url: https://www.linkedin.com/updates?discuss=&scope=50486614&stype=M&topic=6077904207678099456&type=U&a=-Vd0
+  _rest_api_published: '1'
+  _rest_api_client_id: '11'
+  _publicize_job_id: '17413057497'
+  _publicize_done_external: a:1:{s:7:"twitter";a:1:{i:4473872;s:55:"https://twitter.com/Sobek1985/status/672138514503360513";}}
+  _publicize_done_4570590: '1'
+  _wpas_done_4473872: '1'
+  publicize_twitter_user: Sobek1985
+  _publicize_done_5620599: '1'
+  _wpas_done_5582720: '1'
+  publicize_google_plus_url: https://plus.google.com/113240140771005714369/posts/WzxbGKcdUuu
+  _publicize_done_5620617: '1'
+  _wpas_done_5582732: '1'
+  _edit_last: '53242770'
+  geo_public: '0'
+  _wpas_skip_5582732: '1'
+  _wpas_skip_4473872: '1'
+  _wpas_skip_5582720: '1'
+author:
+  login: sobek1985
+  email: sobek1985@gmail.com
+  display_name: Mike Robbins
+  first_name: ''
+  last_name: ''
+---
+<p>With Sitecore 8.1, support has been added to log client side events. The new logging framework is built upon the standard Sitecore logging framework (which uses Log4net), allowing client side events to be logged back to the data/log folder on the delivery server.<!--more--></p>
+<p>Under the hood, Sitecore client logging uses JSNLog which has been wrapped to allow Sitecore to configure it via a patch and to make use of the existing Log4net logging.</p>
+<h2>Configuration</h2>
+<p>All configuration for client logging is contained within Sitecore.JSNLog.config within App_Data/Include.</p>
+<h3>jsnlog element</h3>
+<p><b>Enabled</b> - Allows Client logging to be enabled. Beware disabling this option as the Sitecore CMS uses client logging for its diagnostics. You may need this option on if you need to raise support tickets.</p>
+<p><b>productionLibraryPath </b>- Allows you to change the path at which the jsnlog JavaScript is located. This is useful when the Sitecore directory isn't deployed on a delivery server.</p>
+<p><b>serverSideMessageFormat</b> - Here you can specify the format of the error message that is stored within the log. Above in the comments in the config file are a list of all the varibles. These can be seen below.</p>
+<h3>ajaxAppender</h3>
+<p>This is the appender thats used to write the errors to the Sitecore data log folder. Here we can specify the error level.</p>
+<p><b>level </b>- Here you can specify what level of logging is used (DEBUG|ERROR|INFO)</p>
+<p>https://gist.github.com/komainu85/caaa5c77df12d31c4797</p>
+<h2>Using Client Logging In Your Website</h2>
+<p>This is simple, logging will work if the JSNLog JavaScript has been rendering into the head of your HTML, this is done via a Sitecore helper. The helper within the Diagnostics namespace that renders out the JavaScript pulling the required varibles into the JavaScript.</p>
+<p>https://gist.github.com/komainu85/42ad72cc322d841e9a70</p>
+<p>Logging is now enabled, Sitecore will capture all unhandled JavaScript errors and log them in the log folder on the server. You can also write to the log via the JSNLog API "JL()" as below.</p>
+<p>https://gist.github.com/komainu85/1c9145d6bddff420acf9</p>
+<p>By default when using client logging you will see a JSON object being displayed in your browser's console every time you write to the log. You can see this below</p>
+<p>[caption id="" align="aligncenter" width="1280"]<a href="https://mikerobbinssitecore.files.wordpress.com/2015/12/img_0023.png"><img class="size-custom" title="Client JavaScript Error Logging" src="{{ site.baseurl }}/assets/img_0023.png" alt="Client JavaScript Error Logging" width="1280" height="982" /></a> Client JavaScript Error Logging[/caption]</p>
+<p>&nbsp;</p>
+<p>This functionality can be switched off, so logs are written but the log isn't displayed in the console window.</p>
+<p>Within the Sitecore.JSNLog.config, there is an appender for the console called - consoleAppender. This is enabled by the logger appender element that accepts a comma seperate list of appenders. Removing the consoleAppender from this list disabled the console appender.</p>
+<p>https://gist.github.com/komainu85/42347beae5ab1201b94b</p>

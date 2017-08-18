@@ -1,0 +1,243 @@
+---
+layout: post
+title: EntityService Sitecore.Services.Client
+date: 2015-01-06 18:05:46.000000000 +00:00
+type: post
+published: true
+status: publish
+categories:
+- Sitecore
+- Sitecore.services.client
+- SPEAK
+tags:
+- Backbone
+- code
+- Controller
+- developer
+- EntityService
+- JavaScript
+- JSON
+- PageCode
+- RequireJS
+- Sitecore 7.5
+- Sitecore 8
+- Sitecore SPEAK
+- Sitecore.Services.Client
+- SSC
+meta:
+  _edit_last: '53242770'
+  geo_public: '0'
+  publicize_google_plus_url: https://plus.google.com/113240140771005714369/posts/gADemUHYF9S
+  _wpas_done_5582732: '1'
+  _publicize_done_external: a:1:{s:11:"google_plus";a:1:{s:21:"113240140771005714369";b:1;}}
+  publicize_twitter_user: Sobek1985
+  publicize_twitter_url: http://t.co/D0d5G7d2TI
+  _wpas_done_4473872: '1'
+  publicize_linkedin_url: https://www.linkedin.com/updates?discuss=&scope=50486614&stype=M&topic=5958520433895571456&type=U&a=jaCh
+  _wpas_done_5582720: '1'
+  _wpas_skip_5582732: '1'
+  _wpas_skip_4473872: '1'
+  _wpas_skip_5582720: '1'
+  _post_restored_from: a:3:{s:20:"restored_revision_id";i:439;s:16:"restored_by_user";i:53242770;s:13:"restored_time";i:1424357770;}
+  _oembed_9f85c7ce1d20d5615cce9b33edd3d1f4: "{{unknown}}"
+  _oembed_8dc8e54ce74d40c6acdede48c8ab4994: "{{unknown}}"
+  _oembed_4d263c7361fc1b635c8ea6b93800d7be: "{{unknown}}"
+  _oembed_8679dc7b27a8430309fa228093046738: "{{unknown}}"
+  _publicize_job_id: '22900451743'
+author:
+  login: sobek1985
+  email: sobek1985@gmail.com
+  display_name: Mike Robbins
+  first_name: ''
+  last_name: ''
+---
+<p>Sitecore.Services.Client provides a powerful and flexible method of creating Web API based services within Sitecore. Using the provided interfaces and the repository pattern means that you will be building services in a consistent way, allowing you to build more flexible services and reduce the time to develop and maintain them. Sitecore.Services.Client was introduced first in Sitecore 7.5 and supported also in Sitecore 8.<!--more--></p>
+<p>Sitecore.Services.Client consists of two separate services. ItemService which allows you to work with standard Sitecore Item class. The other is EntityService which allows you to work with business entities that you create, and allows you implement the business logic as you require.</p>
+<p>Both EntityService and ItemService offers a number of ways of consuming the service, allowing you to work via web requests to the rest API, use the JavaScript API or bind to SPEAK components. This post I will be using the JavaScript API with EntityService in context of an Sitecore SPEAK application.</p>
+<h2>Model</h2>
+<p>The first stage of creating a EntityService based service is to create a Model. This model will define your business entity you wish to work with. All Models have to implement the Sitecore.Services.Core.Model.EntityIdentity class.</p>
+<p>[code language="Csharp"]<br />
+namespace MikeRobbins.News.Models<br />
+{<br />
+ public class NewsArticle: Sitecore.Services.Core.Model.EntityIdentity<br />
+ {<br />
+public string Title{ get; set; }<br />
+public string Description{ get; set; }<br />
+ }<br />
+}<br />
+[/code]</p>
+<h2>Repository</h2>
+<p>Create a repository based on the IRespository interface. E.g Sitecore.Services.Core.IRepository&lt;NewsArticle&gt;. Once you implement the interface you can start to code up the functionality that your EntityService will expose.</p>
+<p>IRepository will give you methods for Add, Delete, Exists, FindById, GetAll and Update of your Model. You can however extend this if you require.</p>
+<p>[code language="Csharp"]</p>
+<p>using MikeRobbins.News.Models;<br />
+using System;<br />
+using System.Collections.Generic;<br />
+using System.Linq;<br />
+using System.Web;<br />
+using Sitecore.Data;</p>
+<p>namespace MikeRobbins.News.Repository<br />
+{<br />
+ public class NewsArticleRepository : Sitecore.Services.Core.IRepository&lt;NewsArticle&gt;<br />
+ {</p>
+<p> public void Add(NewsArticle entity)<br />
+ {<br />
+ throw new NotImplementedException();<br />
+ }</p>
+<p> public void Delete(NewsArticle entity)<br />
+ {<br />
+ throw new NotImplementedException();<br />
+ }</p>
+<p> public bool Exists(NewsArticle entity)<br />
+ {<br />
+ var newsArticle = Sitecore.Data.Database.GetDatabase(&quot;Master&quot;).GetItem(new ID(entity.Id));</p>
+<p> return newsArticle != null;<br />
+ }</p>
+<p> public NewsArticle FindById(string id)<br />
+ {<br />
+ var newsArticle = Sitecore.Data.Database.GetDatabase(&quot;master&quot;).GetItem(new ID(id));</p>
+<p> if (newsArticle != null)<br />
+ {<br />
+ return new NewsArticle() { Id = newsArticle.ID.ToString(), DisplayName = newsArticle.DisplayName };<br />
+ }<br />
+else<br />
+{<br />
+return null;<br />
+}<br />
+ }</p>
+<p> public IQueryable&lt;NewsArticle&gt; GetAll()<br />
+ {<br />
+ throw new NotImplementedException();<br />
+ }</p>
+<p> public void Update(NewsArticle entity)<br />
+ {<br />
+ }<br />
+ }<br />
+}[/code]</p>
+<h2>Controller</h2>
+<p>Next create a controller and add the ServicesController attribute. Implement the EntiryService&lt;T&gt; class where T is your Model. Create a second constructor that creates new instance of your repository class.</p>
+<p>[code language="Csharp"]<br />
+namespace MikeRobbins.News.Controllers<br />
+{<br />
+ [ValidateAntiForgeryToken]<br />
+ [Sitecore.Services.Core.ServicesController]<br />
+ public class NewsArticleController : EntityService&lt;NewsArticle&gt;<br />
+ {<br />
+ public NewsArticleController(IRepository&lt;NewsArticle&gt; repository)<br />
+ : base(repository)<br />
+ {<br />
+ }</p>
+<p> public NewsArticleController()<br />
+ : this(new NewsArticleRepository())<br />
+ {<br />
+ }</p>
+<p> }<br />
+}<br />
+[/code]</p>
+<h2>SPEAK PageCode</h2>
+<p>Using RequireJS require a reference to the entity service JavaScript library, and update the define element to include the entityService.</p>
+<p>[code language="JavaScript"]<br />
+require.config({<br />
+ paths: {<br />
+ entityService: &amp;quot;/sitecore/shell/client/Services/Assets/lib/entityservice&amp;quot;<br />
+ }<br />
+});</p>
+<p>define([&quot;sitecore&quot;, &quot;jquery&quot;, &quot;underscore&quot;, &quot;entityService&quot;], function (Sitecore, $, _, entityService) {<br />
+ var News = Sitecore.Definitions.App.extend({</p>
+<p> initialized: function () {</p>
+<p> },<br />
+ });<br />
+return News;<br />
+});<br />
+[/code]</p>
+<h2>Working with EntityService via the JavaScript API</h2>
+<p>To work with EntityService via the JavaScript API you create an instance of EntityService passing in the url property. The url property is the url of your controller. EntityService is always prefixed with "/sitecore/api/ssc". The next part of the url is the namespace containing your controller with the "." replaced with "-" followed by your controller name.</p>
+<p>E.g. If you your controller is in the namespace MikeRobbins.News.Controllers and called NewsArticleController. Your url would be "/sitecore/api/ssc/MikeRobbins/api/ssc/MikeRobbins-News-Controllers/newsarticlearticle"</p>
+<h3>Get Entities Example</h3>
+<p>Create an instance of EntityService with the service url, you can then call fetchEntities. This will then call the GetAll method within your repository defined within the controller. An array of the entities are then returned.</p>
+<p>[code language="JavaScript"]<br />
+GetNewsArticles: function () {</p>
+<p> var newsService = new entityService({<br />
+ url: &quot;/sitecore/api/ssc/MikeRobbins-News-Controllers/newsarticle&quot;<br />
+ });</p>
+<p> var result = newsService.fetchEntities().execute().then(function (newsArticles) {<br />
+  for (var i = 0; i &lt;= newsArticles.length; i++) {<br />
+ var title = newsArticles[i].Title;<br />
+}<br />
+ });</p>
+<p> },<br />
+[/code]</p>
+<h3>Get Entity Example</h3>
+<p>Create an instance of EntityService with the service url, you can then call the fetchEntity function passing in an id of an entity. This will then call the FindById method within your repository defined within the controller. An entity class in returned.</p>
+<p>[code language="JavaScript"]<br />
+GetNewsArticle: function () {</p>
+<p> var newsService = new entityService({<br />
+ url: &quot;/sitecore/api/ssc/MikeRobbins-News-Controllers/newsarticle&quot;<br />
+ });</p>
+<p> var result = newsService.fetchEntity(&quot;73e3a4fe-7d42-4ed9-b66e-ad948f340f27&quot;).execute().then(function (newsArticle) {<br />
+ var title = newsArticle.Title;<br />
+ });</p>
+<p> },<br />
+[/code]</p>
+<h3>Update Entity Example</h3>
+<p>Create a an instance of EntityService with the service url, you can then call the fetchEntity function passing in an id of an entity. Once you have an entity returned, make the required changes to the entity. From here you can call the save method, this maps to the update method within the repository. A class is returned containing the updated entity, in the below example I'm popping up a success message in the SPEAK message panel.</p>
+<p>[code language="JavaScript"]<br />
+UpdateNewsArticle: function () {</p>
+<p> var newsService = new entityService({<br />
+ url: &quot;/sitecore/api/ssc/MikeRobbins-News-Controllers/newsarticle&quot;<br />
+ });</p>
+<p> var result = newsService.fetchEntity(&quot;73e3a4fe-7d42-4ed9-b66e-ad948f340f27&quot;).execute().then(function (newsArticle) {<br />
+  newsArticle.Title = &quot;Hello World&quot;;</p>
+<p> newsArticle.save().execute().then(function (savedNewsArticle) {<br />
+ messagePanel.addMessage(&quot;notification&quot;, { text: &quot;Item updated successfully&quot;, actions: [], closable: true, temporary: true });<br />
+ });<br />
+ });</p>
+<p> },<br />
+[/code]</p>
+<h3>Delete Entity Example</h3>
+<p>Create an instance of EntityService with the service url, you can then call the Delete function passing in the entity to delete. This will then call the delete method within your repository defined within the controller.</p>
+<p>[code language="JavaScript"]<br />
+DeleteNewsArticle: function () {</p>
+<p> var newsService = new entityService({<br />
+ url: &quot;/sitecore/api/ssc/MikeRobbins-News-Controllers/newsarticle&quot;<br />
+ });</p>
+<p> var itemToDelete= {<br />
+ Id: itemId<br />
+ };</p>
+<p> var result = newsService.delete(itemToDelete).execute().then(function (newsArticle) {<br />
+ });</p>
+<p> },<br />
+[/code]</p>
+<h3>Create Entity Example</h3>
+<p>Create an instance of EntityService with the service url. You can then create a new object populating the properties of your entity. From here you can call CreateEntity, passing in the object you created. This will then call the add method within your repository defined within the controller. A class is returned of the newly created entity.</p>
+<p>[code language="JavaScript"]<br />
+CreateNewsArticle: function () {</p>
+<p> var newsService = new entityService({<br />
+ url: &amp;quot;/sitecore/api/ssc/MikeRobbins-News-Controllers/newsarticle&amp;quot;<br />
+ });</p>
+<p>var exampleNewsArticle = {<br />
+ Title: &amp;quot;Hello World&amp;quot;,<br />
+ Description:&amp;quot;Some content describing the news article.&amp;quot;;<br />
+}; </p>
+<p> var result = newsService.createEntity(exampleNewsArticle).execute().then(function (newsArticle) {<br />
+var title = newsArticle.Title;<br />
+ });</p>
+<p> },<br />
+[/code]</p>
+<h3>Tools</h3>
+<p>There is a few tools you can use to help with debugging and exploring SSC.</p>
+<ol>
+<li>Fiddler <a title="http://www.telerik.com/fiddler" href="http://www.telerik.com/fiddler">http://www.telerik.com/fiddler</a></li>
+<li>Kevin Obee's Sitecore Glimpse Plugin. Under Sitecore Tab there is a sitecore services section where you can explore your SSC services.
+<p>[caption id="attachment_401" align="aligncenter" width="300"]<a href="https://mikerobbinssitecore.files.wordpress.com/2015/01/sitecore-glimpse.png"><img class="size-medium wp-image-401" src="{{ site.baseurl }}/assets/sitecore-glimpse.png?w=300" alt="Sitecore Glimpse" width="300" height="186" /></a> Sitecore Glimpse[/caption]</li>
+<li>POSTman <a title="https://chrome.google.com/webstore/detail/postman-rest-client/fdmmgilgnpjigdojojpjoooidkmcomcm?hl=en" href="https://chrome.google.com/webstore/detail/postman-rest-client/fdmmgilgnpjigdojojpjoooidkmcomcm?hl=en" target="_blank">https://chrome.google.com/webstore/detail/postman-rest-client/fdmmgilgnpjigdojojpjoooidkmcomcm?hl=en</a></li>
+<li>Chrome's Console</li>
+</ol>
+<h3>Further Reading</h3>
+<p><a title="Adding custom controller actions" href="http://mikerobbins.co.uk/2015/03/20/sitecore-entity-service-ssc-custom-controller-action/">Adding custom controller actions</a></p>
+<p>Jamie Little has written a useful post on how to add custom Authorisation Filters to the controller to restrict access.</p>
+<p><a href="https://sitecorejim.wordpress.com/2015/02/18/sitecore-services-client-creating-a-custom-authorisation-filter/">Sitecore services client - Creating a custom authorisation filter</a></p>
+<h2>Source</h2>
+<p>I have an example Sitecore SPEAK application with SSC implemented available on GitHub. <a href="https://github.com/komainu85/SitecoreSPEAKBulkWorkflows/"> https://github.com/komainu85/SitecoreSPEAKBulkWorkflows/</a></p>
+<h2>Master Sitecore</h2>
+<p>https://youtube.com/watch?v=g0cVr6CnNKM</p>

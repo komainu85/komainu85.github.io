@@ -1,0 +1,55 @@
+---
+layout: post
+title: Sitecore SPEAK Uploader Uploaded Item
+date: 2014-10-30 16:18:57.000000000 +00:00
+type: post
+published: true
+status: publish
+categories:
+- Developer
+- Sitecore
+- SPEAK
+tags:
+- developer
+- Sitecore 7.1
+- Sitecore 7.2
+- Sitecore SPEAK
+meta:
+  _edit_last: '53242770'
+  geo_public: '0'
+  _publicize_pending: '1'
+  publicize_google_plus_url: https://plus.google.com/113240140771005714369/posts/7SmG9hN2XRW
+  _wpas_done_5582732: '1'
+  _publicize_done_external: a:1:{s:11:"google_plus";a:1:{s:21:"113240140771005714369";b:1;}}
+  publicize_twitter_user: Sobek1985
+  publicize_twitter_url: http://t.co/xM7zRCWbVn
+  _wpas_done_4473872: '1'
+  publicize_linkedin_url: https://www.linkedin.com/updates?discuss=&scope=50486614&stype=M&topic=5933622902971727872&type=U&a=vLjn
+  _wpas_done_5582720: '1'
+  _wpas_skip_5582732: '1'
+  _wpas_skip_4473872: '1'
+  _wpas_skip_5582720: '1'
+author:
+  login: sobek1985
+  email: sobek1985@gmail.com
+  display_name: Mike Robbins
+  first_name: ''
+  last_name: ''
+---
+<p>Quite often when using the Sitecore SPEAK Uploader to upload items to the Media Library, you need to be able to access the item after upload within the JavaScript page code to work with the item.<!--more--></p>
+<p>Below is an example of how to get access to the Media Item model after it has been uploaded into the Media Library.</p>
+<p>This method is only supported in Sitecore 7.1 rev. 140324 (7.1 Update-2). I raised this as a bug with Sitecore as Item Id's weren't returned, and its been fixed in this release.</p>
+<p>[code language="JavaScript"]<br />
+  initialize: function () {</p>
+<p>   //Subscribe to the &quot;upload-fileUploaded&quot; event of the Uploader.<br />
+   //This is called after each item is uploaded successfully to the media library.<br />
+   //Specify a function to handle the uploaded event.</p>
+<p>   this.on(&quot;upload-fileUploaded&quot;, fileUploaded, this);<br />
+  },<br />
+[/code]</p>
+<p>[code language="JavaScript"]<br />
+var fileUploaded = function (model) {<br />
+    // Access the model for the uploaded Media Item.<br />
+    var itemId =   model.itemId<br />
+};<br />
+[/code]</p>

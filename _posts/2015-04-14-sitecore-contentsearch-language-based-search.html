@@ -1,0 +1,76 @@
+---
+layout: post
+title: Sitecore ContentSearch Language Based Search
+date: 2015-04-14 13:35:49.000000000 +01:00
+type: post
+published: true
+status: publish
+categories:
+- Content Search
+- Sitecore
+tags:
+- developer
+- search
+- SearchContext
+- Sitecore 7
+meta:
+  _edit_last: '53242770'
+  geo_public: '0'
+  _oembed_697d2ad701898ea7793f197524ca2204: <div class="embed-twitter"><blockquote
+    class="twitter-tweet" width="550"><p>Sitecore Searching returns all languages
+    from the Index <a href="http://t.co/QI2ZFhs20g">http://t.co/QI2ZFhs20g</a></p>&mdash;
+    Jamie Little (@jamielitt) <a href="https://twitter.com/jamielitt/status/492625305765289984">July
+    25, 2014</a></blockquote><script async src="//platform.twitter.com/widgets.js"
+    charset="utf-8"></script></div>
+  _oembed_time_697d2ad701898ea7793f197524ca2204: '1429012586'
+  _oembed_5ed0902e2698760bc981973de9069c0c: <div class="embed-twitter"><blockquote
+    class="twitter-tweet" width="550"><p><a href="https://twitter.com/jamielitt">@jamielitt</a>
+    .. or when you call GetContext you can pass in a CultureExecutionContext which
+    will limit to a particular language :)</p>&mdash; Stephen Pope (@stephenpope)
+    <a href="https://twitter.com/stephenpope/status/493034877051490305">July 26, 2014</a></blockquote><script
+    async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></div>
+  _oembed_time_5ed0902e2698760bc981973de9069c0c: '1429707990'
+  _publicize_pending: '1'
+  _oembed_eda67f509f07439c90d1fd4ceb9a78ce: <div class="embed-twitter"><blockquote
+    class="twitter-tweet" width="500"><p><a href="https://twitter.com/jamielitt">@jamielitt</a>
+    .. or when you call GetContext you can pass in a CultureExecutionContext which
+    will limit to a particular language :)</p>&mdash; Stephen Pope (@stephenpope)
+    <a href="https://twitter.com/stephenpope/status/493034877051490305">July 26, 2014</a></blockquote><script
+    async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></div>
+  _oembed_time_eda67f509f07439c90d1fd4ceb9a78ce: '1429014953'
+  _oembed_25238d6b2128d2ccfe22b895b13e65e5: <div class="embed-twitter"><blockquote
+    class="twitter-tweet" width="550"><p><a href="https://twitter.com/jamielitt">@jamielitt</a>
+    .. or when you call GetContext you can pass in a CultureExecutionContext which
+    will limit to a particular language :)</p>&mdash; Stephen Pope (@stephenpope)
+    <a href="https://twitter.com/stephenpope/status/493034877051490305">July 26, 2014</a></blockquote><script
+    async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></div>
+  _oembed_time_25238d6b2128d2ccfe22b895b13e65e5: '1429014956'
+  publicize_google_plus_url: https://plus.google.com/113240140771005714369/posts/hAJzqZUrd9h
+  _wpas_done_5582732: '1'
+  _publicize_done_external: a:1:{s:11:"google_plus";a:1:{s:21:"113240140771005714369";b:1;}}
+  publicize_twitter_user: Sobek1985
+  publicize_twitter_url: http://t.co/fF3fQ8kxuR
+  _wpas_done_4473872: '1'
+  publicize_linkedin_url: https://www.linkedin.com/updates?discuss=&scope=50486614&stype=M&topic=5993723157918285825&type=U&a=d2Ox
+  _wpas_done_5582720: '1'
+  _wpas_skip_5582732: '1'
+  _wpas_skip_4473872: '1'
+  _wpas_skip_5582720: '1'
+author:
+  login: sobek1985
+  email: sobek1985@gmail.com
+  display_name: Mike Robbins
+  first_name: ''
+  last_name: ''
+---
+<p>Just a quick blog on using Sitecore content search within multilingual sites.</p>
+<p>A very basic way of achieving a multilingual search,  i've used in the past involves building a query to filter on the language from the Sitecore.Context.Language. This method is explained in a previous tweet from Jamie Little and a blog post, however a comment from Stephen Pope shed more detail on content search, where you can actually pass in a culture into the content search.<br />
+<!--more--><br />
+https://twitter.com/stephenpope/status/493034877051490305</p>
+<h2>So how does this work in practice</h2>
+<p>Within the Lucene or Solr configuration (e.g. "Sitecore.ContentSearch.Lucene.DefaultIndexConfiguration.config") we can see that there is a collection of  analyzers specified along with the culture name the analyzer is for.</p>
+<p>https://gist.github.com/dbea6aecd0fcb0a47d3d</p>
+<h2>Switching analyzer for the given language</h2>
+<p>When constructing the context.GetQueryable&lt;SearchResultItem&gt; there is an overloaded method that accepts a CultureExecutionContext. This allows you to pass in a culture to use for the search, context search then uses the config to locate the correct analyzer for the given culture info.</p>
+<p>In the example below, I get the current cultureInfo from the context language and pass this into the GetQueryable method. This allows content search to automatically switch between analyzers based on the current site language.</p>
+<p>https://gist.github.com/775fa757f54ae4f6d2f0</p>

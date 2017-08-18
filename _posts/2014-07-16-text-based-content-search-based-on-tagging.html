@@ -1,0 +1,78 @@
+---
+layout: post
+title: Text Based Content Search Based On Tagging
+date: 2014-07-16 13:40:05.000000000 +01:00
+type: post
+published: true
+status: publish
+categories:
+- Content Search
+- Sitecore
+tags:
+- Computed Field
+- content editor
+- developer
+- Tagging
+meta:
+  _edit_last: '53242770'
+  geo_public: '0'
+  _publicize_pending: '1'
+  publicize_google_plus_url: https://plus.google.com/113240140771005714369/posts/BuzGgQhmzhd
+  _wpas_done_5582732: '1'
+  _publicize_done_external: a:1:{s:11:"google_plus";a:1:{s:21:"113240140771005714369";b:1;}}
+  publicize_twitter_user: Sobek1985
+  publicize_twitter_url: http://t.co/KBDgt1bx0G
+  _wpas_done_4473872: '1'
+  publicize_linkedin_url: http://www.linkedin.com/updates?discuss=&scope=50486614&stype=M&topic=5895154723266260992&type=U&a=EF2B
+  _wpas_done_5582720: '1'
+  _wpas_skip_5582732: '1'
+  _wpas_skip_4473872: '1'
+  _wpas_skip_5582720: '1'
+author:
+  login: sobek1985
+  email: sobek1985@gmail.com
+  display_name: Mike Robbins
+  first_name: ''
+  last_name: ''
+---
+<p>Out of the box Sitecore offers Content Editors the power to create tags, and assign them to content items using the Tagging field in standard values.<!--more--></p>
+<p>[caption id="attachment_203" align="aligncenter" width="300"]<a href="https://mikerobbinssitecore.files.wordpress.com/2014/07/tagging.png"><img class="size-medium wp-image-203" src="{{ site.baseurl }}/assets/tagging.png?w=300" alt="Tagging Standard Value" width="300" height="110" /></a> Tagging Standard Value[/caption]</p>
+<p>When analysing the indexes using LUKE, you can see that Sitecore indexes the ID's of each tag. This makes it difficult to perform a text based content search that also matches on tags.</p>
+<p>[caption id="attachment_201" align="aligncenter" width="300"]<a href="https://mikerobbinssitecore.files.wordpress.com/2014/07/luke.png"><img class="size-medium wp-image-201" src="{{ site.baseurl }}/assets/luke.png?w=300" alt="Luke Index View" width="300" height="136" /></a> Luke Index View[/caption]</p>
+<p>However Sitecore gives us the power to create computed fields in search indexes. This means we can create new fields within the index and programmatically create text into the index.</p>
+<p>This example below uses a computed field that instead of indexing the ID of the tag, instead adds the item name of each tag seperated by a space. This then allows you to perform a text based search against the tag. (Sitecore by default indexes the __Semantics field, so here i'm creating a new field in the index called "tags" not to override any standard Sitecore functionality)</p>
+<p>&nbsp;</p>
+<h2>Computed Field Class</h2>
+<p>[code language="csharp"]<br />
+namespace MikeRobbins.CMS.ComputedFields<br />
+{<br />
+public class Tags : IComputedIndexField<br />
+{<br />
+public object ComputeFieldValue(Sitecore.ContentSearch.IIndexable indexable)<br />
+{<br />
+var tags = new StringBuilder();</p>
+<p>Item obj = (Item)(indexable as SitecoreIndexableItem);</p>
+<p>if (obj != null)<br />
+{<br />
+var tagField = (Sitecore.Data.Fields.MultilistField)obj.Fields[&quot;__Semantics&quot;];</p>
+<p>if (tagField != null)<br />
+{<br />
+var items = tagField.GetItems();</p>
+<p>foreach (var item in items)<br />
+{<br />
+tags.Append(item.Name + &quot; &quot;);<br />
+}<br />
+}<br />
+}</p>
+<p>return tags.Length != 0? tags.ToString():null;<br />
+}</p>
+<p>public string FieldName { get; set; }<br />
+public string ReturnType { get; set; }<br />
+}<br />
+}<br />
+[/code]</p>
+<h2>XML Config</h2>
+<p>Add this XML to the "AddComputedIndexField" section of your search index config.</p>
+<p>[code language="xml"]<br />
+&lt;field fieldName=&quot;tags&quot;                           &gt;MikeRobbins.CMS.ComputedFields.Tags,MikeRobbins.CMS&lt;/field&gt;<br />
+[/code]</p>

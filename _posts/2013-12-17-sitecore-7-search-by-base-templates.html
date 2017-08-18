@@ -1,0 +1,39 @@
+---
+layout: post
+title: Sitecore 7 Search by base templates
+date: 2013-12-17 12:07:17.000000000 +00:00
+type: post
+published: true
+status: publish
+categories:
+- Content Search
+- Developer
+- Sitecore
+tags:
+- ComputedFields
+- developer
+- search
+- Sitecore 7
+meta:
+  _edit_last: '53242770'
+  publicize_twitter_user: Sobek1985
+  publicize_twitter_url: http://t.co/p2s9zs1517
+  _wpas_done_4473872: '1'
+  _publicize_done_external: a:1:{s:7:"twitter";a:1:{i:35759471;b:1;}}
+  _wpas_skip_5582732: '1'
+  _wpas_skip_4473872: '1'
+  _wpas_skip_5582720: '1'
+author:
+  login: sobek1985
+  email: sobek1985@gmail.com
+  display_name: Mike Robbins
+  first_name: ''
+  last_name: ''
+---
+<p>Quick tip, when using Sitecore 7's search API to build a general site search, you may want to return only pages rather than any other items within Sitecore. All my page items inherit from a base Item to implement page title, meta data and so on. Using linq we are able to check whether an item is based on a specific base template, to do this we need to tell Sitecore to index the base templates.</p>
+<p>By default in Sitecore 7 indexing base templates is disabled to improve the indexing speed. This is very simple to switch on.</p>
+<p>Inside the  section within your index uncomment the line below.</p>
+<p>[code language="xml"]<br />
+ &lt;field fieldName=&quot;_templates&quot; storageType=&quot;yes&quot; indexType=&quot;untokenized&quot;&gt;Sitecore.ContentSearch.ComputedFields.AllTemplates, Sitecore.ContentSearch&lt;/field&gt;<br />
+[/code]</p>
+<p>Rebuild your index and these base templates are now accessible in your search result class.  </p>

@@ -1,0 +1,56 @@
+---
+layout: post
+title: Sitecore SPEAK Dialog Within Desktop
+date: 2014-10-10 12:01:08.000000000 +01:00
+type: post
+published: true
+status: publish
+categories:
+- Sitecore
+- SPEAK
+tags:
+- content editor
+- Desktop
+- Sitecore 7.2
+- Sitecore 8
+- Sitecore SPEAK
+meta:
+  _edit_last: '53242770'
+  geo_public: '0'
+  publicize_google_plus_url: https://plus.google.com/113240140771005714369/posts/PBbaMRMHpZt
+  _wpas_done_5582732: '1'
+  _publicize_done_external: a:1:{s:11:"google_plus";a:1:{s:21:"113240140771005714369";b:1;}}
+  publicize_twitter_user: Sobek1985
+  publicize_twitter_url: http://t.co/0AN2eylvrP
+  _wpas_done_4473872: '1'
+  publicize_linkedin_url: https://www.linkedin.com/updates?discuss=&scope=50486614&stype=M&topic=5926295185267920896&type=U&a=t-zH
+  _wpas_done_5582720: '1'
+  _wpas_skip_facebook: '1'
+  _wpas_skip_tumblr: '1'
+  _wpas_skip_path: '1'
+  _wpas_skip_5582732: '1'
+  _wpas_skip_4473872: '1'
+  _wpas_skip_5582720: '1'
+  _publicize_job_id: '5153824789'
+author:
+  login: sobek1985
+  email: sobek1985@gmail.com
+  display_name: Mike Robbins
+  first_name: ''
+  last_name: ''
+---
+<p>Here is a short useful tutorial for anyone wanting to add a SPEAK Dialog control within the Sitecore desktop view. Basically it uses a Sitecore sheer ui application as a proxy to point at the url of the SPEAK application.<!--more--></p>
+<p>[caption id="attachment_226" align="aligncenter" width="300" class=" "]<a href="https://mikerobbinssitecore.files.wordpress.com/2014/10/speakdialog.png"><img class="size-medium wp-image-226" src="{{ site.baseurl }}/assets/speakdialog.png?w=300" alt="SPEAK Dialog" width="300" height="181" /></a> SPEAK Dialog[/caption]</p>
+<ul>
+<li>Create a Sitecore dialog application using Sitecore rocks within the core database.
+<p>[caption id="attachment_227" align="aligncenter" width="300" class=" "]<a href="https://mikerobbinssitecore.files.wordpress.com/2014/10/speak-dialog-application.png"><img class="size-medium wp-image-227" src="{{ site.baseurl }}/assets/speak-dialog-application.png?w=300" alt="SPEAK Dialog Application" width="300" height="180" /></a> SPEAK Dialog Application[/caption]</li>
+<li>Create a standard application item under content / applications in the core database.Set the application field to an link pointing at the url at the SPEAK application.Example Raw Value: &lt;link url="/sitecore/client/MikeRobbins/Dialogs/RolePermissions" linktype="internal" id="" /&gt;
+<p>[caption id="attachment_229" align="aligncenter" width="300" class=" "]<a href="https://mikerobbinssitecore.files.wordpress.com/2014/10/applicationitem.png"><img class="size-medium wp-image-229" src="{{ site.baseurl }}/assets/applicationitem.png?w=300" alt="Application Item" width="300" height="144" /></a> Application Item[/caption]</li>
+<li>Create an application shortcut pointing at the application within the applications folder.&lt;link linktype="internal" url="/applications/RolePermissions" querystring="" target="" id="{5DD732CF-67CE-4EF3-9F76-D53E16225693}" bdgtk
+<p>[caption id="attachment_231" align="aligncenter" width="300" class=" "]<a href="https://mikerobbinssitecore.files.wordpress.com/2014/10/shortcut.png"><img class="size-medium wp-image-231" src="{{ site.baseurl }}/assets/shortcut.png?w=300" alt="Application Shortcut" width="300" height="144" /></a> Application Shortcut[/caption]</li>
+</ul>
+<p>An example of this method can be seen in my bulk user permissions module on GitHub https://github.com/komainu85/SitecoreSPEAKBulkRolePermissions</p>
+<p>The next stage is to use this method to create a command button in the content editor and pass in the context item using query string parameters.</p>
+<p><span style="text-decoration:underline;"><strong>Update</strong></span></p>
+<p>I have discovered this method also works in Sitecore 8.</p>
+<p>[caption id="attachment_327" align="aligncenter" width="300"]<a href="https://mikerobbinssitecore.files.wordpress.com/2014/10/sitecore-8.png"><img class="size-medium wp-image-327" src="{{ site.baseurl }}/assets/sitecore-8.png?w=300" alt="Sitecore 8 SPEAK Dialog" width="300" height="186" /></a> Sitecore 8 SPEAK Dialog[/caption]</p>

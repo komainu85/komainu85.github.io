@@ -1,0 +1,52 @@
+---
+layout: post
+title: Sitecore Entity Service (SSC) Adding Paging
+date: 2015-03-23 09:15:24.000000000 +00:00
+type: post
+published: true
+status: publish
+categories:
+- Sitecore
+- Sitecore.services.client
+tags:
+- Entity Service
+- EntityService
+- paged
+- Paging
+- Sitecore.Services.Client
+- SSC
+meta:
+  _edit_last: '53242770'
+  geo_public: '0'
+  publicize_google_plus_url: https://plus.google.com/113240140771005714369/posts/S9iMTzbWrpB
+  _wpas_done_5582732: '1'
+  _publicize_done_external: a:1:{s:11:"google_plus";a:1:{s:21:"113240140771005714369";b:1;}}
+  publicize_twitter_user: Sobek1985
+  publicize_twitter_url: http://t.co/zSsgqSaMYW
+  _wpas_done_4473872: '1'
+  publicize_linkedin_url: https://www.linkedin.com/updates?discuss=&scope=50486614&stype=M&topic=5985700189581697024&type=U&a=6KE_
+  _wpas_done_5582720: '1'
+  _wpas_skip_5582732: '1'
+  _wpas_skip_4473872: '1'
+  _wpas_skip_5582720: '1'
+  _publicize_job_id: '22900609050'
+author:
+  login: sobek1985
+  email: sobek1985@gmail.com
+  display_name: Mike Robbins
+  first_name: ''
+  last_name: ''
+---
+<p>Recently I did a Sitecore User Group talk on Entity Service (video based on the talk available on <a title="https://www.youtube.com/watch?v=g0cVr6CnNKM" href="https://www.youtube.com/watch?v=g0cVr6CnNKM">Master Sitecore</a>). I was asked there how you could extend Entity Service to including paging instead of using the standard GetAll() function.</p>
+<p>Using my method of extending Entity Service and its repository pattern, as explained in this <a title="Sitecore Entity Service (SSC) Custom Controller Action" href="http://mikerobbins.co.uk/2015/03/20/sitecore-entity-service-ssc-custom-controller-action/">blog post</a>. This blog post will explain how to add a new custom paged function for getting all entities.<br />
+<!--more--><br />
+The first stage is to add a new interface inheriting from the standard IRepository. Create a new GetAll overloaded method with parameters from page size and current page number.</p>
+<p>https://gist.github.com/komainu85/b84b8d34da344d9ef965</p>
+<p>Update the repository, instead of inheriting for the standard IRepository, inherit from your new repository. Implement the functionality of the new paged GetAll function to load the required entities.</p>
+<p>https://gist.github.com/c0330b07bf815b906b8c</p>
+<p>Within the controller update the constructor to use the new repository. Create a new function with parameters for the page size and current page number. Decorate the function with the ActionName attribute. This ActionName defines part the URL of the service to the function.</p>
+<p>https://gist.github.com/278da0140baf5c7e2fec</p>
+<p>As I mentioned in my previous post on Entity Service, the routing of custom functions follows the following format. "/sitecore/api/ssc/"{Controller-Namespace}/{Controller}/{ID}/{CustomActionName}. So when adding paging, we don't need the ID part of the URL, however we need to supply something for the routing to work correctly.</p>
+<p>For example you could use a path like this to hit the action. "/sitecore/api/ssc/MikeRobbins-EntityServicePaging-Controllers/Entity/1/GetAllPaged?pageSize=1&amp;page=1"</p>
+<h3>Demo Application</h3>
+<p>Demo application of custom paging is available on <a title="https://github.com/komainu85/EntityServicePagingDemo" href="https://github.com/komainu85/EntityServicePagingDemo">GitHub</a>.</p>

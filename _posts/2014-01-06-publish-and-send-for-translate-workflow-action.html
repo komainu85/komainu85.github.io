@@ -1,0 +1,90 @@
+---
+layout: post
+title: Publish And Send For Translate Workflow Action
+date: 2014-01-06 14:04:10.000000000 +00:00
+type: post
+published: true
+status: publish
+categories:
+- Content Editor
+- Developer
+- Sitecore
+tags:
+- action
+- code
+- developer
+- workflow
+meta:
+  _edit_last: '53242770'
+  _publicize_pending: '1'
+  publicize_google_plus_url: https://plus.google.com/113240140771005714369/posts/8LnXnbsqG6s
+  _wpas_done_5582732: '1'
+  _publicize_done_external: a:1:{s:11:"google_plus";a:1:{s:21:"113240140771005714369";b:1;}}
+  publicize_twitter_user: Sobek1985
+  publicize_twitter_url: http://t.co/3KbD1xRHno
+  _wpas_done_4473872: '1'
+  publicize_linkedin_url: http://www.linkedin.com/updates?discuss=&scope=50486614&stype=M&topic=5825959782238289920&type=U&a=H4Tt
+  _wpas_done_5582720: '1'
+  _wpas_skip_5582732: '1'
+  _wpas_skip_4473872: '1'
+  _wpas_skip_5582720: '1'
+author:
+  login: sobek1985
+  email: sobek1985@gmail.com
+  display_name: Mike Robbins
+  first_name: ''
+  last_name: ''
+---
+<p>Here is a useful Custom Workflow action I've written allowing a content editor to publish a content item to live while also sending its alternative language version to a translate workflow state. This allows a content item to be published to live in a single language without being held up waiting on a translation to be completed.</p>
+<ul>
+<li>1. Create a workflow command to publish the content to the published state in workflow.</li>
+<li>2. Create a new custom workflow action underneath the publish command.</li>
+<li>3. Use the code below to automatically create a new language version and set the workflow state to translation state.</li>
+<li>4. Replace the parameters in the screenshot of the custom workflow action. Replace the targetstate parameter with the ID of the target language state. Replace language with the name of the target language</li>
+</ul>
+<p><a href="http://mikerobbinssitecore.files.wordpress.com/2014/01/publishandtranslate.png"><img src="{{ site.baseurl }}/assets/publishandtranslate.png?w=300" alt="Publish And Translate Action" width="300" height="52" class="alignnone size-medium wp-image-153" /></a></p>
+<p>[code language="csharp"]<br />
+using Sitecore;<br />
+using Sitecore.Data;<br />
+using Sitecore.Data.Items;<br />
+using Sitecore.Data.Managers;<br />
+using Sitecore.Diagnostics;<br />
+using Sitecore.Globalization;<br />
+using Sitecore.Web;<br />
+using Sitecore.Workflows.Simple;</p>
+<p>namespace MikeRobbins.SitecoreComponents.WorkFlow<br />
+{<br />
+    public class PublishAction<br />
+    {<br />
+        public void Process(WorkflowPipelineArgs args)<br />
+        {<br />
+            Item workFlowItem = args.DataItem;</p>
+<p>            var targetLanguage = GetTargetLanguage(args.ProcessorItem.InnerItem);<br />
+            var targetVersion = Sitecore.Context.ContentDatabase.GetItem(workFlowItem.ID, targetLanguage);</p>
+<p>            if (targetVersion.Versions.Count == 0)<br />
+            {<br />
+                targetVersion = targetVersion.Versions.AddVersion();<br />
+            }</p>
+<p>            var targetWorkflowState = GetWorkflowState(args.ProcessorItem.InnerItem);</p>
+<p>            SetWorkflowState(targetVersion, targetWorkflowState.ID);<br />
+        }</p>
+<p>        private static void SetWorkflowState(Item welshVersion, ID targetWorkflowState)<br />
+        {<br />
+            welshVersion.Editing.BeginEdit();<br />
+            welshVersion.Fields[FieldIDs.WorkflowState].Value = targetWorkflowState.ToString();<br />
+            welshVersion.Editing.EndEdit();<br />
+        }</p>
+<p>        private static Item GetWorkflowState(Item actionItem)<br />
+        {<br />
+            ID translateId = null;</p>
+<p>            return ID.TryParse(WebUtil.ParseUrlParameters(actionItem[&quot;parameters&quot;])[&quot;targetstate&quot;], out translateId) ? Sitecore.Context.ContentDatabase.GetItem(translateId) : null;<br />
+        }</p>
+<p>        public Language GetTargetLanguage(Item actionItem)<br />
+        {<br />
+            var language = WebUtil.ParseUrlParameters(actionItem[&quot;parameters&quot;])[&quot;language&quot;];</p>
+<p>            Assert.IsNotNullOrEmpty(language, &quot;Language needs to be specified as a parameter (&amp;language=cy-gb)&quot;);</p>
+<p>            return LanguageManager.GetLanguage(language);<br />
+        }<br />
+    }<br />
+}</p>
+<p>[/code]</p>

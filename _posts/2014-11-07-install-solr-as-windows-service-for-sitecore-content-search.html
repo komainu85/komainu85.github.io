@@ -1,0 +1,65 @@
+---
+layout: post
+title: Install Solr as Windows Service for Sitecore Content Search
+date: 2014-11-07 15:01:16.000000000 +00:00
+type: post
+published: true
+status: publish
+categories:
+- Content Search
+- Developer
+- Sitecore
+- Solr
+tags:
+- developer
+- Sitecore 7
+- solr
+- Windows Service
+meta:
+  _edit_last: '53242770'
+  geo_public: '0'
+  _oembed_38c3d4dcead06bb1a20c93efe3676fa0: "{{unknown}}"
+  _wpas_skip_facebook: '1'
+  _wpas_skip_tumblr: '1'
+  _wpas_skip_path: '1'
+  publicize_google_plus_url: https://plus.google.com/113240140771005714369/posts/Ke1GCpPSiYY
+  _wpas_done_5582732: '1'
+  _publicize_done_external: a:1:{s:11:"google_plus";a:1:{s:21:"113240140771005714369";b:1;}}
+  publicize_twitter_user: Sobek1985
+  publicize_twitter_url: http://t.co/V9J9xS5XxJ
+  _wpas_done_4473872: '1'
+  publicize_linkedin_url: https://www.linkedin.com/updates?discuss=&scope=50486614&stype=M&topic=5936502466416766976&type=U&a=bvsf
+  _wpas_done_5582720: '1'
+  _wpas_skip_5582732: '1'
+  _wpas_skip_4473872: '1'
+  _wpas_skip_5582720: '1'
+  _publicize_job_id: '20740955935'
+author:
+  login: sobek1985
+  email: sobek1985@gmail.com
+  display_name: Mike Robbins
+  first_name: ''
+  last_name: ''
+---
+<p>To install Solr as a Windows service.<!--more--></p>
+<ol>
+<li>Download and setup Solr for Sitecore.<br />Great tutorial from Dan Solovay on this<br />
+<a href="http://www.dansolovay.com/2013/05/setting-up-solr-with-sitecore-7.html"> http://www.dansolovay.com/2013/05/setting-up-solr-with-sitecore-7.html </a></li>
+<li>Download Non Sucking Service Manager from <a href="http://nssm.cc/download">http://nssm.cc/download</a></li>
+<li>Copy the nssm.exe into your solr directory.
+<p>[caption id="attachment_292" align="aligncenter" width="300" class=" "]<a href="https://mikerobbinssitecore.files.wordpress.com/2014/11/nssm1.png"><img class="wp-image-292 size-medium" src="{{ site.baseurl }}/assets/nssm1.png?w=300" alt="NSSM" width="300" height="146" /></a> NSSM[/caption]</li>
+<li>Create a bat file within the Solr/example folder. Example below, where CD is your example folder within your Solr directory.
+<p>[code language="bash"]<br />
+@echo off<br />
+cd &quot;C:\solr\example\&quot;<br />
+java -Xms64M -Xmx256M -jar start.jar<br />
+[/code]</p>
+</li>
+<li>Run Command Prompt as Admin. CD to the directory containing of your NSSM.exe</li>
+<li>Run the following script to install Solr as a service."nssm install YourDesiredServiceName" "c:/Solr/LocationOfBatScript""E.g. nssm install MikeRobbinsSolr "C:\solr\example\Solr.bat"
+<p>[caption id="attachment_289" align="aligncenter" width="300" class=" "]<a href="https://mikerobbinssitecore.files.wordpress.com/2014/11/solrserviceinstalled.png"><img class="size-medium wp-image-289" src="{{ site.baseurl }}/assets/solrserviceinstalled.png?w=300" alt="Solr Service Installed" width="300" height="151" /></a> Solr Service Installed[/caption]</li>
+<li>Start the service from the services snap in
+<p>[caption id="attachment_290" align="aligncenter" width="300" class=" "]<a href="https://mikerobbinssitecore.files.wordpress.com/2014/11/services.png"><img class="size-medium wp-image-290" src="{{ site.baseurl }}/assets/services.png?w=300" alt="Solr Services" width="300" height="220" /></a> Solr Services[/caption]</li>
+</ol>
+<p>&nbsp;</p>
+<p>&nbsp;</p>

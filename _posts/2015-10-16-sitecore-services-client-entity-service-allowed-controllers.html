@@ -1,0 +1,52 @@
+---
+layout: post
+title: Sitecore.Services.Client / Entity Service Allowed Controllers
+date: 2015-10-16 13:22:16.000000000 +01:00
+type: post
+published: true
+status: publish
+categories:
+- EntityService
+- Sitecore
+- Sitecore.services.client
+tags:
+- developer
+- Entity Service
+- Sitecore 7.5
+- Sitecore 8
+- Sitecore.Services.Client
+- SSC
+meta:
+  _edit_last: '53242770'
+  geo_public: '0'
+  _publicize_done_external: a:1:{s:7:"twitter";a:1:{i:4473872;s:55:"https://twitter.com/Sobek1985/status/654995781833748480";}}
+  _publicize_job_id: '15883798137'
+  _publicize_done_4570590: '1'
+  _wpas_done_4473872: '1'
+  publicize_twitter_user: Sobek1985
+  publicize_linkedin_url: https://www.linkedin.com/updates?discuss=&scope=50486614&stype=M&topic=6060761473590837249&type=U&a=ajww
+  _publicize_done_5620599: '1'
+  _wpas_done_5582720: '1'
+  publicize_google_plus_url: https://plus.google.com/113240140771005714369/posts/FV9vPuwPvSC
+  _publicize_done_5620617: '1'
+  _wpas_done_5582732: '1'
+  _wpas_skip_5582732: '1'
+  _wpas_skip_4473872: '1'
+  _wpas_skip_5582720: '1'
+author:
+  login: sobek1985
+  email: sobek1985@gmail.com
+  display_name: Mike Robbins
+  first_name: ''
+  last_name: ''
+---
+<p>By default any Entity Service controllers you create abide by the <strong>Sitecore.Services.SecurityPolicy </strong>setting within the Sitecore.Services.Client.config. By default this is set to <strong>Sitecore.Services.Infrastructure.Web.Http.Security.ServicesLocalOnlyPolicy </strong>making the service safe and controllers only availably locally. This will cause issues if you call your controller in a live environment outside of the local environment as it wont be accessible.</p>
+<h2>Allowed Controllers</h2>
+<p>You can patch this setting to enable all controllers, but this is not a recommended practice, as this will open all controller endpoints to the world.</p>
+<p>Instead SSC has the idea of <b>allowedControllers.</b> This section within the Sitecore.Services.Client.config allow you to patch in controllers that are exempt from the <strong>ServicesLocalOnlyPolicy </strong>setting. This section allows fine control over exactly which controllers are available externally.</p>
+<p>Using the allowed controllers setting doesn't mean you have to sacrifice all security on your controller. After patching in your controllers into the <strong>allowedControllers </strong>section, you can apply standard authentication filters or Cors to your controller.</p>
+<p>Below is an example of a patch file that patches a custom controller into the <strong>allowedControllers </strong>section. You will also notice many of the Sitecore modules using this allowedControllers section such as xDB and XFM (Shown at the bottom of the page).</p>
+<p>Huge thanks to <a href="https://twitter.com/KevinObee">@KevinObee</a> for explaining lots of how SSC works.</p>
+<p>https://gist.github.com/komainu85/20012af8a887a0f8d777</p>
+<p>Sitecore FXM using allowedControllers</p>
+<p>https://gist.github.com/komainu85/cb746817db4f28157103</p>

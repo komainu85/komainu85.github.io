@@ -1,0 +1,94 @@
+---
+layout: post
+title: Windows 10 IoT to XDB with Sitecore SSC
+date: 2016-03-07 13:41:31.000000000 +00:00
+type: post
+published: true
+status: publish
+categories:
+- IoT
+- Sitecore
+- Sitecore.services.client
+- Web Item API
+tags:
+- Entity Service
+- EntityService
+- Sitecore.Services.Client
+- SSC
+- UWP
+- Windows 10 Core
+- Windows Universal Platform
+meta:
+  _oembed_0f5a3be07019e4616e2e442c73a7fca0: "{{unknown}}"
+  _oembed_23c670bd8d08186379b0acc3ccb7cf38: "{{unknown}}"
+  _edit_last: '53242770'
+  geo_public: '0'
+  _publicize_job_id: '20518120328'
+  _oembed_659a6ded09c47fc5d787f650de6465ed: "{{unknown}}"
+  _publicize_done_external: a:1:{s:7:"twitter";a:1:{i:4473872;s:55:"https://twitter.com/Sobek1985/status/706837188885893120";}}
+  _publicize_done_4570590: '1'
+  _wpas_done_4473872: '1'
+  publicize_twitter_user: Sobek1985
+  publicize_linkedin_url: https://www.linkedin.com/updates?discuss=&scope=50486614&stype=M&topic=6112602881712537600&type=U&a=NmIW
+  _publicize_done_5620599: '1'
+  _wpas_done_5582720: '1'
+  _oembed_f4e8971d12a0905d53f54d054d107faa: "{{unknown}}"
+  publicize_google_plus_url: https://plus.google.com/113240140771005714369/posts/CviQARrdAtH
+  _publicize_done_5620617: '1'
+  _wpas_done_5582732: '1'
+  _wpas_skip_5582732: '1'
+  _wpas_skip_4473872: '1'
+  _wpas_skip_5582720: '1'
+  _oembed_5d939facc634e4fa4d24e0ecd55b7a8f: "{{unknown}}"
+  _oembed_b18ddc5314212e11ae539df466b24ddf: "{{unknown}}"
+  _oembed_20b75fb9d18ec59c334377ca3729fa06: "{{unknown}}"
+  _oembed_33c78079a3092c3445d097404b89f629: "{{unknown}}"
+  _oembed_113ae06061a15f1d954ad611c1d481f6: "{{unknown}}"
+  _oembed_61d0e5017b7d2473606fb7cb5bd5c6a9: "{{unknown}}"
+  _oembed_fa947a5bf4db549a5519a1a2266ef383: "{{unknown}}"
+  _oembed_3c8dc1cb71406ac808ea08a88f69c418: "{{unknown}}"
+author:
+  login: sobek1985
+  email: sobek1985@gmail.com
+  display_name: Mike Robbins
+  first_name: ''
+  last_name: ''
+---
+<p>Recently i've been playing with Windows 10 IoT Core, i've wondered if its possible to use the Raspberry Pi in some way with Sitecore.</p>
+<p><!--more--></p>
+<p>The idea i've had, was to create a kiosk style application to capture a user information at an event and post this data into Sitecore's xDB.  This kiosk application could be used as a competition encouraging the users to submit the form, and allow reporting from xDB who visited the event.</p>
+<p>Any data captured and sent to Sitecore xDB can then be used to personalise the experience for the user.</p>
+<h2>The Frameworks</h2>
+<h3>Windows Universal Platform</h3>
+<p>On the kiosk side, this demo application is written using Windows Universal Platform (UWP) framework running on a Raspberry Pi (2 or 3) on Windows 10 core.</p>
+<p>The power of Windows Universal Platform means we can write our code once and run the application on multiple platforms. For example this code will work on Windows 10, Windows Phone, Windows IoT devices such as the Raspberry Pi and coming soon, the Xbox One.</p>
+<p>Windows 10 for the Raspberry Pi and instructions for setting up Windows 10 and Visual Studio 2015 for Windows Universal Platform can be found here. <a href="http://ms-iot.github.io/content/en-US/Downloads.htm">http://ms-iot.github.io/content/en-US/Downloads.htm</a></p>
+<h3>Sitecore - Sitecore.Services.Client</h3>
+<p>For the communication between the IoT application and Sitecore it makes perfect sense to use Web API. Luckily Sitecore has its own Web API based framework under the Sitecore.Services.Client (SSC) namespace.</p>
+<p>With Entity Service within Sitecore.Services.Client (SSC) all the authentication around access the rest end point is handled for us, along with model validation.</p>
+<p>The power in Entity Service comes where we can implement our own logic for the controller, we still have access to the full Sitecore API and in this case the xDB APIs.</p>
+<h2>Creating the xDB Web API end point with Entity Service (SSC)</h2>
+<p>The first thing we need for the kiosk application is to create a Entity Service controller and repository to expose and interact with data within Sitecore xDB.</p>
+<p>The first stage is to create our model we will expose on the Entity Service controller.Here we add all the properties from xDB we want to expose. This must implement EntityIdentity, this base class contains an ID, we will use this to store the xDB identifier for the user.</p>
+<p>Thanks to Jonathan Robbins and his <a href="http://jonathanrobbins.co.uk/tag/xdb/">xDB posts</a> for working out some of this code.</p>
+<p>https://gist.github.com/komainu85/367ad1958365b0a2900c</p>
+<p>Next is our repository, here we will write the implementation code for working with xDB and the methods we want to expose over the API. The IRepository gives us the methods of our Entity Service API, so we can write the implementation for each of these methods. XdbFacetRepository is a class I have created for working with xDB, and can be seen below.</p>
+<p>https://gist.github.com/komainu85/95b4ef564984ad9394bd</p>
+<p>https://gist.github.com/komainu85/e4bbacd23ee0b70251c3</p>
+<p>The actual controller wires up the link between the Entity (Person), and the repository.</p>
+<p>https://gist.github.com/komainu85/6d59c90e379fa1274aec</p>
+<h2>Windows Universal Platform (Windows 10 IoT Core)</h2>
+<p>Now we have created the Entity Service API that allows us to post into xDB, the next step is to created a Windows Universal Platform (UWP) that can capture the data and post to our Entity Service.</p>
+<p>As I mentioned earlier Windows Universal Platform apps are restricted to Windows 10 IoT and can run on all Windows 10 based platforms.</p>
+<p>Below is a screen shot of the kiosk application I created, it captures a users first name, last name and email address. This has been created using the designer within Visual Studio 2015.</p>
+<p>[caption id="attachment_1085" align="aligncenter" width="300"]<a href="https://mikerobbinssitecore.files.wordpress.com/2016/03/kioskapplication.png" rel="attachment wp-att-1085"><img class="size-medium wp-image-1085" src="{{ site.baseurl }}/assets/kioskapplication.png?w=300" alt="Windows Universal Application - Kiosk Application" width="300" height="208" /></a> Windows Universal Application - Kiosk Application[/caption]</p>
+<p>To get the form data into Sitecore xDB, we simply need to post to our Entity Service end point. We create a JSON string with our form data, here we are using the user's email address as the unique identifier. The JSON string can then be posted to our Entity Service end point.</p>
+<p>The authentication code to access the Entity Service isn't shown here for simplicity. I have written another blog on Sitecore.Services.Client authentication.<a href="https://mikerobbins.co.uk/2016/01/14/sitecore-services-client-authentication/"> https://mikerobbins.co.uk/2016/01/14/sitecore-services-client-authentication/</a></p>
+<p>https://gist.github.com/komainu85/d4f9fc7e91996ab7537d</p>
+<p>The below video is an example of the finished kiosk posting data into Sitecore's xDB.</p>
+<p style="text-align:center;">[youtube https://www.youtube.com/watch?v=zRDuu99RB0Y&amp;w=560&amp;h=315]</p>
+<h2>Up Next</h2>
+<p>In the next post I will look at creating a custom facet and updating the facet from an IoT application. I will create a VisitedEvent facet and update this facet when a user completes the kiosk form.</p>
+<h2>GitHub Source</h2>
+<p>Full source code is available on GitHub.</p>
+<p>https://github.com/komainu85/WindowsIoTSitecoreSSC</p>

@@ -1,0 +1,50 @@
+---
+layout: post
+title: Registering A New Command
+date: 2013-09-03 12:02:02.000000000 +01:00
+type: post
+published: true
+status: publish
+categories:
+- Content Editor
+- Developer
+- Sitecore
+tags:
+- button
+- commands
+- content editor
+- developer
+meta:
+  _edit_last: '53242770'
+  tagazine-media: a:7:{s:7:"primary";s:72:"http://mikerobbinssitecore.files.wordpress.com/2013/09/commandcoredb.png";s:6:"images";a:3:{s:71:"http://mikerobbinssitecore.files.wordpress.com/2013/09/commandclass.png";a:6:{s:8:"file_url";s:71:"http://mikerobbinssitecore.files.wordpress.com/2013/09/commandclass.png";s:5:"width";i:471;s:6:"height";i:279;s:4:"type";s:5:"image";s:4:"area";i:131409;s:9:"file_path";b:0;}s:84:"http://mikerobbinssitecore.files.wordpress.com/2013/09/mikerobbinscommandsconfig.png";a:6:{s:8:"file_url";s:84:"http://mikerobbinssitecore.files.wordpress.com/2013/09/mikerobbinscommandsconfig.png";s:5:"width";i:1260;s:6:"height";i:48;s:4:"type";s:5:"image";s:4:"area";i:60480;s:9:"file_path";b:0;}s:72:"http://mikerobbinssitecore.files.wordpress.com/2013/09/commandcoredb.png";a:6:{s:8:"file_url";s:72:"http://mikerobbinssitecore.files.wordpress.com/2013/09/commandcoredb.png";s:5:"width";i:1341;s:6:"height";i:705;s:4:"type";s:5:"image";s:4:"area";i:945405;s:9:"file_path";b:0;}}s:6:"videos";a:0:{}s:11:"image_count";i:3;s:6:"author";s:8:"53242770";s:7:"blog_id";s:8:"55708155";s:9:"mod_stamp";s:19:"2013-09-05
+    12:56:45";}
+  _wpas_skip_4473872: '1'
+  _oembed_b6adebcccba9cd435a19555a20e139cd: "{{unknown}}"
+  _oembed_930b3b9849a4f7d0879514e722708a8c: "{{unknown}}"
+  _oembed_96463bbe6832e18b7c60e53f767094f5: "{{unknown}}"
+  _oembed_902b91e3f8674a38d6aaedf89549792a: "{{unknown}}"
+author:
+  login: sobek1985
+  email: sobek1985@gmail.com
+  display_name: Mike Robbins
+  first_name: ''
+  last_name: ''
+---
+<div><strong>Registering a new Command within the Sitecore Content Editor</strong></div>
+<div></div>
+<div>1. Create a class that implements the Command Class.</div>
+<div>
+<p>[caption id="attachment_44" align="aligncenter" width="300"]<a href="http://mikerobbinssitecore.files.wordpress.com/2013/09/commandclass.png"><img class="size-medium wp-image-44" alt="Command Class" src="{{ site.baseurl }}/assets/commandclass.png?w=300" width="300" height="177" /></a> Command Class[/caption]</p>
+</div>
+<div></div>
+<div>2. Add the new command to the Commands.Config, You need to specify a command name, the namespace and assembly of the command. (this must match the command for the button in the core database)</div>
+<div>
+<p>[caption id="attachment_38" align="aligncenter" width="300"]<a href="http://mikerobbinssitecore.files.wordpress.com/2013/09/mikerobbinscommandsconfig.png"><img class="size-medium wp-image-38" alt="mike robbins commands config" src="{{ site.baseurl }}/assets/mikerobbinscommandsconfig.png?w=300" width="300" height="11" /></a> Extending Commands Config[/caption]</p>
+</div>
+<div>3. Add a new button to the Ribbon in the core database. /Sitecore/Content/Applications/Content Editor/Ribbons/(SectionName).</div>
+<div>
+<p>[caption id="attachment_45" align="aligncenter" width="300"]<a href="http://mikerobbinssitecore.files.wordpress.com/2013/09/commandcoredb.png"><img class="size-medium wp-image-45" alt="Add new button" src="{{ site.baseurl }}/assets/commandcoredb.png?w=300" width="300" height="157" /></a> Add new button[/caption]</p>
+</div>
+<div>4. Set the click event of the new button to the command name you specified in the Commands.Config E.g. contenteditor:savePublish</div>
+<div></div>
+<div>5. Refresh the desktop and switch back to the master database.</div>

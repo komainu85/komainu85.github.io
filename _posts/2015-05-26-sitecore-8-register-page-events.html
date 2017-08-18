@@ -1,0 +1,44 @@
+---
+layout: post
+title: Sitecore 8 Register Page Events
+date: 2015-05-26 13:16:56.000000000 +01:00
+type: post
+published: true
+status: publish
+categories:
+- Developer
+- Sitecore
+tags:
+- Analytics
+- Page Events
+- Sitecore 8
+- xDB
+meta:
+  _edit_last: '53242770'
+  geo_public: '0'
+  _wpas_skip_5582720: '1'
+  _wpas_skip_5582732: '1'
+  _wpas_skip_4473872: '1'
+  _publicize_job_id: '11025086035'
+author:
+  login: sobek1985
+  email: sobek1985@gmail.com
+  display_name: Mike Robbins
+  first_name: ''
+  last_name: ''
+---
+<p>A quick Sitecore 8 code sample to demonstrate programatically registering a page event such as an internal search, or a downloaded resource.<br />
+<!--more--></p>
+<ul>
+<li>Firstly check whether the tracker is active, and there is a session.</li>
+<li>Get a reference to the current page</li>
+<li>Create an instance of PageEventData, passing in the event name (e.g. Search) and page event guid. The PageEventData exposes:
+<ul>
+<li><strong>itemId </strong>- The page item ID that raises the page event.</li>
+<li><strong>Data </strong>- Data associated to the event such as search keywords.</li>
+<li><strong>Text </strong>- Human readable text to go with the page event, appears as a summary in xProfile e.g. resource downloaded</li>
+</ul>
+</li>
+<li>Pass the PageEventData into the register method of the current page to register the page event.</li>
+</ul>
+<p>https://gist.github.com/komainu85/8ea7ef8b9a8ee38c18ad721c8bb43566</p>

@@ -1,0 +1,70 @@
+---
+layout: post
+title: Sitecore YouTube Control
+date: 2013-09-23 11:15:58.000000000 +01:00
+type: post
+published: true
+status: publish
+categories:
+- Developer
+- Sitecore
+tags:
+- code
+- Control
+- developer
+- example
+- YouTube
+meta:
+  _edit_last: '53242770'
+  publicize_twitter_user: Sobek1985
+  _wpas_done_4473872: '1'
+  _publicize_done_external: a:1:{s:7:"twitter";a:1:{i:35759471;b:1;}}
+  _wpas_skip_4473872: '1'
+author:
+  login: sobek1985
+  email: sobek1985@gmail.com
+  display_name: Mike Robbins
+  first_name: ''
+  last_name: ''
+---
+<p>A very simple and useful YouTube control for Sitecore for embedding YouTube videos. You can either specify a Sitcore item to get the YouTube ID field from, otherwise it will use the context item.</p>
+<ol>
+<li>Create a class using the code below</li>
+<li>Register the control in the web.config[code language="xml"]<br />
+&lt;controls&gt;<br />
+ &lt;add tagPrefix=&quot;TB&quot; namespace=&quot;ToolBox.SitecoreCMS.Web.UI.WebControls&quot; assembly=&quot;ToolBox.SitecoreCMS&quot; /&gt;<br />
+ &lt;/controls&gt;</p>
+<p>[/code]</li>
+<li>Use the control within your sublayouts[code language="xml"]<br />
+&lt;tb:YouTube runat=&quot;server&quot; Field=&quot;YouTubeID&quot; Height=&quot;200&quot; Width=&quot;400&quot;/&gt;<br />
+[/code]</li>
+</ol>
+<p>register the control within the web.config and use it within your sublayouts.</p>
+<p>[code language="csharp"]<br />
+using System;<br />
+using System.Web.UI;<br />
+using System.Web.UI.WebControls;<br />
+using Sitecore.Data.Items;</p>
+<p>namespace ToolBox.SitecoreCMS.Web.UI.WebControls<br />
+{<br />
+ public class YouTube : WebControl<br />
+ {<br />
+ public Item Item { get; set; }<br />
+ public string Field { get; set; }<br />
+ public override Unit Height { get; set; }<br />
+ public override Unit Width { get; set; }</p>
+<p>protected override void Render(HtmlTextWriter writer)<br />
+ {<br />
+ writer.Write(BuildYouTube());<br />
+ }</p>
+<p>private string BuildYouTube()<br />
+ {<br />
+return &quot;&lt;i frame width='&quot; + Convert.ToInt32(Width.Value) + &quot;px' height='&quot; + Convert.ToInt32(Height.Value) + &quot;px' src='http://www.youtube.com/embed/&quot; + GetYouTubeVID() + &quot;' frameborder='0' allowfullscreen&gt;&lt;/i frame&gt;&quot;;<br />
+}</p>
+<p>private string GetYouTubeVID()<br />
+ {<br />
+ return Item != null ? Item[Field] : Sitecore.Context.Item[Field];<br />
+ }<br />
+ }<br />
+}<br />
+[/code]</p>

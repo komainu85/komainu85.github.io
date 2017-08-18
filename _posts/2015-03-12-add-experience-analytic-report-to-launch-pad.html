@@ -1,0 +1,73 @@
+---
+layout: post
+title: Add Experience Analytics Report To Launch Pad
+date: 2015-03-12 09:15:49.000000000 +00:00
+type: post
+published: true
+status: publish
+categories:
+- Sitecore
+- SPEAK
+tags:
+- Analytics
+- Experience Analytics
+- Launch Pad
+- Sitecore SPEAK
+- xDB
+meta:
+  _wpas_skip_facebook: '1'
+  _wpas_skip_tumblr: '1'
+  _wpas_skip_path: '1'
+  _edit_last: '53242770'
+  geo_public: '0'
+  _thumbnail_id: '562'
+  _rest_api_published: '1'
+  _rest_api_client_id: '11'
+  _publicize_pending: '1'
+  publicize_google_plus_url: https://plus.google.com/113240140771005714369/posts/fHxV7PtEeHs
+  publicize_linkedin_url: https://www.linkedin.com/updates?discuss=&scope=50486614&stype=M&topic=5981714028676808704&type=U&a=QchS
+  _wpas_done_5582732: '1'
+  _publicize_done_external: a:1:{s:11:"google_plus";a:1:{s:21:"113240140771005714369";b:1;}}
+  publicize_twitter_user: Sobek1985
+  publicize_twitter_url: http://t.co/ddfYe08IMF
+  _wpas_done_4473872: '1'
+  _wpas_done_5582720: '1'
+  _wpas_skip_5582732: '1'
+  _wpas_skip_4473872: '1'
+  _wpas_skip_5582720: '1'
+author:
+  login: sobek1985
+  email: sobek1985@gmail.com
+  display_name: Mike Robbins
+  first_name: ''
+  last_name: ''
+---
+<p>The launch Pad was introduced in Sitecore 7.1, however in Sitecore 8 the Launch Pad has had a major over haul. The launch pad has become a major focus and one of the central interfaces for Stecore. The Launch Pad can be extended with new SPEAK applications and analytics charts. In this blog post I will walk through adding Experience Analytics reports to the Sitecore 8 Launch Pad.<!--more--></p>
+<p><a href="https://mikerobbinssitecore.files.wordpress.com/2015/03/img_0016.png"><img class="aligncenter size-medium wp-image-562" src="{{ site.baseurl }}/assets/img_0016.png?w=300" alt="Analytics Charts" width="300" height="154" /></a></p>
+<p>As the Launch Pad is built using SPEAK to add to it you need to use Sitecore Rocks.</p>
+<ol>
+<li>Within the client item within the core database create a direcory to contain your SPEAK applications. In this exampe im using MikeRobbins to contain all my SPEAK applications.Create a directory to contain your extensions for the Launch Pad, and add two folders one for Layouts and one for Parameters.
+<p>[caption id="attachment_539" align="aligncenter" width="300"]<a href="https://mikerobbinssitecore.files.wordpress.com/2015/03/part1.png"><img class="size-medium wp-image-539" title="Create Directories in the client folder" src="{{ site.baseurl }}/assets/part1.png?w=300" alt="Create Directories in the client folder" width="300" height="162" /></a> Create Directories in the client folder[/caption]</li>
+<li>Within the Layout folder create a new Item of template Speak-BasePage and name it after the report your added to the Launch Pad.
+<p>[caption id="attachment_540" align="aligncenter" width="300"]<a href="https://mikerobbinssitecore.files.wordpress.com/2015/03/part2.png"><img class="size-medium wp-image-540" title="Add new SPEAK Page" src="{{ site.baseurl }}/assets/part2.png?w=300" alt="Add new SPEAK Page" width="300" height="240" /></a> Add new SPEAK Page[/caption]</li>
+<li>Edit the layout details of your new Speak-BasePage item.
+<p>[caption id="attachment_541" align="aligncenter" width="266"]<a href="https://mikerobbinssitecore.files.wordpress.com/2015/03/part3.png"><img class="size-medium wp-image-541" title="Edit layout details" src="{{ site.baseurl }}/assets/part3.png?w=266" alt="Edit layout details" width="266" height="300" /></a> Edit layout details[/caption]</li>
+<li>Add a SubPageCode component to the layout and set the PageCodeScriptFileName to the path of the chart JavaScript "/sitecore/shell/client/Applications/ExperienceAnalytics/Common/Shared/ChartPageCode.js".
+<p>[caption id="attachment_542" align="aligncenter" width="300"]<a href="https://mikerobbinssitecore.files.wordpress.com/2015/03/part4.png"><img class="size-medium wp-image-542" title="Add SubPageCode" src="{{ site.baseurl }}/assets/part4.png?w=300" alt="Add SubPageCode" width="300" height="274" /></a> Add SubPageCode[/caption]</li>
+<li>Add an additional rendering to the layout details. Choose the type of chart you wish to display on the Launch Pad. E.g. ExperienceAnalyticsAreaChart.
+<p>[caption id="attachment_543" align="aligncenter" width="300"]<a href="https://mikerobbinssitecore.files.wordpress.com/2015/03/part5.png"><img class="size-medium wp-image-543" title="Add chart type rendering" src="{{ site.baseurl }}/assets/part5.png?w=300" alt="Add chart type rendering" width="300" height="240" /></a> Add chart type rendering[/caption]</li>
+<li>Within the Parameters directory create A new item based on the parameters of your chosen chart type from the previous step. E.g. ExperienceAnalyticsAreaChart Parameters.
+<p>[caption id="attachment_544" align="aligncenter" width="300"]<a href="https://mikerobbinssitecore.files.wordpress.com/2015/03/part6.png"><img class="size-medium wp-image-544" title="Add chart parameters" src="{{ site.baseurl }}/assets/part6.png?w=300" alt="Add chart parameters" width="300" height="162" /></a> Add chart parameters[/caption]</li>
+<li>Within the Paramters item you can configure the type of chart you wish to display. Including:<strong>Metric:</strong> The parameters of the chart. E.g. Visits, value etc.<strong>TimeResolution:</strong> The default time frame. E.g. Daily,Weekly or monthly.<strong>Segments:</strong> What data to display. E.g. Campaigns, visits, top pages etc.
+<p>[caption id="attachment_545" align="aligncenter" width="300"]<a href="https://mikerobbinssitecore.files.wordpress.com/2015/03/part7.png"><img class="size-medium wp-image-545" title="Set parameters" src="{{ site.baseurl }}/assets/part7.png?w=300" alt="Set parameters" width="300" height="162" /></a> Set parameters[/caption]</li>
+<li>Update the layout details of the Speak-PageBase and set the datasource of the report rendering to point at the parameter item created in the previous step.
+<p>[caption id="attachment_546" align="aligncenter" width="300"]<a href="https://mikerobbinssitecore.files.wordpress.com/2015/03/part8.png"><img class="size-medium wp-image-546" title="Set datasource of the report rendering" src="{{ site.baseurl }}/assets/part8.png?w=300" alt="Set datasource of the report rendering" width="300" height="161" /></a> Set datasource of the report rendering[/caption]</li>
+<li>Now we can add the report onto the Launch Pad.Locate the Launch Pad under Client/Aplications/LaunchPad and edit the presentation details.
+<p>[caption id="attachment_547" align="aligncenter" width="300"]<a href="https://mikerobbinssitecore.files.wordpress.com/2015/03/part9.png"><img class="size-medium wp-image-547" title="Update layout details of Launch Pad" src="{{ site.baseurl }}/assets/part9.png?w=300" alt="Update layout details of Launch Pad" width="300" height="159" /></a> Update layout details of Launch Pad[/caption]</li>
+<li>Add A ColumnPanel and set the columns to 6 as seen in the screen shot below. This will contain the chart component.
+<p>[caption id="attachment_548" align="aligncenter" width="300"]<a href="https://mikerobbinssitecore.files.wordpress.com/2015/03/part10.png"><img class="size-medium wp-image-548" title="Add ColumnPanel to Launch Pad" src="{{ site.baseurl }}/assets/part10.png?w=300" alt="Add ColumnPanel to Launch Pad" width="300" height="163" /></a> Add ColumnPanel to Launch Pad[/caption]</li>
+<li>Add an SubAppRenderer to the ColumnPanel and set its datasource to the Speak-PageBase item created earlier.
+<p>[caption id="attachment_549" align="aligncenter" width="300"]<a href="https://mikerobbinssitecore.files.wordpress.com/2015/03/part11.png"><img class="size-medium wp-image-549" title="Add SubAppRenderer" src="{{ site.baseurl }}/assets/part11.png?w=300" alt="Add SubAppRenderer" width="300" height="163" /></a> Add SubAppRenderer[/caption]</li>
+<li>View the Launch Pad in the browser and the analytics chart will be rendered out.Currently no data appears to render on the initital load of the page. Selecting one of the filters will load data into the chart. I have raised this with Sitecore support to see if this is a bug.
+<p>[caption id="attachment_550" align="aligncenter" width="300"]<a href="https://mikerobbinssitecore.files.wordpress.com/2015/03/part12.png"><img class="size-medium wp-image-550" title="Sitecore 8 Launch Pad" src="{{ site.baseurl }}/assets/part12.png?w=300" alt="Sitecore 8 Launch Pad" width="300" height="154" /></a> Sitecore 8 Launch Pad[/caption]</li>
+</ol>
