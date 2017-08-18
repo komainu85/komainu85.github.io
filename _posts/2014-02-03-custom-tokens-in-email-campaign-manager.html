@@ -16,18 +16,9 @@ tags:
 - ECM
 meta:
   _edit_last: '53242770'
-  _publicize_pending: '1'
-  publicize_google_plus_url: https://plus.google.com/113240140771005714369/posts/Fvnf3wSFa8H
-  _wpas_done_5582732: '1'
-  _publicize_done_external: a:1:{s:11:"google_plus";a:1:{s:21:"113240140771005714369";b:1;}}
-  publicize_twitter_user: Sobek1985
-  publicize_twitter_url: http://t.co/GpUtOLJG3M
   _wpas_done_4473872: '1'
-  publicize_linkedin_url: http://www.linkedin.com/updates?discuss=&scope=50486614&stype=M&topic=5836054205903032320&type=U&a=MD_n
   _wpas_done_5582720: '1'
 author:
-  login: sobek1985
-  email: sobek1985@gmail.com
   display_name: Mike Robbins
   first_name: ''
   last_name: ''
@@ -38,14 +29,14 @@ author:
 <p>[caption id="attachment_160" align="aligncenter" width="300"]<a href="http://mikerobbinssitecore.files.wordpress.com/2014/02/ecm.png"><img class="size-medium wp-image-160" alt="Sitecore Custom Tokens" src="{{ site.baseurl }}/assets/ecm.png?w=300" width="300" height="281" /></a> Sitecore Email Campaign Manager Custom Tokens[/caption]</li>
 <li>Get the message using the Sitecore API, replace the variables using the CustomPersonTokens dictionary and then trigger the send pipeline. The CustomPersonToken dictionary requires the key to be in<strong> lower case</strong> and requires the <strong>surrounding $$ to be removed</strong>.</li>
 </ol>
-<p>[code language="csharp"]<br />
+```csharp
 //Get the message using the Sitecore API<br />
-var mi = Sitecore.Modules.EmailCampaign.Factory.GetMessage(messageId);</p>
-<p>//Use the custom person token dictionary to replace the key with a string variable. Remember that the token key has to be lower case and remove the $$ surrounding the key<br />
- mi.CustomPersonTokens.Add(&quot;username&quot;, &quot;MikeTest&quot;);</p>
-<p>//Send the message<br />
+var mi = Sitecore.Modules.EmailCampaign.Factory.GetMessage(messageId);
+//Use the custom person token dictionary to replace the key with a string variable. Remember that the token key has to be lower case and remove the $$ surrounding the key<br />
+ mi.CustomPersonTokens.Add(&quot;username&quot;, &quot;MikeTest&quot;);
+//Send the message<br />
 new AsyncSendingManager(mi).SendStandardMessage(contactFromName);<br />
-[/code]</p>
+```
 <h2>
 Trigger Email and Replace tokens</h2>
 <p>Here is a reusable function that allows you to send an email campaign message from code and replace custom tokens.</p>

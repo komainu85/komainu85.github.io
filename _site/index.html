@@ -1,645 +1,769 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en-US">
   <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/assets/css/style.css?v=16767c114f45dae4d35b19539cb7a3826e5840d3" media="screen" type="text/css">
+    <link rel="stylesheet" href="/assets/css/print.css" media="print" type="text/css">
 
-  <title>Mike Robbins</title>
-  <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search resu...">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 
-  <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="http://localhost:4000/">
-  <link rel="alternate" type="application/rss+xml" title="Mike Robbins" href="/feed.xml">
-  
-  
-</head>
+<!-- Begin Jekyll SEO tag v2.2.3 -->
+<title>Mike Robbins | Sitecore Developer Blog</title>
+<meta property="og:title" content="Mike Robbins" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Sitecore Developer Blog" />
+<meta property="og:description" content="Sitecore Developer Blog" />
+<link rel="canonical" href="http://localhost:4000/" />
+<meta property="og:url" content="http://localhost:4000/" />
+<meta property="og:site_name" content="Mike Robbins" />
+<script type="application/ld+json">
+{"@context":"http://schema.org","@type":"WebSite","name":"Mike Robbins","headline":"Mike Robbins","description":"Sitecore Developer Blog","url":"http://localhost:4000/"}</script>
+<!-- End Jekyll SEO tag -->
 
+  </head>
 
   <body>
+    <header>
+      <div class="inner">
+        <a href="http://localhost:4000/">
+          <h1>Mike Robbins</h1>
+        </a>
+        <h2>Sitecore Developer Blog
+</h2>
+        
+      </div>
+    </header>
 
-    <header class="site-header" role="banner">
-
-  <div class="wrapper">
-    
-    
-    <a class="site-title" href="/">Mike Robbins</a>
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <div class="posts">
   
-    
-      <nav class="site-nav">
-        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
-        <label for="nav-trigger">
-          <span class="menu-icon">
-            <svg viewBox="0 0 18 15" width="18px" height="15px">
-              <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
-              <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
-              <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
-            </svg>
-          </span>
-        </label>
+    <article class="post">
 
-        <div class="trigger">
-          
-            
-            
-          
-            
-            
-            <a class="page-link" href="/about/">About</a>
-            
-          
-            
-            
-          
-            
-            
-          
-            
-            
-          
-        </div>
-      </nav>
-    
-  </div>
-</header>
+      <h1><a href="/iot/sitecore/sitecore.services.client/web%20item%20api/2016/03/07/windows-10-iot-to-xdb-with-sitecore-ssc.html">Windows 10 IoT to XDB with Sitecore SSC</a></h1>
 
+      <div class="entry">
+        Recently i've been playing with Windows 10 IoT Core, i've wondered if its possible to use the Raspberry Pi in some way with Sitecore. The idea i've had, was to create a kiosk style application to capture a user information at an event and post this data into Sitecore's xDB.  This kiosk application could be used as a competition encouraging the users to submit the form, and allow reporting from xDB who visited the event. Any data captured and sent to...
+      </div>
 
-    <main class="page-content" aria-label="Content">
-      <div class="wrapper">
-        <div class="home">
-
-  <h1 class="page-heading">Posts</h1>
+      <a href="/iot/sitecore/sitecore.services.client/web%20item%20api/2016/03/07/windows-10-iot-to-xdb-with-sitecore-ssc.html" class="read-more">Read More</a>
+    </article>
+    <br /><br />
   
+    <article class="post">
+
+      <h1><a href="/entityservice/sitecore/sitecore.services.client/2016/01/14/sitecore-services-client-authentication.html">Sitecore.Services.Client Authentication</a></h1>
+
+      <div class="entry">
+        Requests to web services built upon the Sitecore.Services.Client framework need to be authenticated, in this post I will look at the authentication features built into Sitecore.Services.Client. HTTPS is required for calls to authentation services calls. As with the rest of the Sitecore framework SSC uses the ASP.net membership framework. When a authentation request is successful the .ASPXAUTH cookie is set in the response. For local testing make sure to generate a CA for your local self signed certificate. http://www.asp.net/web-api/overview/security/working-with-ssl-in-web-api&nbsp; Login...
+      </div>
+
+      <a href="/entityservice/sitecore/sitecore.services.client/2016/01/14/sitecore-services-client-authentication.html" class="read-more">Read More</a>
+    </article>
+    <br /><br />
   
+    <article class="post">
 
+      <h1><a href="/developer/sitecore/2015/12/02/sitecore-client-logging-with-jsnlog-in-sitecore-8-1.html">Sitecore Client Logging with JSNLog In Sitecore 8.1</a></h1>
 
-  <ul class="post-list">
-    
-      <li>
-        
-        <span class="post-meta">Aug 18, 2017</span>
+      <div class="entry">
+        With Sitecore 8.1, support has been added to log client side events. The new logging framework is built upon the standard Sitecore logging framework (which uses Log4net), allowing client side events to be logged back to the data/log folder on the delivery server. Under the hood, Sitecore client logging uses JSNLog which has been wrapped to allow Sitecore to configure it via a patch and to make use of the existing Log4net logging. Configuration All configuration for client logging is...
+      </div>
 
-        <h2>
-          <a class="post-link" href="/jekyll/update/2017/08/18/welcome-to-jekyll.html">Welcome to Jekyll!</a>
-        </h2>
-      </li>
-    
-      <li>
-        
-        <span class="post-meta">Mar 7, 2016</span>
+      <a href="/developer/sitecore/2015/12/02/sitecore-client-logging-with-jsnlog-in-sitecore-8-1.html" class="read-more">Read More</a>
+    </article>
+    <br /><br />
+  
+    <article class="post">
 
-        <h2>
-          <a class="post-link" href="/iot/sitecore/sitecore.services.client/web%20item%20api/2016/03/07/windows-10-iot-to-xdb-with-sitecore-ssc.html">Windows 10 IoT to XDB with Sitecore SSC</a>
-        </h2>
-      </li>
-    
-      <li>
-        
-        <span class="post-meta">Jan 14, 2016</span>
+      <h1><a href="/content%20editor/sitecore/2015/10/23/getfieldlabel-pipeline-in-sitecore-8-1.html">getFieldLabel Pipeline in Sitecore 8.1</a></h1>
 
-        <h2>
-          <a class="post-link" href="/entityservice/sitecore/sitecore.services.client/2016/01/14/sitecore-services-client-authentication.html">Sitecore.Services.Client Authentication</a>
-        </h2>
-      </li>
-    
-      <li>
-        
-        <span class="post-meta">Jan 4, 2016</span>
+      <div class="entry">
+        With the release of Sitecore 8.1 a new Pipeline called getFieldLabel was added. This new pipeline allows you to inject code that can append or alter the label of a field within the Content Editor. The first thing to notice is that the pipeline accepts a GetFieldLabelArgs class for pipeline. This contains the field in question and the result. The result is a string of what will be appended to the label. https://gist.github.com/komainu85/26850da3533da2041ae3 Within the process method you have access to the field that...
+      </div>
 
-        <h2>
-          <a class="post-link" href="/sitecore/2016/01/04/2015-in-review.html">2015 in review</a>
-        </h2>
-      </li>
-    
-      <li>
-        
-        <span class="post-meta">Dec 2, 2015</span>
+      <a href="/content%20editor/sitecore/2015/10/23/getfieldlabel-pipeline-in-sitecore-8-1.html" class="read-more">Read More</a>
+    </article>
+    <br /><br />
+  
+    <article class="post">
 
-        <h2>
-          <a class="post-link" href="/developer/sitecore/2015/12/02/sitecore-client-logging-with-jsnlog-in-sitecore-8-1.html">Sitecore Client Logging with JSNLog In Sitecore 8.1</a>
-        </h2>
-      </li>
-    
-      <li>
-        
-        <span class="post-meta">Oct 23, 2015</span>
+      <h1><a href="/sitecore/speak/2015/10/20/sitecore-speak-2-0-component-vs-speak-1-1.html">Sitecore SPEAK 2.0 Component vs SPEAK 1.1</a></h1>
 
-        <h2>
-          <a class="post-link" href="/content%20editor/sitecore/2015/10/23/getfieldlabel-pipeline-in-sitecore-8-1.html">getFieldLabel Pipeline in Sitecore 8.1</a>
-        </h2>
-      </li>
-    
-      <li>
-        
-        <span class="post-meta">Oct 20, 2015</span>
+      <div class="entry">
+        With Sitecore 8.1 we get access to a brand new version of SPEAK, the shiny SPEAK 2.0. In this blog post we will look at creating a new SPEAK component using the 2.0 framework. We will compare the same SPEAK component built against version 1.0 and 2.0 to see the differences the new framework makes to development. Its worth noting that SPEAK 1.1 can still be used within Sitecore 8.1. But a SPEAK application has to be fully built against a...
+      </div>
 
-        <h2>
-          <a class="post-link" href="/sitecore/speak/2015/10/20/sitecore-speak-2-0-component-vs-speak-1-1.html">Sitecore SPEAK 2.0 Component vs SPEAK 1.1</a>
-        </h2>
-      </li>
-    
-      <li>
-        
-        <span class="post-meta">Oct 19, 2015</span>
+      <a href="/sitecore/speak/2015/10/20/sitecore-speak-2-0-component-vs-speak-1-1.html" class="read-more">Read More</a>
+    </article>
+    <br /><br />
+  
+    <article class="post">
 
-        <h2>
-          <a class="post-link" href="/sitecore/speak/2015/10/19/sitecore-speak-sitecore-app-null-in-sitecore-7-5-and-sitecore-8.html">Sitecore SPEAK Sitecore.app undefined in Sitecore 7.5 and Sitecore 8</a>
-        </h2>
-      </li>
-    
-      <li>
-        
-        <span class="post-meta">Oct 16, 2015</span>
+      <h1><a href="/sitecore/speak/2015/10/19/sitecore-speak-sitecore-app-null-in-sitecore-7-5-and-sitecore-8.html">Sitecore SPEAK Sitecore.app undefined in Sitecore 7.5 and Sitecore 8</a></h1>
 
-        <h2>
-          <a class="post-link" href="/entityservice/sitecore/sitecore.services.client/2015/10/16/sitecore-services-client-entity-service-allowed-controllers.html">Sitecore.Services.Client / Entity Service Allowed Controllers</a>
-        </h2>
-      </li>
-    
-      <li>
-        
-        <span class="post-meta">Sep 10, 2015</span>
+      <div class="entry">
+        Very quick post post, I know this has been catching a number of people out. Such as this Stack Overflow question. http://stackoverflow.com/questions/33020451/sitecore-speak-and-javascript/33023142#33023142
+When debugging Sitecore SPEAK in Sitecore 7.x (query string ?sc_debug=1)  you could access and debug your SPEAK application in your console browser via Sitecore.app. When trying this in Sitecore 7.5 and 8 you will get "undefined" returned.
+In Sitecore 7.5 and 8.x Sitecore.app has been moved. The new namespace is Sitecore.Speak.app.
 
-        <h2>
-          <a class="post-link" href="/content%20search/sitecore/2015/09/10/sitecore-content-search-computed-field-pass-custom-variables.html">Sitecore Content Search Computed Field Pass Custom Variables</a>
-        </h2>
-      </li>
-    
-      <li>
-        
-        <span class="post-meta">Aug 11, 2015</span>
+      </div>
 
-        <h2>
-          <a class="post-link" href="/sitecore/speak/2015/08/11/sitecore-speak-rich-text-editor.html">Sitecore SPEAK Rich Text Editor</a>
-        </h2>
-      </li>
-    
-      <li>
-        
-        <span class="post-meta">Jul 29, 2015</span>
+      <a href="/sitecore/speak/2015/10/19/sitecore-speak-sitecore-app-null-in-sitecore-7-5-and-sitecore-8.html" class="read-more">Read More</a>
+    </article>
+    <br /><br />
+  
+    <article class="post">
 
-        <h2>
-          <a class="post-link" href="/developer/glass/sitecore/2015/07/29/sitecore-razor-glass-attribute-helper-methods-fluent-api.html">Sitecore Razor / Glass Attribute Helper Methods Fluent API</a>
-        </h2>
-      </li>
-    
-      <li>
-        
-        <span class="post-meta">Jul 27, 2015</span>
+      <h1><a href="/entityservice/sitecore/sitecore.services.client/2015/10/16/sitecore-services-client-entity-service-allowed-controllers.html">Sitecore.Services.Client / Entity Service Allowed Controllers</a></h1>
 
-        <h2>
-          <a class="post-link" href="/developer/sitecore/2015/07/27/sitecore-mvc-custom-id-model-binder.html">Sitecore MVC Custom ID Model Binder</a>
-        </h2>
-      </li>
-    
-      <li>
-        
-        <span class="post-meta">Jul 14, 2015</span>
+      <div class="entry">
+        By default any Entity Service controllers you create abide by the Sitecore.Services.SecurityPolicy setting within the Sitecore.Services.Client.config. By default this is set to Sitecore.Services.Infrastructure.Web.Http.Security.ServicesLocalOnlyPolicy making the service safe and controllers only availably locally. This will cause issues if you call your controller in a live environment outside of the local environment as it wont be accessible. Allowed Controllers You can patch this setting to enable all controllers, but this is not a recommended practice, as this will open all controller endpoints to the world. Instead SSC has the...
+      </div>
 
-        <h2>
-          <a class="post-link" href="/content%20editor/sitecore/speak/2015/07/14/sitecore-content-editor-tabs-in-speak.html">Sitecore Content Editor Tabs In SPEAK</a>
-        </h2>
-      </li>
-    
-      <li>
-        
-        <span class="post-meta">Jun 25, 2015</span>
+      <a href="/entityservice/sitecore/sitecore.services.client/2015/10/16/sitecore-services-client-entity-service-allowed-controllers.html" class="read-more">Read More</a>
+    </article>
+    <br /><br />
+  
+    <article class="post">
 
-        <h2>
-          <a class="post-link" href="/sitecore/sitecore.services.client/2015/06/25/sitecore-service-client-servicesapicontroller.html">Sitecore Services Client ServicesApiController</a>
-        </h2>
-      </li>
-    
-      <li>
-        
-        <span class="post-meta">Jun 15, 2015</span>
+      <h1><a href="/content%20search/sitecore/2015/09/10/sitecore-content-search-computed-field-pass-custom-variables.html">Sitecore Content Search Computed Field Pass Custom Variables</a></h1>
 
-        <h2>
-          <a class="post-link" href="/sitecore/sitecore.services.client/2015/06/15/sitecore-entity-service-ssc-custom-validation-attributes.html">Sitecore Entity Service SSC - Custom Validation Attributes</a>
-        </h2>
-      </li>
-    
-      <li>
-        
-        <span class="post-meta">May 26, 2015</span>
+      <div class="entry">
+        One requirement of Content Search i've required recently, is the ability to pass in custom variables from the computed field config element. I needed this so multiple sites can use the same computed fields, but inject settings unique to that site. For example passing in the site name to generate site specific urls. Out of the box Sitecore allows you to specify a fieldName in the computed field and this populates a property within you computed field class. This is...
+      </div>
 
-        <h2>
-          <a class="post-link" href="/developer/sitecore/2015/05/26/sitecore-8-register-page-events.html">Sitecore 8 Register Page Events</a>
-        </h2>
-      </li>
-    
-      <li>
-        
-        <span class="post-meta">May 21, 2015</span>
+      <a href="/content%20search/sitecore/2015/09/10/sitecore-content-search-computed-field-pass-custom-variables.html" class="read-more">Read More</a>
+    </article>
+    <br /><br />
+  
+    <article class="post">
 
-        <h2>
-          <a class="post-link" href="/sitecore/sitecore.services.client/2015/05/21/sitecore-entity-service-ssc-ioc-configuration.html">Sitecore Entity Service SSC - IoC Configuration</a>
-        </h2>
-      </li>
-    
-      <li>
-        
-        <span class="post-meta">May 21, 2015</span>
+      <h1><a href="/sitecore/speak/2015/08/11/sitecore-speak-rich-text-editor.html">Sitecore SPEAK Rich Text Editor</a></h1>
 
-        <h2>
-          <a class="post-link" href="/developer/glass/sitecore/2015/05/21/sitecore-glass-attribute-helper-methods.html">Sitecore Glass Attribute Helper Methods </a>
-        </h2>
-      </li>
-    
-      <li>
-        
-        <span class="post-meta">Apr 14, 2015</span>
+      <div class="entry">
+        One of the features I think has been missing from Sitecore SPEAK is a Rich Text component. This blog post is a custom Rich Text Editor I have created for Sitecore SPEAK, The underlying Rich Text Editor is provided by Tiny MCE. [caption id="attachment_879" align="aligncenter" width="300"] Sitecore SPEAK Rich Text Editor[/caption] [caption id="attachment_903" align="aligncenter" width="300"] Toolbar[/caption] Configuration Once the Sitecore package has been installed (Releases at the end of this page), the component is ready to be used in SPEAK applications. The Rich...
+      </div>
 
-        <h2>
-          <a class="post-link" href="/content%20search/sitecore/2015/04/14/sitecore-contentsearch-language-based-search.html">Sitecore ContentSearch Language Based Search</a>
-        </h2>
-      </li>
-    
-      <li>
-        
-        <span class="post-meta">Apr 12, 2015</span>
+      <a href="/sitecore/speak/2015/08/11/sitecore-speak-rich-text-editor.html" class="read-more">Read More</a>
+    </article>
+    <br /><br />
+  
+    <article class="post">
 
-        <h2>
-          <a class="post-link" href="/developer/sitecore/2015/04/12/add-custom-web-api-controller-to-sitecore-solution.html">Add Custom Web API Controller to Sitecore Solution</a>
-        </h2>
-      </li>
-    
-      <li>
-        
-        <span class="post-meta">Mar 30, 2015</span>
+      <h1><a href="/developer/glass/sitecore/2015/07/29/sitecore-razor-glass-attribute-helper-methods-fluent-api.html">Sitecore Razor / Glass Attribute Helper Methods Fluent API</a></h1>
 
-        <h2>
-          <a class="post-link" href="/sitecore/sitecore.services.client/speak/2015/03/30/sitecore-speak-list-component-custom-tile-and-knockout-databinding.html">Sitecore SPEAK List Component, Custom Tile and Knockout Databinding</a>
-        </h2>
-      </li>
-    
-      <li>
-        
-        <span class="post-meta">Mar 23, 2015</span>
+      <div class="entry">
+        After blogging about creating some Sitecore Glass Attribute Helper Methods (Blog Post) to help front end developers add HTML attributes to Razor / Sitecore Glass Mapper controls. I had an interesting comment from Jim Noellsch, mentioning about turning the helper classes into a Fluent API. With a Fluent API, A developer is able to chain up multiple method calls, by returning the object on each method. See an example here for a better explanation than I can give http://www.codeproject.com/Articles/640997/Fluent-interfaces-and-Method-Chaining-in-Csharp. In the context of...
+      </div>
 
-        <h2>
-          <a class="post-link" href="/sitecore/sitecore.services.client/2015/03/23/sitecore-entity-service-ssc-adding-paging.html">Sitecore Entity Service (SSC) Adding Paging</a>
-        </h2>
-      </li>
-    
-      <li>
-        
-        <span class="post-meta">Mar 20, 2015</span>
+      <a href="/developer/glass/sitecore/2015/07/29/sitecore-razor-glass-attribute-helper-methods-fluent-api.html" class="read-more">Read More</a>
+    </article>
+    <br /><br />
+  
+    <article class="post">
 
-        <h2>
-          <a class="post-link" href="/sitecore/sitecore.services.client/2015/03/20/sitecore-entity-service-ssc-custom-controller-action.html">Sitecore Entity Service (SSC) Custom Controller Action</a>
-        </h2>
-      </li>
-    
-      <li>
-        
-        <span class="post-meta">Mar 17, 2015</span>
+      <h1><a href="/developer/sitecore/2015/07/27/sitecore-mvc-custom-id-model-binder.html">Sitecore MVC Custom ID Model Binder</a></h1>
 
-        <h2>
-          <a class="post-link" href="/developer/sitecore/sitecore%20fundamentals/2015/03/17/sitecore-fundamentals-is-item-a-content-media-item.html">Sitecore Fundamentals: Is Item a Content / Media Item</a>
-        </h2>
-      </li>
-    
-      <li>
-        
-        <span class="post-meta">Mar 12, 2015</span>
+      <div class="entry">
+        In this post i'll explain how to create a custom Model binder in ASP.net to allow you to pass in a Sitecore ID in your controller action. For example the controller action below accepts a Sitecore ID, however .net doesn't know how to create the ID class from the form values passed to the action. [code language="csharp"] [HttpPost] public void AddToShoppingBasket(ID itemId) { _basketRepository.Add(itemId); } [/code] This is where custom Model bindings come into play. We are able to create a...
+      </div>
 
-        <h2>
-          <a class="post-link" href="/sitecore/speak/2015/03/12/add-experience-analytic-report-to-launch-pad.html">Add Experience Analytics Report To Launch Pad</a>
-        </h2>
-      </li>
-    
-      <li>
-        
-        <span class="post-meta">Feb 25, 2015</span>
+      <a href="/developer/sitecore/2015/07/27/sitecore-mvc-custom-id-model-binder.html" class="read-more">Read More</a>
+    </article>
+    <br /><br />
+  
+    <article class="post">
 
-        <h2>
-          <a class="post-link" href="/content%20editor/sitecore/2015/02/25/sitecore-replace-tokens-command.html">Sitecore Replace Tokens Command</a>
-        </h2>
-      </li>
-    
-      <li>
-        
-        <span class="post-meta">Feb 23, 2015</span>
+      <h1><a href="/content%20editor/sitecore/speak/2015/07/14/sitecore-content-editor-tabs-in-speak.html">Sitecore Content Editor Tabs In SPEAK</a></h1>
 
-        <h2>
-          <a class="post-link" href="/sitecore%20contributions/2015/02/23/my-sitecore-modules-and-contributions.html">My Sitecore Modules and Contributions</a>
-        </h2>
-      </li>
-    
-      <li>
-        
-        <span class="post-meta">Feb 20, 2015</span>
+      <div class="entry">
+        Within the Sitecore Content Editor, the editor section can change context based on the type of Item you are editing. For example when a media folder item is selected, the view allows you to upload media files, a template item allow you to add fields etc. These areas are called editors. [caption id="attachment_806" align="aligncenter" width="300"] Media Editor[/caption] You can define and create your own custom editors within the Content Editor and specify the type of items it is applicable to....
+      </div>
 
-        <h2>
-          <a class="post-link" href="/developer/sitecore/sitecore.services.client/2015/02/20/entity-service-visual-studio-project-template.html">Entity Service Visual Studio Project Template</a>
-        </h2>
-      </li>
-    
-      <li>
-        
-        <span class="post-meta">Feb 2, 2015</span>
+      <a href="/content%20editor/sitecore/speak/2015/07/14/sitecore-content-editor-tabs-in-speak.html" class="read-more">Read More</a>
+    </article>
+    <br /><br />
+  
+    <article class="post">
 
-        <h2>
-          <a class="post-link" href="/mongodb/sitecore/2015/02/02/install-mongodb-as-a-windows-service-for-sitecore.html">Install MongoDB as a Windows service for Sitecore</a>
-        </h2>
-      </li>
-    
-      <li>
-        
-        <span class="post-meta">Jan 15, 2015</span>
+      <h1><a href="/sitecore/sitecore.services.client/2015/06/25/sitecore-service-client-servicesapicontroller.html">Sitecore Services Client ServicesApiController</a></h1>
 
-        <h2>
-          <a class="post-link" href="/developer/sitecore/2015/01/15/sitecore-get-media-item-extension.html">Sitecore Get Media Item Extension</a>
-        </h2>
-      </li>
-    
-      <li>
-        
-        <span class="post-meta">Jan 6, 2015</span>
+      <div class="entry">
+        With Sitecore 7.5 and now Sitecore 8, Sitecore.Services.Client (SSC) was introduced. This has given us a flexible and powerful framework for created Web API based rest services in Sitecore (See my introduction into Entity Service (part of Sitecore.Services.Client)) Entity Service is powerful, offering the repository pattern to implement functionality such as FindAll, FindByID, Create, Delete and Update for a given Entity (Model). However, what happens if you want to create a completely bespoke Web API controller and don't need any of...
+      </div>
 
-        <h2>
-          <a class="post-link" href="/sitecore/sitecore.services.client/speak/2015/01/06/entityservice-sitecore-service-client.html">EntityService Sitecore.Services.Client</a>
-        </h2>
-      </li>
-    
-      <li>
-        
-        <span class="post-meta">Dec 20, 2014</span>
+      <a href="/sitecore/sitecore.services.client/2015/06/25/sitecore-service-client-servicesapicontroller.html" class="read-more">Read More</a>
+    </article>
+    <br /><br />
+  
+    <article class="post">
 
-        <h2>
-          <a class="post-link" href="/sitecore/speak/2014/12/20/how-to-add-speak-applications-to-sitecore-8-launch-pad.html">Sitecore SPEAK: How to add Applications to Sitecore 8 Launch Pad</a>
-        </h2>
-      </li>
-    
-      <li>
-        
-        <span class="post-meta">Dec 2, 2014</span>
+      <h1><a href="/sitecore/sitecore.services.client/2015/06/15/sitecore-entity-service-ssc-custom-validation-attributes.html">Sitecore Entity Service SSC - Custom Validation Attributes</a></h1>
 
-        <h2>
-          <a class="post-link" href="/sitecore/web%20item%20api/2014/12/02/web-api-sitecore-id-formatter.html">Web API Sitecore ID Formatter</a>
-        </h2>
-      </li>
-    
-      <li>
-        
-        <span class="post-meta">Nov 14, 2014</span>
+      <div class="entry">
+        One of the exciting features of Entity Service is the flexibility to create custom validation attributes for your model. As Sitecore.Services.Client (SSC) provides a framework based approach to creating services, and both server and client side APIs, validation can take place on both server and client side. Validation on the server side is provided by standard .net validation attributes to return whether the property is valid. On the client side we can provide a JavaScript function for client side validation,...
+      </div>
 
-        <h2>
-          <a class="post-link" href="/developer/sitecore/speak/2014/11/14/sitecore-speak-visual-studio-project-and-item-templates.html">Sitecore SPEAK Visual Studio Project and Item Templates</a>
-        </h2>
-      </li>
-    
-      <li>
-        
-        <span class="post-meta">Nov 7, 2014</span>
+      <a href="/sitecore/sitecore.services.client/2015/06/15/sitecore-entity-service-ssc-custom-validation-attributes.html" class="read-more">Read More</a>
+    </article>
+    <br /><br />
+  
+    <article class="post">
 
-        <h2>
-          <a class="post-link" href="/content%20search/developer/sitecore/solr/2014/11/07/install-solr-as-windows-service-for-sitecore-content-search.html">Install Solr as Windows Service for Sitecore Content Search</a>
-        </h2>
-      </li>
-    
-      <li>
-        
-        <span class="post-meta">Oct 30, 2014</span>
+      <h1><a href="/developer/sitecore/2015/05/26/sitecore-8-register-page-events.html">Sitecore 8 Register Page Events</a></h1>
 
-        <h2>
-          <a class="post-link" href="/developer/sitecore/speak/2014/10/30/sitecore-speak-uploader-uploaded-item.html">Sitecore SPEAK Uploader Uploaded Item</a>
-        </h2>
-      </li>
-    
-      <li>
-        
-        <span class="post-meta">Oct 15, 2014</span>
+      <div class="entry">
+        A quick Sitecore 8 code sample to demonstrate programatically registering a page event such as an internal search, or a downloaded resource. Firstly check whether the tracker is active, and there is a session. Get a reference to the current page Create an instance of PageEventData, passing in the event name (e.g. Search) and page event guid. The PageEventData exposes: itemId - The page item ID that raises the page event. Data - Data associated to the event such as...
+      </div>
 
-        <h2>
-          <a class="post-link" href="/developer/sitecore/wffm/2014/10/15/write-to-web-forms-programmatically.html">Write to Web Forms Programmatically</a>
-        </h2>
-      </li>
-    
-      <li>
-        
-        <span class="post-meta">Oct 10, 2014</span>
+      <a href="/developer/sitecore/2015/05/26/sitecore-8-register-page-events.html" class="read-more">Read More</a>
+    </article>
+    <br /><br />
+  
+    <article class="post">
 
-        <h2>
-          <a class="post-link" href="/sitecore/speak/2014/10/10/sitecore-speak-dialog-within-desktop.html">Sitecore SPEAK Dialog Within Desktop</a>
-        </h2>
-      </li>
-    
-      <li>
-        
-        <span class="post-meta">Sep 23, 2014</span>
+      <h1><a href="/sitecore/sitecore.services.client/2015/05/21/sitecore-entity-service-ssc-ioc-configuration.html">Sitecore Entity Service SSC - IoC Configuration</a></h1>
 
-        <h2>
-          <a class="post-link" href="/content%20search/developer/sitecore/2014/09/23/solr-search-on-exact-phrase.html">Solr Search On Exact Phrase</a>
-        </h2>
-      </li>
-    
-      <li>
-        
-        <span class="post-meta">Jul 16, 2014</span>
+      <div class="entry">
+        Further into my series on Sitecore Entity Service within Sitecore.Services.Client, in this post I'll be look into setting up an IoC container (Structure Map in this post) for Entity Service.  In the below example of the Entity Service services controller we have an overloaded constructor creating a concrete instance of our repository. However moving towards a DI approach we want to remove the coupling to the repository and inject the dependency in instead. https://gist.github.com/komainu85/5502ba3b6e4e084e6023 The first step into register our...
+      </div>
 
-        <h2>
-          <a class="post-link" href="/content%20search/sitecore/2014/07/16/text-based-content-search-based-on-tagging.html">Text Based Content Search Based On Tagging</a>
-        </h2>
-      </li>
-    
-      <li>
-        
-        <span class="post-meta">May 9, 2014</span>
+      <a href="/sitecore/sitecore.services.client/2015/05/21/sitecore-entity-service-ssc-ioc-configuration.html" class="read-more">Read More</a>
+    </article>
+    <br /><br />
+  
+    <article class="post">
 
-        <h2>
-          <a class="post-link" href="/developer/sitecore/speak/web%20item%20api/2014/05/09/sitecore-item-web-api-xml-maintaining-sitecore-speak.html">Sitecore Item Web API XML Maintaining Sitecore SPEAK</a>
-        </h2>
-      </li>
-    
-      <li>
-        
-        <span class="post-meta">Apr 14, 2014</span>
+      <h1><a href="/developer/glass/sitecore/2015/05/21/sitecore-glass-attribute-helper-methods.html">Sitecore Glass Attribute Helper Methods </a></h1>
 
-        <h2>
-          <a class="post-link" href="/email/sitecore/workflow/2014/04/14/workflow-rss-feed-custom-email-action.html">Workflow RSS Feed Custom Email Action</a>
-        </h2>
-      </li>
-    
-      <li>
-        
-        <span class="post-meta">Feb 3, 2014</span>
+      <div class="entry">
+        When using Sitecore Glass's helpers to render content in a experience editor compatible way, it is possible to add a NameValue collection to specify attributes to be appended to the HTML element. http://stackoverflow.com/questions/19587981/how-to-render-link-with-css-class-with-sitecore-glass-mapper
+Below I have created a few helper functions to help front end developers add html attributes such css classes and height and widths to images more easily.
+https://gist.github.com/komainu85/36496a4a4bbb3cea6770
 
-        <h2>
-          <a class="post-link" href="/developer/email%20campaign%20manager/sitecore/2014/02/03/custom-tokens-in-email-campaign-manager.html">Custom Tokens in Email Campaign Manager</a>
-        </h2>
-      </li>
-    
-      <li>
-        
-        <span class="post-meta">Jan 10, 2014</span>
+      </div>
 
-        <h2>
-          <a class="post-link" href="/developer/sitecore/speak/2014/01/10/sitecore-speak-uploader-bug.html">Sitecore SPEAK Uploader Bug</a>
-        </h2>
-      </li>
-    
-      <li>
-        
-        <span class="post-meta">Jan 6, 2014</span>
+      <a href="/developer/glass/sitecore/2015/05/21/sitecore-glass-attribute-helper-methods.html" class="read-more">Read More</a>
+    </article>
+    <br /><br />
+  
+    <article class="post">
 
-        <h2>
-          <a class="post-link" href="/content%20editor/developer/sitecore/2014/01/06/publish-and-send-for-translate-workflow-action.html">Publish And Send For Translate Workflow Action</a>
-        </h2>
-      </li>
-    
-      <li>
-        
-        <span class="post-meta">Dec 17, 2013</span>
+      <h1><a href="/content%20search/sitecore/2015/04/14/sitecore-contentsearch-language-based-search.html">Sitecore ContentSearch Language Based Search</a></h1>
 
-        <h2>
-          <a class="post-link" href="/content%20search/developer/sitecore/2013/12/17/sitecore-7-search-id-array-type-converter.html">Sitecore 7 Search ID Array Type Converter</a>
-        </h2>
-      </li>
-    
-      <li>
-        
-        <span class="post-meta">Dec 17, 2013</span>
+      <div class="entry">
+        Just a quick blog on using Sitecore content search within multilingual sites. A very basic way of achieving a multilingual search,  i've used in the past involves building a query to filter on the language from the Sitecore.Context.Language. This method is explained in a previous tweet from Jamie Little and a blog post, however a comment from Stephen Pope shed more detail on content search, where you can actually pass in a culture into the content search. https://twitter.com/stephenpope/status/493034877051490305 So how does...
+      </div>
 
-        <h2>
-          <a class="post-link" href="/content%20search/developer/sitecore/2013/12/17/sitecore-7-search-by-base-templates.html">Sitecore 7 Search by base templates</a>
-        </h2>
-      </li>
-    
-      <li>
-        
-        <span class="post-meta">Oct 14, 2013</span>
+      <a href="/content%20search/sitecore/2015/04/14/sitecore-contentsearch-language-based-search.html" class="read-more">Read More</a>
+    </article>
+    <br /><br />
+  
+    <article class="post">
 
-        <h2>
-          <a class="post-link" href="/content%20editor/developer/sitecore/2013/10/14/sitecore-data-importer-word-docx-importer.html">Sitecore Data Importer / Word docx Importer</a>
-        </h2>
-      </li>
-    
-      <li>
-        
-        <span class="post-meta">Sep 23, 2013</span>
+      <h1><a href="/developer/sitecore/2015/04/12/add-custom-web-api-controller-to-sitecore-solution.html">Add Custom Web API Controller to Sitecore Solution</a></h1>
 
-        <h2>
-          <a class="post-link" href="/developer/sitecore/2013/09/23/sitecore-youtube-control.html">Sitecore YouTube Control</a>
-        </h2>
-      </li>
-    
-      <li>
-        
-        <span class="post-meta">Sep 6, 2013</span>
+      <div class="entry">
+        The below code snippet enables you to add a custom Web API controller to your sitecore solution. The first block of code registers the mapping for our custom controllers. Next we abort the sitecore httprequest pipeline for our custom controllers. Notice we ignore the "api/Sitecore" path, this is so we don't affect any of the existing sitecore controllers such as SPEAK, Entity Service and ItemService. Here I have created  a formatter for the Sitecore ID, this allows us to clean...
+      </div>
 
-        <h2>
-          <a class="post-link" href="/developer/sitecore/2013/09/06/how-to-use-sitecore-nuget.html">How to use Sitecore Nuget</a>
-        </h2>
-      </li>
-    
-      <li>
-        
-        <span class="post-meta">Sep 3, 2013</span>
+      <a href="/developer/sitecore/2015/04/12/add-custom-web-api-controller-to-sitecore-solution.html" class="read-more">Read More</a>
+    </article>
+    <br /><br />
+  
+    <article class="post">
 
-        <h2>
-          <a class="post-link" href="/content%20search/developer/sitecore/2013/09/03/sitecore-7-add-single-item-to-index.html">Sitecore 7 Add Single Item To Index</a>
-        </h2>
-      </li>
-    
-      <li>
-        
-        <span class="post-meta">Sep 3, 2013</span>
+      <h1><a href="/sitecore/sitecore.services.client/speak/2015/03/30/sitecore-speak-list-component-custom-tile-and-knockout-databinding.html">Sitecore SPEAK List Component, Custom Tile and Knockout Databinding</a></h1>
 
-        <h2>
-          <a class="post-link" href="/content%20editor/developer/sitecore/2013/09/03/registering-a-new-command.html">Registering A New Command</a>
-        </h2>
-      </li>
-    
-      <li>
-        
-        <span class="post-meta">Sep 3, 2013</span>
+      <div class="entry">
+        In this post I will walk through using the Sitecore SPEAK List Component using Knockout databinding and a custom tile to create a custom look and feel of the List component. I'm assuming you have already got a SPEAK application or understand the basics of creating a SPEAK application. (There are some great posts on Sitecore SPEAK from Martina&nbsp;if your new to SPEAK). [caption width="300" id="attachment_647" align="aligncenter"] Core DB SPEAK Component[/caption] In the presentation details of the component add a...
+      </div>
 
-        <h2>
-          <a class="post-link" href="/sitecore/2013/09/03/sitecore-save-and-publish-button.html">Sitecore Save and Publish Button</a>
-        </h2>
-      </li>
-    
-      <li>
-        
-        <span class="post-meta">Aug 1, 2013</span>
+      <a href="/sitecore/sitecore.services.client/speak/2015/03/30/sitecore-speak-list-component-custom-tile-and-knockout-databinding.html" class="read-more">Read More</a>
+    </article>
+    <br /><br />
+  
+    <article class="post">
 
-        <h2>
-          <a class="post-link" href="/developer/sitecore/2013/08/01/sitecore-extension-methods.html">Sitecore extension methods</a>
-        </h2>
-      </li>
-    
-      <li>
-        
-        <span class="post-meta">Jul 31, 2013</span>
+      <h1><a href="/sitecore/sitecore.services.client/2015/03/23/sitecore-entity-service-ssc-adding-paging.html">Sitecore Entity Service (SSC) Adding Paging</a></h1>
 
-        <h2>
-          <a class="post-link" href="/content%20search/sitecore/2013/07/31/sitecore-contentsearch-exclude-standard-values.html">Sitecore ContentSearch exclude standard values</a>
-        </h2>
-      </li>
-    
-  </ul>
+      <div class="entry">
+        Recently I did a Sitecore User Group talk on Entity Service (video based on the talk available on Master Sitecore). I was asked there how you could extend Entity Service to including paging instead of using the standard GetAll() function. Using my method of extending Entity Service and its repository pattern, as explained in this blog post. This blog post will explain how to add a new custom paged function for getting all entities. The first stage is to add...
+      </div>
 
-  <p class="rss-subscribe">subscribe <a href="/feed.xml">via RSS</a></p>
+      <a href="/sitecore/sitecore.services.client/2015/03/23/sitecore-entity-service-ssc-adding-paging.html" class="read-more">Read More</a>
+    </article>
+    <br /><br />
+  
+    <article class="post">
 
+      <h1><a href="/sitecore/sitecore.services.client/2015/03/20/sitecore-entity-service-ssc-custom-controller-action.html">Sitecore Entity Service (SSC) Custom Controller Action</a></h1>
+
+      <div class="entry">
+        Following on from my post on the basics of Entity Service and using the JavaScript API (Entity Service in Sitecore.Service.Client), in this post I will explain how to extend Entity Service Sitecore.Services.Client (SSC) with new controller actions. Using Entity Service as standard you get the following methods: IQueryable&lt;Entity&gt; GetAll() Entity FindById(string id) Add(Entity entity) Exists(Entity entity) Update(Entity entity) Delete(Entity entity) However Entity Service is very flexible allowing you to extend the service controller with additional actions. To add an additional...
+      </div>
+
+      <a href="/sitecore/sitecore.services.client/2015/03/20/sitecore-entity-service-ssc-custom-controller-action.html" class="read-more">Read More</a>
+    </article>
+    <br /><br />
+  
+    <article class="post">
+
+      <h1><a href="/developer/sitecore/sitecore%20fundamentals/2015/03/17/sitecore-fundamentals-is-item-a-content-media-item.html">Sitecore Fundamentals: Is Item a Content / Media Item</a></h1>
+
+      <div class="entry">
+        A quick code snippet to check whether a sitecore item is a Content item or a media item.
+https://gist.github.com/komainu85/d2b8136e197a8c692360
+Decompiling the above code, you can see that is simply checks whether the path contains "sitecore/content" or "sitecore/Media library" respectively. Using the above code snippet however if the sitecore API ever changes sitecore will update these methods.
+
+      </div>
+
+      <a href="/developer/sitecore/sitecore%20fundamentals/2015/03/17/sitecore-fundamentals-is-item-a-content-media-item.html" class="read-more">Read More</a>
+    </article>
+    <br /><br />
+  
+    <article class="post">
+
+      <h1><a href="/sitecore/speak/2015/03/12/add-experience-analytic-report-to-launch-pad.html">Add Experience Analytics Report To Launch Pad</a></h1>
+
+      <div class="entry">
+        The launch Pad was introduced in Sitecore 7.1, however in Sitecore 8 the Launch Pad has had a major over haul. The launch pad has become a major focus and one of the central interfaces for Stecore. The Launch Pad can be extended with new SPEAK applications and analytics charts. In this blog post I will walk through adding Experience Analytics reports to the Sitecore 8 Launch Pad. As the Launch Pad is built using SPEAK to add to it...
+      </div>
+
+      <a href="/sitecore/speak/2015/03/12/add-experience-analytic-report-to-launch-pad.html" class="read-more">Read More</a>
+    </article>
+    <br /><br />
+  
+    <article class="post">
+
+      <h1><a href="/content%20editor/sitecore/2015/02/25/sitecore-replace-tokens-command.html">Sitecore Replace Tokens Command</a></h1>
+
+      <div class="entry">
+        Quite often when developing Sitecore sites, as I'm optimising templates I add additional fields and tokens into the standard values. This means for already created items based on the updated template there are unexpanded $token variables in the content item. The same issue is present if you reset a content item to standard values, the tokens are adding into the content item rather than the calculated value. Therefore I've developed a new Sitecore module that adds a new command into the...
+      </div>
+
+      <a href="/content%20editor/sitecore/2015/02/25/sitecore-replace-tokens-command.html" class="read-more">Read More</a>
+    </article>
+    <br /><br />
+  
+    <article class="post">
+
+      <h1><a href="/sitecore%20contributions/2015/02/23/my-sitecore-modules-and-contributions.html">My Sitecore Modules and Contributions</a></h1>
+
+      <div class="entry">
+        Sitecore 8 Modules Sitecore 8 Wallpaper Manager A Sitecore 8 SPEAK application using Entity Service as an foundation. This application allows Sitecore users to upload new wallpapers and manage existing wallpapers. Marketplace: Sitecore Wallpaper Manager on Marketplace Source: Wallpaper Manager on GitHub Replace Token's Command A new command button for the content editor. Once pressed all tokens are expanded within the current item and replace with their calculated value. Marketplace: Replace Token Command on Marketplace Source: Token Replacement Command on GitHub Sitecore...
+      </div>
+
+      <a href="/sitecore%20contributions/2015/02/23/my-sitecore-modules-and-contributions.html" class="read-more">Read More</a>
+    </article>
+    <br /><br />
+  
+    <article class="post">
+
+      <h1><a href="/developer/sitecore/sitecore.services.client/2015/02/20/entity-service-visual-studio-project-template.html">Entity Service Visual Studio Project Template</a></h1>
+
+      <div class="entry">
+        Recently I've been working with Entity Service in Sitecore.Services.Client in A few projects. I realised I was repeating the same process time and time again to set up the framework of Entity Service. I have therefore created a Visual Studio project template with the framework of Entity Service set up. All the references for Web API, MVC etc are included via NuGet ready to build your project on. Just bring your own Sitecore kernel and Sitecore.Service DLLs. [caption id="attachment_449" align="aligncenter" width="300"] Entity...
+      </div>
+
+      <a href="/developer/sitecore/sitecore.services.client/2015/02/20/entity-service-visual-studio-project-template.html" class="read-more">Read More</a>
+    </article>
+    <br /><br />
+  
+    <article class="post">
+
+      <h1><a href="/mongodb/sitecore/2015/02/02/install-mongodb-as-a-windows-service-for-sitecore.html">Install MongoDB as a Windows service for Sitecore</a></h1>
+
+      <div class="entry">
+        To install MongoDB as a Windows service. Download and install MongoDB https://www.mongodb.org/downloads Run Command Prompt as Admin. CD to the directory containing the bin directory of your MongoDB installation. Usually "C:\Program Files\MongoDB 2.6 Standard\bin" on a standard installation of MongoDB. Run the following script to install MongDB as a service. [code language="bash"]mongod --dbpath &quot;PathToStoreMongoDbs&quot; --serviceName &quot;NameYouWantToCallTheService&quot; --logpath &quot;PathOfWhereToStoreLogFiles&quot; --logappend --install[/code] e.g. [code language="bash"] mongod --dbpath &quot;C:\inetpub\wwwroot\MikeRobbins8\Databases&quot; --serviceName &quot;MikeRobbinsMongoDB&quot; --logpath &quot;C:\inetpub\wwwroot\MikeRobbins8\MongoDBLogs\mongodb.log&quot; --logappend --install[/code] Within the services snap in you will see the MongoDB...
+      </div>
+
+      <a href="/mongodb/sitecore/2015/02/02/install-mongodb-as-a-windows-service-for-sitecore.html" class="read-more">Read More</a>
+    </article>
+    <br /><br />
+  
+    <article class="post">
+
+      <h1><a href="/developer/sitecore/2015/01/15/sitecore-get-media-item-extension.html">Sitecore Get Media Item Extension</a></h1>
+
+      <div class="entry">
+        A quick extension method to get a Sitecore Media Item image url including max width and max height paramaters.
+https://gist.github.com/komainu85/80c2a1873c5f0b67fa8d
+
+      </div>
+
+      <a href="/developer/sitecore/2015/01/15/sitecore-get-media-item-extension.html" class="read-more">Read More</a>
+    </article>
+    <br /><br />
+  
+    <article class="post">
+
+      <h1><a href="/sitecore/sitecore.services.client/speak/2015/01/06/entityservice-sitecore-service-client.html">EntityService Sitecore.Services.Client</a></h1>
+
+      <div class="entry">
+        Sitecore.Services.Client provides a powerful and flexible method of creating Web API based services within Sitecore. Using the provided interfaces and the repository pattern means that you will be building services in a consistent way, allowing you to build more flexible services and reduce the time to develop and maintain them. Sitecore.Services.Client was introduced first in Sitecore 7.5 and supported also in Sitecore 8. Sitecore.Services.Client consists of two separate services. ItemService which allows you to work with standard Sitecore Item class....
+      </div>
+
+      <a href="/sitecore/sitecore.services.client/speak/2015/01/06/entityservice-sitecore-service-client.html" class="read-more">Read More</a>
+    </article>
+    <br /><br />
+  
+    <article class="post">
+
+      <h1><a href="/sitecore/speak/2014/12/20/how-to-add-speak-applications-to-sitecore-8-launch-pad.html">Sitecore SPEAK: How to add Applications to Sitecore 8 Launch Pad</a></h1>
+
+      <div class="entry">
+        Sitecore SPEAK's Launch pad existed within Sitecore 7.1/7.2/7.5 but has received a major overhaul in Sitecore 8. It has become a focal point welcoming users as they login to Sitecore. Previously with Sitecore 7.x you could add shortcuts to the launch pad from within the Core database. This was done by adding application shortcut items containing the ID of the new Sitecore SPEAK application to the launch pad shortcuts folder. "/sitecore/client/Applications/Launch Pad/Page Settings/Shortcuts" [caption id="attachment_322" align="aligncenter" width="300"] Sitecore 7.x SPEAK Shortcuts[/caption] With Sitecore...
+      </div>
+
+      <a href="/sitecore/speak/2014/12/20/how-to-add-speak-applications-to-sitecore-8-launch-pad.html" class="read-more">Read More</a>
+    </article>
+    <br /><br />
+  
+    <article class="post">
+
+      <h1><a href="/sitecore/web%20item%20api/2014/12/02/web-api-sitecore-id-formatter.html">Web API Sitecore ID Formatter</a></h1>
+
+      <div class="entry">
+        When using Web API, Sitecore ID's serialise with {} around the IDs. This can cause issues when working with JSON as this denotes objects encapsulation. [caption id="attachment_307" align="aligncenter" width="300"] JSON Sitecore ID's[/caption] Below is a custom formatter to format Sitecore item IDs without the {}. This example has Web API registered to run alongside Web Item API. See Patrick Delancy's blog post about running Web API alongside Web Item API http://patrickdelancy.com/2013/08/sitecore-webapi-living-harmony/ [caption id="attachment_311" align="aligncenter" width="300"] The corresponding JSON[/caption] [code language="csharp"] public class RegisterWebApiRoute...
+      </div>
+
+      <a href="/sitecore/web%20item%20api/2014/12/02/web-api-sitecore-id-formatter.html" class="read-more">Read More</a>
+    </article>
+    <br /><br />
+  
+    <article class="post">
+
+      <h1><a href="/developer/sitecore/speak/2014/11/14/sitecore-speak-visual-studio-project-and-item-templates.html">Sitecore SPEAK Visual Studio Project and Item Templates</a></h1>
+
+      <div class="entry">
+        To help developers new to Sitecore SPEAK development and speed up development for existing developers, I've created some Visual Studio templates. These help to setup new VS projects correctly for SPEAK development and add SPEAK items quickly. Ill be adding more SPEAK Visual Studio templates in the future. The first is a project template that creates a new project ready to create an SPEAK application. [caption id="attachment_301" align="aligncenter" width="300" class=" "] Sitecore SPEAK Application[/caption] The second allows you to add new PageCode...
+      </div>
+
+      <a href="/developer/sitecore/speak/2014/11/14/sitecore-speak-visual-studio-project-and-item-templates.html" class="read-more">Read More</a>
+    </article>
+    <br /><br />
+  
+    <article class="post">
+
+      <h1><a href="/content%20search/developer/sitecore/solr/2014/11/07/install-solr-as-windows-service-for-sitecore-content-search.html">Install Solr as Windows Service for Sitecore Content Search</a></h1>
+
+      <div class="entry">
+        To install Solr as a Windows service. Download and setup Solr for Sitecore.Great tutorial from Dan Solovay on this http://www.dansolovay.com/2013/05/setting-up-solr-with-sitecore-7.html Download Non Sucking Service Manager from http://nssm.cc/download Copy the nssm.exe into your solr directory. [caption id="attachment_292" align="aligncenter" width="300" class=" "] NSSM[/caption] Create a bat file within the Solr/example folder. Example below, where CD is your example folder within your Solr directory. [code language="bash"] @echo off cd &quot;C:\solr\example\&quot; java -Xms64M -Xmx256M -jar start.jar [/code] Run Command Prompt as Admin. CD to the...
+      </div>
+
+      <a href="/content%20search/developer/sitecore/solr/2014/11/07/install-solr-as-windows-service-for-sitecore-content-search.html" class="read-more">Read More</a>
+    </article>
+    <br /><br />
+  
+    <article class="post">
+
+      <h1><a href="/developer/sitecore/speak/2014/10/30/sitecore-speak-uploader-uploaded-item.html">Sitecore SPEAK Uploader Uploaded Item</a></h1>
+
+      <div class="entry">
+        Quite often when using the Sitecore SPEAK Uploader to upload items to the Media Library, you need to be able to access the item after upload within the JavaScript page code to work with the item. Below is an example of how to get access to the Media Item model after it has been uploaded into the Media Library. This method is only supported in Sitecore 7.1 rev. 140324 (7.1 Update-2). I raised this as a bug with Sitecore as...
+      </div>
+
+      <a href="/developer/sitecore/speak/2014/10/30/sitecore-speak-uploader-uploaded-item.html" class="read-more">Read More</a>
+    </article>
+    <br /><br />
+  
+    <article class="post">
+
+      <h1><a href="/developer/sitecore/wffm/2014/10/15/write-to-web-forms-programmatically.html">Write to Web Forms Programmatically</a></h1>
+
+      <div class="entry">
+        Recently I had a requirement to capture a number of parameters from a users session and provide Sitecore administrators a way of reporting on this data and exporting the data to CSV for analysis. The reporting within WFFM was exactly what I was looking to achieve. I wondered if I could tap into this programmatically and use WFFM as my analysis and exporting tool. [caption id="attachment_256" align="aligncenter" width="300" class=" "] Form Reports[/caption] The idea is to create a new Form...
+      </div>
+
+      <a href="/developer/sitecore/wffm/2014/10/15/write-to-web-forms-programmatically.html" class="read-more">Read More</a>
+    </article>
+    <br /><br />
+  
+    <article class="post">
+
+      <h1><a href="/sitecore/speak/2014/10/10/sitecore-speak-dialog-within-desktop.html">Sitecore SPEAK Dialog Within Desktop</a></h1>
+
+      <div class="entry">
+        Here is a short useful tutorial for anyone wanting to add a SPEAK Dialog control within the Sitecore desktop view. Basically it uses a Sitecore sheer ui application as a proxy to point at the url of the SPEAK application. [caption id="attachment_226" align="aligncenter" width="300" class=" "] SPEAK Dialog[/caption] Create a Sitecore dialog application using Sitecore rocks within the core database. [caption id="attachment_227" align="aligncenter" width="300" class=" "] SPEAK Dialog Application[/caption] Create a standard application item under content / applications in the...
+      </div>
+
+      <a href="/sitecore/speak/2014/10/10/sitecore-speak-dialog-within-desktop.html" class="read-more">Read More</a>
+    </article>
+    <br /><br />
+  
+    <article class="post">
+
+      <h1><a href="/content%20search/developer/sitecore/2014/09/23/solr-search-on-exact-phrase.html">Solr Search On Exact Phrase</a></h1>
+
+      <div class="entry">
+        Very brief code sample of how to perform a exact phrase match query in Solr. Using the Solr Admin's Query tool to perform a search on a field, you will notice that Solr splits each word into a token to search on. [caption id="attachment_215" align="aligncenter" width="300" class=" "] Solr Admin Query[/caption] &nbsp; Most of the time this is the desired functionality, however there could be times where you want to return results where the exact phrase is matched. If you...
+      </div>
+
+      <a href="/content%20search/developer/sitecore/2014/09/23/solr-search-on-exact-phrase.html" class="read-more">Read More</a>
+    </article>
+    <br /><br />
+  
+    <article class="post">
+
+      <h1><a href="/content%20search/sitecore/2014/07/16/text-based-content-search-based-on-tagging.html">Text Based Content Search Based On Tagging</a></h1>
+
+      <div class="entry">
+        Out of the box Sitecore offers Content Editors the power to create tags, and assign them to content items using the Tagging field in standard values. [caption id="attachment_203" align="aligncenter" width="300"] Tagging Standard Value[/caption] When analysing the indexes using LUKE, you can see that Sitecore indexes the ID's of each tag. This makes it difficult to perform a text based content search that also matches on tags. [caption id="attachment_201" align="aligncenter" width="300"] Luke Index View[/caption] However Sitecore gives us the power to...
+      </div>
+
+      <a href="/content%20search/sitecore/2014/07/16/text-based-content-search-based-on-tagging.html" class="read-more">Read More</a>
+    </article>
+    <br /><br />
+  
+    <article class="post">
+
+      <h1><a href="/developer/sitecore/speak/web%20item%20api/2014/05/09/sitecore-item-web-api-xml-maintaining-sitecore-speak.html">Sitecore Item Web API XML Maintaining Sitecore SPEAK</a></h1>
+
+      <div class="entry">
+        Recently I have had a client request asking to use Sitecore Item Web API in XML format rather than JSON. Luckily within the Item Web API documentation Sitecore provide a Pipeline Processor to output XML rather than JSON.  http://sdn.sitecore.net/upload/sdn5/modules/sitecore%20item%20web%20api/sitecore_item_web_api_developer_guide_sc66-71-a4.pdf Sitecore SPEAK also makes use of the Sitecore Item Web API, but an unfortunate side effect of this code snippet is that it breaks Sitecore SPEAK as it expects JSON responses back from the web service. The code snippet below is...
+      </div>
+
+      <a href="/developer/sitecore/speak/web%20item%20api/2014/05/09/sitecore-item-web-api-xml-maintaining-sitecore-speak.html" class="read-more">Read More</a>
+    </article>
+    <br /><br />
+  
+    <article class="post">
+
+      <h1><a href="/email/sitecore/workflow/2014/04/14/workflow-rss-feed-custom-email-action.html">Workflow RSS Feed Custom Email Action</a></h1>
+
+      <div class="entry">
+        I have worked with a number of clients that have asked why the email notifications they receive from workflow didn't reflect what is available from the RSS feed within the workbox. This seems to have been a goal of a number of developers in the past, but nothing concrete has been created to replicate the feature. There is a awesome workaround from Nick Wesselman using Rss2email. http://www.techphoria414.com/Blog/2012/April/Sitecore_Workflow_Emails_with_rss2email As part of a recent hacking session I decided to see if I...
+      </div>
+
+      <a href="/email/sitecore/workflow/2014/04/14/workflow-rss-feed-custom-email-action.html" class="read-more">Read More</a>
+    </article>
+    <br /><br />
+  
+    <article class="post">
+
+      <h1><a href="/developer/email%20campaign%20manager/sitecore/2014/02/03/custom-tokens-in-email-campaign-manager.html">Custom Tokens in Email Campaign Manager</a></h1>
+
+      <div class="entry">
+        Recently I had a requirement from a client where they wanted to use Sitecore Email Campaign Manager to send registration emails, containing registration details and other dynamic custom data. Here is how to create tokens within a Email Campaign message and replace them with variables in a manually triggered email. Add your token(s) into the body text of the campaign message in the format $key$, ensure that the key text is lower case. [caption id="attachment_160" align="aligncenter" width="300"] Sitecore Email Campaign...
+      </div>
+
+      <a href="/developer/email%20campaign%20manager/sitecore/2014/02/03/custom-tokens-in-email-campaign-manager.html" class="read-more">Read More</a>
+    </article>
+    <br /><br />
+  
+    <article class="post">
+
+      <h1><a href="/developer/sitecore/speak/2014/01/10/sitecore-speak-uploader-bug.html">Sitecore SPEAK Uploader Bug</a></h1>
+
+      <div class="entry">
+        Just a quick post, I have recently been playing with Sitecore SPEAK on a proof of concept for a client. I needed to use the Sitecore SPEAK uploader to upload Docx and csv files to Sitecore. However attaching and uploading these files threw a warning in the SPEAK application. It appears that in this version of Sitecore (7.1), the ImageType setting within the web.config is used to control which types of files are accepted by the SPEAK uploader component. If you want...
+      </div>
+
+      <a href="/developer/sitecore/speak/2014/01/10/sitecore-speak-uploader-bug.html" class="read-more">Read More</a>
+    </article>
+    <br /><br />
+  
+    <article class="post">
+
+      <h1><a href="/content%20editor/developer/sitecore/2014/01/06/publish-and-send-for-translate-workflow-action.html">Publish And Send For Translate Workflow Action</a></h1>
+
+      <div class="entry">
+        Here is a useful Custom Workflow action I've written allowing a content editor to publish a content item to live while also sending its alternative language version to a translate workflow state. This allows a content item to be published to live in a single language without being held up waiting on a translation to be completed. 1. Create a workflow command to publish the content to the published state in workflow. 2. Create a new custom workflow action underneath...
+      </div>
+
+      <a href="/content%20editor/developer/sitecore/2014/01/06/publish-and-send-for-translate-workflow-action.html" class="read-more">Read More</a>
+    </article>
+    <br /><br />
+  
+    <article class="post">
+
+      <h1><a href="/content%20search/developer/sitecore/2013/12/17/sitecore-7-search-id-array-type-converter.html">Sitecore 7 Search ID Array Type Converter</a></h1>
+
+      <div class="entry">
+        This is a simple type converter that allows you to convert a collection of Sitecore IDs stored in a Lucene search index into a List. [code language="csharp"] public class ListIDConverter : TypeConverter { public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType) { if (sourceType == typeof(List&lt;ID&gt;)) { return true; } return base.CanConvertFrom(context, sourceType); } public override bool CanConvertTo(ITypeDescriptorContext context, Type destinationType) { if (destinationType == typeof(List&lt;string&gt;)) { return true; } return base.CanConvertTo(context, destinationType); } public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture,...
+      </div>
+
+      <a href="/content%20search/developer/sitecore/2013/12/17/sitecore-7-search-id-array-type-converter.html" class="read-more">Read More</a>
+    </article>
+    <br /><br />
+  
+    <article class="post">
+
+      <h1><a href="/content%20search/developer/sitecore/2013/12/17/sitecore-7-search-by-base-templates.html">Sitecore 7 Search by base templates</a></h1>
+
+      <div class="entry">
+        Quick tip, when using Sitecore 7's search API to build a general site search, you may want to return only pages rather than any other items within Sitecore. All my page items inherit from a base Item to implement page title, meta data and so on. Using linq we are able to check whether an item is based on a specific base template, to do this we need to tell Sitecore to index the base templates. By default in Sitecore...
+      </div>
+
+      <a href="/content%20search/developer/sitecore/2013/12/17/sitecore-7-search-by-base-templates.html" class="read-more">Read More</a>
+    </article>
+    <br /><br />
+  
+    <article class="post">
+
+      <h1><a href="/content%20editor/developer/sitecore/2013/10/14/sitecore-data-importer-word-docx-importer.html">Sitecore Data Importer / Word docx Importer</a></h1>
+
+      <div class="entry">
+        I recently had a requirement from a client to allow them to import content into Sitecore items from word docx files. After looking on the Sitecore marketplace and git hub I realised nothing existed so decided on writing a module. I did quickly realise why nobody has written one before docx files are basically zip files containing a number of files with the main document content written in XML. The document To be useful I wanted the importer to be...
+      </div>
+
+      <a href="/content%20editor/developer/sitecore/2013/10/14/sitecore-data-importer-word-docx-importer.html" class="read-more">Read More</a>
+    </article>
+    <br /><br />
+  
+    <article class="post">
+
+      <h1><a href="/developer/sitecore/2013/09/23/sitecore-youtube-control.html">Sitecore YouTube Control</a></h1>
+
+      <div class="entry">
+        A very simple and useful YouTube control for Sitecore for embedding YouTube videos. You can either specify a Sitcore item to get the YouTube ID field from, otherwise it will use the context item. Create a class using the code below Register the control in the web.config[code language="xml"] &lt;controls&gt; &lt;add tagPrefix=&quot;TB&quot; namespace=&quot;ToolBox.SitecoreCMS.Web.UI.WebControls&quot; assembly=&quot;ToolBox.SitecoreCMS&quot; /&gt; &lt;/controls&gt; [/code] Use the control within your sublayouts[code language="xml"] &lt;tb:YouTube runat=&quot;server&quot; Field=&quot;YouTubeID&quot; Height=&quot;200&quot; Width=&quot;400&quot;/&gt; [/code] register the control within the web.config and use it within your...
+      </div>
+
+      <a href="/developer/sitecore/2013/09/23/sitecore-youtube-control.html" class="read-more">Read More</a>
+    </article>
+    <br /><br />
+  
+    <article class="post">
+
+      <h1><a href="/developer/sitecore/2013/09/06/how-to-use-sitecore-nuget.html">How to use Sitecore Nuget</a></h1>
+
+      <div class="entry">
+        If you have ever used NuGet within any of your Visual Studio projects you will know how easy it is install 3rd party dependencies, update them and bring new developers onto a project, Wouldn't it be useful to take advantage of NuGet in Sitecore. With the power of Nuget and Powershell you can add files to your solution, add files to the inetpub folder containing your website and best of all insert items directly into the master database of your...
+      </div>
+
+      <a href="/developer/sitecore/2013/09/06/how-to-use-sitecore-nuget.html" class="read-more">Read More</a>
+    </article>
+    <br /><br />
+  
+    <article class="post">
+
+      <h1><a href="/content%20search/developer/sitecore/2013/09/03/sitecore-7-add-single-item-to-index.html">Sitecore 7 Add Single Item To Index</a></h1>
+
+      <div class="entry">
+        Recently I came up with a scenario where users were authoring content on the front end of a Sitecore site which then updated a list on the screen. The list was taking advantage of Sitecore 7's new search API, so i needed to rebuild the index to display the newly inserted item. Rebuilding the whole index for a single new item would be excessive, slow, CPU intensive and can cause issues for other users loading the page. Using JustDecompile to...
+      </div>
+
+      <a href="/content%20search/developer/sitecore/2013/09/03/sitecore-7-add-single-item-to-index.html" class="read-more">Read More</a>
+    </article>
+    <br /><br />
+  
+    <article class="post">
+
+      <h1><a href="/content%20editor/developer/sitecore/2013/09/03/registering-a-new-command.html">Registering A New Command</a></h1>
+
+      <div class="entry">
+        Registering a new Command within the Sitecore Content Editor 1. Create a class that implements the Command Class. [caption id="attachment_44" align="aligncenter" width="300"] Command Class[/caption] 2. Add the new command to the Commands.Config, You need to specify a command name, the namespace and assembly of the command. (this must match the command for the button in the core database) [caption id="attachment_38" align="aligncenter" width="300"] Extending Commands Config[/caption] 3. Add a new button to the Ribbon in the core database. /Sitecore/Content/Applications/Content Editor/Ribbons/(SectionName). [caption...
+      </div>
+
+      <a href="/content%20editor/developer/sitecore/2013/09/03/registering-a-new-command.html" class="read-more">Read More</a>
+    </article>
+    <br /><br />
+  
+    <article class="post">
+
+      <h1><a href="/sitecore/2013/09/03/sitecore-save-and-publish-button.html">Sitecore Save and Publish Button</a></h1>
+
+      <div class="entry">
+        I've noticed a common question with teaching new content editors how to create and publish content in Sitecore. "I've created my content and saved it, how do i get the content live on the site" As we know saving content only writes the item to the Master database so the content appears in a draft status. The content editor then needs to publish the content to the web database for it to appear on the web site. Some Sitecore instances...
+      </div>
+
+      <a href="/sitecore/2013/09/03/sitecore-save-and-publish-button.html" class="read-more">Read More</a>
+    </article>
+    <br /><br />
+  
+    <article class="post">
+
+      <h1><a href="/developer/sitecore/2013/08/01/sitecore-extension-methods.html">Sitecore extension methods</a></h1>
+
+      <div class="entry">
+        Over the past year in my spare time I've been building a code library for sitecore 6.X and Sitecore 7 more recently. I've built up a big list of Sitecore extension methods so I thought I'd share some of my favorites. Feel free to comment with your own. Sitecore 7 Indexing [code language="csharp"] public static void AddItemToIndex(this Item item, string indexName) { var tempItem = (SitecoreIndexableItem)item; ContentSearchManager.GetIndex(indexName).Refresh(tempItem); } [/code] [code language="csharp"] public static void UpdateItemInIndex(this Item item, string indexName) {...
+      </div>
+
+      <a href="/developer/sitecore/2013/08/01/sitecore-extension-methods.html" class="read-more">Read More</a>
+    </article>
+    <br /><br />
+  
+    <article class="post">
+
+      <h1><a href="/content%20search/sitecore/2013/07/31/sitecore-contentsearch-exclude-standard-values.html">Sitecore ContentSearch exclude standard values</a></h1>
+
+      <div class="entry">
+        Using the SearchContext class within Sitecore the result collection brings back the standard values item along with any items that are matched. To solve this problem you can add a computed field to the Lucene index to return a bool property to Linq to say whether the item is a standard value of not. This means you can search and exclude standard values like this. context.GetQueryable&lt;ClassName&gt;().Where(i =&gt; i.TemplateId == DataAccess.GlobalItems.CarTemplate.ID &amp;&amp; !i.IsStandardValue).ToList(); Add the following tag to the AddComputedIndexField section...
+      </div>
+
+      <a href="/content%20search/sitecore/2013/07/31/sitecore-contentsearch-exclude-standard-values.html" class="read-more">Read More</a>
+    </article>
+    <br /><br />
+  
 </div>
 
-      </div>
-    </main>
+        </section>
 
-    <footer class="site-footer">
+        <aside id="sidebar">
+            <h3>About Me</h3>
+            <p>Senior Product Developer at Sitecore</p>
+            <p>Sitecore MVP 2015 / 2016</p>
+             
+            <h3>Categories</h3>
 
-  <div class="wrapper">
+            <ul class="tag-box inline">
+                
+                
+                   
+                    <li><a href="/categories#Content Search">Content search <span>(9)</span></a></li>
+                   
+                    <li><a href="/categories#Sitecore">Sitecore <span>(53)</span></a></li>
+                   
+                    <li><a href="/categories#Developer">Developer <span>(26)</span></a></li>
+                   
+                    <li><a href="/categories#Content Editor">Content editor <span>(6)</span></a></li>
+                   
+                    <li><a href="/categories#SPEAK">Speak <span>(13)</span></a></li>
+                   
+                    <li><a href="/categories#Email Campaign Manager">Email campaign manager <span>(1)</span></a></li>
+                   
+                    <li><a href="/categories#Email">Email <span>(1)</span></a></li>
+                   
+                    <li><a href="/categories#Workflow">Workflow <span>(1)</span></a></li>
+                   
+                    <li><a href="/categories#Web Item API">Web item api <span>(3)</span></a></li>
+                   
+                    <li><a href="/categories#WFFM">Wffm <span>(1)</span></a></li>
+                   
+                    <li><a href="/categories#Solr">Solr <span>(1)</span></a></li>
+                   
+                    <li><a href="/categories#Sitecore.services.client">Sitecore.services.client <span>(11)</span></a></li>
+                   
+                    <li><a href="/categories#MongoDB">Mongodb <span>(1)</span></a></li>
+                   
+                    <li><a href="/categories#Sitecore Contributions">Sitecore contributions <span>(1)</span></a></li>
+                   
+                    <li><a href="/categories#Sitecore Fundamentals">Sitecore fundamentals <span>(1)</span></a></li>
+                   
+                    <li><a href="/categories#Glass">Glass <span>(2)</span></a></li>
+                   
+                    <li><a href="/categories#EntityService">Entityservice <span>(2)</span></a></li>
+                   
+                    <li><a href="/categories#IoT">Iot <span>(1)</span></a></li>
+                  
+                
+              
+              </ul>
 
-    <h2 class="footer-heading">Mike Robbins</h2>
-
-    <div class="footer-col-wrapper">
-      <div class="footer-col footer-col-1">
-        <ul class="contact-list">
-          <li>
-            
-              Mike Robbins
-            
-            </li>
-            
-            <li><a href="mailto:your-email@example.com">your-email@example.com</a></li>
-            
-        </ul>
-      </div>
-
-      <div class="footer-col footer-col-2">
-        <ul class="social-media-list">
-          
-          <li>
-            <a href="https://github.com/komainu85"><span class="icon icon--github"><svg viewBox="0 0 16 16" width="16px" height="16px"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
-</span><span class="username">komainu85</span></a>
-
-          </li>
-          
-
-          
-          <li>
-            <a href="https://twitter.com/sobek85"><span class="icon icon--twitter"><svg viewBox="0 0 16 16" width="16px" height="16px"><path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/></svg>
-</span><span class="username">sobek85</span></a>
-
-          </li>
-          
-        </ul>
-      </div>
-
-      <div class="footer-col footer-col-3">
-        <p>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
-</p>
+                    <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</p>
+                    
+            </aside>
       </div>
     </div>
 
-  </div>
-
-</footer>
-
-
+    
   </body>
-
 </html>
