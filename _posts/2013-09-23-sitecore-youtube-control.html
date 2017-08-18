@@ -18,11 +18,8 @@ meta:
   _edit_last: '53242770'
   publicize_twitter_user: Sobek1985
   _wpas_done_4473872: '1'
-  _publicize_done_external: a:1:{s:7:"twitter";a:1:{i:35759471;b:1;}}
   _wpas_skip_4473872: '1'
 author:
-  
-
   display_name: Mike Robbins
   first_name: ''
   last_name: ''
@@ -31,17 +28,24 @@ author:
 <ol>
 <li>Create a class using the code below</li>
 <li>Register the control in the web.config
-{% highlight xml %}
-<controls>
-  <add tagPrefix="TB" namespace="ToolBox.SitecoreCMS.Web.UI.WebControls" assembly="ToolBox.SitecoreCMS" /><br />
-</controls>
-<p>{% endhighlight %}</li>
+
+  {% highlight xml %}
+  <controls>
+    <add tagPrefix="TB" namespace="ToolBox.SitecoreCMS.Web.UI.WebControls" assembly="ToolBox.SitecoreCMS" />
+  </controls>
+  {% endhighlight %}
+
+</li>
 <li>Use the control within your sublayouts
-{% highlight xml %}
-<tb:YouTube runat="server" Field="YouTubeID" Height="200" Width="400"/><br />
-{% endhighlight %}</li>
+
+  {% highlight xml %}
+    <tb:YouTube runat="server" Field="YouTubeID" Height="200" Width="400"/>
+  {% endhighlight %}
+
+</li>
 </ol>
 <p>register the control within the web.config and use it within your sublayouts.</p>
+
 {% highlight csharp %}
 using System;
 using System.Web.UI;

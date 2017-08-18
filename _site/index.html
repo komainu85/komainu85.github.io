@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="/assets/css/style.css?v=60f20c4f2d7d10a91e2a7d86006d2c546a8fcb2c" media="screen" type="text/css">
+    <link rel="stylesheet" href="/assets/css/style.css?v=a871b098fdb74f2b2f9df2a6eb0d9e712e4324c6" media="screen" type="text/css">
     <link rel="stylesheet" href="/assets/css/print.css" media="print" type="text/css">
 
     <!--[if lt IE 9]>
@@ -172,7 +172,7 @@ In Sitecore 7.5 and 8.x Sitecore.app has been moved. The new namespace is Siteco
       <h1><a href="/developer/sitecore/2015/07/27/sitecore-mvc-custom-id-model-binder.html">Sitecore MVC Custom ID Model Binder</a></h1>
 
       <div class="entry">
-        In this post i'll explain how to create a custom Model binder in ASP.net to allow you to pass in a Sitecore ID in your controller action. For example the controller action below accepts a Sitecore ID, however .net doesn't know how to create the ID class from the form values passed to the action. &lt;br /&gt; [HttpPost]&lt;br /&gt; public void AddToShoppingBasket(ID itemId)&lt;br /&gt; {&lt;/p&gt; &lt;p&gt; _basketRepository.Add(itemId);&lt;/p&gt; &lt;p&gt;}&lt;br /&gt; This is where custom Model bindings come into play. We are able...
+        In this post i'll explain how to create a custom Model binder in ASP.net to allow you to pass in a Sitecore ID in your controller action. For example the controller action below accepts a Sitecore ID, however .net doesn't know how to create the ID class from the form values passed to the action. [HttpPost]&lt;br /&gt; public void AddToShoppingBasket(ID itemId) {&lt;/p&gt; &lt;p&gt; _basketRepository.Add(itemId); &lt;p&gt;} This is where custom Model bindings come into play. We are able to create a class...
       </div>
 
       <a href="/developer/sitecore/2015/07/27/sitecore-mvc-custom-id-model-binder.html" class="read-more">Read More</a>
@@ -283,7 +283,7 @@ Below I have created a few helper functions to help front end developers add htm
       <h1><a href="/sitecore/sitecore.services.client/speak/2015/03/30/sitecore-speak-list-component-custom-tile-and-knockout-databinding.html">Sitecore SPEAK List Component, Custom Tile and Knockout Databinding</a></h1>
 
       <div class="entry">
-        In this post I will walk through using the Sitecore SPEAK List Component using Knockout databinding and a custom tile to create a custom look and feel of the List component. I'm assuming you have already got a SPEAK application or understand the basics of creating a SPEAK application. (There are some great posts on Sitecore SPEAK from Martina&nbsp;if your new to SPEAK). [caption  id="attachment_647" align="aligncenter"] Core DB SPEAK Component In the presentation details of the component add a...
+        In this post I will walk through using the Sitecore SPEAK List Component using Knockout databinding and a custom tile to create a custom look and feel of the List component. I'm assuming you have already got a SPEAK application or understand the basics of creating a SPEAK application. (There are some great posts on Sitecore SPEAK from Martina&nbsp;if your new to SPEAK). [caption id="attachment_647" align="aligncenter"] Core DB SPEAK Component In the presentation details of the component add a new...
       </div>
 
       <a href="/sitecore/sitecore.services.client/speak/2015/03/30/sitecore-speak-list-component-custom-tile-and-knockout-databinding.html" class="read-more">Read More</a>
@@ -382,7 +382,7 @@ Decompiling the above code, you can see that is simply checks whether the path c
       <h1><a href="/mongodb/sitecore/2015/02/02/install-mongodb-as-a-windows-service-for-sitecore.html">Install MongoDB as a Windows service for Sitecore</a></h1>
 
       <div class="entry">
-        To install MongoDB as a Windows service. Download and install MongoDB https://www.mongodb.org/downloads Run Command Prompt as Admin. CD to the directory containing the bin directory of your MongoDB installation. Usually "C:\Program Files\MongoDB 2.6 Standard\bin" on a standard installation of MongoDB. Run the following script to install MongDB as a service. mongod --dbpath &amp;quot;PathToStoreMongoDbs&amp;quot; --serviceName &amp;quot;NameYouWantToCallTheService&amp;quot; --logpath &amp;quot;PathOfWhereToStoreLogFiles&amp;quot; --logappend --install e.g. mongod --dbpath &amp;quot;C:\inetpub\wwwroot\MikeRobbins8\Databases&amp;quot; --serviceName &amp;quot;MikeRobbinsMongoDB&amp;quot; --logpath &amp;quot;C:\inetpub\wwwroot\MikeRobbins8\MongoDBLogs\mongodb.log&amp;quot; --logappend --install Within the services snap in you will see the MongoDB service listed where...
+        To install MongoDB as a Windows service. Download and install MongoDB https://www.mongodb.org/downloads Run Command Prompt as Admin. CD to the directory containing the bin directory of your MongoDB installation. Usually "C:\Program Files\MongoDB 2.6 Standard\bin" on a standard installation of MongoDB. Run the following script to install MongDB as a service. mongod --dbpath "PathToStoreMongoDbs" --serviceName "NameYouWantToCallTheService" --logpath "PathOfWhereToStoreLogFiles" --logappend --install e.g. mongod --dbpath "C:\inetpub\wwwroot\MikeRobbins8\Databases" --serviceName "MikeRobbinsMongoDB" --logpath "C:\inetpub\wwwroot\MikeRobbins8\MongoDBLogs\mongodb.log" --logappend --install Within the services snap in you will see the MongoDB service listed where...
       </div>
 
       <a href="/mongodb/sitecore/2015/02/02/install-mongodb-as-a-windows-service-for-sitecore.html" class="read-more">Read More</a>
@@ -432,7 +432,7 @@ Decompiling the above code, you can see that is simply checks whether the path c
       <h1><a href="/sitecore/web%20item%20api/2014/12/02/web-api-sitecore-id-formatter.html">Web API Sitecore ID Formatter</a></h1>
 
       <div class="entry">
-        When using Web API, Sitecore ID's serialise with {} around the IDs. This can cause issues when working with JSON as this denotes objects encapsulation. [caption id="attachment_307" align="aligncenter" ] JSON Sitecore ID's Below is a custom formatter to format Sitecore item IDs without the {}. This example has Web API registered to run alongside Web Item API. See Patrick Delancy's blog post about running Web API alongside Web Item API http://patrickdelancy.com/2013/08/sitecore-webapi-living-harmony/ [caption id="attachment_311" align="aligncenter" ] The corresponding JSON &lt;br /&gt; public class RegisterWebApiRoute&lt;br...
+        When using Web API, Sitecore ID's serialise with {} around the IDs. This can cause issues when working with JSON as this denotes objects encapsulation. [caption id="attachment_307" align="aligncenter" ] JSON Sitecore ID's Below is a custom formatter to format Sitecore item IDs without the {}. This example has Web API registered to run alongside Web Item API. See Patrick Delancy's blog post about running Web API alongside Web Item API http://patrickdelancy.com/2013/08/sitecore-webapi-living-harmony/ [caption id="attachment_311" align="aligncenter" ] The corresponding JSON public class RegisterWebApiRoute&lt;br /&gt; {...
       </div>
 
       <a href="/sitecore/web%20item%20api/2014/12/02/web-api-sitecore-id-formatter.html" class="read-more">Read More</a>
@@ -444,7 +444,7 @@ Decompiling the above code, you can see that is simply checks whether the path c
       <h1><a href="/developer/sitecore/speak/2014/11/14/sitecore-speak-visual-studio-project-and-item-templates.html">Sitecore SPEAK Visual Studio Project and Item Templates</a></h1>
 
       <div class="entry">
-        To help developers new to Sitecore SPEAK development and speed up development for existing developers, I've created some Visual Studio templates. These help to setup new VS projects correctly for SPEAK development and add SPEAK items quickly. Ill be adding more SPEAK Visual Studio templates in the future. The first is a project template that creates a new project ready to create an SPEAK application. [caption id="attachment_301" align="aligncenter"  class=" "] Sitecore SPEAK Application The second allows you to add new PageCode...
+        To help developers new to Sitecore SPEAK development and speed up development for existing developers, I've created some Visual Studio templates. These help to setup new VS projects correctly for SPEAK development and add SPEAK items quickly. Ill be adding more SPEAK Visual Studio templates in the future. The first is a project template that creates a new project ready to create an SPEAK application. [caption id="attachment_301" align="aligncenter" class=" "] Sitecore SPEAK Application The second allows you to add new PageCode files...
       </div>
 
       <a href="/developer/sitecore/speak/2014/11/14/sitecore-speak-visual-studio-project-and-item-templates.html" class="read-more">Read More</a>
@@ -456,7 +456,7 @@ Decompiling the above code, you can see that is simply checks whether the path c
       <h1><a href="/content%20search/developer/sitecore/solr/2014/11/07/install-solr-as-windows-service-for-sitecore-content-search.html">Install Solr as Windows Service for Sitecore Content Search</a></h1>
 
       <div class="entry">
-        To install Solr as a Windows service. Download and setup Solr for Sitecore.Great tutorial from Dan Solovay on this http://www.dansolovay.com/2013/05/setting-up-solr-with-sitecore-7.html Download Non Sucking Service Manager from http://nssm.cc/download Copy the nssm.exe into your solr directory. [caption id="attachment_292" align="aligncenter"  class=" "] NSSM Create a bat file within the Solr/example folder. Example below, where CD is your example folder within your Solr directory. @echo off cd &amp;quot;C:\solr\example\&amp;quot; java -Xms64M -Xmx256M -jar start.jar Run Command Prompt as Admin. CD to the directory containing of...
+        To install Solr as a Windows service. Download and setup Solr for Sitecore.Great tutorial from Dan Solovay on this http://www.dansolovay.com/2013/05/setting-up-solr-with-sitecore-7.html Download Non Sucking Service Manager from http://nssm.cc/download Copy the nssm.exe into your solr directory. [caption id="attachment_292" align="aligncenter" class=" "] NSSM Create a bat file within the Solr/example folder. Example below, where CD is your example folder within your Solr directory. @echo off cd "C:\solr\example\" java -Xms64M -Xmx256M -jar start.jar Run Command Prompt as Admin. CD to the directory containing of your...
       </div>
 
       <a href="/content%20search/developer/sitecore/solr/2014/11/07/install-solr-as-windows-service-for-sitecore-content-search.html" class="read-more">Read More</a>
@@ -480,7 +480,7 @@ Decompiling the above code, you can see that is simply checks whether the path c
       <h1><a href="/developer/sitecore/wffm/2014/10/15/write-to-web-forms-programmatically.html">Write to Web Forms Programmatically</a></h1>
 
       <div class="entry">
-        Recently I had a requirement to capture a number of parameters from a users session and provide Sitecore administrators a way of reporting on this data and exporting the data to CSV for analysis. The reporting within WFFM was exactly what I was looking to achieve. I wondered if I could tap into this programmatically and use WFFM as my analysis and exporting tool. [caption id="attachment_256" align="aligncenter"  class=" "] Form Reports The idea is to create a new Form...
+        Recently I had a requirement to capture a number of parameters from a users session and provide Sitecore administrators a way of reporting on this data and exporting the data to CSV for analysis. The reporting within WFFM was exactly what I was looking to achieve. I wondered if I could tap into this programmatically and use WFFM as my analysis and exporting tool. [caption id="attachment_256" align="aligncenter" class=" "] Form Reports The idea is to create a new Form within...
       </div>
 
       <a href="/developer/sitecore/wffm/2014/10/15/write-to-web-forms-programmatically.html" class="read-more">Read More</a>
@@ -492,7 +492,7 @@ Decompiling the above code, you can see that is simply checks whether the path c
       <h1><a href="/sitecore/speak/2014/10/10/sitecore-speak-dialog-within-desktop.html">Sitecore SPEAK Dialog Within Desktop</a></h1>
 
       <div class="entry">
-        Here is a short useful tutorial for anyone wanting to add a SPEAK Dialog control within the Sitecore desktop view. Basically it uses a Sitecore sheer ui application as a proxy to point at the url of the SPEAK application. [caption id="attachment_226" align="aligncenter"  class=" "] SPEAK Dialog Create a Sitecore dialog application using Sitecore rocks within the core database. [caption id="attachment_227" align="aligncenter"  class=" "] SPEAK Dialog Application Create a standard application item under content / applications in the...
+        Here is a short useful tutorial for anyone wanting to add a SPEAK Dialog control within the Sitecore desktop view. Basically it uses a Sitecore sheer ui application as a proxy to point at the url of the SPEAK application. [caption id="attachment_226" align="aligncenter" class=" "] SPEAK Dialog Create a Sitecore dialog application using Sitecore rocks within the core database. [caption id="attachment_227" align="aligncenter" class=" "] SPEAK Dialog Application Create a standard application item under content / applications in the core database.Set...
       </div>
 
       <a href="/sitecore/speak/2014/10/10/sitecore-speak-dialog-within-desktop.html" class="read-more">Read More</a>
@@ -504,7 +504,7 @@ Decompiling the above code, you can see that is simply checks whether the path c
       <h1><a href="/content%20search/developer/sitecore/2014/09/23/solr-search-on-exact-phrase.html">Solr Search On Exact Phrase</a></h1>
 
       <div class="entry">
-        Very brief code sample of how to perform a exact phrase match query in Solr. Using the Solr Admin's Query tool to perform a search on a field, you will notice that Solr splits each word into a token to search on. [caption id="attachment_215" align="aligncenter"  class=" "] Solr Admin Query &nbsp; Most of the time this is the desired functionality, however there could be times where you want to return results where the exact phrase is matched. If you...
+        Very brief code sample of how to perform a exact phrase match query in Solr. Using the Solr Admin's Query tool to perform a search on a field, you will notice that Solr splits each word into a token to search on. [caption id="attachment_215" align="aligncenter" class=" "] Solr Admin Query &nbsp; Most of the time this is the desired functionality, however there could be times where you want to return results where the exact phrase is matched. If you perform...
       </div>
 
       <a href="/content%20search/developer/sitecore/2014/09/23/solr-search-on-exact-phrase.html" class="read-more">Read More</a>
@@ -588,7 +588,9 @@ Decompiling the above code, you can see that is simply checks whether the path c
       <h1><a href="/content%20search/developer/sitecore/2013/12/17/sitecore-7-search-id-array-type-converter.html">Sitecore 7 Search ID Array Type Converter</a></h1>
 
       <div class="entry">
-        This is a simple type converter that allows you to convert a collection of Sitecore IDs stored in a Lucene search index into a List. &lt;br /&gt; public class ListIDConverter : TypeConverter&lt;br /&gt; {&lt;br /&gt; public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)&lt;br /&gt; {&lt;br /&gt; if (sourceType == typeof(List&lt;ID&gt;))&lt;br /&gt; {&lt;br /&gt; return true;&lt;br /&gt; }&lt;/p&gt; &lt;p&gt; return base.CanConvertFrom(context, sourceType);&lt;br /&gt; }&lt;/p&gt; &lt;p&gt; public override bool CanConvertTo(ITypeDescriptorContext context, Type destinationType)&lt;br /&gt; {&lt;br /&gt; if (destinationType == typeof(List&lt;string&gt;))&lt;br /&gt; {&lt;br /&gt;...
+        This is a simple type converter that allows you to convert a collection of Sitecore IDs stored in a Lucene search index into a List.
+
+
       </div>
 
       <a href="/content%20search/developer/sitecore/2013/12/17/sitecore-7-search-id-array-type-converter.html" class="read-more">Read More</a>
@@ -624,7 +626,12 @@ Decompiling the above code, you can see that is simply checks whether the path c
       <h1><a href="/developer/sitecore/2013/09/23/sitecore-youtube-control.html">Sitecore YouTube Control</a></h1>
 
       <div class="entry">
-        A very simple and useful YouTube control for Sitecore for embedding YouTube videos. You can either specify a Sitcore item to get the YouTube ID field from, otherwise it will use the context item. Create a class using the code below Register the control in the web.config&lt;br /&gt; &lt;controls&gt;&lt;br /&gt; &lt;add tagPrefix=&amp;quot;TB&amp;quot; namespace=&amp;quot;ToolBox.SitecoreCMS.Web.UI.WebControls&amp;quot; assembly=&amp;quot;ToolBox.SitecoreCMS&amp;quot; /&gt;&lt;br /&gt; &lt;/controls&gt;&lt;/p&gt; &lt;p&gt; Use the control within your sublayouts&lt;br /&gt; &lt;tb:YouTube runat=&amp;quot;server&amp;quot; Field=&amp;quot;YouTubeID&amp;quot; Height=&amp;quot;200&amp;quot; Width=&amp;quot;400&amp;quot;/&gt;&lt;br /&gt; register the control within the web.config and use it...
+        A very simple and useful YouTube control for Sitecore for embedding YouTube videos. You can either specify a Sitcore item to get the YouTube ID field from, otherwise it will use the context item.
+
+Create a class using the code below
+Register the control in the web.config
+
+
       </div>
 
       <a href="/developer/sitecore/2013/09/23/sitecore-youtube-control.html" class="read-more">Read More</a>

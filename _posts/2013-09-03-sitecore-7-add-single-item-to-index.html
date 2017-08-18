@@ -28,6 +28,7 @@ author:
 <p>Recently I came up with a scenario where users were authoring content on the front end of a Sitecore site which then updated a list on the screen. The list was taking advantage of Sitecore 7's new search API, so i needed to rebuild the index to display the newly inserted item.</p>
 <p>Rebuilding the whole index for a single new item would be excessive, slow, CPU intensive and can cause issues for other users loading the page. Using JustDecompile to look through the ContentSearch Namespaces i found these useful functions to add, update or delete  a single item in the index. This performs really fast and solves all my issues about rebuilding the whole index.</p>
 <p><strong>Here are my methods wrapping the functionality.</strong></p>
+
 {% highlight csharp %}
 public static void AddItemToIndex(Item item, string indexName)
 {

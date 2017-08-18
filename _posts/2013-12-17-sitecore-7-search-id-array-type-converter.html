@@ -27,6 +27,7 @@ author:
   last_name: ''
 ---
 <p>This is a simple type converter that allows you to convert a collection of Sitecore IDs stored in a Lucene search index into a List.</p>
+
 {% highlight csharp %}
 public class ListIDConverter : TypeConverter
 {
@@ -63,7 +64,9 @@ public class ListIDConverter : TypeConverter
     }
 }
 {% endhighlight %}
+
 <p>To use the Type converter decorate your public property with the TypeConverter in your Search Result class.</p>
+
 {% highlight csharp %}
 [TypeConverter(typeof(ListIDConverter))]
 [IndexField("_templates")]

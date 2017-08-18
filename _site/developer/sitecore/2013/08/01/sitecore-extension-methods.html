@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="/assets/css/style.css?v=60f20c4f2d7d10a91e2a7d86006d2c546a8fcb2c" media="screen" type="text/css">
+    <link rel="stylesheet" href="/assets/css/style.css?v=a871b098fdb74f2b2f9df2a6eb0d9e712e4324c6" media="screen" type="text/css">
     <link rel="stylesheet" href="/assets/css/print.css" media="print" type="text/css">
 
     <!--[if lt IE 9]>
@@ -63,7 +63,7 @@
 <figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">PublishItem</span><span class="p">(</span><span class="k">this</span> <span class="n">Item</span> <span class="n">item</span><span class="p">)</span>
 <span class="p">{</span>
   <span class="kt">var</span> <span class="n">publishOptions</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">PublishOptions</span><span class="p">(</span><span class="n">item</span><span class="p">.</span><span class="n">Database</span><span class="p">,</span>
-  <span class="n">Database</span><span class="p">.</span><span class="nf">GetDatabase</span><span class="p">(&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">web</span><span class="p">&amp;</span><span class="n">quot</span><span class="p">;),</span>
+  <span class="n">Database</span><span class="p">.</span><span class="nf">GetDatabase</span><span class="p">(</span><span class="s">"web"</span><span class="p">),</span>
   <span class="n">PublishMode</span><span class="p">.</span><span class="n">SingleItem</span><span class="p">,</span>
   <span class="n">item</span><span class="p">.</span><span class="n">Language</span><span class="p">,</span>
   <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">);</span> <span class="c1">// Create a publisher with the publishoptions

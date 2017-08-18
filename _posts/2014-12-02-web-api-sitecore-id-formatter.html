@@ -54,7 +54,7 @@ author:
             config.Routes.MapHttpRoute("DefaultApiRoute",<br />
                                      "mikerobbinsapi/{controller}/{id}",<br />
                                      new { id = RouteParameter.Optional });
-<p>            var appXmlType = config.Formatters.XmlFormatter.SupportedMediaTypes.FirstOrDefault(t => t.MediaType == "application/xml");
+       var appXmlType = config.Formatters.XmlFormatter.SupportedMediaTypes.FirstOrDefault(t => t.MediaType == "application/xml");
             config.Formatters.XmlFormatter.SupportedMediaTypes.Remove(appXmlType);
            config.Formatters.JsonFormatter.SerializerSettings.Converters.Add(new IDConverter());
         }
