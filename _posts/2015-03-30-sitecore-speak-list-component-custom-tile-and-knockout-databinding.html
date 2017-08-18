@@ -26,7 +26,7 @@ meta:
   publicize_google_plus_url: https://plus.google.com/113240140771005714369/posts/MYCzT1GfU8d
   _wpas_done_5582732: '1'
   _publicize_done_external: a:1:{s:11:"google_plus";a:1:{s:21:"113240140771005714369";b:1;}}
-  publicize_twitter_user: Sobek1985
+  
   publicize_twitter_url: http://t.co/ouj9N5zRw6
   _wpas_done_4473872: '1'
   publicize_linkedin_url: https://www.linkedin.com/updates?discuss=&scope=50486614&stype=M&topic=5988377875991007242&type=U&a=KYkJ
@@ -44,8 +44,8 @@ meta:
   _wpas_skip_5582720: '1'
   _publicize_job_id: '22900594773'
 author:
-  login: sobek1985
-  email: sobek1985@gmail.com
+  
+
   display_name: Mike Robbins
   first_name: ''
   last_name: ''
@@ -73,7 +73,7 @@ author:
 <h3>Custom Tile and Knockout Databinding</h3>
 <p>In the custom tile cshtml file, this is where we can specify the html markup for an individual item bound to the list component via the datasource.</p>
 <p>Below is an example of the standard Sitecore tile that comes with a fresh install of Sitecore.</p>
-<p>https://gist.github.com/komainu85/8c22eb9a77cdc2422015</p>
+<p>{% gist komainu85/8c22eb9a77cdc2422015 %}</p>
 <p>When creating a custom tile, I usually copy this HTML to use as a template. This has the required HTML and CSS classes to look pretty good as a starting point.</p>
 <p>Knockout databinding works on standard html, by allowing you to databind attributes and inner elements&nbsp;to properties of&nbsp;the model that's provided by the datasource. In this example we are binding the following model to our list component from the datasource.</p>
 <p>We have the following properties:</p>
@@ -82,18 +82,18 @@ author:
 <li><strong>Path</strong> - Path to a image.</li>
 <li><strong>Name</strong> - Filename of the image</li>
 </ul>
-<p>https://gist.github.com/bc1c1b209ac198643ed5</p>
+<p>{% gist komainu85/https://gist.github.com/bc1c1b209ac198643ed5 %}</p>
 <h3>Knockout Attribute Databinding</h3>
 <p>To use knockout for databinding, the syntax is to add&nbsp;a data-bind attribute to the HTML&nbsp;element. Within the data-bind attribute, we can tell knockout which HTML attribute we want to bind to which property&nbsp;in our model. Within the data-bind attribute, add attr to tell knockout we want to bind an attribute of the HTML element, we can tell knockout which attribute of the HTML&nbsp;tag we wish to databind followed by which property in the model we want to databind too.</p>
-<p>So take this case for example: One of the properties we have in our model is the path of the&nbsp;image. To display this in the tile we create a standard &lt;img&gt; HTML tag, however we want the src property to be set by knockout from the path property&nbsp;in our model (Note the property name is case sensitive).</p>
+<p>So take this case for example: One of the properties we have in our model is the path of the&nbsp;image. To display this in the tile we create a standard <img> HTML tag, however we want the src property to be set by knockout from the path property&nbsp;in our model (Note the property name is case sensitive).</p>
 <p>As you can see below we set the databind the src attribute of the img tag to the Path property&nbsp;in our model (The model coming from the datasource bound to the list component).</p>
-<p>https://gist.github.com/komainu85/fafadebf36698536ed97</p>
+<p>{% gist komainu85/fafadebf36698536ed97 %}</p>
 <h3>Knockout Inner Text Databinding</h3>
 <p>Databinding to the inner text of a HTML element works very similar to databinding an attribute. We use the knockout data-bind attribute again, instead of using attr we use the text syntax followed by the property in the model we wish to databind.</p>
 <p>So in this example we want to use a span tag, and databind&nbsp;its inner text property to the Name property in the model.</p>
-<p>https://gist.github.com/komainu85/c8c05e02c7f682e4332b</p>
+<p>{% gist komainu85/c8c05e02c7f682e4332b %}</p>
 <p>Below is the full markup for the&nbsp;custom tile.</p>
-<p>https://gist.github.com/komainu85/69321fad18778b7f6f9d</p>
+<p>{% gist komainu85/69321fad18778b7f6f9d %}</p>
 <h3>Example Project Source</h3>
 <p>An example SPEAK application is available on <a title="https://github.com/komainu85/WallpaperManager" href="https://github.com/komainu85/WallpaperManager">GitHub</a> demonstrating Knockout databinding and the SPEAK list component.</p>
 <h3>Master Sitecore</h3>

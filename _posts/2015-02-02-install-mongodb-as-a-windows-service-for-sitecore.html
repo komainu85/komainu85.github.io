@@ -17,12 +17,7 @@ tags:
 meta:
   geo_public: '0'
   _edit_last: '53242770'
-  publicize_google_plus_url: https://plus.google.com/113240140771005714369/posts/hMFKm2WCE6t
-  publicize_linkedin_url: https://www.linkedin.com/updates?discuss=&scope=50486614&stype=M&topic=5967941045239980032&type=U&a=S-Pg
   _wpas_done_5582732: '1'
-  _publicize_done_external: a:1:{s:11:"google_plus";a:1:{s:21:"113240140771005714369";b:1;}}
-  publicize_twitter_user: Sobek1985
-  publicize_twitter_url: http://t.co/GBXJDlAIhP
   _wpas_done_4473872: '1'
   _wpas_done_5582720: '1'
   _wpas_skip_5582732: '1'
@@ -33,8 +28,6 @@ meta:
   _oembed_d7d9d94ced3ce0367a974fcd77d6b814: "{{unknown}}"
   _oembed_25d306f7e31edf93ab53866633c2bf1b: "{{unknown}}"
 author:
-  login: sobek1985
-  email: sobek1985@gmail.com
   display_name: Mike Robbins
   first_name: ''
   last_name: ''
@@ -44,15 +37,19 @@ author:
 <li>Download and install MongoDB <a title="https://www.mongodb.org/downloads" href="https://www.mongodb.org/downloads">https://www.mongodb.org/downloads</a></li>
 <li>Run Command Prompt as Admin. CD to the directory containing the bin directory of your MongoDB installation. Usually "C:\Program Files\MongoDB 2.6 Standard\bin" on a standard installation of MongoDB.</li>
 <li>Run the following script to install MongDB as a service.
-<p>[code language="bash"]mongod --dbpath &quot;PathToStoreMongoDbs&quot; --serviceName &quot;NameYouWantToCallTheService&quot; --logpath &quot;PathOfWhereToStoreLogFiles&quot; --logappend --install[/code]</p>
+{% highlight bash %}
+mongod --dbpath &quot;PathToStoreMongoDbs&quot; --serviceName &quot;NameYouWantToCallTheService&quot; --logpath &quot;PathOfWhereToStoreLogFiles&quot; --logappend --install
+{% endhighlight %}
 <p><strong>e.g.</strong></p>
-<p>[code language="bash"]<br />
-mongod --dbpath &quot;C:\inetpub\wwwroot\MikeRobbins8\Databases&quot; --serviceName &quot;MikeRobbinsMongoDB&quot; --logpath &quot;C:\inetpub\wwwroot\MikeRobbins8\MongoDBLogs\mongodb.log&quot; --logappend --install[/code]</p>
+{% highlight bash %}
+mongod --dbpath &quot;C:\inetpub\wwwroot\MikeRobbins8\Databases&quot; --serviceName &quot;MikeRobbinsMongoDB&quot; --logpath &quot;C:\inetpub\wwwroot\MikeRobbins8\MongoDBLogs\mongodb.log&quot; --logappend --install
+{% endhighlight %}
 </li>
 <li>Within the services snap in you will see the MongoDB service listed where you can start and stop the service. The service will be installed with the name you specified, however the display name will be set to MongoDB.
 <p>[caption id="attachment_430" align="aligncenter" width="300"]<a href="https://mikerobbinssitecore.files.wordpress.com/2015/02/mongodbservice.png"><img class="size-medium wp-image-430" src="{{ site.baseurl }}/assets/mongodbservice.png?w=300" alt="MongoDB Service" width="300" height="170" /></a> MongoDB Service[/caption]</li>
 <li>You can uninstall the MongoDB service using the following command.
-<p>[code language="bash"]<br />
-mongod --serviceName &quot;MikeRobbinsMongoDB&quot; --remove[/code]</p>
+{% highlight bash %}
+mongod --serviceName &quot;MikeRobbinsMongoDB&quot; --remove
+{% endhighlight %}
 </li>
 </ol>

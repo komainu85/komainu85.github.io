@@ -20,7 +20,7 @@ meta:
   publicize_google_plus_url: https://plus.google.com/113240140771005714369/posts/BuzGgQhmzhd
   _wpas_done_5582732: '1'
   _publicize_done_external: a:1:{s:11:"google_plus";a:1:{s:21:"113240140771005714369";b:1;}}
-  publicize_twitter_user: Sobek1985
+  
   publicize_twitter_url: http://t.co/KBDgt1bx0G
   _wpas_done_4473872: '1'
   publicize_linkedin_url: http://www.linkedin.com/updates?discuss=&scope=50486614&stype=M&topic=5895154723266260992&type=U&a=EF2B
@@ -29,8 +29,8 @@ meta:
   _wpas_skip_4473872: '1'
   _wpas_skip_5582720: '1'
 author:
-  login: sobek1985
-  email: sobek1985@gmail.com
+  
+
   display_name: Mike Robbins
   first_name: ''
   last_name: ''
@@ -43,7 +43,7 @@ author:
 <p>This example below uses a computed field that instead of indexing the ID of the tag, instead adds the item name of each tag seperated by a space. This then allows you to perform a text based search against the tag. (Sitecore by default indexes the __Semantics field, so here i'm creating a new field in the index called "tags" not to override any standard Sitecore functionality)</p>
 <p>&nbsp;</p>
 <h2>Computed Field Class</h2>
-<p>[code language="csharp"]<br />
+<p>{% highlight csharp %}<br />
 namespace MikeRobbins.CMS.ComputedFields<br />
 {<br />
 public class Tags : IComputedIndexField<br />
@@ -70,9 +70,9 @@ tags.Append(item.Name + &quot; &quot;);<br />
 public string ReturnType { get; set; }<br />
 }<br />
 }<br />
-[/code]</p>
+{% endhighlight %}</p>
 <h2>XML Config</h2>
 <p>Add this XML to the "AddComputedIndexField" section of your search index config.</p>
-<p>[code language="xml"]<br />
-&lt;field fieldName=&quot;tags&quot;                           &gt;MikeRobbins.CMS.ComputedFields.Tags,MikeRobbins.CMS&lt;/field&gt;<br />
-[/code]</p>
+<p>{% highlight xml %}<br />
+<field fieldName=&quot;tags&quot;                           >MikeRobbins.CMS.ComputedFields.Tags,MikeRobbins.CMS</field><br />
+{% endhighlight %}</p>

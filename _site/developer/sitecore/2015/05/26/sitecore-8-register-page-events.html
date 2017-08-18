@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="/assets/css/style.css?v=921f65196db0b9db054ecf34dedaa571dd6f74f2" media="screen" type="text/css">
+    <link rel="stylesheet" href="/assets/css/style.css?v=dae56a8db6603db1e68e23baaac2efad39566da9" media="screen" type="text/css">
     <link rel="stylesheet" href="/assets/css/print.css" media="print" type="text/css">
 
     <!--[if lt IE 9]>
@@ -16,15 +16,15 @@
 <title>Sitecore 8 Register Page Events | Mike Robbins</title>
 <meta property="og:title" content="Sitecore 8 Register Page Events" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="A quick Sitecore 8 code sample to demonstrate programatically registering a page event such as an internal search, or a downloaded resource. Firstly check whether the tracker is active, and there is a session. Get a reference to the current page Create an instance of PageEventData, passing in the event name (e.g. Search) and page event guid. The PageEventData exposes: itemId - The page item ID that raises the page event. Data - Data associated to the event such as search keywords. Text - Human readable text to go with the page event, appears as a summary in xProfile e.g. resource downloaded Pass the PageEventData into the register method of the current page to register the page event. https://gist.github.com/komainu85/8ea7ef8b9a8ee38c18ad721c8bb43566" />
-<meta property="og:description" content="A quick Sitecore 8 code sample to demonstrate programatically registering a page event such as an internal search, or a downloaded resource. Firstly check whether the tracker is active, and there is a session. Get a reference to the current page Create an instance of PageEventData, passing in the event name (e.g. Search) and page event guid. The PageEventData exposes: itemId - The page item ID that raises the page event. Data - Data associated to the event such as search keywords. Text - Human readable text to go with the page event, appears as a summary in xProfile e.g. resource downloaded Pass the PageEventData into the register method of the current page to register the page event. https://gist.github.com/komainu85/8ea7ef8b9a8ee38c18ad721c8bb43566" />
+<meta name="description" content="A quick Sitecore 8 code sample to demonstrate programatically registering a page event such as an internal search, or a downloaded resource. Firstly check whether the tracker is active, and there is a session. Get a reference to the current page Create an instance of PageEventData, passing in the event name (e.g. Search) and page event guid. The PageEventData exposes: itemId - The page item ID that raises the page event. Data - Data associated to the event such as search keywords. Text - Human readable text to go with the page event, appears as a summary in xProfile e.g. resource downloaded Pass the PageEventData into the register method of the current page to register the page event." />
+<meta property="og:description" content="A quick Sitecore 8 code sample to demonstrate programatically registering a page event such as an internal search, or a downloaded resource. Firstly check whether the tracker is active, and there is a session. Get a reference to the current page Create an instance of PageEventData, passing in the event name (e.g. Search) and page event guid. The PageEventData exposes: itemId - The page item ID that raises the page event. Data - Data associated to the event such as search keywords. Text - Human readable text to go with the page event, appears as a summary in xProfile e.g. resource downloaded Pass the PageEventData into the register method of the current page to register the page event." />
 <link rel="canonical" href="http://localhost:4000/developer/sitecore/2015/05/26/sitecore-8-register-page-events.html" />
 <meta property="og:url" content="http://localhost:4000/developer/sitecore/2015/05/26/sitecore-8-register-page-events.html" />
 <meta property="og:site_name" content="Mike Robbins" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2015-05-26T13:16:56+01:00" />
 <script type="application/ld+json">
-{"@context":"http://schema.org","@type":"BlogPosting","headline":"Sitecore 8 Register Page Events","author":{"@type":"Person","name":null},"datePublished":"2015-05-26T13:16:56+01:00","dateModified":"2015-05-26T13:16:56+01:00","description":"A quick Sitecore 8 code sample to demonstrate programatically registering a page event such as an internal search, or a downloaded resource. Firstly check whether the tracker is active, and there is a session. Get a reference to the current page Create an instance of PageEventData, passing in the event name (e.g. Search) and page event guid. The PageEventData exposes: itemId - The page item ID that raises the page event. Data - Data associated to the event such as search keywords. Text - Human readable text to go with the page event, appears as a summary in xProfile e.g. resource downloaded Pass the PageEventData into the register method of the current page to register the page event. https://gist.github.com/komainu85/8ea7ef8b9a8ee38c18ad721c8bb43566","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/developer/sitecore/2015/05/26/sitecore-8-register-page-events.html"},"url":"http://localhost:4000/developer/sitecore/2015/05/26/sitecore-8-register-page-events.html"}</script>
+{"@context":"http://schema.org","@type":"BlogPosting","headline":"Sitecore 8 Register Page Events","author":{"@type":"Person","name":null},"datePublished":"2015-05-26T13:16:56+01:00","dateModified":"2015-05-26T13:16:56+01:00","description":"A quick Sitecore 8 code sample to demonstrate programatically registering a page event such as an internal search, or a downloaded resource. Firstly check whether the tracker is active, and there is a session. Get a reference to the current page Create an instance of PageEventData, passing in the event name (e.g. Search) and page event guid. The PageEventData exposes: itemId - The page item ID that raises the page event. Data - Data associated to the event such as search keywords. Text - Human readable text to go with the page event, appears as a summary in xProfile e.g. resource downloaded Pass the PageEventData into the register method of the current page to register the page event.","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/developer/sitecore/2015/05/26/sitecore-8-register-page-events.html"},"url":"http://localhost:4000/developer/sitecore/2015/05/26/sitecore-8-register-page-events.html"}</script>
 <!-- End Jekyll SEO tag -->
 
   </head>
@@ -59,7 +59,7 @@
 </li>
 <li>Pass the PageEventData into the register method of the current page to register the page event.</li>
 </ul>
-<p>https://gist.github.com/komainu85/8ea7ef8b9a8ee38c18ad721c8bb43566</p>
+<p><script src="https://gist.github.com/komainu85/8ea7ef8b9a8ee38c18ad721c8bb43566.js"> </script></p>
 
         </section>
 

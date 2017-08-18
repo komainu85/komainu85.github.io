@@ -44,7 +44,7 @@ new AsyncSendingManager(mi).SendStandardMessage(contactFromName);
 Trigger Email and Replace tokens</h2>
 <p>Here is a reusable function that allows you to send an email campaign message from code and replace custom tokens.</p>
 {% highlight csharp %}
-public void SendEmailCampaignMessage(ID messageId, string userName, Dictionary&lt;string, string&gt; customTokens = null)
+public void SendEmailCampaignMessage(ID messageId, string userName, Dictionary<string, string> customTokens = null)
 {
     var mi = Sitecore.Modules.EmailCampaign.Factory.GetMessage(messageId);
     if (customTokens != null)

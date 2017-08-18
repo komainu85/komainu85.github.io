@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="/assets/css/style.css?v=921f65196db0b9db054ecf34dedaa571dd6f74f2" media="screen" type="text/css">
+    <link rel="stylesheet" href="/assets/css/style.css?v=dae56a8db6603db1e68e23baaac2efad39566da9" media="screen" type="text/css">
     <link rel="stylesheet" href="/assets/css/print.css" media="print" type="text/css">
 
     <!--[if lt IE 9]>
@@ -16,15 +16,15 @@
 <title>Sitecore extension methods | Mike Robbins</title>
 <meta property="og:title" content="Sitecore extension methods" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Over the past year in my spare time I&#39;ve been building a code library for sitecore 6.X and Sitecore 7 more recently. I&#39;ve built up a big list of Sitecore extension methods so I thought I&#39;d share some of my favorites. Feel free to comment with your own. Sitecore 7 Indexing [code language=&quot;csharp&quot;] public static void AddItemToIndex(this Item item, string indexName) { var tempItem = (SitecoreIndexableItem)item; ContentSearchManager.GetIndex(indexName).Refresh(tempItem); } [/code] [code language=&quot;csharp&quot;] public static void UpdateItemInIndex(this Item item, string indexName) { var tempItem = (SitecoreIndexableItem)item; ContentSearchManager.GetIndex(indexName).Delete(tempItem.UniqueId); AddItemToIndex(item, indexName); } [/code] Sitecore Publishing [code language=&quot;csharp&quot;] public static void PublishItem(this Item item) { var publishOptions = new PublishOptions(item.Database, Database.GetDatabase(&quot;web&quot;), PublishMode.SingleItem, item.Language, DateTime.Now); // Create a publisher with the publishoptions var publisher = new Publisher(publishOptions); // Choose where to publish from publisher.Options.RootItem = item; // Publish children as well? publisher.Options.Deep = true; // Do the publish! publisher.Publish(); } [/code] [code language=&quot;csharp&quot;] public static void UnPublishItem(this Item item) { item.Publishing.UnpublishDate = DateTime.Now; PublishItem(item); }[/code] Sitecore Item Extensions [code language=&quot;csharp&quot;] public static string Url(this Item item) { return LinkManager.GetItemUrl(item); } [/code] [code language=&quot;csharp&quot;] public static IEnumerable&lt;Item&gt; ParentList(this Item item, Boolean descending = true) { if (item == null) return null; var parents = new List&lt;Item&gt;(); var currentItem = item.Parent; while (currentItem != null) { parents.Add(currentItem); currentItem = currentItem.Parent; } if (descending) parents.Reverse(); return parents; } [/code] [code language=&quot;csharp&quot;] public static bool IsDerivedFrom(this Item item, ID templateId) { if (item == null) return false; if (templateId.IsNull) return false; var templateItem = item.Database.Templates[templateId]; var returnValue = false; if (templateItem != null) { var template = TemplateManager.GetTemplate(item); returnValue = template != null &amp;&amp; template.ID == templateItem.ID || template.DescendsFrom(templateItem.ID); } return returnValue; } [/code] Sitecore Account Extensions [code language=&quot;csharp&quot;] public static MembershipUser GetMembershipUser(this Account account) { return Membership.GetUser(account.Name); } [/code]" />
-<meta property="og:description" content="Over the past year in my spare time I&#39;ve been building a code library for sitecore 6.X and Sitecore 7 more recently. I&#39;ve built up a big list of Sitecore extension methods so I thought I&#39;d share some of my favorites. Feel free to comment with your own. Sitecore 7 Indexing [code language=&quot;csharp&quot;] public static void AddItemToIndex(this Item item, string indexName) { var tempItem = (SitecoreIndexableItem)item; ContentSearchManager.GetIndex(indexName).Refresh(tempItem); } [/code] [code language=&quot;csharp&quot;] public static void UpdateItemInIndex(this Item item, string indexName) { var tempItem = (SitecoreIndexableItem)item; ContentSearchManager.GetIndex(indexName).Delete(tempItem.UniqueId); AddItemToIndex(item, indexName); } [/code] Sitecore Publishing [code language=&quot;csharp&quot;] public static void PublishItem(this Item item) { var publishOptions = new PublishOptions(item.Database, Database.GetDatabase(&quot;web&quot;), PublishMode.SingleItem, item.Language, DateTime.Now); // Create a publisher with the publishoptions var publisher = new Publisher(publishOptions); // Choose where to publish from publisher.Options.RootItem = item; // Publish children as well? publisher.Options.Deep = true; // Do the publish! publisher.Publish(); } [/code] [code language=&quot;csharp&quot;] public static void UnPublishItem(this Item item) { item.Publishing.UnpublishDate = DateTime.Now; PublishItem(item); }[/code] Sitecore Item Extensions [code language=&quot;csharp&quot;] public static string Url(this Item item) { return LinkManager.GetItemUrl(item); } [/code] [code language=&quot;csharp&quot;] public static IEnumerable&lt;Item&gt; ParentList(this Item item, Boolean descending = true) { if (item == null) return null; var parents = new List&lt;Item&gt;(); var currentItem = item.Parent; while (currentItem != null) { parents.Add(currentItem); currentItem = currentItem.Parent; } if (descending) parents.Reverse(); return parents; } [/code] [code language=&quot;csharp&quot;] public static bool IsDerivedFrom(this Item item, ID templateId) { if (item == null) return false; if (templateId.IsNull) return false; var templateItem = item.Database.Templates[templateId]; var returnValue = false; if (templateItem != null) { var template = TemplateManager.GetTemplate(item); returnValue = template != null &amp;&amp; template.ID == templateItem.ID || template.DescendsFrom(templateItem.ID); } return returnValue; } [/code] Sitecore Account Extensions [code language=&quot;csharp&quot;] public static MembershipUser GetMembershipUser(this Account account) { return Membership.GetUser(account.Name); } [/code]" />
+<meta name="description" content="Over the past year or so, in my spare time I&#39;ve been building a code library for sitecore 6.X and Sitecore 7 more recently. I&#39;ve built up a big list of Sitecore extension methods so I thought I&#39;d share some of my favorites. Feel free to comment with your own. Sitecore 7 Indexing public static void AddItemToIndex(this Item item, string indexName) { var tempItem = (SitecoreIndexableItem)item; ContentSearchManager.GetIndex(indexName).Refresh(tempItem); }" />
+<meta property="og:description" content="Over the past year or so, in my spare time I&#39;ve been building a code library for sitecore 6.X and Sitecore 7 more recently. I&#39;ve built up a big list of Sitecore extension methods so I thought I&#39;d share some of my favorites. Feel free to comment with your own. Sitecore 7 Indexing public static void AddItemToIndex(this Item item, string indexName) { var tempItem = (SitecoreIndexableItem)item; ContentSearchManager.GetIndex(indexName).Refresh(tempItem); }" />
 <link rel="canonical" href="http://localhost:4000/developer/sitecore/2013/08/01/sitecore-extension-methods.html" />
 <meta property="og:url" content="http://localhost:4000/developer/sitecore/2013/08/01/sitecore-extension-methods.html" />
 <meta property="og:site_name" content="Mike Robbins" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2013-08-01T07:28:52+01:00" />
 <script type="application/ld+json">
-{"@context":"http://schema.org","@type":"BlogPosting","headline":"Sitecore extension methods","author":{"@type":"Person","name":null},"datePublished":"2013-08-01T07:28:52+01:00","dateModified":"2013-08-01T07:28:52+01:00","description":"Over the past year in my spare time I&#39;ve been building a code library for sitecore 6.X and Sitecore 7 more recently. I&#39;ve built up a big list of Sitecore extension methods so I thought I&#39;d share some of my favorites. Feel free to comment with your own. Sitecore 7 Indexing [code language=&quot;csharp&quot;] public static void AddItemToIndex(this Item item, string indexName) { var tempItem = (SitecoreIndexableItem)item; ContentSearchManager.GetIndex(indexName).Refresh(tempItem); } [/code] [code language=&quot;csharp&quot;] public static void UpdateItemInIndex(this Item item, string indexName) { var tempItem = (SitecoreIndexableItem)item; ContentSearchManager.GetIndex(indexName).Delete(tempItem.UniqueId); AddItemToIndex(item, indexName); } [/code] Sitecore Publishing [code language=&quot;csharp&quot;] public static void PublishItem(this Item item) { var publishOptions = new PublishOptions(item.Database, Database.GetDatabase(&quot;web&quot;), PublishMode.SingleItem, item.Language, DateTime.Now); // Create a publisher with the publishoptions var publisher = new Publisher(publishOptions); // Choose where to publish from publisher.Options.RootItem = item; // Publish children as well? publisher.Options.Deep = true; // Do the publish! publisher.Publish(); } [/code] [code language=&quot;csharp&quot;] public static void UnPublishItem(this Item item) { item.Publishing.UnpublishDate = DateTime.Now; PublishItem(item); }[/code] Sitecore Item Extensions [code language=&quot;csharp&quot;] public static string Url(this Item item) { return LinkManager.GetItemUrl(item); } [/code] [code language=&quot;csharp&quot;] public static IEnumerable&lt;Item&gt; ParentList(this Item item, Boolean descending = true) { if (item == null) return null; var parents = new List&lt;Item&gt;(); var currentItem = item.Parent; while (currentItem != null) { parents.Add(currentItem); currentItem = currentItem.Parent; } if (descending) parents.Reverse(); return parents; } [/code] [code language=&quot;csharp&quot;] public static bool IsDerivedFrom(this Item item, ID templateId) { if (item == null) return false; if (templateId.IsNull) return false; var templateItem = item.Database.Templates[templateId]; var returnValue = false; if (templateItem != null) { var template = TemplateManager.GetTemplate(item); returnValue = template != null &amp;&amp; template.ID == templateItem.ID || template.DescendsFrom(templateItem.ID); } return returnValue; } [/code] Sitecore Account Extensions [code language=&quot;csharp&quot;] public static MembershipUser GetMembershipUser(this Account account) { return Membership.GetUser(account.Name); } [/code]","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/developer/sitecore/2013/08/01/sitecore-extension-methods.html"},"url":"http://localhost:4000/developer/sitecore/2013/08/01/sitecore-extension-methods.html"}</script>
+{"@context":"http://schema.org","@type":"BlogPosting","headline":"Sitecore extension methods","author":{"@type":"Person","name":null},"datePublished":"2013-08-01T07:28:52+01:00","dateModified":"2013-08-01T07:28:52+01:00","description":"Over the past year or so, in my spare time I&#39;ve been building a code library for sitecore 6.X and Sitecore 7 more recently. I&#39;ve built up a big list of Sitecore extension methods so I thought I&#39;d share some of my favorites. Feel free to comment with your own. Sitecore 7 Indexing public static void AddItemToIndex(this Item item, string indexName) { var tempItem = (SitecoreIndexableItem)item; ContentSearchManager.GetIndex(indexName).Refresh(tempItem); }","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/developer/sitecore/2013/08/01/sitecore-extension-methods.html"},"url":"http://localhost:4000/developer/sitecore/2013/08/01/sitecore-extension-methods.html"}</script>
 <!-- End Jekyll SEO tag -->
 
   </head>
@@ -45,97 +45,90 @@
       <div class="inner clearfix">
         <section id="main-content">
           <h1>Sitecore extension methods</h1>
-          <p>Over the past year in my spare time I've been building a code library for sitecore 6.X and Sitecore 7 more recently. I've built up a big list of Sitecore extension methods so I thought I'd share some of my favorites. Feel free to comment with your own.</p>
-<h2></h2>
+          <p>Over the past year or so, in my spare time I've been building a code library for sitecore 6.X and Sitecore 7 more recently. I've built up a big list of Sitecore extension methods so I thought I'd share some of my favorites. Feel free to comment with your own.</p>
 <h3>Sitecore 7 Indexing</h3>
-<p>[code language="csharp"]<br />
-public static void AddItemToIndex(this Item item, string indexName)<br />
-{<br />
-var tempItem = (SitecoreIndexableItem)item;</p>
-<p>ContentSearchManager.GetIndex(indexName).Refresh(tempItem);</p>
-<p>}<br />
-[/code]</p>
-<p>[code language="csharp"]<br />
-public static void UpdateItemInIndex(this Item item, string indexName)<br />
-{<br />
-var tempItem = (SitecoreIndexableItem)item;</p>
-<p>ContentSearchManager.GetIndex(indexName).Delete(tempItem.UniqueId);<br />
-AddItemToIndex(item, indexName);<br />
-}<br />
-[/code]</p>
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">AddItemToIndex</span><span class="p">(</span><span class="k">this</span> <span class="n">Item</span> <span class="n">item</span><span class="p">,</span> <span class="kt">string</span> <span class="n">indexName</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kt">var</span> <span class="n">tempItem</span> <span class="p">=</span> <span class="p">(</span><span class="n">SitecoreIndexableItem</span><span class="p">)</span><span class="n">item</span><span class="p">;</span>
+  <span class="n">ContentSearchManager</span><span class="p">.</span><span class="nf">GetIndex</span><span class="p">(</span><span class="n">indexName</span><span class="p">).</span><span class="nf">Refresh</span><span class="p">(</span><span class="n">tempItem</span><span class="p">);</span>
+<span class="p">}</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">UpdateItemInIndex</span><span class="p">(</span><span class="k">this</span> <span class="n">Item</span> <span class="n">item</span><span class="p">,</span> <span class="kt">string</span> <span class="n">indexName</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kt">var</span> <span class="n">tempItem</span> <span class="p">=</span> <span class="p">(</span><span class="n">SitecoreIndexableItem</span><span class="p">)</span><span class="n">item</span><span class="p">;</span>
+  <span class="n">ContentSearchManager</span><span class="p">.</span><span class="nf">GetIndex</span><span class="p">(</span><span class="n">indexName</span><span class="p">).</span><span class="nf">Delete</span><span class="p">(</span><span class="n">tempItem</span><span class="p">.</span><span class="n">UniqueId</span><span class="p">);</span>
+  <span class="nf">AddItemToIndex</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">indexName</span><span class="p">);</span>
+<span class="p">}</span></code></pre></figure>
 <h3>Sitecore Publishing</h3>
-<p>[code language="csharp"]<br />
-public static void PublishItem(this Item item)<br />
-{<br />
-var publishOptions = new PublishOptions(item.Database,<br />
-Database.GetDatabase(&quot;web&quot;),<br />
-PublishMode.SingleItem,<br />
-item.Language,<br />
-DateTime.Now); // Create a publisher with the publishoptions</p>
-<p>var publisher = new Publisher(publishOptions);</p>
-<p>// Choose where to publish from<br />
-publisher.Options.RootItem = item;</p>
-<p>// Publish children as well?<br />
-publisher.Options.Deep = true;</p>
-<p>// Do the publish!<br />
-publisher.Publish();<br />
-}<br />
-[/code]</p>
-<p>[code language="csharp"]<br />
-public static void UnPublishItem(this Item item)<br />
-{<br />
-item.Publishing.UnpublishDate = DateTime.Now;<br />
-PublishItem(item);<br />
-}[/code]</p>
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">PublishItem</span><span class="p">(</span><span class="k">this</span> <span class="n">Item</span> <span class="n">item</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kt">var</span> <span class="n">publishOptions</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">PublishOptions</span><span class="p">(</span><span class="n">item</span><span class="p">.</span><span class="n">Database</span><span class="p">,</span>
+  <span class="n">Database</span><span class="p">.</span><span class="nf">GetDatabase</span><span class="p">(&amp;</span><span class="n">quot</span><span class="p">;</span><span class="n">web</span><span class="p">&amp;</span><span class="n">quot</span><span class="p">;),</span>
+  <span class="n">PublishMode</span><span class="p">.</span><span class="n">SingleItem</span><span class="p">,</span>
+  <span class="n">item</span><span class="p">.</span><span class="n">Language</span><span class="p">,</span>
+  <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">);</span> <span class="c1">// Create a publisher with the publishoptions
+</span>  <span class="kt">var</span> <span class="n">publisher</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Publisher</span><span class="p">(</span><span class="n">publishOptions</span><span class="p">);</span>
+  <span class="c1">// Choose where to publish from
+</span>  <span class="n">publisher</span><span class="p">.</span><span class="n">Options</span><span class="p">.</span><span class="n">RootItem</span> <span class="p">=</span> <span class="n">item</span><span class="p">;</span>
+  <span class="c1">// Publish children as well?
+</span>  <span class="n">publisher</span><span class="p">.</span><span class="n">Options</span><span class="p">.</span><span class="n">Deep</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+  <span class="c1">// Do the publish!
+</span>  <span class="n">publisher</span><span class="p">.</span><span class="nf">Publish</span><span class="p">();</span>
+<span class="p">}</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">UnPublishItem</span><span class="p">(</span><span class="k">this</span> <span class="n">Item</span> <span class="n">item</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">item</span><span class="p">.</span><span class="n">Publishing</span><span class="p">.</span><span class="n">UnpublishDate</span> <span class="p">=</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">;</span>
+  <span class="nf">PublishItem</span><span class="p">(</span><span class="n">item</span><span class="p">);</span>
+<span class="p">}</span></code></pre></figure>
 <h3>Sitecore Item Extensions</h3>
-<p>[code language="csharp"]<br />
-public static string Url(this Item item)<br />
-{<br />
-return LinkManager.GetItemUrl(item);<br />
-}<br />
-[/code]</p>
-<p>[code language="csharp"]<br />
-public static IEnumerable&lt;Item&gt; ParentList(this Item item, Boolean descending = true)<br />
-{<br />
-if (item == null)<br />
-return null;<br />
-var parents = new List&lt;Item&gt;();<br />
-var currentItem = item.Parent;<br />
-while (currentItem != null)<br />
-{<br />
-parents.Add(currentItem);<br />
-currentItem = currentItem.Parent;<br />
-}<br />
-if (descending)<br />
-parents.Reverse();<br />
-return parents;<br />
-}<br />
-[/code]</p>
-<p>[code language="csharp"]<br />
-public static bool IsDerivedFrom(this Item item, ID templateId)<br />
-{</p>
-<p>if (item == null)<br />
-return false;</p>
-<p>if (templateId.IsNull)<br />
-return false;</p>
-<p>var templateItem = item.Database.Templates[templateId];</p>
-<p>var returnValue = false;<br />
-if (templateItem != null)<br />
-{<br />
-var template = TemplateManager.GetTemplate(item);</p>
-<p>returnValue = template != null &amp;&amp; template.ID == templateItem.ID ||<br />
-template.DescendsFrom(templateItem.ID);<br />
-}</p>
-<p>return returnValue;<br />
-}<br />
-[/code]</p>
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">static</span> <span class="kt">string</span> <span class="nf">Url</span><span class="p">(</span><span class="k">this</span> <span class="n">Item</span> <span class="n">item</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">return</span> <span class="n">LinkManager</span><span class="p">.</span><span class="nf">GetItemUrl</span><span class="p">(</span><span class="n">item</span><span class="p">);</span>
+<span class="p">}</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">static</span> <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">Item</span><span class="p">&gt;</span> <span class="nf">ParentList</span><span class="p">(</span><span class="k">this</span> <span class="n">Item</span> <span class="n">item</span><span class="p">,</span> <span class="n">Boolean</span> <span class="k">descending</span> <span class="p">=</span> <span class="k">true</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">item</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="k">null</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="kt">var</span> <span class="n">parents</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Item</span><span class="p">&gt;();</span>
+  <span class="kt">var</span> <span class="n">currentItem</span> <span class="p">=</span> <span class="n">item</span><span class="p">.</span><span class="n">Parent</span><span class="p">;</span>
+  <span class="k">while</span> <span class="p">(</span><span class="n">currentItem</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">parents</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="n">currentItem</span><span class="p">);</span>
+    <span class="n">currentItem</span> <span class="p">=</span> <span class="n">currentItem</span><span class="p">.</span><span class="n">Parent</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="k">descending</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">parents</span><span class="p">.</span><span class="nf">Reverse</span><span class="p">();</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="n">parents</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">static</span> <span class="kt">bool</span> <span class="nf">IsDerivedFrom</span><span class="p">(</span><span class="k">this</span> <span class="n">Item</span> <span class="n">item</span><span class="p">,</span> <span class="n">ID</span> <span class="n">templateId</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">item</span> <span class="p">==</span> <span class="k">null</span> <span class="p">||</span> <span class="n">emplateId</span><span class="p">.</span><span class="n">IsNull</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="kt">var</span> <span class="n">templateItem</span> <span class="p">=</span> <span class="n">item</span><span class="p">.</span><span class="n">Database</span><span class="p">.</span><span class="n">Templates</span><span class="p">[</span><span class="n">templateId</span><span class="p">];</span>
+  <span class="kt">var</span> <span class="n">returnValue</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">templateItem</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="kt">var</span> <span class="n">template</span> <span class="p">=</span> <span class="n">TemplateManager</span><span class="p">.</span><span class="nf">GetTemplate</span><span class="p">(</span><span class="n">item</span><span class="p">);</span>
+    <span class="n">returnValue</span> <span class="p">=</span> <span class="n">template</span> <span class="p">!=</span> <span class="k">null</span> <span class="p">&amp;&amp;</span> <span class="n">template</span><span class="p">.</span><span class="n">ID</span> <span class="p">==</span> <span class="n">templateItem</span><span class="p">.</span><span class="n">ID</span> <span class="p">||</span>
+    <span class="n">template</span><span class="p">.</span><span class="nf">DescendsFrom</span><span class="p">(</span><span class="n">templateItem</span><span class="p">.</span><span class="n">ID</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="n">returnValue</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
 <h3>Sitecore Account Extensions</h3>
-<p>[code language="csharp"]<br />
-public static MembershipUser GetMembershipUser(this Account account)<br />
-{<br />
-return Membership.GetUser(account.Name);<br />
-}<br />
-[/code]</p>
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">static</span> <span class="n">MembershipUser</span> <span class="nf">GetMembershipUser</span><span class="p">(</span><span class="k">this</span> <span class="n">Account</span> <span class="n">account</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">return</span> <span class="n">Membership</span><span class="p">.</span><span class="nf">GetUser</span><span class="p">(</span><span class="n">account</span><span class="p">.</span><span class="n">Name</span><span class="p">);</span>
+<span class="p">}</span></code></pre></figure>
 
         </section>
 

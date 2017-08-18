@@ -25,32 +25,33 @@ author:
 <p>Using the SearchContext class within Sitecore the result collection brings back the standard values item along with any items that are matched. </p>
 <p>To solve this problem you can add a computed field to the Lucene index to return a bool property to Linq to say whether the item is a standard value of not. </p>
 <p>This means you can search and exclude standard values like this. </p>
-<p>context.GetQueryable&lt;ClassName&gt;().Where(i =&gt; i.TemplateId == DataAccess.GlobalItems.CarTemplate.ID &amp;&amp; !i.IsStandardValue).ToList();</p>
+{% highlight csharp %}
+context.GetQueryable<ClassName>().Where(i => i.TemplateId == DataAccess.GlobalItems.CarTemplate.ID && !i.IsStandardValue).ToList();
+{% endhighlight %}
 <p>Add the following tag to the AddComputedIndexField section of your index. </p>
-<p> &lt;fields hint="raw:AddComputedIndexField"&gt;<br />
-        &lt;field fieldName="isstandardvalue"      storageType="no"  indexType="untokenized"&gt; ToolBox.SitecoreCMS.ContentSearch.ComputedFields.IsStandardValue, ToolBox.SitecoreCMS &lt;/field&gt;&lt;/fields&gt;</p>
+{% highlight xml %}
+<fields hint="raw:AddComputedIndexField">
+<field fieldName="isstandardvalue" storageType="no" indexType="untokenized">ToolBox.SitecoreCMS.ContentSearch.ComputedFields.IsStandardValue, ToolBox.SitecoreCMS</field></fields>
+{% endhighlight %}
 <p>Here is the class that adds the computed field to the index<br />
-[code language="csharp"]<br />
-using System;<br />
-using System.Collections.Generic;<br />
-using System.Linq;<br />
-using System.Text;<br />
-using System.Threading.Tasks;<br />
-using Sitecore.ContentSearch;<br />
-using Sitecore.ContentSearch.ComputedFields;<br />
-using Sitecore.Data;<br />
-using Sitecore.Data.Items;</p>
-<p>namespace ToolBox.SitecoreCMS.ContentSearch.ComputedFields<br />
-{<br />
-    public class IsStandardValue : IComputedIndexField<br />
-    {<br />
-        public object ComputeFieldValue(IIndexable indexable)<br />
-        {<br />
-            Item item = indexable as SitecoreIndexableItem;</p>
-<p>            return StandardValuesManager.IsStandardValuesHolder(item);<br />
-        }</p>
-<p>        public string FieldName { get; set; }<br />
-        public string ReturnType { get; set; }<br />
-    }<br />
-}<br />
-[/code]</p>
+{% highlight csharp %}
+using System;
+using System.Text;
+using Sitecore.ContentSearch;
+using Sitecore.ContentSearch.ComputedFields;
+using Sitecore.Data;
+using Sitecore.Data.Items;
+namespace ToolBox.SitecoreCMS.ContentSearch.ComputedFields
+{
+    public class IsStandardValue : IComputedIndexField
+    {
+        public object ComputeFieldValue(IIndexable indexable)
+        {
+            Item item = indexable as SitecoreIndexableItem;
+            return StandardValuesManager.IsStandardValuesHolder(item);
+        }
+        public string FieldName { get; set; }
+        public string ReturnType { get; set; }
+    }
+}
+{% endhighlight %}

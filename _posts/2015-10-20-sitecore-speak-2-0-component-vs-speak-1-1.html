@@ -31,8 +31,8 @@ meta:
   _wpas_skip_4473872: '1'
   _wpas_skip_5582720: '1'
 author:
-  login: sobek1985
-  email: sobek1985@gmail.com
+  
+  
   display_name: Mike Robbins
   first_name: ''
   last_name: ''
@@ -56,7 +56,7 @@ author:
 <p>We firstly use Require.js to import our JavaScript dependencies.</p>
 <p>After the standard SPEAK component framework mark-up, we initialize the model for the component, setting each of its properties to null.</p>
 <p>In the view initialize function we need to set each model property from the data attribute we created in the cshtml.</p>
-<p>https://gist.github.com/komainu85/a7bd9bd4cc56baceec49</p>
+<p>{% gist komainu85/a7bd9bd4cc56baceec49 %}</p>
 <h3>SPEAK 2.0 Component</h3>
 <p>With SPEAK 2.0 much of the heavy lifting and plumbing code is handled by Sitecore SPEAK, we can concentrate more on our component logic.</p>
 <h4>Model</h4>
@@ -70,4 +70,4 @@ author:
 <p>With the JavaScript code file the syntax has changed quite a bit. Again Sitecore SPEAK is handling a lot of the plumbing code for us. We no longer need to wire up each of the model properties ourselves. Sitecore will automatically populate each property for us.</p>
 <p>The way properties are also accessed in a different way. In SPEAK 1.1 we had to access properties via the view model E.g. <span class="pl-v">this</span>.model.viewModel.<span class="pl-c1">height</span>(). In SPEAK 2.0 this has been simplified to this.Height</p>
 <p>[caption id="attachment_957" align="aligncenter" width="300"]<a href="https://mikerobbinssitecore.files.wordpress.com/2015/10/speak-model.png"><img class="size-medium wp-image-957" src="{{ site.baseurl }}/assets/speak-model.png?w=300" alt="SPEAK 2.0 Model" width="300" height="216" /></a> SPEAK 2.0 Model[/caption]</p>
-<p>https://gist.github.com/komainu85/ad345ec872d3d0390241</p>
+<p>{% gist komainu85/ad345ec872d3d0390241 %}</p>

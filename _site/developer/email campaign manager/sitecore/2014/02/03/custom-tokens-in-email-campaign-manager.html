@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="/assets/css/style.css?v=921f65196db0b9db054ecf34dedaa571dd6f74f2" media="screen" type="text/css">
+    <link rel="stylesheet" href="/assets/css/style.css?v=dae56a8db6603db1e68e23baaac2efad39566da9" media="screen" type="text/css">
     <link rel="stylesheet" href="/assets/css/print.css" media="print" type="text/css">
 
     <!--[if lt IE 9]>
@@ -63,7 +63,7 @@
 <h2>
 Trigger Email and Replace tokens</h2>
 <p>Here is a reusable function that allows you to send an email campaign message from code and replace custom tokens.</p>
-<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">void</span> <span class="nf">SendEmailCampaignMessage</span><span class="p">(</span><span class="n">ID</span> <span class="n">messageId</span><span class="p">,</span> <span class="kt">string</span> <span class="n">userName</span><span class="p">,</span> <span class="n">Dictionary</span><span class="p">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">customTokens</span> <span class="p">=</span> <span class="k">null</span><span class="p">)</span>
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">void</span> <span class="nf">SendEmailCampaignMessage</span><span class="p">(</span><span class="n">ID</span> <span class="n">messageId</span><span class="p">,</span> <span class="kt">string</span> <span class="n">userName</span><span class="p">,</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">&gt;</span> <span class="n">customTokens</span> <span class="p">=</span> <span class="k">null</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="kt">var</span> <span class="n">mi</span> <span class="p">=</span> <span class="n">Sitecore</span><span class="p">.</span><span class="n">Modules</span><span class="p">.</span><span class="n">EmailCampaign</span><span class="p">.</span><span class="n">Factory</span><span class="p">.</span><span class="nf">GetMessage</span><span class="p">(</span><span class="n">messageId</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">customTokens</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>

@@ -22,7 +22,7 @@ meta:
   _publicize_done_external: a:1:{s:7:"twitter";a:1:{i:4473872;s:55:"https://twitter.com/Sobek1985/status/672138514503360513";}}
   _publicize_done_4570590: '1'
   _wpas_done_4473872: '1'
-  publicize_twitter_user: Sobek1985
+  
   _publicize_done_5620599: '1'
   _wpas_done_5582720: '1'
   publicize_google_plus_url: https://plus.google.com/113240140771005714369/posts/WzxbGKcdUuu
@@ -34,8 +34,8 @@ meta:
   _wpas_skip_4473872: '1'
   _wpas_skip_5582720: '1'
 author:
-  login: sobek1985
-  email: sobek1985@gmail.com
+  
+
   display_name: Mike Robbins
   first_name: ''
   last_name: ''
@@ -51,15 +51,15 @@ author:
 <h3>ajaxAppender</h3>
 <p>This is the appender thats used to write the errors to the Sitecore data log folder. Here we can specify the error level.</p>
 <p><b>level </b>- Here you can specify what level of logging is used (DEBUG|ERROR|INFO)</p>
-<p>https://gist.github.com/komainu85/caaa5c77df12d31c4797</p>
+<p>{% gist komainu85/caaa5c77df12d31c4797 %}</p>
 <h2>Using Client Logging In Your Website</h2>
 <p>This is simple, logging will work if the JSNLog JavaScript has been rendering into the head of your HTML, this is done via a Sitecore helper. The helper within the Diagnostics namespace that renders out the JavaScript pulling the required varibles into the JavaScript.</p>
-<p>https://gist.github.com/komainu85/42ad72cc322d841e9a70</p>
+<p>{% gist komainu85/42ad72cc322d841e9a70 %}</p>
 <p>Logging is now enabled, Sitecore will capture all unhandled JavaScript errors and log them in the log folder on the server. You can also write to the log via the JSNLog API "JL()" as below.</p>
-<p>https://gist.github.com/komainu85/1c9145d6bddff420acf9</p>
+<p>{% gist komainu85/1c9145d6bddff420acf9 %}</p>
 <p>By default when using client logging you will see a JSON object being displayed in your browser's console every time you write to the log. You can see this below</p>
 <p>[caption id="" align="aligncenter" width="1280"]<a href="https://mikerobbinssitecore.files.wordpress.com/2015/12/img_0023.png"><img class="size-custom" title="Client JavaScript Error Logging" src="{{ site.baseurl }}/assets/img_0023.png" alt="Client JavaScript Error Logging" width="1280" height="982" /></a> Client JavaScript Error Logging[/caption]</p>
 <p>&nbsp;</p>
 <p>This functionality can be switched off, so logs are written but the log isn't displayed in the console window.</p>
 <p>Within the Sitecore.JSNLog.config, there is an appender for the console called - consoleAppender. This is enabled by the logger appender element that accepts a comma seperate list of appenders. Removing the consoleAppender from this list disabled the console appender.</p>
-<p>https://gist.github.com/komainu85/42347beae5ab1201b94b</p>
+<p>{% gist komainu85/42347beae5ab1201b94b %}</p>

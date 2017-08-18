@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="/assets/css/style.css?v=921f65196db0b9db054ecf34dedaa571dd6f74f2" media="screen" type="text/css">
+    <link rel="stylesheet" href="/assets/css/style.css?v=dae56a8db6603db1e68e23baaac2efad39566da9" media="screen" type="text/css">
     <link rel="stylesheet" href="/assets/css/print.css" media="print" type="text/css">
 
     <!--[if lt IE 9]>
@@ -85,7 +85,7 @@
       <h1><a href="/content%20editor/sitecore/2015/10/23/getfieldlabel-pipeline-in-sitecore-8-1.html">getFieldLabel Pipeline in Sitecore 8.1</a></h1>
 
       <div class="entry">
-        With the release of Sitecore 8.1 a new Pipeline called getFieldLabel was added. This new pipeline allows you to inject code that can append or alter the label of a field within the Content Editor. The first thing to notice is that the pipeline accepts a GetFieldLabelArgs class for pipeline. This contains the field in question and the result. The result is a string of what will be appended to the label. https://gist.github.com/komainu85/26850da3533da2041ae3 Within the process method you have access to the field that...
+        With the release of Sitecore 8.1 a new Pipeline called getFieldLabel was added. This new pipeline allows you to inject code that can append or alter the label of a field within the Content Editor. The first thing to notice is that the pipeline accepts a GetFieldLabelArgs class for pipeline. This contains the field in question and the result. The result is a string of what will be appended to the label. Within the process method you have access to the field that your...
       </div>
 
       <a href="/content%20editor/sitecore/2015/10/23/getfieldlabel-pipeline-in-sitecore-8-1.html" class="read-more">Read More</a>
@@ -172,7 +172,7 @@ In Sitecore 7.5 and 8.x Sitecore.app has been moved. The new namespace is Siteco
       <h1><a href="/developer/sitecore/2015/07/27/sitecore-mvc-custom-id-model-binder.html">Sitecore MVC Custom ID Model Binder</a></h1>
 
       <div class="entry">
-        In this post i'll explain how to create a custom Model binder in ASP.net to allow you to pass in a Sitecore ID in your controller action. For example the controller action below accepts a Sitecore ID, however .net doesn't know how to create the ID class from the form values passed to the action. [code language="csharp"] [HttpPost] public void AddToShoppingBasket(ID itemId) { _basketRepository.Add(itemId); } [/code] This is where custom Model bindings come into play. We are able to create a...
+        In this post i'll explain how to create a custom Model binder in ASP.net to allow you to pass in a Sitecore ID in your controller action. For example the controller action below accepts a Sitecore ID, however .net doesn't know how to create the ID class from the form values passed to the action. &lt;br /&gt; [HttpPost]&lt;br /&gt; public void AddToShoppingBasket(ID itemId)&lt;br /&gt; {&lt;/p&gt; &lt;p&gt; _basketRepository.Add(itemId);&lt;/p&gt; &lt;p&gt;}&lt;br /&gt; This is where custom Model bindings come into play. We are able...
       </div>
 
       <a href="/developer/sitecore/2015/07/27/sitecore-mvc-custom-id-model-binder.html" class="read-more">Read More</a>
@@ -232,7 +232,7 @@ In Sitecore 7.5 and 8.x Sitecore.app has been moved. The new namespace is Siteco
       <h1><a href="/sitecore/sitecore.services.client/2015/05/21/sitecore-entity-service-ssc-ioc-configuration.html">Sitecore Entity Service SSC - IoC Configuration</a></h1>
 
       <div class="entry">
-        Further into my series on Sitecore Entity Service within Sitecore.Services.Client, in this post I'll be look into setting up an IoC container (Structure Map in this post) for Entity Service.  In the below example of the Entity Service services controller we have an overloaded constructor creating a concrete instance of our repository. However moving towards a DI approach we want to remove the coupling to the repository and inject the dependency in instead. https://gist.github.com/komainu85/5502ba3b6e4e084e6023 The first step into register our...
+        Further into my series on Sitecore Entity Service within Sitecore.Services.Client, in this post I'll be look into setting up an IoC container (Structure Map in this post) for Entity Service.  In the below example of the Entity Service services controller we have an overloaded constructor creating a concrete instance of our repository. However moving towards a DI approach we want to remove the coupling to the repository and inject the dependency in instead. The first step into register our dependencies...
       </div>
 
       <a href="/sitecore/sitecore.services.client/2015/05/21/sitecore-entity-service-ssc-ioc-configuration.html" class="read-more">Read More</a>
@@ -246,7 +246,7 @@ In Sitecore 7.5 and 8.x Sitecore.app has been moved. The new namespace is Siteco
       <div class="entry">
         When using Sitecore Glass's helpers to render content in a experience editor compatible way, it is possible to add a NameValue collection to specify attributes to be appended to the HTML element. http://stackoverflow.com/questions/19587981/how-to-render-link-with-css-class-with-sitecore-glass-mapper
 Below I have created a few helper functions to help front end developers add html attributes such css classes and height and widths to images more easily.
-https://gist.github.com/komainu85/36496a4a4bbb3cea6770
+
 
       </div>
 
@@ -307,7 +307,7 @@ https://gist.github.com/komainu85/36496a4a4bbb3cea6770
       <h1><a href="/sitecore/sitecore.services.client/2015/03/20/sitecore-entity-service-ssc-custom-controller-action.html">Sitecore Entity Service (SSC) Custom Controller Action</a></h1>
 
       <div class="entry">
-        Following on from my post on the basics of Entity Service and using the JavaScript API (Entity Service in Sitecore.Service.Client), in this post I will explain how to extend Entity Service Sitecore.Services.Client (SSC) with new controller actions. Using Entity Service as standard you get the following methods: IQueryable&lt;Entity&gt; GetAll() Entity FindById(string id) Add(Entity entity) Exists(Entity entity) Update(Entity entity) Delete(Entity entity) However Entity Service is very flexible allowing you to extend the service controller with additional actions. To add an additional...
+        Following on from my post on the basics of Entity Service and using the JavaScript API (Entity Service in Sitecore.Service.Client), in this post I will explain how to extend Entity Service Sitecore.Services.Client (SSC) with new controller actions. Using Entity Service as standard you get the following methods: IQueryable GetAll() Entity FindById(string id) Add(Entity entity) Exists(Entity entity) Update(Entity entity) Delete(Entity entity) However Entity Service is very flexible allowing you to extend the service controller with additional actions. To add an additional...
       </div>
 
       <a href="/sitecore/sitecore.services.client/2015/03/20/sitecore-entity-service-ssc-custom-controller-action.html" class="read-more">Read More</a>
@@ -320,7 +320,7 @@ https://gist.github.com/komainu85/36496a4a4bbb3cea6770
 
       <div class="entry">
         A quick code snippet to check whether a sitecore item is a Content item or a media item.
-https://gist.github.com/komainu85/d2b8136e197a8c692360
+
 Decompiling the above code, you can see that is simply checks whether the path contains "sitecore/content" or "sitecore/Media library" respectively. Using the above code snippet however if the sitecore API ever changes sitecore will update these methods.
 
       </div>
@@ -382,7 +382,7 @@ Decompiling the above code, you can see that is simply checks whether the path c
       <h1><a href="/mongodb/sitecore/2015/02/02/install-mongodb-as-a-windows-service-for-sitecore.html">Install MongoDB as a Windows service for Sitecore</a></h1>
 
       <div class="entry">
-        To install MongoDB as a Windows service. Download and install MongoDB https://www.mongodb.org/downloads Run Command Prompt as Admin. CD to the directory containing the bin directory of your MongoDB installation. Usually "C:\Program Files\MongoDB 2.6 Standard\bin" on a standard installation of MongoDB. Run the following script to install MongDB as a service. [code language="bash"]mongod --dbpath &quot;PathToStoreMongoDbs&quot; --serviceName &quot;NameYouWantToCallTheService&quot; --logpath &quot;PathOfWhereToStoreLogFiles&quot; --logappend --install[/code] e.g. [code language="bash"] mongod --dbpath &quot;C:\inetpub\wwwroot\MikeRobbins8\Databases&quot; --serviceName &quot;MikeRobbinsMongoDB&quot; --logpath &quot;C:\inetpub\wwwroot\MikeRobbins8\MongoDBLogs\mongodb.log&quot; --logappend --install[/code] Within the services snap in you will see the MongoDB...
+        To install MongoDB as a Windows service. Download and install MongoDB https://www.mongodb.org/downloads Run Command Prompt as Admin. CD to the directory containing the bin directory of your MongoDB installation. Usually "C:\Program Files\MongoDB 2.6 Standard\bin" on a standard installation of MongoDB. Run the following script to install MongDB as a service. mongod --dbpath &amp;quot;PathToStoreMongoDbs&amp;quot; --serviceName &amp;quot;NameYouWantToCallTheService&amp;quot; --logpath &amp;quot;PathOfWhereToStoreLogFiles&amp;quot; --logappend --install e.g. mongod --dbpath &amp;quot;C:\inetpub\wwwroot\MikeRobbins8\Databases&amp;quot; --serviceName &amp;quot;MikeRobbinsMongoDB&amp;quot; --logpath &amp;quot;C:\inetpub\wwwroot\MikeRobbins8\MongoDBLogs\mongodb.log&amp;quot; --logappend --install Within the services snap in you will see the MongoDB service listed where...
       </div>
 
       <a href="/mongodb/sitecore/2015/02/02/install-mongodb-as-a-windows-service-for-sitecore.html" class="read-more">Read More</a>
@@ -395,7 +395,7 @@ Decompiling the above code, you can see that is simply checks whether the path c
 
       <div class="entry">
         A quick extension method to get a Sitecore Media Item image url including max width and max height paramaters.
-https://gist.github.com/komainu85/80c2a1873c5f0b67fa8d
+
 
       </div>
 
@@ -432,7 +432,7 @@ https://gist.github.com/komainu85/80c2a1873c5f0b67fa8d
       <h1><a href="/sitecore/web%20item%20api/2014/12/02/web-api-sitecore-id-formatter.html">Web API Sitecore ID Formatter</a></h1>
 
       <div class="entry">
-        When using Web API, Sitecore ID's serialise with {} around the IDs. This can cause issues when working with JSON as this denotes objects encapsulation. [caption id="attachment_307" align="aligncenter" width="300"] JSON Sitecore ID's[/caption] Below is a custom formatter to format Sitecore item IDs without the {}. This example has Web API registered to run alongside Web Item API. See Patrick Delancy's blog post about running Web API alongside Web Item API http://patrickdelancy.com/2013/08/sitecore-webapi-living-harmony/ [caption id="attachment_311" align="aligncenter" width="300"] The corresponding JSON[/caption] [code language="csharp"] public class RegisterWebApiRoute...
+        When using Web API, Sitecore ID's serialise with {} around the IDs. This can cause issues when working with JSON as this denotes objects encapsulation. [caption id="attachment_307" align="aligncenter" width="300"] JSON Sitecore ID's[/caption] Below is a custom formatter to format Sitecore item IDs without the {}. This example has Web API registered to run alongside Web Item API. See Patrick Delancy's blog post about running Web API alongside Web Item API http://patrickdelancy.com/2013/08/sitecore-webapi-living-harmony/ [caption id="attachment_311" align="aligncenter" width="300"] The corresponding JSON[/caption] &lt;br /&gt; public class RegisterWebApiRoute&lt;br...
       </div>
 
       <a href="/sitecore/web%20item%20api/2014/12/02/web-api-sitecore-id-formatter.html" class="read-more">Read More</a>
@@ -456,7 +456,7 @@ https://gist.github.com/komainu85/80c2a1873c5f0b67fa8d
       <h1><a href="/content%20search/developer/sitecore/solr/2014/11/07/install-solr-as-windows-service-for-sitecore-content-search.html">Install Solr as Windows Service for Sitecore Content Search</a></h1>
 
       <div class="entry">
-        To install Solr as a Windows service. Download and setup Solr for Sitecore.Great tutorial from Dan Solovay on this http://www.dansolovay.com/2013/05/setting-up-solr-with-sitecore-7.html Download Non Sucking Service Manager from http://nssm.cc/download Copy the nssm.exe into your solr directory. [caption id="attachment_292" align="aligncenter" width="300" class=" "] NSSM[/caption] Create a bat file within the Solr/example folder. Example below, where CD is your example folder within your Solr directory. [code language="bash"] @echo off cd &quot;C:\solr\example\&quot; java -Xms64M -Xmx256M -jar start.jar [/code] Run Command Prompt as Admin. CD to the...
+        To install Solr as a Windows service. Download and setup Solr for Sitecore.Great tutorial from Dan Solovay on this http://www.dansolovay.com/2013/05/setting-up-solr-with-sitecore-7.html Download Non Sucking Service Manager from http://nssm.cc/download Copy the nssm.exe into your solr directory. [caption id="attachment_292" align="aligncenter" width="300" class=" "] NSSM[/caption] Create a bat file within the Solr/example folder. Example below, where CD is your example folder within your Solr directory. @echo off cd &amp;quot;C:\solr\example\&amp;quot; java -Xms64M -Xmx256M -jar start.jar Run Command Prompt as Admin. CD to the directory containing of...
       </div>
 
       <a href="/content%20search/developer/sitecore/solr/2014/11/07/install-solr-as-windows-service-for-sitecore-content-search.html" class="read-more">Read More</a>
@@ -588,7 +588,7 @@ https://gist.github.com/komainu85/80c2a1873c5f0b67fa8d
       <h1><a href="/content%20search/developer/sitecore/2013/12/17/sitecore-7-search-id-array-type-converter.html">Sitecore 7 Search ID Array Type Converter</a></h1>
 
       <div class="entry">
-        This is a simple type converter that allows you to convert a collection of Sitecore IDs stored in a Lucene search index into a List. [code language="csharp"] public class ListIDConverter : TypeConverter { public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType) { if (sourceType == typeof(List&lt;ID&gt;)) { return true; } return base.CanConvertFrom(context, sourceType); } public override bool CanConvertTo(ITypeDescriptorContext context, Type destinationType) { if (destinationType == typeof(List&lt;string&gt;)) { return true; } return base.CanConvertTo(context, destinationType); } public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture,...
+        This is a simple type converter that allows you to convert a collection of Sitecore IDs stored in a Lucene search index into a List. &lt;br /&gt; public class ListIDConverter : TypeConverter&lt;br /&gt; {&lt;br /&gt; public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)&lt;br /&gt; {&lt;br /&gt; if (sourceType == typeof(List&lt;ID&gt;))&lt;br /&gt; {&lt;br /&gt; return true;&lt;br /&gt; }&lt;/p&gt; &lt;p&gt; return base.CanConvertFrom(context, sourceType);&lt;br /&gt; }&lt;/p&gt; &lt;p&gt; public override bool CanConvertTo(ITypeDescriptorContext context, Type destinationType)&lt;br /&gt; {&lt;br /&gt; if (destinationType == typeof(List&lt;string&gt;))&lt;br /&gt; {&lt;br /&gt;...
       </div>
 
       <a href="/content%20search/developer/sitecore/2013/12/17/sitecore-7-search-id-array-type-converter.html" class="read-more">Read More</a>
@@ -624,7 +624,7 @@ https://gist.github.com/komainu85/80c2a1873c5f0b67fa8d
       <h1><a href="/developer/sitecore/2013/09/23/sitecore-youtube-control.html">Sitecore YouTube Control</a></h1>
 
       <div class="entry">
-        A very simple and useful YouTube control for Sitecore for embedding YouTube videos. You can either specify a Sitcore item to get the YouTube ID field from, otherwise it will use the context item. Create a class using the code below Register the control in the web.config[code language="xml"] &lt;controls&gt; &lt;add tagPrefix=&quot;TB&quot; namespace=&quot;ToolBox.SitecoreCMS.Web.UI.WebControls&quot; assembly=&quot;ToolBox.SitecoreCMS&quot; /&gt; &lt;/controls&gt; [/code] Use the control within your sublayouts[code language="xml"] &lt;tb:YouTube runat=&quot;server&quot; Field=&quot;YouTubeID&quot; Height=&quot;200&quot; Width=&quot;400&quot;/&gt; [/code] register the control within the web.config and use it within your...
+        A very simple and useful YouTube control for Sitecore for embedding YouTube videos. You can either specify a Sitcore item to get the YouTube ID field from, otherwise it will use the context item. Create a class using the code below Register the control in the web.config&lt;br /&gt; &lt;controls&gt;&lt;br /&gt; &lt;add tagPrefix=&amp;quot;TB&amp;quot; namespace=&amp;quot;ToolBox.SitecoreCMS.Web.UI.WebControls&amp;quot; assembly=&amp;quot;ToolBox.SitecoreCMS&amp;quot; /&gt;&lt;br /&gt; &lt;/controls&gt;&lt;/p&gt; &lt;p&gt; Use the control within your sublayouts&lt;br /&gt; &lt;tb:YouTube runat=&amp;quot;server&amp;quot; Field=&amp;quot;YouTubeID&amp;quot; Height=&amp;quot;200&amp;quot; Width=&amp;quot;400&amp;quot;/&gt;&lt;br /&gt; register the control within the web.config and use it...
       </div>
 
       <a href="/developer/sitecore/2013/09/23/sitecore-youtube-control.html" class="read-more">Read More</a>
@@ -684,7 +684,15 @@ https://gist.github.com/komainu85/80c2a1873c5f0b67fa8d
       <h1><a href="/developer/sitecore/2013/08/01/sitecore-extension-methods.html">Sitecore extension methods</a></h1>
 
       <div class="entry">
-        Over the past year in my spare time I've been building a code library for sitecore 6.X and Sitecore 7 more recently. I've built up a big list of Sitecore extension methods so I thought I'd share some of my favorites. Feel free to comment with your own. Sitecore 7 Indexing [code language="csharp"] public static void AddItemToIndex(this Item item, string indexName) { var tempItem = (SitecoreIndexableItem)item; ContentSearchManager.GetIndex(indexName).Refresh(tempItem); } [/code] [code language="csharp"] public static void UpdateItemInIndex(this Item item, string indexName) {...
+        Over the past year or so, in my spare time I've been building a code library for sitecore 6.X and Sitecore 7 more recently. I've built up a big list of Sitecore extension methods so I thought I'd share some of my favorites. Feel free to comment with your own.
+Sitecore 7 Indexing
+public static void AddItemToIndex(this Item item, string indexName)
+{
+  var tempItem = (SitecoreIndexableItem)item;
+  ContentSearchManager.GetIndex(indexName).Refresh(tempItem);
+}
+
+
       </div>
 
       <a href="/developer/sitecore/2013/08/01/sitecore-extension-methods.html" class="read-more">Read More</a>

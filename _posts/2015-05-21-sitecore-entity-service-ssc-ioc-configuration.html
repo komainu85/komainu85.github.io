@@ -35,21 +35,21 @@ meta:
   _wpas_skip_4473872: '1'
   _wpas_skip_5582720: '1'
 author:
-  login: sobek1985
-  email: sobek1985@gmail.com
+  
+
   display_name: Mike Robbins
   first_name: ''
   last_name: ''
 ---
 <p>Further into my series on Sitecore Entity Service within Sitecore.Services.Client, in this post I'll be look into setting up an IoC container (Structure Map in this post) for Entity Service. </p>
 <p>In the below example of the Entity Service services controller we have an overloaded constructor creating a concrete instance of our repository. However moving towards a DI approach we want to remove the coupling to the repository and inject the dependency in instead.<!--more--></p>
-<p>https://gist.github.com/komainu85/5502ba3b6e4e084e6023</p>
+<p>{% gist komainu85/5502ba3b6e4e084e6023 %}</p>
 <p>The first step into register our dependencies in our IoC container, below is the register mapping a for structure map. This will differ depending on which IoC container your using.</p>
-<p>https://gist.github.com/komainu85/87b0521304204d07d873</p>
+<p>{% gist komainu85/87b0521304204d07d873 %}</p>
 <p>To get our IoC container to resolve our dependencies for the Entity Service Controller, we need to tap into the initialize pipeline. Inspecting the Sitecore.Services.config we can see the last step in the initialize pipeline is InitializeRoutes, so we need to patch in after that process and append our Dependency Resolver into our GlobalConfiguration.</p>
 <p>Within our pipeline processor we can get access to the GlobalConfiguration, create an instance of our IoC container. The GlobalConfiguration class has a property where we can provide a custom DependencyResolver to resolve our dependencies for our IoC container, along with an instance of our container.</p>
-<p>https://gist.github.com/komainu85/e0fbffe109c67eb532dc</p>
+<p>{% gist komainu85/e0fbffe109c67eb532dc %}</p>
 <p>Below is an example of the DependencyResolver for Structure Map, you can create your own DependencyResolver for your IoC of choice. Simply implement IDependencyResolver and write the implementation code for the IoC container.</p>
-<p>https://gist.github.com/komainu85/210df61e08b6864031e8</p>
+<p>{% gist komainu85/210df61e08b6864031e8 %}</p>
 <p>The IoC container has been configured, and the initialize pipeline creates an instance of your container. Now we can update the code for the controller for construction injection of the iRepository.</p>
-<p>https://gist.github.com/komainu85/d9612ede552015aaa736</p>
+<p>{% gist komainu85/d9612ede552015aaa736 %}</p>

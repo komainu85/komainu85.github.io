@@ -30,7 +30,7 @@ meta:
   _publicize_done_external: a:1:{s:7:"twitter";a:1:{i:4473872;s:55:"https://twitter.com/Sobek1985/status/687710258936979456";}}
   _publicize_done_4570590: '1'
   _wpas_done_4473872: '1'
-  publicize_twitter_user: Sobek1985
+  
   _publicize_done_5620599: '1'
   _wpas_done_5582720: '1'
   _publicize_done_5620617: '1'
@@ -51,8 +51,8 @@ meta:
   _oembed_76b58e91c9190f468bef79b94ffb54e3: "{{unknown}}"
   _oembed_5ad3f2a7f3f9a454742cda86f64aa59d: "{{unknown}}"
 author:
-  login: sobek1985
-  email: sobek1985@gmail.com
+  
+
   display_name: Mike Robbins
   first_name: ''
   last_name: ''
@@ -65,13 +65,13 @@ author:
 https://mikerobbins81u1/Sitecore/api/ssc/auth/login</p>
 <p><b>Body</b><br />
 Content-Type: application/json</p>
-<p>[code language="xml"]<br />
+<p>{% highlight xml %}<br />
 {<br />
 &quot;domain&quot;: &quot;sitecore&quot;,<br />
 &quot;username&quot;: &quot;admin&quot;,<br />
 &quot;password&quot;: &quot;b&quot;<br />
 }<br />
-[/code]</p>
+{% endhighlight %}</p>
 <p><b>Response</b></p>
 <ul>
 <li>200 response code</li>
@@ -87,8 +87,8 @@ https://mikerobbins81u1/Sitecore/api/ssc/auth/logout</p>
 <h3>Authentication Examples</h3>
 <p><b>Console Application</b><br />
 Below is a great example from <a href="https://twitter.com/herskinduk">Kern</a> of authentication again SSC within a C# console application.</p>
-<p>https://gist.github.com/herskinduk/918a2c3ab4a248b380e7</p>
+<p>{% gist herskinduk/918a2c3ab4a248b380e7 %}</p>
 <p><b>Windows 10 IoT (Universal Windows Application)</b></p>
-<p>https://gist.github.com/komainu85/103fb60107c542d56a49</p>
+<p>{% gist komainu85/103fb60107c542d56a49 %}</p>
 <p><b>Sitecore SPEAK</b><br />
 As Sitecore.Services.Client authentication is based upon asp.net membership and sets a .ASPXAUTH cookie, the same authentication as the Sitecore client and therefore Sitecore SPEAK. This means you are already authenticated, as you'll already be authenticated by having the .ASPXAUTH cookie set by the Sitecore login screen.</p>

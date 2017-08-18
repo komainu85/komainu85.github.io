@@ -21,7 +21,7 @@ meta:
   publicize_google_plus_url: https://plus.google.com/113240140771005714369/posts/Amb3sN1Z7AC
   _wpas_done_5582732: '1'
   _publicize_done_external: a:1:{s:11:"google_plus";a:1:{s:21:"113240140771005714369";b:1;}}
-  publicize_twitter_user: Sobek1985
+  
   publicize_twitter_url: http://t.co/hXLz4AA3S1
   _wpas_done_4473872: '1'
   publicize_linkedin_url: https://www.linkedin.com/updates?discuss=&scope=50486614&stype=M&topic=5984685289501655040&type=U&a=Kf4C
@@ -33,8 +33,8 @@ meta:
   _oembed_52949f6b63015969c6b9d4de0ccdd59f: "{{unknown}}"
   _oembed_75c046bf2e0b7d8bcee71dcdc2521cb2: "{{unknown}}"
 author:
-  login: sobek1985
-  email: sobek1985@gmail.com
+  
+
   display_name: Mike Robbins
   first_name: ''
   last_name: ''
@@ -43,7 +43,7 @@ author:
 <!--more--><br />
 Using Entity Service as standard you get the following methods:</p>
 <ul>
-<li>IQueryable&lt;Entity&gt; GetAll()</li>
+<li>IQueryable<Entity> GetAll()</li>
 <li>Entity FindById(string id)</li>
 <li>Add(Entity entity)</li>
 <li>Exists(Entity entity)</li>
@@ -51,16 +51,16 @@ Using Entity Service as standard you get the following methods:</p>
 <li>Delete(Entity entity)</li>
 </ul>
 <p>However Entity Service is very flexible allowing you to extend the service controller with additional actions. To add an additional action it is as simple as adding a new function to the service controller, and decorating it with an ActionName and the action type such as HttpGet. <strong>Please note the below of the required routing for Entity Service custom actions.</strong></p>
-<p>https://gist.github.com/komainu85/a560bcfe3767ec049eee</p>
-<p>With this method you will be implementing the functionality of the action in the controller or in some other business logic class. However I like the repository pattern that Sitecore have put in place with Entity Service using the IRepository&lt;EntityIdentity&gt; interface. I would rather keep all the logic of my controller in a single place (in the repository).</p>
+<p>{% gist komainu85/a560bcfe3767ec049eee %}</p>
+<p>With this method you will be implementing the functionality of the action in the controller or in some other business logic class. However I like the repository pattern that Sitecore have put in place with Entity Service using the IRepository<EntityIdentity> interface. I would rather keep all the logic of my controller in a single place (in the repository).</p>
 <p>So how do we update the repository to include the extra functional we want to add to the Entity Service.</p>
 <p>Firstly I created a new interface which contains my new funcations. In this example I have created the new DoSometingCustom() function that returns a string. To make sure this new repository works with the Service Controller and Entity Service I inherit from the default repository of IRepository, making sure T must implement IEntityIdentity.</p>
-<p>https://gist.github.com/komainu85/55de08be2df27b5374a6</p>
-<p>Now you are able to update the repository class and instead of implementing IRespository&lt;IEntityIdentity&gt; implement the new interface instead. This then gives you all the functions of the base IRepository interface (with standard Entity Service functions) along with your new interface with custom functions.</p>
-<p>https://gist.github.com/komainu85/131e0e1b80abfe0bf4a4</p>
+<p>{% gist komainu85/55de08be2df27b5374a6 %}</p>
+<p>Now you are able to update the repository class and instead of implementing IRespository<IEntityIdentity> implement the new interface instead. This then gives you all the functions of the base IRepository interface (with standard Entity Service functions) along with your new interface with custom functions.</p>
+<p>{% gist komainu85/131e0e1b80abfe0bf4a4 %}</p>
 <p>The last step is to update your controller class. Instead of creating an instance of your IRepository in the constructor of your controller, create an instance of your custom repository interface.</p>
 <p>From here you can then add your additional controller actions, calling the repository to implement the functionality of the controller.</p>
-<p>https://gist.github.com/komainu85/a79706241fec083df20e</p>
+<p>{% gist komainu85/a79706241fec083df20e %}</p>
 <p><strong>Please Note</strong></p>
 <p>With custom controller actions in Entity Service, the routing is configured to respond to {Controller-Namespace}/{Controller}/{ID}/{CustomActionName}. If you do not include in an ID  in the URL, Entity Service will not resolve to your custom controller action. If you do not require passing an ID to your custom controller action you can provide an int but not process the ID. This will satisfy the routing for Entity Service.</p>
 <p>As seen below you can then call your controller by using the prefixed of "/sitecore/api/ssc". The next part of the url is the namespace containing your controller with the "." replaced with "-" followed by your controller name.</p>

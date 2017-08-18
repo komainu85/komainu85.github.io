@@ -19,7 +19,7 @@ meta:
   publicize_google_plus_url: https://plus.google.com/113240140771005714369/posts/XV7dsf2t7ss
   _wpas_done_5582732: '1'
   _publicize_done_external: a:1:{s:11:"google_plus";a:1:{s:21:"113240140771005714369";b:1;}}
-  publicize_twitter_user: Sobek1985
+  
   publicize_twitter_url: http://t.co/pUFxNK0bHi
   _wpas_done_4473872: '1'
   publicize_linkedin_url: https://www.linkedin.com/updates?discuss=&scope=50486614&stype=M&topic=5928060529695297536&type=U&a=Yup-
@@ -28,8 +28,8 @@ meta:
   _wpas_skip_4473872: '1'
   _wpas_skip_5582720: '1'
 author:
-  login: sobek1985
-  email: sobek1985@gmail.com
+  
+
   display_name: Mike Robbins
   first_name: ''
   last_name: ''
@@ -39,7 +39,7 @@ author:
 <p>[caption id="attachment_256" align="aligncenter" width="300" class=" "]<a href="https://mikerobbinssitecore.files.wordpress.com/2014/10/wffm.png"><img class="size-medium wp-image-256" src="{{ site.baseurl }}/assets/wffm.png?w=300" alt="Form Reports" width="300" height="172" /></a> Form Reports[/caption]</p>
 <p>The idea is to create a new Form within WFFM and instead of adding the form to the page, instead create an instance of the form in memory, complete form and post the data into the WFFM database.</p>
 <p>Below is a code sample (commented) of completing the Form and posting the data back programmatically.</p>
-<p>[code language="csharp"]<br />
+<p>{% highlight csharp %}<br />
 public void SubmitToWFFM(ID formID, string username, string anotherString)<br />
 {<br />
 //Get form item by Item ID<br />
@@ -61,10 +61,10 @@ acr[1] = new AdaptedControlResult(controlAnotherField, true);</p>
 SaveToDatabase dbSave = new SaveToDatabase();<br />
 try<br />
 {<br />
-dbSave.Execute(formId, arl, null);&lt;/pre&gt;</p>
+dbSave.Execute(formId, arl, null);</pre></p>
 <p>catch (Exception ex)<br />
 {<br />
 Sitecore.Diagnostics.Log.Error(ex.Message, ex, this);<br />
 }<br />
 }<br />
-[/code]</p>
+{% endhighlight %}</p>

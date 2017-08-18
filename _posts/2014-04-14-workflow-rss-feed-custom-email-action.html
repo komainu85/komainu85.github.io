@@ -30,7 +30,7 @@ meta:
   publicize_google_plus_url: https://plus.google.com/113240140771005714369/posts/4AmFwiNLjdh
   _wpas_done_5582732: '1'
   _publicize_done_external: a:1:{s:11:"google_plus";a:1:{s:21:"113240140771005714369";b:1;}}
-  publicize_twitter_user: Sobek1985
+  
   publicize_twitter_url: http://t.co/jrKxEi4mHR
   _wpas_done_4473872: '1'
   publicize_linkedin_url: http://www.linkedin.com/updates?discuss=&scope=50486614&stype=M&topic=5874969677880389632&type=U&a=ueDb
@@ -54,8 +54,8 @@ meta:
   _oembed_2664e867fbb2e9c3229f4e2b12f5791b: "{{unknown}}"
   _wpas_skip_5582732: '1'
 author:
-  login: sobek1985
-  email: sobek1985@gmail.com
+  
+
   display_name: Mike Robbins
   first_name: ''
   last_name: ''
@@ -67,11 +67,11 @@ author:
 The solution is available as a Sitecore package on the marketplace or the source is available of GitHub at the bottom of this blog. Please feel free to extend and contribute.</p>
 <p><strong>Workflow history</strong></p>
 <p>Using the GetWorkflow().GetHistory(Item) API gives full access to the entire workflow history or a particular Sitecore Item.</p>
-<p>[code language="csharp"]<br />
+<p>{% highlight csharp %}<br />
    var workflowItemHistory = Item.State.GetWorkflow().GetHistory(Item);<br />
-[/code]</p>
+{% endhighlight %}</p>
 <p>However on testing this code threw up an unexpected error. Due to the email action being called from a command the workflow command hasn't been fully executed, so the workflow history doesn't contain the currently executing workflow command. This was solved by creating a function that gets the current workflow command that has fired, working out the target state of the action before appending this data to a collection of workflow history.</p>
-<p>[code language="csharp"]<br />
+<p>{% highlight csharp %}<br />
         private ItemWorkflowHistory GetCurrentWorkflowHistoryItem()<br />
         {</p>
 <p>            var history = new ItemWorkflowHistory()<br />
@@ -92,11 +92,11 @@ The solution is available as a Sitecore package on the marketplace or the source
 <p>            var itemWorkflow = Sitecore.Data.Database.GetDatabase(&amp;amp;amp;amp;quot;master&amp;amp;amp;amp;quot;).WorkflowProvider.GetWorkflow(workflowPipelineArgs.DataItem);</p>
 <p>            return itemWorkflow.GetState(nextStateId.ToString());<br />
         }<br />
-[/code]</p>
+{% endhighlight %}</p>
 <p><strong>Workflow commands</strong><br />
 The biggest challenge was to build the command links to allow the user to fire the correct commands at the relevant stage of workflow.</p>
 <p>This suffered from the same issue as the workflow history, the correct workflow commands weren't shown because the currently executing command hasn't completed. Again this was solved using the method above of getting the firing command and getting its target state of workflow. The correct workflow commands can then be taken from this target state of workflow.</p>
-<p>[code language="csharp"]<br />
+<p>{% highlight csharp %}<br />
 private string GetCommandLinks(Item workflowItem, WorkflowState state)<br />
         {<br />
             var sb = new StringBuilder();</p>
@@ -117,9 +117,9 @@ private string GetCommandLinks(Item workflowItem, WorkflowState state)<br />
 <p>            sb.Append(&amp;amp;amp;amp;amp;quot;&amp;amp;amp;amp;amp;lt;/ul&amp;amp;amp;amp;amp;gt;&amp;amp;amp;amp;amp;quot;);</p>
 <p>            return sb.ToString();<br />
         }<br />
-[/code]</p>
+{% endhighlight %}</p>
 <p>Reviewing the command links in the Workbox RSS feed I was able to build a helper class to build the command links in the correct URL format for the links.</p>
-<p>[code language="csharp"]<br />
+<p>{% highlight csharp %}<br />
 public static string GetContentEditorLink(ContentEditorMode contentEditorMode, Item item, string hostName, ID commandId)<br />
         {<br />
             switch (contentEditorMode)<br />
@@ -136,7 +136,7 @@ public static string GetContentEditorLink(ContentEditorMode contentEditorMode, I
             return &amp;amp;amp;amp;amp;quot;&amp;amp;amp;amp;amp;quot;;<br />
         }<br />
     }<br />
-[/code]</p>
+{% endhighlight %}</p>
 <p><strong>Workflow History</strong></p>
 <p><a href="https://mikerobbinssitecore.files.wordpress.com/2014/05/20140521-194216-70936959.jpg"><img class="alignnone size-full" src="{{ site.baseurl }}/assets/20140521-194216-70936959.jpg" alt="20140521-194216-70936959.jpg" /></a></p>
 <p><a href="https://mikerobbinssitecore.files.wordpress.com/2014/05/20140521-194216-70936793.jpg"><img class="alignnone size-full" src="{{ site.baseurl }}/assets/20140521-194216-70936793.jpg" alt="20140521-194216-70936793.jpg" /></a></p>

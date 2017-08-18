@@ -21,7 +21,7 @@ meta:
   publicize_google_plus_url: https://plus.google.com/113240140771005714369/posts/fCvztvoBa2N
   _wpas_done_5582732: '1'
   _publicize_done_external: a:1:{s:11:"google_plus";a:1:{s:21:"113240140771005714369";b:1;}}
-  publicize_twitter_user: Sobek1985
+  
   publicize_twitter_url: http://t.co/J5k8jR7pv3
   _wpas_done_4473872: '1'
   publicize_linkedin_url: http://www.linkedin.com/updates?discuss=&scope=50486614&stype=M&topic=5870471525928308737&type=U&a=nNWd
@@ -39,8 +39,8 @@ meta:
   geo_public: '0'
   _oembed_e3b4f6766cf906dc160a05c0e1fe832e: "{{unknown}}"
 author:
-  login: sobek1985
-  email: sobek1985@gmail.com
+  
+
   display_name: Mike Robbins
   first_name: ''
   last_name: ''
@@ -48,18 +48,18 @@ author:
 <p>Recently I have had a client request asking to use Sitecore Item Web API in XML format rather than JSON. Luckily within the Item Web API documentation Sitecore provide a Pipeline Processor to output XML rather than JSON.  <a title="http://sdn.sitecore.net/upload/sdn5/modules/sitecore%20item%20web%20api/sitecore_item_web_api_developer_guide_sc66-71-a4.pdf" href="http://sdn.sitecore.net/upload/sdn5/modules/sitecore%20item%20web%20api/sitecore_item_web_api_developer_guide_sc66-71-a4.pdf" target="_blank">http://sdn.sitecore.net/upload/sdn5/modules/sitecore%20item%20web%20api/sitecore_item_web_api_developer_guide_sc66-71-a4.pdf</a></p>
 <p>Sitecore SPEAK also makes use of the Sitecore Item Web API, but an unfortunate side effect of this code snippet is that it breaks Sitecore SPEAK as it expects JSON responses back from the web service. The code snippet below is an adapted version of the Sitecore code snippet. It allows bypassing the XMLSerializer by default unless a query string parameter of "type=xml" is present.</p>
 <p>This allows you to maintain Sitecore SPEAK functionality while allowing the calling client to easily switch between JSON and XML. Add this XML to the include folder in app_config</p>
-<p>[code language="xml"]<br />
-&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;<br />
-&lt;configuration xmlns:patch=&quot;http://www.sitecore.net/xmlconfig/&quot;&gt;<br />
- &lt;sitecore&gt;<br />
- &lt;pipelines&gt;<br />
- &lt;itemWebApiRequest&gt;<br />
- &lt;processor patch:before=&quot;*[@type='Sitecore.ItemWebApi.Pipelines.Request.SerializeResponse, Sitecore.ItemWebApi']&quot; type=&quot;MikeRobbins.CMS.WebItemAPI.SwitchToXmlSerializer,MikeRobbins.CMS&quot; /&gt;<br />
- &lt;/itemWebApiRequest&gt;<br />
- &lt;/pipelines&gt;<br />
- &lt;/sitecore&gt;<br />
-&lt;/configuration&gt;[/code]</p>
-<p>[code language="csharp"]<br />
+<p>{% highlight xml %}<br />
+<?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?><br />
+<configuration xmlns:patch=&quot;http://www.sitecore.net/xmlconfig/&quot;><br />
+ <sitecore><br />
+ <pipelines><br />
+ <itemWebApiRequest><br />
+ <processor patch:before=&quot;*[@type='Sitecore.ItemWebApi.Pipelines.Request.SerializeResponse, Sitecore.ItemWebApi']&quot; type=&quot;MikeRobbins.CMS.WebItemAPI.SwitchToXmlSerializer,MikeRobbins.CMS&quot; /><br />
+ </itemWebApiRequest><br />
+ </pipelines><br />
+ </sitecore><br />
+</configuration>{% endhighlight %}</p>
+<p>{% highlight csharp %}<br />
 namespace MikeRobbins.CMS.WebItemAPI<br />
 {<br />
  public class SwitchToXmlSerializer : RequestProcessor<br />
@@ -73,8 +73,8 @@ namespace MikeRobbins.CMS.WebItemAPI<br />
  }<br />
  }<br />
 }<br />
-[/code]</p>
-<p>[code language="csharp"]<br />
+{% endhighlight %}</p>
+<p>{% highlight csharp %}<br />
 namespace MikeRobbins.CMS.WebItemAPI<br />
 {<br />
  public class XmlSerializer : ISerializer<br />
@@ -92,14 +92,14 @@ namespace MikeRobbins.CMS.WebItemAPI<br />
  }</p>
 <p> private XElement Serialize(Dynamic value)<br />
  {<br />
- var element = XElement.Parse(&quot;&lt;object/&gt;&quot;);</p>
+ var element = XElement.Parse(&quot;<object/>&quot;);</p>
 <p> foreach (var property in value)<br />
  {<br />
  var propertyName = string.Format(&quot;_{0}&quot;, property.Key);<br />
  propertyName = propertyName.Replace(&quot;{&quot;, &quot;&quot;);<br />
  propertyName = propertyName.Replace(&quot;}&quot;, &quot;&quot;);<br />
  propertyName = propertyName.Replace(&quot; &quot;, &quot;-&quot;);</p>
-<p> var child = XElement.Parse(string.Format(&quot;&lt;{0}/&gt;&quot;, propertyName));<br />
+<p> var child = XElement.Parse(string.Format(&quot;<{0}/>&quot;, propertyName));<br />
  var array = property.Value as Dynamic[];</p>
 <p> if (array != null)<br />
  {<br />
@@ -121,4 +121,4 @@ namespace MikeRobbins.CMS.WebItemAPI<br />
 <p> return element;<br />
  }<br />
  }<br />
-}[/code]</p>
+}{% endhighlight %}</p>

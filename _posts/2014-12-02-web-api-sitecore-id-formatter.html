@@ -24,7 +24,7 @@ meta:
   _rest_api_client_id: "-1"
   _wpas_done_5582732: '1'
   _publicize_done_external: a:1:{s:11:"google_plus";a:1:{s:21:"113240140771005714369";b:1;}}
-  publicize_twitter_user: Sobek1985
+  
   publicize_twitter_url: http://t.co/lxtNfwqGm2
   _wpas_done_4473872: '1'
   _wpas_done_5582720: '1'
@@ -34,8 +34,8 @@ meta:
   _wpas_skip_4473872: '1'
   _wpas_skip_5582720: '1'
 author:
-  login: sobek1985
-  email: sobek1985@gmail.com
+  
+
   display_name: Mike Robbins
   first_name: ''
   last_name: ''
@@ -45,7 +45,7 @@ author:
 <p>Below is a custom formatter to format Sitecore item IDs without the {}. This example has Web API registered to run alongside Web Item API.</p>
 <p>See Patrick Delancy's blog post about running Web API alongside Web Item API http://patrickdelancy.com/2013/08/sitecore-webapi-living-harmony/</p>
 <p>[caption id="attachment_311" align="aligncenter" width="300"]<a href="https://mikerobbinssitecore.files.wordpress.com/2014/12/jsonfixed.png"><img class="size-medium wp-image-311" src="{{ site.baseurl }}/assets/jsonfixed.png?w=300" alt="The corresponding JSON " width="300" height="162" /></a> The corresponding JSON[/caption]</p>
-<p>[code language="csharp"]<br />
+<p>{% highlight csharp %}<br />
   public class RegisterWebApiRoute<br />
     {<br />
         public void Process(PipelineArgs args)<br />
@@ -54,13 +54,13 @@ author:
             config.Routes.MapHttpRoute(&quot;DefaultApiRoute&quot;,<br />
                                      &quot;mikerobbinsapi/{controller}/{id}&quot;,<br />
                                      new { id = RouteParameter.Optional });</p>
-<p>            var appXmlType = config.Formatters.XmlFormatter.SupportedMediaTypes.FirstOrDefault(t =&gt; t.MediaType == &quot;application/xml&quot;);<br />
+<p>            var appXmlType = config.Formatters.XmlFormatter.SupportedMediaTypes.FirstOrDefault(t => t.MediaType == &quot;application/xml&quot;);<br />
             config.Formatters.XmlFormatter.SupportedMediaTypes.Remove(appXmlType);<br />
            config.Formatters.JsonFormatter.SerializerSettings.Converters.Add(new IDConverter());<br />
         }<br />
     }<br />
-[/code]</p>
-<p>[code language="csharp"]<br />
+{% endhighlight %}</p>
+<p>{% highlight csharp %}<br />
 public class IDConverter : JsonConverter<br />
    {<br />
         public override bool CanConvert(Type objectType)<br />
@@ -92,4 +92,4 @@ public class IDConverter : JsonConverter<br />
             throw new NotImplementedException();<br />
         }<br />
     }<br />
-[/code]</p>
+{% endhighlight %}</p>

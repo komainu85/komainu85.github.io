@@ -48,7 +48,7 @@ meta:
   publicize_google_plus_url: https://plus.google.com/113240140771005714369/posts/hAJzqZUrd9h
   _wpas_done_5582732: '1'
   _publicize_done_external: a:1:{s:11:"google_plus";a:1:{s:21:"113240140771005714369";b:1;}}
-  publicize_twitter_user: Sobek1985
+  
   publicize_twitter_url: http://t.co/fF3fQ8kxuR
   _wpas_done_4473872: '1'
   publicize_linkedin_url: https://www.linkedin.com/updates?discuss=&scope=50486614&stype=M&topic=5993723157918285825&type=U&a=d2Ox
@@ -57,8 +57,8 @@ meta:
   _wpas_skip_4473872: '1'
   _wpas_skip_5582720: '1'
 author:
-  login: sobek1985
-  email: sobek1985@gmail.com
+  
+
   display_name: Mike Robbins
   first_name: ''
   last_name: ''
@@ -71,6 +71,6 @@ https://twitter.com/stephenpope/status/493034877051490305</p>
 <p>Within the Lucene or Solr configuration (e.g. "Sitecore.ContentSearch.Lucene.DefaultIndexConfiguration.config") we can see that there is a collection of  analyzers specified along with the culture name the analyzer is for.</p>
 <p>https://gist.github.com/dbea6aecd0fcb0a47d3d</p>
 <h2>Switching analyzer for the given language</h2>
-<p>When constructing the context.GetQueryable&lt;SearchResultItem&gt; there is an overloaded method that accepts a CultureExecutionContext. This allows you to pass in a culture to use for the search, context search then uses the config to locate the correct analyzer for the given culture info.</p>
+<p>When constructing the context.GetQueryable<SearchResultItem> there is an overloaded method that accepts a CultureExecutionContext. This allows you to pass in a culture to use for the search, context search then uses the config to locate the correct analyzer for the given culture info.</p>
 <p>In the example below, I get the current cultureInfo from the context language and pass this into the GetQueryable method. This allows content search to automatically switch between analyzers based on the current site language.</p>
 <p>https://gist.github.com/775fa757f54ae4f6d2f0</p>

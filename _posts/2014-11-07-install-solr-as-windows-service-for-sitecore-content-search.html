@@ -22,21 +22,15 @@ meta:
   _wpas_skip_facebook: '1'
   _wpas_skip_tumblr: '1'
   _wpas_skip_path: '1'
-  publicize_google_plus_url: https://plus.google.com/113240140771005714369/posts/Ke1GCpPSiYY
   _wpas_done_5582732: '1'
-  _publicize_done_external: a:1:{s:11:"google_plus";a:1:{s:21:"113240140771005714369";b:1;}}
-  publicize_twitter_user: Sobek1985
   publicize_twitter_url: http://t.co/V9J9xS5XxJ
   _wpas_done_4473872: '1'
-  publicize_linkedin_url: https://www.linkedin.com/updates?discuss=&scope=50486614&stype=M&topic=5936502466416766976&type=U&a=bvsf
   _wpas_done_5582720: '1'
   _wpas_skip_5582732: '1'
   _wpas_skip_4473872: '1'
   _wpas_skip_5582720: '1'
   _publicize_job_id: '20740955935'
 author:
-  login: sobek1985
-  email: sobek1985@gmail.com
   display_name: Mike Robbins
   first_name: ''
   last_name: ''
@@ -49,11 +43,11 @@ author:
 <li>Copy the nssm.exe into your solr directory.
 <p>[caption id="attachment_292" align="aligncenter" width="300" class=" "]<a href="https://mikerobbinssitecore.files.wordpress.com/2014/11/nssm1.png"><img class="wp-image-292 size-medium" src="{{ site.baseurl }}/assets/nssm1.png?w=300" alt="NSSM" width="300" height="146" /></a> NSSM[/caption]</li>
 <li>Create a bat file within the Solr/example folder. Example below, where CD is your example folder within your Solr directory.
-<p>[code language="bash"]<br />
-@echo off<br />
-cd &quot;C:\solr\example\&quot;<br />
-java -Xms64M -Xmx256M -jar start.jar<br />
-[/code]</p>
+{% highlight bash %}
+@echo off
+cd &quot;C:\solr\example\&quot;
+java -Xms64M -Xmx256M -jar start.jar
+{% endhighlight %}
 </li>
 <li>Run Command Prompt as Admin. CD to the directory containing of your NSSM.exe</li>
 <li>Run the following script to install Solr as a service."nssm install YourDesiredServiceName" "c:/Solr/LocationOfBatScript""E.g. nssm install MikeRobbinsSolr "C:\solr\example\Solr.bat"

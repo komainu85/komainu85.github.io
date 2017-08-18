@@ -21,7 +21,7 @@ meta:
   _publicize_job_id: '16125538932'
   _publicize_done_4570590: '1'
   _wpas_done_4473872: '1'
-  publicize_twitter_user: Sobek1985
+  
   publicize_linkedin_url: https://www.linkedin.com/updates?discuss=&scope=50486614&stype=M&topic=6063312230626185216&type=U&a=z-8L
   _publicize_done_5620599: '1'
   _wpas_done_5582720: '1'
@@ -31,17 +31,17 @@ meta:
   _wpas_skip_4473872: '1'
   _wpas_skip_5582720: '1'
 author:
-  login: sobek1985
-  email: sobek1985@gmail.com
+  
+
   display_name: Mike Robbins
   first_name: ''
   last_name: ''
 ---
 <p>With the release of Sitecore 8.1 a new Pipeline called <strong>getFieldLabel </strong>was added. This new pipeline allows you to inject code that can append or alter the label of a field within the Content Editor.<!--more--></p>
 <p>The first thing to notice is that the pipeline accepts a <strong><span class="pl-en">GetFieldLabelArgs </span></strong><span class="pl-en">class for pipeline. This contains the field in question and the result. The result is a string of what will be appended to the label.</span></p>
-<p>https://gist.github.com/komainu85/26850da3533da2041ae3</p>
+<p>{% gist komainu85/26850da3533da2041ae3 %}</p>
 <p>Within the process method you have access to the field that your updating, the result string can be appended to by your code. This is what is displayed in the Content Editor above the field, it can be text or HTML.</p>
-<p>https://gist.github.com/komainu85/d360b49f8fd4632b1fd9</p>
-<p>https://gist.github.com/komainu85/3177125ddd878240ae99</p>
+<p>{% gist komainu85/d360b49f8fd4632b1fd9 %}</p>
+<p>{% gist komainu85/3177125ddd878240ae99 %}</p>
 <p>Below is an example of what gets rendered in the Content Editor.</p>
 <p>[caption id="attachment_1002" align="aligncenter" width="300"]<a href="https://mikerobbinssitecore.files.wordpress.com/2015/10/getfieldlabelpipeline.png"><img class="size-medium wp-image-1002" src="{{ site.baseurl }}/assets/getfieldlabelpipeline.png?w=300" alt="GetFieldLabelPipeline" width="300" height="37" /></a> GetFieldLabelPipeline[/caption]</p>
