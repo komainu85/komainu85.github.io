@@ -74,7 +74,7 @@ The solution is available as a Sitecore package on the marketplace or the source
 <p>{% highlight csharp %}
         private ItemWorkflowHistory GetCurrentWorkflowHistoryItem()
         {</p>
-<p>            var history = new ItemWorkflowHistory()
+       var history = new ItemWorkflowHistory()
             {
                 ItemDateTime = DateTime.Now,<br />
                 User = Sitecore.Context.GetUserName(),<br />
@@ -82,15 +82,15 @@ The solution is available as a Sitecore package on the marketplace or the source
                 CurrentState = GetCorrectWorkflowState().DisplayName,<br />
                 Comment = workflowPipelineArgs.Comments<br />
             };
-<p>            return history;
+       return history;
        }
 <p>private WorkflowState GetCorrectWorkflowState()
         {
             var emailAction = GetEmailAction();
-<p>            var command = emailAction.Parent;
-<p>            var nextStateId = command[&amp;amp;amp;amp;quot;Next state&amp;amp;amp;amp;quot;];
-<p>            var itemWorkflow = Sitecore.Data.Database.GetDatabase(&amp;amp;amp;amp;quot;master&amp;amp;amp;amp;quot;).WorkflowProvider.GetWorkflow(workflowPipelineArgs.DataItem);
-<p>            return itemWorkflow.GetState(nextStateId.ToString());
+       var command = emailAction.Parent;
+       var nextStateId = command[&amp;amp;amp;amp;quot;Next state&amp;amp;amp;amp;quot;];
+       var itemWorkflow = Sitecore.Data.Database.GetDatabase(&amp;amp;amp;amp;quot;master&amp;amp;amp;amp;quot;).WorkflowProvider.GetWorkflow(workflowPipelineArgs.DataItem);
+       return itemWorkflow.GetState(nextStateId.ToString());
         }
 {% endhighlight %}</p>
 <p><strong>Workflow commands</strong><br />
@@ -100,22 +100,22 @@ The biggest challenge was to build the command links to allow the user to fire t
 private string GetCommandLinks(Item workflowItem, WorkflowState state)
         {
             var sb = new StringBuilder();
-<p>            var workflow = Sitecore.Data.Database.GetDatabase(&amp;amp;amp;amp;amp;quot;master&amp;amp;amp;amp;amp;quot;).WorkflowProvider.GetWorkflow(workflowItem);
-<p>            var commands = workflow.GetCommands(state.StateID);
-<p>            sb.Append(&amp;amp;amp;amp;amp;quot;&amp;amp;amp;amp;amp;lt;ul&amp;amp;amp;amp;amp;gt;&amp;amp;amp;amp;amp;quot;);
-<p>            foreach (var command in commands)
+       var workflow = Sitecore.Data.Database.GetDatabase(&amp;amp;amp;amp;amp;quot;master&amp;amp;amp;amp;amp;quot;).WorkflowProvider.GetWorkflow(workflowItem);
+       var commands = workflow.GetCommands(state.StateID);
+       sb.Append(&amp;amp;amp;amp;amp;quot;&amp;amp;amp;amp;amp;lt;ul&amp;amp;amp;amp;amp;gt;&amp;amp;amp;amp;amp;quot;);
+       foreach (var command in commands)
             {
                 var submit = Tools.GetContentEditorLink(ContentEditorMode.Submit, workflowItem, HostName, new ID(command.CommandID));
                 var submitComment = Tools.GetContentEditorLink(ContentEditorMode.Submit, workflowItem,HostName, new ID(command.CommandID));
-<p>                sb.Append(&amp;amp;amp;amp;amp;quot;&amp;amp;amp;amp;amp;lt;li&amp;amp;amp;amp;amp;gt;&amp;amp;amp;amp;amp;lt;a&amp;amp;amp;amp;amp;gt;&amp;amp;amp;amp;amp;quot; + command.DisplayName + &amp;amp;amp;amp;amp;quot;&amp;amp;amp;amp;amp;lt;/a&amp;amp;amp;amp;amp;gt; or &amp;amp;amp;amp;amp;lt;a&amp;amp;amp;amp;amp;gt;&amp;amp;amp;amp;amp;quot; + command.DisplayName + &amp;amp;amp;amp;amp;quot; &amp;amp;amp;amp;amp;amp;amp; comment&amp;amp;amp;amp;amp;lt;/a&amp;amp;amp;amp;amp;gt;&amp;amp;amp;amp;amp;lt;/li&amp;amp;amp;amp;amp;gt;&amp;amp;amp;amp;amp;quot;);
+           sb.Append(&amp;amp;amp;amp;amp;quot;&amp;amp;amp;amp;amp;lt;li&amp;amp;amp;amp;amp;gt;&amp;amp;amp;amp;amp;lt;a&amp;amp;amp;amp;amp;gt;&amp;amp;amp;amp;amp;quot; + command.DisplayName + &amp;amp;amp;amp;amp;quot;&amp;amp;amp;amp;amp;lt;/a&amp;amp;amp;amp;amp;gt; or &amp;amp;amp;amp;amp;lt;a&amp;amp;amp;amp;amp;gt;&amp;amp;amp;amp;amp;quot; + command.DisplayName + &amp;amp;amp;amp;amp;quot; &amp;amp;amp;amp;amp;amp;amp; comment&amp;amp;amp;amp;amp;lt;/a&amp;amp;amp;amp;amp;gt;&amp;amp;amp;amp;amp;lt;/li&amp;amp;amp;amp;amp;gt;&amp;amp;amp;amp;amp;quot;);
            }
-<p>            string editLink = Tools.GetContentEditorLink(ContentEditorMode.Editor, workflowItem, HostName, ID.NewID);
+       string editLink = Tools.GetContentEditorLink(ContentEditorMode.Editor, workflowItem, HostName, ID.NewID);
             string previewLink = Tools.GetContentEditorLink(ContentEditorMode.Preview, workflowItem,HostName, ID.NewID);
-<p>            sb.Append(&amp;amp;amp;amp;amp;quot;&amp;amp;amp;amp;amp;lt;li&amp;amp;amp;amp;amp;gt;&amp;amp;amp;amp;amp;lt;a&amp;amp;amp;amp;amp;gt;Edit&amp;amp;amp;amp;amp;lt;/li&amp;amp;amp;amp;amp;gt;&amp;amp;amp;amp;amp;quot;);
+       sb.Append(&amp;amp;amp;amp;amp;quot;&amp;amp;amp;amp;amp;lt;li&amp;amp;amp;amp;amp;gt;&amp;amp;amp;amp;amp;lt;a&amp;amp;amp;amp;amp;gt;Edit&amp;amp;amp;amp;amp;lt;/li&amp;amp;amp;amp;amp;gt;&amp;amp;amp;amp;amp;quot;);
             sb.Append(&amp;amp;amp;amp;amp;quot;&amp;amp;amp;amp;amp;lt;li&amp;amp;amp;amp;amp;gt;&amp;amp;amp;amp;amp;lt;a&amp;amp;amp;amp;amp;gt;Preview&amp;amp;amp;amp;amp;lt;/li&amp;amp;amp;amp;amp;gt;&amp;amp;amp;amp;amp;quot;);
             sb.Append(&amp;amp;amp;amp;amp;quot;&amp;amp;amp;amp;amp;lt;li&amp;amp;amp;amp;amp;gt;&amp;amp;amp;amp;amp;lt;a /&amp;amp;amp;amp;amp;gt;Workbox&amp;amp;amp;amp;amp;lt;/li&amp;amp;amp;amp;amp;gt;&amp;amp;amp;amp;amp;quot;);
-<p>            sb.Append(&amp;amp;amp;amp;amp;quot;&amp;amp;amp;amp;amp;lt;/ul&amp;amp;amp;amp;amp;gt;&amp;amp;amp;amp;amp;quot;);
-<p>            return sb.ToString();
+       sb.Append(&amp;amp;amp;amp;amp;quot;&amp;amp;amp;amp;amp;lt;/ul&amp;amp;amp;amp;amp;gt;&amp;amp;amp;amp;amp;quot;);
+       return sb.ToString();
         }
 {% endhighlight %}</p>
 <p>Reviewing the command links in the Workbox RSS feed I was able to build a helper class to build the command links in the correct URL format for the links.</p>
@@ -126,11 +126,11 @@ public static string GetContentEditorLink(ContentEditorMode contentEditorMode, I
             {
                 case ContentEditorMode.Editor:<br />
                     return (&amp;amp;amp;amp;amp;quot;http://&amp;amp;amp;amp;amp;quot; + hostName.Replace(&amp;amp;amp;amp;amp;quot;http://&amp;amp;amp;amp;amp;quot;, &amp;amp;amp;amp;amp;quot;&amp;amp;amp;amp;amp;quot;) + &amp;amp;amp;amp;amp;quot;/sitecore/shell/Applications/Content%20editor.aspx?fo=&amp;amp;amp;amp;amp;quot; + item.ID.ToString() + &amp;amp;amp;amp;amp;quot;&amp;amp;amp;amp;amp;amp;id=&amp;amp;amp;amp;amp;quot; + item.ID.ToString() + &amp;amp;amp;amp;amp;quot;&amp;amp;amp;amp;amp;amp;la=&amp;amp;amp;amp;amp;quot; + item.Language.Name + &amp;amp;amp;amp;amp;quot;&amp;amp;amp;amp;amp;amp;v=&amp;amp;amp;amp;amp;quot; + item.Version.Number.ToString() + &amp;amp;amp;amp;amp;quot;&amp;amp;amp;amp;amp;amp;sc_bw=1&amp;amp;amp;amp;amp;quot;);
-<p>                case ContentEditorMode.Preview:<br />
+           case ContentEditorMode.Preview:<br />
                     return (&amp;amp;amp;amp;amp;quot;http://&amp;amp;amp;amp;amp;quot; + hostName.Replace(&amp;amp;amp;amp;amp;quot;http://&amp;amp;amp;amp;amp;quot;, &amp;amp;amp;amp;amp;quot;&amp;amp;amp;amp;amp;quot;) + &amp;amp;amp;amp;amp;quot;/sitecore/shell/feeds/action.aspx?c=Preview&amp;amp;amp;amp;amp;amp;id=&amp;amp;amp;amp;amp;quot; + item.ID.ToString() + &amp;amp;amp;amp;amp;quot;&amp;amp;amp;amp;amp;amp;la=&amp;amp;amp;amp;amp;quot; + item.Language.Name + &amp;amp;amp;amp;amp;quot;&amp;amp;amp;amp;amp;amp;v=&amp;amp;amp;amp;amp;quot; + item.Version.Number.ToString());
-<p>                case ContentEditorMode.Submit:<br />
+           case ContentEditorMode.Submit:<br />
                     return (&amp;amp;amp;amp;amp;quot;http://&amp;amp;amp;amp;amp;quot; + hostName.Replace(&amp;amp;amp;amp;amp;quot;http://&amp;amp;amp;amp;amp;quot;, &amp;amp;amp;amp;amp;quot;&amp;amp;amp;amp;amp;quot;) + &amp;amp;amp;amp;amp;quot;/sitecore/shell/feeds/action.aspx?c=Workflow&amp;amp;amp;amp;amp;amp;id=&amp;amp;amp;amp;amp;quot; + item.ID.ToString() + &amp;amp;amp;amp;amp;quot;&amp;amp;amp;amp;amp;amp;la=&amp;amp;amp;amp;amp;quot; + item.Language.Name + &amp;amp;amp;amp;amp;quot;&amp;amp;amp;amp;amp;amp;v=&amp;amp;amp;amp;amp;quot; + item.Version.Number.ToString() + &amp;amp;amp;amp;amp;quot;&amp;amp;amp;amp;amp;amp;cmd=&amp;amp;amp;amp;amp;quot; + commandId.ToString());
-<p>                case ContentEditorMode.SubmitComment:<br />
+           case ContentEditorMode.SubmitComment:<br />
                     return (&amp;amp;amp;amp;amp;quot;http://&amp;amp;amp;amp;amp;quot; + hostName.Replace(&amp;amp;amp;amp;amp;quot;http://&amp;amp;amp;amp;amp;quot;,&amp;amp;amp;amp;amp;quot;&amp;amp;amp;amp;amp;quot;) + &amp;amp;amp;amp;amp;quot;/sitecore/shell/feeds/action.aspx?c=Workflow&amp;amp;amp;amp;amp;amp;id=&amp;amp;amp;amp;amp;quot; + item.ID.ToString() + &amp;amp;amp;amp;amp;quot;&amp;amp;amp;amp;amp;amp;la=&amp;amp;amp;amp;amp;quot; + item.Language.Name + &amp;amp;amp;amp;amp;quot;&amp;amp;amp;amp;amp;amp;v=&amp;amp;amp;amp;amp;quot; + item.Version.Number.ToString() + &amp;amp;amp;amp;amp;quot;&amp;amp;amp;amp;amp;amp;cmd=&amp;amp;amp;amp;amp;quot; + commandId.ToString() + &amp;amp;amp;amp;amp;quot;&amp;amp;amp;amp;amp;amp;nc=1&amp;amp;amp;amp;amp;quot;);
             }
             return &amp;amp;amp;amp;amp;quot;&amp;amp;amp;amp;amp;quot;;

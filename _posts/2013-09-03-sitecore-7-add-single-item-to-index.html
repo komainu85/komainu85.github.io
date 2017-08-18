@@ -41,7 +41,7 @@ public static void UpdateItemInIndex(Item item, string indexName)
   ContentSearchManager.GetIndex(indexName).Update(tempItem.UniqueId);
 }
 
-  public static void DeleteItemInIndex(Item item, string indexName)
+public static void DeleteItemInIndex(Item item, string indexName)
 {
   var tempItem = (SitecoreIndexableItem)item;
   ContentSearchManager.GetIndex(indexName).Delete(tempItem.UniqueId);
