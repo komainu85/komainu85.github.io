@@ -52,9 +52,9 @@ author:
 ---
 <p>In this post I will walk through using the Sitecore SPEAK List Component using Knockout databinding and a custom tile to create a custom look and feel of the List component.<!--more--></p>
 <p>I'm assuming you have already got a SPEAK application or understand the basics of creating a SPEAK application. (There are some great posts on Sitecore SPEAK from <a title="http://mhwelander.net/category/speak/" href="http://mhwelander.net/category/speak/">Martina</a>&nbsp;if your new to SPEAK).</p>
-<p>[caption width="300" id="attachment_647" align="aligncenter"]<a href="https://mikerobbinssitecore.files.wordpress.com/2015/03/core-db.png"><img class="size-medium wp-image-647" src="{{ site.baseurl }}/assets/core-db.png?w=300" alt="Core DB SPEAK Component" width="300" height="249" /></a> Core DB SPEAK Component[/caption]</p>
+<p>[caption  id="attachment_647" align="aligncenter"]<a href="https://mikerobbinssitecore.files.wordpress.com/2015/03/core-db.png"><img class="size-medium wp-image-647" src="{{ site.baseurl }}/assets/core-db.png" alt="Core DB SPEAK Component"  height="249" /></a> Core DB SPEAK Component</p>
 <p>In the presentation details of the component add a new List Component and create a datasource component (In my example here im using Query Data Source which i'm populating later using Entity Service).</p>
-<p>[caption width="300" id="attachment_648" align="aligncenter"]<a href="https://mikerobbinssitecore.files.wordpress.com/2015/03/list-component.png"><img class="size-medium wp-image-648" src="{{ site.baseurl }}/assets/list-component.png?w=300" alt="List Component" width="300" height="145" /></a> List Component[/caption]</p>
+<p>[caption  id="attachment_648" align="aligncenter"]<a href="https://mikerobbinssitecore.files.wordpress.com/2015/03/list-component.png"><img class="size-medium wp-image-648" src="{{ site.baseurl }}/assets/list-component.png" alt="List Component"  height="145" /></a> List Component</p>
 <h3>List Component Rendering Properties</h3>
 <p>Within the rendering properties of the list component, this is where you can specify how the list component will render its data. There are three view models available in Sitecore 8 for the list component:</p>
 <ol>
@@ -67,9 +67,9 @@ author:
 <p>Its a good idea to separate out our custom tiles from the standard sitecore folder of tile&nbsp;("sitecore\shell\client\Business Component Library\Layouts\Renderings\ListsAndGrids\ListControls\DefaultTile.cshtml") and create your own folder. You can also use this example tile as a template for creating your own tile.</p>
 <p>The TileHtmlFileName field allows you to specify a location of a custom CSS file for your custom tile. This follows the same pattern as the Html file above.</p>
 <p>Set the items property under Data Bindings to the items property of your datasource. This will provide your list component with its data.</p>
-<p>[caption width="225" id="attachment_651" align="aligncenter"]<a href="https://mikerobbinssitecore.files.wordpress.com/2015/03/listcontrolcomponent.png"><img class="size-medium wp-image-651" src="{{ site.baseurl }}/assets/listcontrolcomponent.png?w=225" alt="List Component Rendering Properties" width="225" height="300" /></a> List Component Rendering Properties[/caption]</p>
+<p>[caption width="225" id="attachment_651" align="aligncenter"]<a href="https://mikerobbinssitecore.files.wordpress.com/2015/03/listcontrolcomponent.png"><img class="size-medium wp-image-651" src="{{ site.baseurl }}/assets/listcontrolcomponent.png?w=225" alt="List Component Rendering Properties" width="225" height="300" /></a> List Component Rendering Properties</p>
 <p>In your Visual Studio I replicate the folder structure of my custom tile that I specified in the&nbsp;TileHtmlFileName field, and add in a new cshtml for my tile.</p>
-<p>[caption width="300" id="attachment_654" align="aligncenter"]<a href="https://mikerobbinssitecore.files.wordpress.com/2015/03/custom-tile.png"><img class="size-medium wp-image-654" src="{{ site.baseurl }}/assets/custom-tile.png?w=300" alt="Custom Tile cshtml" width="300" height="128" /></a> Custom Tile cshtml[/caption]</p>
+<p>[caption  id="attachment_654" align="aligncenter"]<a href="https://mikerobbinssitecore.files.wordpress.com/2015/03/custom-tile.png"><img class="size-medium wp-image-654" src="{{ site.baseurl }}/assets/custom-tile.png" alt="Custom Tile cshtml"  height="128" /></a> Custom Tile cshtml</p>
 <h3>Custom Tile and Knockout Databinding</h3>
 <p>In the custom tile cshtml file, this is where we can specify the html markup for an individual item bound to the list component via the datasource.</p>
 <p>Below is an example of the standard Sitecore tile that comes with a fresh install of Sitecore.</p>

@@ -36,7 +36,7 @@ author:
 ---
 <p>Recently I had a requirement to capture a number of parameters from a users session and provide Sitecore administrators a way of reporting on this data and exporting the data to CSV for analysis.<!--more--></p>
 <p>The reporting within WFFM was exactly what I was looking to achieve. I wondered if I could tap into this programmatically and use WFFM as my analysis and exporting tool.</p>
-<p>[caption id="attachment_256" align="aligncenter" width="300" class=" "]<a href="https://mikerobbinssitecore.files.wordpress.com/2014/10/wffm.png"><img class="size-medium wp-image-256" src="{{ site.baseurl }}/assets/wffm.png?w=300" alt="Form Reports" width="300" height="172" /></a> Form Reports[/caption]</p>
+<p>[caption id="attachment_256" align="aligncenter"  class=" "]<a href="https://mikerobbinssitecore.files.wordpress.com/2014/10/wffm.png"><img class="size-medium wp-image-256" src="{{ site.baseurl }}/assets/wffm.png" alt="Form Reports"  height="172" /></a> Form Reports</p>
 <p>The idea is to create a new Form within WFFM and instead of adding the form to the page, instead create an instance of the form in memory, complete form and post the data into the WFFM database.</p>
 <p>Below is a code sample (commented) of completing the Form and posting the data back programmatically.</p>
 <p>{% highlight csharp %}<br />

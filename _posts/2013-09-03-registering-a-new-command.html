@@ -28,21 +28,36 @@ author:
   first_name: ''
   last_name: ''
 ---
+
 <div><strong>Registering a new Command within the Sitecore Content Editor</strong></div>
-<div></div>
+
 <div>1. Create a class that implements the Command Class.</div>
 <div>
-<p>[caption id="attachment_44" align="aligncenter" width="300"]<a href="http://mikerobbinssitecore.files.wordpress.com/2013/09/commandclass.png"><img class="size-medium wp-image-44" alt="Command Class" src="{{ site.baseurl }}/assets/commandclass.png?w=300" width="300" height="177" /></a> Command Class[/caption]</p>
+  <p><img alt="Command Class" src="{{ site.baseurl }}/assets/commandclass.png" />
+    <p>
+      Command Class</p>
+  </p>
 </div>
-<div></div>
-<div>2. Add the new command to the Commands.Config, You need to specify a command name, the namespace and assembly of the command. (this must match the command for the button in the core database)</div>
+
+<div>2. Add the new command to the Commands.Config, You need to specify a command name, the namespace and assembly of the command.
+  (this must match the command for the button in the core database)</div>
 <div>
-<p>[caption id="attachment_38" align="aligncenter" width="300"]<a href="http://mikerobbinssitecore.files.wordpress.com/2013/09/mikerobbinscommandsconfig.png"><img class="size-medium wp-image-38" alt="mike robbins commands config" src="{{ site.baseurl }}/assets/mikerobbinscommandsconfig.png?w=300" width="300" height="11" /></a> Extending Commands Config[/caption]</p>
+  <p>
+    <img  alt="mike robbins commands config" src="{{ site.baseurl }}/assets/mikerobbinscommandsconfig.png"
+    />
+  </p> Extending Commands Config
+  </p>
+  </p>
 </div>
 <div>3. Add a new button to the Ribbon in the core database. /Sitecore/Content/Applications/Content Editor/Ribbons/(SectionName).</div>
 <div>
-<p>[caption id="attachment_45" align="aligncenter" width="300"]<a href="http://mikerobbinssitecore.files.wordpress.com/2013/09/commandcoredb.png"><img class="size-medium wp-image-45" alt="Add new button" src="{{ site.baseurl }}/assets/commandcoredb.png?w=300" width="300" height="157" /></a> Add new button[/caption]</p>
+  <p>
+    <img alt="Add new button" src="{{ site.baseurl }}/assets/commandcoredb.png" />
+    <p>
+      Add new button
+    </p>
+  </p>
 </div>
 <div>4. Set the click event of the new button to the command name you specified in the Commands.Config E.g. contenteditor:savePublish</div>
-<div></div>
+
 <div>5. Refresh the desktop and switch back to the master database.</div>

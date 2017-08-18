@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="/assets/css/style.css?v=dae56a8db6603db1e68e23baaac2efad39566da9" media="screen" type="text/css">
+    <link rel="stylesheet" href="/assets/css/style.css?v=60f20c4f2d7d10a91e2a7d86006d2c546a8fcb2c" media="screen" type="text/css">
     <link rel="stylesheet" href="/assets/css/print.css" media="print" type="text/css">
 
     <!--[if lt IE 9]>
@@ -16,15 +16,15 @@
 <title>Registering A New Command | Mike Robbins</title>
 <meta property="og:title" content="Registering A New Command" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Registering a new Command within the Sitecore Content Editor 1. Create a class that implements the Command Class. [caption id=&quot;attachment_44&quot; align=&quot;aligncenter&quot; width=&quot;300&quot;] Command Class[/caption] 2. Add the new command to the Commands.Config, You need to specify a command name, the namespace and assembly of the command. (this must match the command for the button in the core database) [caption id=&quot;attachment_38&quot; align=&quot;aligncenter&quot; width=&quot;300&quot;] Extending Commands Config[/caption] 3. Add a new button to the Ribbon in the core database. /Sitecore/Content/Applications/Content Editor/Ribbons/(SectionName). [caption id=&quot;attachment_45&quot; align=&quot;aligncenter&quot; width=&quot;300&quot;] Add new button[/caption] 4. Set the click event of the new button to the command name you specified in the Commands.Config E.g. contenteditor:savePublish 5. Refresh the desktop and switch back to the master database." />
-<meta property="og:description" content="Registering a new Command within the Sitecore Content Editor 1. Create a class that implements the Command Class. [caption id=&quot;attachment_44&quot; align=&quot;aligncenter&quot; width=&quot;300&quot;] Command Class[/caption] 2. Add the new command to the Commands.Config, You need to specify a command name, the namespace and assembly of the command. (this must match the command for the button in the core database) [caption id=&quot;attachment_38&quot; align=&quot;aligncenter&quot; width=&quot;300&quot;] Extending Commands Config[/caption] 3. Add a new button to the Ribbon in the core database. /Sitecore/Content/Applications/Content Editor/Ribbons/(SectionName). [caption id=&quot;attachment_45&quot; align=&quot;aligncenter&quot; width=&quot;300&quot;] Add new button[/caption] 4. Set the click event of the new button to the command name you specified in the Commands.Config E.g. contenteditor:savePublish 5. Refresh the desktop and switch back to the master database." />
+<meta name="description" content="Registering a new Command within the Sitecore Content Editor" />
+<meta property="og:description" content="Registering a new Command within the Sitecore Content Editor" />
 <link rel="canonical" href="http://localhost:4000/content%20editor/developer/sitecore/2013/09/03/registering-a-new-command.html" />
 <meta property="og:url" content="http://localhost:4000/content%20editor/developer/sitecore/2013/09/03/registering-a-new-command.html" />
 <meta property="og:site_name" content="Mike Robbins" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2013-09-03T12:02:02+01:00" />
 <script type="application/ld+json">
-{"@context":"http://schema.org","@type":"BlogPosting","headline":"Registering A New Command","author":{"@type":"Person","name":null},"datePublished":"2013-09-03T12:02:02+01:00","dateModified":"2013-09-03T12:02:02+01:00","description":"Registering a new Command within the Sitecore Content Editor 1. Create a class that implements the Command Class. [caption id=&quot;attachment_44&quot; align=&quot;aligncenter&quot; width=&quot;300&quot;] Command Class[/caption] 2. Add the new command to the Commands.Config, You need to specify a command name, the namespace and assembly of the command. (this must match the command for the button in the core database) [caption id=&quot;attachment_38&quot; align=&quot;aligncenter&quot; width=&quot;300&quot;] Extending Commands Config[/caption] 3. Add a new button to the Ribbon in the core database. /Sitecore/Content/Applications/Content Editor/Ribbons/(SectionName). [caption id=&quot;attachment_45&quot; align=&quot;aligncenter&quot; width=&quot;300&quot;] Add new button[/caption] 4. Set the click event of the new button to the command name you specified in the Commands.Config E.g. contenteditor:savePublish 5. Refresh the desktop and switch back to the master database.","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/content%20editor/developer/sitecore/2013/09/03/registering-a-new-command.html"},"url":"http://localhost:4000/content%20editor/developer/sitecore/2013/09/03/registering-a-new-command.html"}</script>
+{"@context":"http://schema.org","@type":"BlogPosting","headline":"Registering A New Command","author":{"@type":"Person","name":null},"datePublished":"2013-09-03T12:02:02+01:00","dateModified":"2013-09-03T12:02:02+01:00","description":"Registering a new Command within the Sitecore Content Editor","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/content%20editor/developer/sitecore/2013/09/03/registering-a-new-command.html"},"url":"http://localhost:4000/content%20editor/developer/sitecore/2013/09/03/registering-a-new-command.html"}</script>
 <!-- End Jekyll SEO tag -->
 
   </head>
@@ -46,24 +46,37 @@
         <section id="main-content">
           <h1>Registering A New Command</h1>
           <div><strong>Registering a new Command within the Sitecore Content Editor</strong></div>
-<div></div>
+
 <div>1. Create a class that implements the Command Class.</div>
 <div>
-<p>[caption id="attachment_44" align="aligncenter" width="300"]<a href="http://mikerobbinssitecore.files.wordpress.com/2013/09/commandclass.png"><img class="size-medium wp-image-44" alt="Command Class" src="/assets/commandclass.png?w=300" width="300" height="177" /></a> Command Class[/caption]</p>
+  <p><img alt="Command Class" src="/assets/commandclass.png" />
+    <p>
+      Command Class</p>
+  </p>
 </div>
-<div></div>
-<div>2. Add the new command to the Commands.Config, You need to specify a command name, the namespace and assembly of the command. (this must match the command for the button in the core database)</div>
+
+<div>2. Add the new command to the Commands.Config, You need to specify a command name, the namespace and assembly of the command.
+  (this must match the command for the button in the core database)</div>
 <div>
-<p>[caption id="attachment_38" align="aligncenter" width="300"]<a href="http://mikerobbinssitecore.files.wordpress.com/2013/09/mikerobbinscommandsconfig.png"><img class="size-medium wp-image-38" alt="mike robbins commands config" src="/assets/mikerobbinscommandsconfig.png?w=300" width="300" height="11" /></a> Extending Commands Config[/caption]</p>
+  <p>
+    <img  alt="mike robbins commands config" src="/assets/mikerobbinscommandsconfig.png"
+    />
+  </p> Extending Commands Config
+  </p>
+  </p>
 </div>
 <div>3. Add a new button to the Ribbon in the core database. /Sitecore/Content/Applications/Content Editor/Ribbons/(SectionName).</div>
 <div>
-<p>[caption id="attachment_45" align="aligncenter" width="300"]<a href="http://mikerobbinssitecore.files.wordpress.com/2013/09/commandcoredb.png"><img class="size-medium wp-image-45" alt="Add new button" src="/assets/commandcoredb.png?w=300" width="300" height="157" /></a> Add new button[/caption]</p>
+  <p>
+    <img alt="Add new button" src="/assets/commandcoredb.png" />
+    <p>
+      Add new button
+    </p>
+  </p>
 </div>
 <div>4. Set the click event of the new button to the command name you specified in the Commands.Config E.g. contenteditor:savePublish</div>
-<div></div>
-<div>5. Refresh the desktop and switch back to the master database.</div>
 
+<div>5. Refresh the desktop and switch back to the master database.</div>
         </section>
 
         <aside id="sidebar">

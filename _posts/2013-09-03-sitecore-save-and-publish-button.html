@@ -31,18 +31,33 @@ author:
 <p>I've noticed a common question with teaching new content editors how to create and publish content in Sitecore. "I've created my content and saved it, how do i get the content live on the site"</p>
 <p>As we know saving content only writes the item to the Master database so the content appears in a draft status. The content editor then needs to publish the content to the web database for it to appear on the web site.</p>
 <p>Some Sitecore instances don't take advantage of workflow because the client doesn't want or need it. In these cases the current method of saving the content and then navigating to the Publishing tab in the ribbon and clicking the publish button seems a little long winded.</p>
-<p>[caption id="attachment_5" align="aligncenter" width="300"]<a href="http://mikerobbinssitecore.files.wordpress.com/2013/07/current.png"><img class="size-medium wp-image-5" alt="Current Sitecore Content Editor Ribbon" src="{{ site.baseurl }}/assets/current.png?w=300" width="300" height="41" /></a> Current Ribbon[/caption]</p>
+<p>
+  <img alt="Current Sitecore Content Editor Ribbon" src="{{ site.baseurl }}/assets/current.png" />
+<p>
+ Current Ribbon
+</p>
+</p>
 <p>This made me think of my umbraco days, umbraco has a save button to place content into preview mode. It also has a save and publish button, I wondered if I could replicate this idea within Sitecore.</p>
 <p>Within Sitecore it's easy to extend the ribbon in the content editor. The ribbon is controlled by items created within the content editor section of the core database.</p>
 <p>I wanted to replicate exactly what the save and publish buttons did. The button commands are controlled by the Commands.config in the app_config folder. This shows me which classes in the Sitecore Kernel class were used for the commands using dependency injection.</p>
 <div>
-<p>[caption id="attachment_37" align="aligncenter" width="300"]<a href="http://mikerobbinssitecore.files.wordpress.com/2013/09/commandsconfig.png"><img class="size-medium wp-image-37" alt="commands.config" src="{{ site.baseurl }}/assets/commandsconfig.png?w=300" width="300" height="23" /></a> commands.config[/caption]</p>
+<p>
+    <img alt="commands.config" src="{{ site.baseurl }}/assets/commandsconfig.png" />
+<p>
+    commands.config  
+</p>
+</p>
 </div>
 <div>Using the Commands.Config its easy to find out which classes are responsible for functions within the content editor. Using this i was able to find the classes responsible for the save action and for the publish action. Using JustDecompile (an excellent DLL decompiler) with the Sitecore kernel and the namespace information taken from the commands.config I was able to extract the code for the save command and the publish command.</div>
-<div></div>
+
 <div>It was an easy task for then create a new class implementing the Command class and replicating both the save and the publish command code together in the same class and register the command to a button in the content editor and extending the Commands.Config to point at my new class..</div>
 <div>
-<p>[caption id="attachment_38" align="aligncenter" width="300"]<a href="http://mikerobbinssitecore.files.wordpress.com/2013/09/mikerobbinscommandsconfig.png"><img class="size-medium wp-image-38" alt="mike robbins commands config" src="{{ site.baseurl }}/assets/mikerobbinscommandsconfig.png?w=300" width="300" height="11" /></a> Extending Commands Config[/caption]</p>
+<p>
+  <img  alt="mike robbins commands config" src="{{ site.baseurl }}/assets/mikerobbinscommandsconfig.png"  />
+<p>
+  Extending Commands Config
+
+</p></p>
 <p>View the Package on Sitecore Marketplace <a href="http://marketplace.sitecore.net/en/Modules/Save_Publish_and_Index_Button.aspx">View</a></p>
 <p>Source Code <a href="https://github.com/komainu85/SaveAndPublish">GitHub</a></p>
 </div>

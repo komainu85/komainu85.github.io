@@ -38,11 +38,11 @@ author:
 ---
 <p>Very brief code sample of how to perform a exact phrase match query in Solr.<!--more--></p>
 <p>Using the Solr Admin's Query tool to perform a search on a field, you will notice that Solr splits each word into a token to search on.</p>
-<p>[caption id="attachment_215" align="aligncenter" width="300" class=" "]<a href="https://mikerobbinssitecore.files.wordpress.com/2014/09/solr-phrase-match-1.png"><img class="wp-image-215 size-medium" src="{{ site.baseurl }}/assets/solr-phrase-match-1.png?w=300" alt="Solr Phrase Match 1" width="300" height="232" /></a> Solr Admin Query[/caption]</p>
+<p>[caption id="attachment_215" align="aligncenter"  class=" "]<a href="https://mikerobbinssitecore.files.wordpress.com/2014/09/solr-phrase-match-1.png"><img class="wp-image-215 size-medium" src="{{ site.baseurl }}/assets/solr-phrase-match-1.png" alt="Solr Phrase Match 1"  height="232" /></a> Solr Admin Query</p>
 <p>&nbsp;</p>
 <p>Most of the time this is the desired functionality, however there could be times where you want to return results where the exact phrase is matched. If you perform a search wrapping quotes around the phrase within the Solr Admin Query tool, Solr will perform a query looking for an exact match on the phrase (see screenshot below, notice the reduced number of results).</p>
 <p>&nbsp;</p>
-<p>[caption id="attachment_216" align="aligncenter" width="300" class="  "]<a href="https://mikerobbinssitecore.files.wordpress.com/2014/09/solr-phrase-match-2.png"><img class="wp-image-216 size-medium" src="{{ site.baseurl }}/assets/solr-phrase-match-2.png?w=300" alt="Solr Phrase Match 2" width="300" height="230" /></a> Solr Admin Phase Search With Quotes[/caption]</p>
+<p>[caption id="attachment_216" align="aligncenter"  class="  "]<a href="https://mikerobbinssitecore.files.wordpress.com/2014/09/solr-phrase-match-2.png"><img class="wp-image-216 size-medium" src="{{ site.baseurl }}/assets/solr-phrase-match-2.png" alt="Solr Phrase Match 2"  height="230" /></a> Solr Admin Phase Search With Quotes</p>
 <p>&nbsp;</p>
 <p>Below is a code sample of how to perform a search using Sitecore 7's Content Search API's. The code checks whether the keywords searched upon start and end with quotes. If the quotes are present, the keywords are then passed into the search intact with the quotes present. If the quotes aren't present the keywords are split into an array on a space and the search is performed as normal.</p>
 <p>{% highlight csharp %}<br />

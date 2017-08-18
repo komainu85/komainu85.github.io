@@ -41,10 +41,10 @@ author:
   last_name: ''
 ---
 <p>When using Web API, Sitecore ID's serialise with {} around the IDs. This can cause issues when working with JSON as this denotes objects encapsulation.<!--more--></p>
-<p>[caption id="attachment_307" align="aligncenter" width="300"]<a href="https://mikerobbinssitecore.files.wordpress.com/2014/12/json.png"><img class="size-medium wp-image-307" src="{{ site.baseurl }}/assets/json.png?w=300" alt="JSON Sitecore ID's" width="300" height="199" /></a> JSON Sitecore ID's[/caption]</p>
+<p>[caption id="attachment_307" align="aligncenter" ]<a href="https://mikerobbinssitecore.files.wordpress.com/2014/12/json.png"><img class="size-medium wp-image-307" src="{{ site.baseurl }}/assets/json.png" alt="JSON Sitecore ID's"  height="199" /></a> JSON Sitecore ID's</p>
 <p>Below is a custom formatter to format Sitecore item IDs without the {}. This example has Web API registered to run alongside Web Item API.</p>
 <p>See Patrick Delancy's blog post about running Web API alongside Web Item API http://patrickdelancy.com/2013/08/sitecore-webapi-living-harmony/</p>
-<p>[caption id="attachment_311" align="aligncenter" width="300"]<a href="https://mikerobbinssitecore.files.wordpress.com/2014/12/jsonfixed.png"><img class="size-medium wp-image-311" src="{{ site.baseurl }}/assets/jsonfixed.png?w=300" alt="The corresponding JSON " width="300" height="162" /></a> The corresponding JSON[/caption]</p>
+<p>[caption id="attachment_311" align="aligncenter" ]<a href="https://mikerobbinssitecore.files.wordpress.com/2014/12/jsonfixed.png"><img class="size-medium wp-image-311" src="{{ site.baseurl }}/assets/jsonfixed.png" alt="The corresponding JSON "  height="162" /></a> The corresponding JSON</p>
 <p>{% highlight csharp %}<br />
   public class RegisterWebApiRoute<br />
     {<br />

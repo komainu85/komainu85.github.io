@@ -36,9 +36,9 @@ author:
   last_name: ''
 ---
 <p>Out of the box Sitecore offers Content Editors the power to create tags, and assign them to content items using the Tagging field in standard values.<!--more--></p>
-<p>[caption id="attachment_203" align="aligncenter" width="300"]<a href="https://mikerobbinssitecore.files.wordpress.com/2014/07/tagging.png"><img class="size-medium wp-image-203" src="{{ site.baseurl }}/assets/tagging.png?w=300" alt="Tagging Standard Value" width="300" height="110" /></a> Tagging Standard Value[/caption]</p>
+<p>[caption id="attachment_203" align="aligncenter" ]<a href="https://mikerobbinssitecore.files.wordpress.com/2014/07/tagging.png"><img class="size-medium wp-image-203" src="{{ site.baseurl }}/assets/tagging.png" alt="Tagging Standard Value"  height="110" /></a> Tagging Standard Value</p>
 <p>When analysing the indexes using LUKE, you can see that Sitecore indexes the ID's of each tag. This makes it difficult to perform a text based content search that also matches on tags.</p>
-<p>[caption id="attachment_201" align="aligncenter" width="300"]<a href="https://mikerobbinssitecore.files.wordpress.com/2014/07/luke.png"><img class="size-medium wp-image-201" src="{{ site.baseurl }}/assets/luke.png?w=300" alt="Luke Index View" width="300" height="136" /></a> Luke Index View[/caption]</p>
+<p>[caption id="attachment_201" align="aligncenter" ]<a href="https://mikerobbinssitecore.files.wordpress.com/2014/07/luke.png"><img class="size-medium wp-image-201" src="{{ site.baseurl }}/assets/luke.png" alt="Luke Index View"  height="136" /></a> Luke Index View</p>
 <p>However Sitecore gives us the power to create computed fields in search indexes. This means we can create new fields within the index and programmatically create text into the index.</p>
 <p>This example below uses a computed field that instead of indexing the ID of the tag, instead adds the item name of each tag seperated by a space. This then allows you to perform a text based search against the tag. (Sitecore by default indexes the __Semantics field, so here i'm creating a new field in the index called "tags" not to override any standard Sitecore functionality)</p>
 <p>&nbsp;</p>

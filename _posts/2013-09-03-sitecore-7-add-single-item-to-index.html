@@ -21,8 +21,6 @@ meta:
   tagazine-media: a:7:{s:7:"primary";s:0:"";s:6:"images";a:0:{}s:6:"videos";a:0:{}s:11:"image_count";i:0;s:6:"author";s:8:"53242770";s:7:"blog_id";s:8:"55708155";s:9:"mod_stamp";s:19:"2013-09-05
     12:55:13";}
 author:
-  
-
   display_name: Mike Robbins
   first_name: ''
   last_name: ''
@@ -30,20 +28,22 @@ author:
 <p>Recently I came up with a scenario where users were authoring content on the front end of a Sitecore site which then updated a list on the screen. The list was taking advantage of Sitecore 7's new search API, so i needed to rebuild the index to display the newly inserted item.</p>
 <p>Rebuilding the whole index for a single new item would be excessive, slow, CPU intensive and can cause issues for other users loading the page. Using JustDecompile to look through the ContentSearch Namespaces i found these useful functions to add, update or delete  a single item in the index. This performs really fast and solves all my issues about rebuilding the whole index.</p>
 <p><strong>Here are my methods wrapping the functionality.</strong></p>
-<p>{% highlight csharp %}<br />
-public static void AddItemToIndex(Item item, string indexName)</p>
-<p>{<br />
-var tempItem = (SitecoreIndexableItem)item;</p>
-<p>ContentSearchManager.GetIndex(indexName).Refresh(tempItem);</p>
-<p>}</p>
-<p>public static void UpdateItemInIndex(Item item, string indexName)<br />
-{<br />
-var tempItem = (SitecoreIndexableItem)item;</p>
-<p>ContentSearchManager.GetIndex(indexName).Update(tempItem.UniqueId);<br />
-}</p>
-<p>public static void DeleteItemInIndex(Item item, string indexName)<br />
-{<br />
-var tempItem = (SitecoreIndexableItem)item;</p>
-<p>ContentSearchManager.GetIndex(indexName).Delete(tempItem.UniqueId);</p>
-<p>}<br />
-{% endhighlight %}</p>
+{% highlight csharp %}
+public static void AddItemToIndex(Item item, string indexName)
+{
+  var tempItem = (SitecoreIndexableItem)item;
+  ContentSearchManager.GetIndex(indexName).Refresh(tempItem);
+}
+
+public static void UpdateItemInIndex(Item item, string indexName)
+{
+  var tempItem = (SitecoreIndexableItem)item;
+  ContentSearchManager.GetIndex(indexName).Update(tempItem.UniqueId);
+}
+
+  public static void DeleteItemInIndex(Item item, string indexName)
+{
+  var tempItem = (SitecoreIndexableItem)item;</p>
+  ContentSearchManager.GetIndex(indexName).Delete(tempItem.UniqueId);</p>
+}
+{% endhighlight %}
