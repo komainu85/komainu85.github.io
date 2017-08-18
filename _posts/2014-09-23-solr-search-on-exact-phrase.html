@@ -67,7 +67,7 @@ current.Or(i => (i.Body.Equals(keyword)
 {% endhighlight %}</p>
 <p>{% highlight csharp %}
 public SearchResult<SearchItem> Search(string keywords)
- {</p>
+ {
 <p> using (var context = Sitecore.ContentSearch.ContentSearchManager.GetIndex(_searchIndex).CreateSearchContext())
  {
  var queryable = context.GetQueryable<SearchItem>();

@@ -18,13 +18,8 @@ tags:
 meta:
   _edit_last: '53242770'
   geo_public: '0'
-  publicize_google_plus_url: https://plus.google.com/113240140771005714369/posts/Amb3sN1Z7AC
   _wpas_done_5582732: '1'
-  _publicize_done_external: a:1:{s:11:"google_plus";a:1:{s:21:"113240140771005714369";b:1;}}
-  
-  publicize_twitter_url: http://t.co/hXLz4AA3S1
   _wpas_done_4473872: '1'
-  publicize_linkedin_url: https://www.linkedin.com/updates?discuss=&scope=50486614&stype=M&topic=5984685289501655040&type=U&a=Kf4C
   _wpas_done_5582720: '1'
   _wpas_skip_5582732: '1'
   _wpas_skip_4473872: '1'
@@ -33,14 +28,12 @@ meta:
   _oembed_52949f6b63015969c6b9d4de0ccdd59f: "{{unknown}}"
   _oembed_75c046bf2e0b7d8bcee71dcdc2521cb2: "{{unknown}}"
 author:
-  
-
   display_name: Mike Robbins
   first_name: ''
   last_name: ''
 ---
 <p>Following on from my post on the basics of Entity Service and using the JavaScript API (<a title="http://mikerobbinssitecore.wordpress.com/2015/01/06/entityservice-sitecore-service-client" href="http://mikerobbinssitecore.wordpress.com/2015/01/06/entityservice-sitecore-service-client">Entity Service in Sitecore.Service.Client</a>), in this post I will explain how to extend Entity Service Sitecore.Services.Client (SSC) with new controller actions.<br />
-<!--more--><br />
+<br />
 Using Entity Service as standard you get the following methods:</p>
 <ul>
 <li>IQueryable<Entity> GetAll()</li>
@@ -65,8 +58,7 @@ Using Entity Service as standard you get the following methods:</p>
 <p>With custom controller actions in Entity Service, the routing is configured to respond to {Controller-Namespace}/{Controller}/{ID}/{CustomActionName}. If you do not include in an ID  in the URL, Entity Service will not resolve to your custom controller action. If you do not require passing an ID to your custom controller action you can provide an int but not process the ID. This will satisfy the routing for Entity Service.</p>
 <p>As seen below you can then call your controller by using the prefixed of "/sitecore/api/ssc". The next part of the url is the namespace containing your controller with the "." replaced with "-" followed by your controller name.</p>
 <p>E.g. If you your controller is in the namespace MikeRobbins.EntityServiceCustomActions.Controllers and called EntityController. Your url would be "/sitecore/api/ssc/MikeRobbins/api/ssc/MikeRobbins-EntityServiceCustomActions-Controllers/Entity/{ID}/{CustomActionName}"</p>
-<p>[caption id="attachment_578" align="aligncenter" ]<a href="https://mikerobbinssitecore.files.wordpress.com/2015/03/entityservicecustomaction.png"><img class="size-medium wp-image-578" src="{{ site.baseurl }}/assets/entityservicecustomaction.png" alt="Entity Service Custom Controller Action"  height="101" /></a> Entity Service Custom Controller Action</p>
-<h2></h2>
+<p><a href="https://mikerobbinssitecore.files.wordpress.com/2015/03/entityservicecustomaction.png"><img class="size-medium wp-image-578" src="{{ site.baseurl }}/assets/entityservicecustomaction.png" alt="Entity Service Custom Controller Action"  height="101" /></a> Entity Service Custom Controller Action</p>
 <h2>Demo Application Source Code</h2>
 <p>I have created a demo application using this method. The source is available on GitHub.</p>
 <p><a title="https://github.com/komainu85/EntityServiceCustomActionDemo" href="https://github.com/komainu85/EntityServiceCustomActionDemo">https://github.com/sobek85/EntityServiceCustomActionDemo</a></p>

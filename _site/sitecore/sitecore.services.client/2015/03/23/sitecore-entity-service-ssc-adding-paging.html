@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="/assets/css/style.css?v=a871b098fdb74f2b2f9df2a6eb0d9e712e4324c6" media="screen" type="text/css">
+    <link rel="stylesheet" href="/assets/css/style.css?v=ddf51d3983a124f1ad7c0fbd9d78956cff6f4407" media="screen" type="text/css">
     <link rel="stylesheet" href="/assets/css/print.css" media="print" type="text/css">
 
     <!--[if lt IE 9]>
@@ -47,7 +47,7 @@
           <h1>Sitecore Entity Service (SSC) Adding Paging</h1>
           <p>Recently I did a Sitecore User Group talk on Entity Service (video based on the talk available on <a title="https://www.youtube.com/watch?v=g0cVr6CnNKM" href="https://www.youtube.com/watch?v=g0cVr6CnNKM">Master Sitecore</a>). I was asked there how you could extend Entity Service to including paging instead of using the standard GetAll() function.</p>
 <p>Using my method of extending Entity Service and its repository pattern, as explained in this <a title="Sitecore Entity Service (SSC) Custom Controller Action" href="http://mikerobbins.co.uk/2015/03/20/sitecore-entity-service-ssc-custom-controller-action/">blog post</a>. This blog post will explain how to add a new custom paged function for getting all entities.<br />
-<!--more--><br />
+<br />
 The first stage is to add a new interface inheriting from the standard IRepository. Create a new GetAll overloaded method with parameters from page size and current page number.</p>
 <p><script src="https://gist.github.com/komainu85/b84b8d34da344d9ef965.js"> </script></p>
 <p>Update the repository, instead of inheriting for the standard IRepository, inherit from your new repository. Implement the functionality of the new paged GetAll function to load the required entities.</p>

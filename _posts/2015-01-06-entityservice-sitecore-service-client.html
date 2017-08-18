@@ -79,7 +79,7 @@ using Sitecore.Data;
 <p>namespace MikeRobbins.News.Repository<br />
 {
  public class NewsArticleRepository : Sitecore.Services.Core.IRepository<NewsArticle><br />
- {</p>
+ {
 <p> public void Add(NewsArticle entity)
  {
  throw new NotImplementedException();
@@ -119,8 +119,8 @@ return null;
 <p>{% highlight csharp %}
 namespace MikeRobbins.News.Controllers<br />
 {
- [ValidateAntiForgeryToken]<br />
- [Sitecore.Services.Core.ServicesController]<br />
+ [ValidateAntiForgeryToken]
+ [Sitecore.Services.Core.ServicesController]
  public class NewsArticleController : EntityService<NewsArticle><br />
  {
  public NewsArticleController(IRepository<NewsArticle> repository)
@@ -143,8 +143,8 @@ require.config({
  }
 });
 <p>define(["sitecore", "jquery", "underscore", "entityService"], function (Sitecore, $, _, entityService) {
- var News = Sitecore.Definitions.App.extend({</p>
-<p> initialized: function () {</p>
+ var News = Sitecore.Definitions.App.extend({
+<p> initialized: function () {
 <p> },<br />
  });
 return News;
@@ -156,7 +156,7 @@ return News;
 <h3>Get Entities Example</h3>
 <p>Create an instance of EntityService with the service url, you can then call fetchEntities. This will then call the GetAll method within your repository defined within the controller. An array of the entities are then returned.</p>
 <p>{% highlight JavaScript %}
-GetNewsArticles: function () {</p>
+GetNewsArticles: function () {
 <p> var newsService = new entityService({
  url: "/sitecore/api/ssc/MikeRobbins-News-Controllers/newsarticle"<br />
  });
@@ -170,7 +170,7 @@ GetNewsArticles: function () {</p>
 <h3>Get Entity Example</h3>
 <p>Create an instance of EntityService with the service url, you can then call the fetchEntity function passing in an id of an entity. This will then call the FindById method within your repository defined within the controller. An entity class in returned.</p>
 <p>{% highlight JavaScript %}
-GetNewsArticle: function () {</p>
+GetNewsArticle: function () {
 <p> var newsService = new entityService({
  url: "/sitecore/api/ssc/MikeRobbins-News-Controllers/newsarticle"<br />
  });
@@ -182,7 +182,7 @@ GetNewsArticle: function () {</p>
 <h3>Update Entity Example</h3>
 <p>Create a an instance of EntityService with the service url, you can then call the fetchEntity function passing in an id of an entity. Once you have an entity returned, make the required changes to the entity. From here you can call the save method, this maps to the update method within the repository. A class is returned containing the updated entity, in the below example I'm popping up a success message in the SPEAK message panel.</p>
 <p>{% highlight JavaScript %}
-UpdateNewsArticle: function () {</p>
+UpdateNewsArticle: function () {
 <p> var newsService = new entityService({
  url: "/sitecore/api/ssc/MikeRobbins-News-Controllers/newsarticle"<br />
  });
@@ -197,7 +197,7 @@ UpdateNewsArticle: function () {</p>
 <h3>Delete Entity Example</h3>
 <p>Create an instance of EntityService with the service url, you can then call the Delete function passing in the entity to delete. This will then call the delete method within your repository defined within the controller.</p>
 <p>{% highlight JavaScript %}
-DeleteNewsArticle: function () {</p>
+DeleteNewsArticle: function () {
 <p> var newsService = new entityService({
  url: "/sitecore/api/ssc/MikeRobbins-News-Controllers/newsarticle"<br />
  });
@@ -211,7 +211,7 @@ DeleteNewsArticle: function () {</p>
 <h3>Create Entity Example</h3>
 <p>Create an instance of EntityService with the service url. You can then create a new object populating the properties of your entity. From here you can call CreateEntity, passing in the object you created. This will then call the add method within your repository defined within the controller. A class is returned of the newly created entity.</p>
 <p>{% highlight JavaScript %}
-CreateNewsArticle: function () {</p>
+CreateNewsArticle: function () {
 <p> var newsService = new entityService({
  url: &amp;quot;/sitecore/api/ssc/MikeRobbins-News-Controllers/newsarticle&amp;quot;
  });

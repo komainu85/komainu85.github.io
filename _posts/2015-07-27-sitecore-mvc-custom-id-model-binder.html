@@ -38,21 +38,21 @@ meta:
   _wpas_skip_4473872: '1'
   _wpas_skip_5582720: '1'
 author:
-  
-
   display_name: Mike Robbins
   first_name: ''
   last_name: ''
 ---
 <p>In this post i'll explain how to create a custom Model binder in ASP.net to allow you to pass in a Sitecore ID in your controller action.</p>
 <p>For example the controller action below accepts a Sitecore ID, however .net doesn't know how to create the ID class from the form values passed to the action.<!--more--></p>
-<p>{% highlight csharp %}
-[HttpPost]<br />
+
+{% highlight csharp %}
+[HttpPost]
 public void AddToShoppingBasket(ID itemId)
-{</p>
-<p>  _basketRepository.Add(itemId);
-<p>}
-{% endhighlight %}</p>
+{
+  _basketRepository.Add(itemId);
+}
+{% endhighlight %}
+
 <p>This is where custom Model bindings come into play. We are able to create a class that can handle the conversion from the form field value into a Sitecore ID class.</p>
 <ol>
 <li>Firstly we create the custom binder for our type (ID), this inherits from the default binder. We then handle the conversion from string to Sitecore ID.</li>
