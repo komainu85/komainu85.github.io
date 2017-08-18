@@ -26,32 +26,35 @@ author:
 <p>Recently I had a requirement from a client where they wanted to use Sitecore Email Campaign Manager to send registration emails, containing registration details and other dynamic custom data. Here is how to create tokens within a Email Campaign message and replace them with variables in a manually triggered email.</p>
 <ol>
 <li>Add your token(s) into the body text of the campaign message in the format $key$, ensure that the key text is lower case.
-<p>[caption id="attachment_160" align="aligncenter" width="300"]<a href="http://mikerobbinssitecore.files.wordpress.com/2014/02/ecm.png"><img class="size-medium wp-image-160" alt="Sitecore Custom Tokens" src="{{ site.baseurl }}/assets/ecm.png?w=300" width="300" height="281" /></a> Sitecore Email Campaign Manager Custom Tokens[/caption]</li>
+<img alt="Sitecore Custom Tokens" src="{{ site.baseurl }}/assets/ecm.png" /></a> 
+<p>Sitecore Email Campaign Manager Custom Tokens</p></li>
 <li>Get the message using the Sitecore API, replace the variables using the CustomPersonTokens dictionary and then trigger the send pipeline. The CustomPersonToken dictionary requires the key to be in<strong> lower case</strong> and requires the <strong>surrounding $$ to be removed</strong>.</li>
 </ol>
-```c#
+
+{% highlight csharp %}
 //Get the message using the Sitecore API
 var mi = Sitecore.Modules.EmailCampaign.Factory.GetMessage(messageId);
 //Use the custom person token dictionary to replace the key with a string variable. Remember that the token key has to be lower case and remove the $$ surrounding the key
- mi.CustomPersonTokens.Add(&quot;username&quot;, &quot;MikeTest&quot;);
+mi.CustomPersonTokens.Add(&quot;username&quot;, &quot;MikeTest&quot;);
 //Send the message
 new AsyncSendingManager(mi).SendStandardMessage(contactFromName);
-```
+{% endhighlight %}
+
 <h2>
 Trigger Email and Replace tokens</h2>
 <p>Here is a reusable function that allows you to send an email campaign message from code and replace custom tokens.</p>
-<p>[code language="csharp"]<br />
-public void SendEmailCampaignMessage(ID messageId, string userName, Dictionary&lt;string, string&gt; customTokens = null)<br />
-        {<br />
-            var mi = Sitecore.Modules.EmailCampaign.Factory.GetMessage(messageId);</p>
-<p>            if (customTokens != null)<br />
-            {<br />
-                foreach (var token in customTokens)<br />
-                {<br />
-                    mi.CustomPersonTokens.Add(token.Key, token.Value);<br />
-                }<br />
-            }</p>
-<p>            var contactFromName = Contact.FromName(userName);</p>
-<p>            new AsyncSendingManager(mi).SendStandardMessage(contactFromName);<br />
-        }<br />
-[/code]</p>
+{% highlight csharp %}
+public void SendEmailCampaignMessage(ID messageId, string userName, Dictionary&lt;string, string&gt; customTokens = null)
+{
+    var mi = Sitecore.Modules.EmailCampaign.Factory.GetMessage(messageId);
+    if (customTokens != null)
+    {
+        foreach (var token in customTokens)
+        {
+            mi.CustomPersonTokens.Add(token.Key, token.Value);
+        }
+    }
+    var contactFromName = Contact.FromName(userName);
+    new AsyncSendingManager(mi).SendStandardMessage(contactFromName);
+}
+{% endhighlight %}

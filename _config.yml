@@ -25,6 +25,7 @@ github_username:  Komainu85
 markdown: kramdown
 theme: jekyll-theme-architect
 highlighter: rouge
+pygments: false
 plugins:
   - jekyll-feed
   - jekyll-gist
