@@ -44,21 +44,21 @@ Using Entity Service as standard you get the following methods:</p>
 <li>Delete(Entity entity)</li>
 </ul>
 <p>However Entity Service is very flexible allowing you to extend the service controller with additional actions. To add an additional action it is as simple as adding a new function to the service controller, and decorating it with an ActionName and the action type such as HttpGet. <strong>Please note the below of the required routing for Entity Service custom actions.</strong></p>
-<p>{% gist komainu85/a560bcfe3767ec049eee %}</p>
+<p>{% gist komainu85/a560bcfe3767ec049eee %}
 <p>With this method you will be implementing the functionality of the action in the controller or in some other business logic class. However I like the repository pattern that Sitecore have put in place with Entity Service using the IRepository<EntityIdentity> interface. I would rather keep all the logic of my controller in a single place (in the repository).</p>
 <p>So how do we update the repository to include the extra functional we want to add to the Entity Service.</p>
 <p>Firstly I created a new interface which contains my new funcations. In this example I have created the new DoSometingCustom() function that returns a string. To make sure this new repository works with the Service Controller and Entity Service I inherit from the default repository of IRepository, making sure T must implement IEntityIdentity.</p>
-<p>{% gist komainu85/55de08be2df27b5374a6 %}</p>
+<p>{% gist komainu85/55de08be2df27b5374a6 %}
 <p>Now you are able to update the repository class and instead of implementing IRespository<IEntityIdentity> implement the new interface instead. This then gives you all the functions of the base IRepository interface (with standard Entity Service functions) along with your new interface with custom functions.</p>
-<p>{% gist komainu85/131e0e1b80abfe0bf4a4 %}</p>
+<p>{% gist komainu85/131e0e1b80abfe0bf4a4 %}
 <p>The last step is to update your controller class. Instead of creating an instance of your IRepository in the constructor of your controller, create an instance of your custom repository interface.</p>
 <p>From here you can then add your additional controller actions, calling the repository to implement the functionality of the controller.</p>
-<p>{% gist komainu85/a79706241fec083df20e %}</p>
+<p>{% gist komainu85/a79706241fec083df20e %}
 <p><strong>Please Note</strong></p>
 <p>With custom controller actions in Entity Service, the routing is configured to respond to {Controller-Namespace}/{Controller}/{ID}/{CustomActionName}. If you do not include in an ID  in the URL, Entity Service will not resolve to your custom controller action. If you do not require passing an ID to your custom controller action you can provide an int but not process the ID. This will satisfy the routing for Entity Service.</p>
 <p>As seen below you can then call your controller by using the prefixed of "/sitecore/api/ssc". The next part of the url is the namespace containing your controller with the "." replaced with "-" followed by your controller name.</p>
 <p>E.g. If you your controller is in the namespace MikeRobbins.EntityServiceCustomActions.Controllers and called EntityController. Your url would be "/sitecore/api/ssc/MikeRobbins/api/ssc/MikeRobbins-EntityServiceCustomActions-Controllers/Entity/{ID}/{CustomActionName}"</p>
-<p><a href="https://mikerobbinssitecore.files.wordpress.com/2015/03/entityservicecustomaction.png"><img class="size-medium wp-image-578" src="{{ site.baseurl }}/assets/entityservicecustomaction.png" alt="Entity Service Custom Controller Action"  height="101" /></a> Entity Service Custom Controller Action</p>
+<p><img src="{{ site.baseurl }}/assets/entityservicecustomaction.png" alt="Entity Service Custom Controller Action" /><p>Entity Service Custom Controller Action</p></p>
 <h2>Demo Application Source Code</h2>
 <p>I have created a demo application using this method. The source is available on GitHub.</p>
 <p><a title="https://github.com/komainu85/EntityServiceCustomActionDemo" href="https://github.com/komainu85/EntityServiceCustomActionDemo">https://github.com/sobek85/EntityServiceCustomActionDemo</a></p>

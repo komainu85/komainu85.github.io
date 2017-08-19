@@ -46,13 +46,13 @@ author:
 <p>One of the exciting features of Entity Service is the flexibility to create custom validation attributes for your model. As Sitecore.Services.Client (SSC) provides a framework based approach to creating services, and both server and client side APIs, validation can take place on both server and client side.<!--more--></p>
 <p>Validation on the server side is provided by standard .net validation attributes to return whether the property is valid. On the client side we can provide a JavaScript function for client side validation, the JavaScript is provided as part of the meta data of the service.</p>
 <p>The first part of adding validation to the model is to create our server side validation. Create a class implementing ValidationAttribute, on the IsValid method add the valdation code. In the example below i've created a validation attribute to check a DateTime is in the future.</p>
-<p>{% gist komainu85/3cf4313940bf32a522b6 %}</p>
+<p>{% gist komainu85/3cf4313940bf32a522b6 %}
 <p>On the client side, EntityService exposes a collection of validators that can we can add additional validators to. This collection is loaded from the meta data that Entity Service provides from the model. Create a JavaScript function that appends to the validators collection, providing the validator a name and a JavaScript function to perform the validation.</p>
 <p>An example of creating the client side validation can be seen below. The validator provides the same functionality as the server side above. The value parameter passed into the function comes from the value set in the model.</p>
 <p>Sitecore.Services.Client scans for JavaScript validation files within "sitecore/shell/client/Services/Assets/lib/extensions/validators/". Any custom JavaScript files need to be added into this directory.</p>
-<p>{% gist komainu85/e3d4838bae76e3058099 %}</p>
+<p>{% gist komainu85/e3d4838bae76e3058099 %}
 <p>To provide Entity Service with both the client and server validation methods a meta data class is required. The ValidationMetaDataBase wires up the client and server side validation.</p>
 <p>The ValidationMetaDataBase is a generic class that takes a ValidationAttribute, so this allows wiring up the server side validation created above. To wire up the client side validator, on the constructor of the class, implement the base constructor passing in the name of the client side validation method.</p>
-<p>{% gist komainu85/7e709f9d21f2ff4c3c1a %}</p>
+<p>{% gist komainu85/7e709f9d21f2ff4c3c1a %}
 <p>Now the custom validation has been created, the properties of the model can be decorated with the custom ValidationAttribute.</p>
-<p>{% gist komainu85/7ec2eb61f680956dc7b9 %}</p>
+<p>{% gist komainu85/7ec2eb61f680956dc7b9 %}

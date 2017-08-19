@@ -47,7 +47,7 @@
           <h1>Write to Web Forms Programmatically</h1>
           <p>Recently I had a requirement to capture a number of parameters from a users session and provide Sitecore administrators a way of reporting on this data and exporting the data to CSV for analysis.<!--more--></p>
 <p>The reporting within WFFM was exactly what I was looking to achieve. I wondered if I could tap into this programmatically and use WFFM as my analysis and exporting tool.</p>
-<p>[caption id="attachment_256" align="aligncenter"  class=" "]<a href="https://mikerobbinssitecore.files.wordpress.com/2014/10/wffm.png"><img class="size-medium wp-image-256" src="/assets/wffm.png" alt="Form Reports"  height="172" /></a> Form Reports</p>
+<p>[caption id="attachment_256" href="https://mikerobbinssitecore.files.wordpress.com/2014/10/wffm.png"><img class="size-medium wp-image-256" src="/assets/wffm.png" alt="Form Reports"  height="172" /></a> Form Reports</p>
 <p>The idea is to create a new Form within WFFM and instead of adding the form to the page, instead create an instance of the form in memory, complete form and post the data into the WFFM database.</p>
 <p>Below is a code sample (commented) of completing the Form and posting the data back programmatically.</p>
 <p><figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">void</span> <span class="nf">SubmitToWFFM</span><span class="p">(</span><span class="n">ID</span> <span class="n">formID</span><span class="p">,</span> <span class="kt">string</span> <span class="n">username</span><span class="p">,</span> <span class="kt">string</span> <span class="n">anotherString</span><span class="p">)</span>

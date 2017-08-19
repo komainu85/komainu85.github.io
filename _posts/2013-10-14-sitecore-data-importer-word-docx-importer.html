@@ -39,7 +39,7 @@ author:
 <p>To be useful I wanted the importer to be able to split the docx file into fields within a Sitecore item rather than drop the entire contents into one rich text editor field. This became an issue, how could I tell which section of the document related to which field.</p>
 <p>The solution I came up was using the “Title” button in Microsoft Word to mark each section of the document. The title would match up exactly with the field name within Sitecore. Using this structure means that I could programmatically read all content between titles and know which field in Sitecore that content related too.</p>
 <p>
-  <img class="size-medium wp-image-137" alt="Sample Document" src="{{ site.baseurl }}/assets/sampledocument.png" />
+  <img alt="Sample Document" src="{{ site.baseurl }}/assets/sampledocument.png" />
 <p>> Sample Document</p></p>
 <h2>Import Module</h2>
 <p>The actual Sitecore data importer module has a simple interface allowing the upload of a file to import (Sitecore data importer supports docx files, csv’s and a zip file containing docx files) . The module also takes the path where you want the items created and the template of the items you want to create.</p>

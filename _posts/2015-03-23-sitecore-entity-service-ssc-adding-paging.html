@@ -32,11 +32,11 @@ author:
 <p>Using my method of extending Entity Service and its repository pattern, as explained in this <a title="Sitecore Entity Service (SSC) Custom Controller Action" href="http://mikerobbins.co.uk/2015/03/20/sitecore-entity-service-ssc-custom-controller-action/">blog post</a>. This blog post will explain how to add a new custom paged function for getting all entities.<br />
 <br />
 The first stage is to add a new interface inheriting from the standard IRepository. Create a new GetAll overloaded method with parameters from page size and current page number.</p>
-<p>{% gist komainu85/b84b8d34da344d9ef965 %}</p>
+<p>{% gist komainu85/b84b8d34da344d9ef965 %}
 <p>Update the repository, instead of inheriting for the standard IRepository, inherit from your new repository. Implement the functionality of the new paged GetAll function to load the required entities.</p>
-<p>{% gist komainu85/c0330b07bf815b906b8c %}</p>
+<p>{% gist komainu85/c0330b07bf815b906b8c %}
 <p>Within the controller update the constructor to use the new repository. Create a new function with parameters for the page size and current page number. Decorate the function with the ActionName attribute. This ActionName defines part the URL of the service to the function.</p>
-<p>{% gist komainu85/278da0140baf5c7e2fec %}</p>
+<p>{% gist komainu85/278da0140baf5c7e2fec %}
 <p>As I mentioned in my previous post on Entity Service, the routing of custom functions follows the following format. "/sitecore/api/ssc/"{Controller-Namespace}/{Controller}/{ID}/{CustomActionName}. So when adding paging, we don't need the ID part of the URL, however we need to supply something for the routing to work correctly.</p>
 <p>For example you could use a path like this to hit the action. "/sitecore/api/ssc/MikeRobbins-EntityServicePaging-Controllers/Entity/1/GetAllPaged?pageSize=1&amp;page=1"</p>
 <h3>Demo Application</h3>

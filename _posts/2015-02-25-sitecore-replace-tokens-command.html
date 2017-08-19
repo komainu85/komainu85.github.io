@@ -44,9 +44,9 @@ author:
 <p>Quite often when developing Sitecore sites, as I'm optimising templates I add additional fields and tokens into the standard values. This means for already created items based on the updated template there are unexpanded $token variables in the content item. The same issue is present if you reset a content item to standard values, the tokens are adding into the content item rather than the calculated value.<!--more--></p>
 <p>Therefore I've developed a new Sitecore module that adds a new command into the content editor to replace all tokens in the current item.</p>
 <p>Mike Reynolds has also got a great blog post on using Sitecore PowerShell to replace tokens also. <a title="http://sitecorejunkie.com/2015/02/15/expand-tokens-on-items-using-a-sitecore-powershell-extensions-toolbox-script/" href="http://sitecorejunkie.com/2015/02/15/expand-tokens-on-items-using-a-sitecore-powershell-extensions-toolbox-script/">http://sitecorejunkie.com/2015/02/15/expand-tokens-on-items-using-a-sitecore-powershell-extensions-toolbox-script/</a></p>
-<p>[caption id="attachment_526" align="aligncenter" ]<a href="https://mikerobbinssitecore.files.wordpress.com/2015/02/replace-tokens.png"><img class="size-medium wp-image-526" src="{{ site.baseurl }}/assets/replace-tokens.png" alt="Replace Tokens Command"  height="199" /></a> Replace Tokens Command</p>
+<p><img src="{{ site.baseurl }}/assets/replace-tokens.png" alt="Replace Tokens Command" /><p>Replace Tokens Command</p></p>
 <p>The below code is the heart of logic behind the component. We create an instance of MasterVariablesReplacer and then call ReplaceItem(item) on the current context item.</p>
-<p>{% gist komainu85/2c7535e4a5e6c08e5615 %}</p>
+<p>{% gist komainu85/2c7535e4a5e6c08e5615 %}
 <h2>Sitecore Marketplace</h2>
 <p><a title="https://marketplace.sitecore.net/Modules/Replace_Tokens_Command.aspx?sc_lang=en" href="https://marketplace.sitecore.net/Modules/Replace_Tokens_Command.aspx?sc_lang=en">https://marketplace.sitecore.net/Modules/Replace_Tokens_Command.aspx?sc_lang=en</a></p>
 <h2>Source On GitHub</h2>

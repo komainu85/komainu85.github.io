@@ -34,9 +34,9 @@ author:
 ---
 <p>With the release of Sitecore 8.1 a new Pipeline called <strong>getFieldLabel </strong>was added. This new pipeline allows you to inject code that can append or alter the label of a field within the Content Editor.<!--more--></p>
 <p>The first thing to notice is that the pipeline accepts a <strong><span class="pl-en">GetFieldLabelArgs </span></strong><span class="pl-en">class for pipeline. This contains the field in question and the result. The result is a string of what will be appended to the label.</span></p>
-<p>{% gist komainu85/26850da3533da2041ae3 %}</p>
+<p>{% gist komainu85/26850da3533da2041ae3 %}
 <p>Within the process method you have access to the field that your updating, the result string can be appended to by your code. This is what is displayed in the Content Editor above the field, it can be text or HTML.</p>
-<p>{% gist komainu85/d360b49f8fd4632b1fd9 %}</p>
-<p>{% gist komainu85/3177125ddd878240ae99 %}</p>
+<p>{% gist komainu85/d360b49f8fd4632b1fd9 %}
+<p>{% gist komainu85/3177125ddd878240ae99 %}
 <p>Below is an example of what gets rendered in the Content Editor.</p>
-<p>[caption id="attachment_1002" align="aligncenter" ]<a href="https://mikerobbinssitecore.files.wordpress.com/2015/10/getfieldlabelpipeline.png"><img class="size-medium wp-image-1002" src="{{ site.baseurl }}/assets/getfieldlabelpipeline.png" alt="GetFieldLabelPipeline"  height="37" /></a> GetFieldLabelPipeline</p>
+<p><img src="{{ site.baseurl }}/assets/getfieldlabelpipeline.png" alt="GetFieldLabelPipeline" /><p>GetFieldLabelPipeline</p></p>

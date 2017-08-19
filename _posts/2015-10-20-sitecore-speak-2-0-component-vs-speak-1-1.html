@@ -36,10 +36,10 @@ author:
 <blockquote><p>Its worth noting that SPEAK 1.1 can still be used within Sitecore 8.1. But a SPEAK application has to be fully built against a single SPEAK version, you can't mix components of different versions.</p></blockquote>
 <h2>Enabling SPEAK 2.0 in a SPEAK application</h2>
 <p>To use the new version of SPEAK, within the PageCode of your SPEAK application the SpeakCoreVersion property has to be set to Speak Core 2-0. This setting will load in the SPEAK core javascript files for SPEAK 2.0 into your application.</p>
-<p>[caption id="attachment_930" align="aligncenter" width="225"]<a href="https://mikerobbinssitecore.files.wordpress.com/2015/10/speak-page-code.png"><img class="size-medium wp-image-930" src="{{ site.baseurl }}/assets/speak-page-code.png?w=225" alt="SPEAK 2.0 Page Code" width="225" height="300" /></a> SPEAK 2.0 Page Code</p>
+<p><img src="{{ site.baseurl }}/assets/speak-page-code.png?w=225" alt="SPEAK 2.0 Page Code" /><p>SPEAK 2.0 Page Code</p></p>
 <p>All SPEAK 2.0 components within the version 2 folder in the Business Component Library and sit alongside the version 1 files. "sitecore\shell\client\Business Component Library\version 2\Layouts\Renderings".</p>
 <p>Within Sitecore Rocks, SPEAK 2.0 components can be identified by the SPEAK Core 2-0 tag in the add renderings dialog.</p>
-<p>[caption id="attachment_939" align="aligncenter" ]<a href="https://mikerobbinssitecore.files.wordpress.com/2015/10/speak-2-0-components.png"><img class="size-medium wp-image-939" src="{{ site.baseurl }}/assets/speak-2-0-components.png" alt="SPEAK 2.0 Components"  height="240" /></a> SPEAK 2.0 Components</p>
+<p><img src="{{ site.baseurl }}/assets/speak-2-0-components.png" alt="SPEAK 2.0 Components" /><p>SPEAK 2.0 Components</p></p>
 <h2>Custom SPEAK components</h2>
 <p>So onto the main subject of this blog post, creating a new custom SPEAK component with SPEAK 2.0. The code samples below are of a Rich Text Editor component built against both SPEAK 1.1 and SPEAK 2.0.</p>
 <h3>SPEAK 1.1 Component</h3>
@@ -50,7 +50,7 @@ author:
 <p>We firstly use Require.js to import our JavaScript dependencies.</p>
 <p>After the standard SPEAK component framework mark-up, we initialize the model for the component, setting each of its properties to null.</p>
 <p>In the view initialize function we need to set each model property from the data attribute we created in the cshtml.</p>
-<p>{% gist komainu85/a7bd9bd4cc56baceec49 %}</p>
+<p>{% gist komainu85/a7bd9bd4cc56baceec49 %}
 <h3>SPEAK 2.0 Component</h3>
 <p>With SPEAK 2.0 much of the heavy lifting and plumbing code is handled by Sitecore SPEAK, we can concentrate more on our component logic.</p>
 <h4>Model</h4>
@@ -63,5 +63,5 @@ author:
 <h4>JavaScript File</h4>
 <p>With the JavaScript code file the syntax has changed quite a bit. Again Sitecore SPEAK is handling a lot of the plumbing code for us. We no longer need to wire up each of the model properties ourselves. Sitecore will automatically populate each property for us.</p>
 <p>The way properties are also accessed in a different way. In SPEAK 1.1 we had to access properties via the view model E.g. <span class="pl-v">this</span>.model.viewModel.<span class="pl-c1">height</span>(). In SPEAK 2.0 this has been simplified to this.Height</p>
-<p>[caption id="attachment_957" align="aligncenter" ]<a href="https://mikerobbinssitecore.files.wordpress.com/2015/10/speak-model.png"><img class="size-medium wp-image-957" src="{{ site.baseurl }}/assets/speak-model.png" alt="SPEAK 2.0 Model"  height="216" /></a> SPEAK 2.0 Model</p>
-<p>{% gist komainu85/ad345ec872d3d0390241 %}</p>
+<p><img src="{{ site.baseurl }}/assets/speak-model.png" alt="SPEAK 2.0 Model"  /><p> SPEAK 2.0 Model</p></p>
+<p>{% gist komainu85/ad345ec872d3d0390241 %}

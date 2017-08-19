@@ -26,7 +26,7 @@ author:
 <p>Recently I had a requirement from a client where they wanted to use Sitecore Email Campaign Manager to send registration emails, containing registration details and other dynamic custom data. Here is how to create tokens within a Email Campaign message and replace them with variables in a manually triggered email.</p>
 <ol>
 <li>Add your token(s) into the body text of the campaign message in the format $key$, ensure that the key text is lower case.
-<img alt="Sitecore Custom Tokens" src="{{ site.baseurl }}/assets/ecm.png" /></a> 
+<img alt="Sitecore Custom Tokens" src="{{ site.baseurl }}/assets/ecm.png" />
 <p>Sitecore Email Campaign Manager Custom Tokens</p></li>
 <li>Get the message using the Sitecore API, replace the variables using the CustomPersonTokens dictionary and then trigger the send pipeline. The CustomPersonToken dictionary requires the key to be in<strong> lower case</strong> and requires the <strong>surrounding $$ to be removed</strong>.</li>
 </ol>

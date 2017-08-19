@@ -35,26 +35,29 @@ author:
 <ol>
 <li>Download NuGet package explorer. <a href="http://nuget.codeplex.com/releases/view/59864">http://nuget.codeplex.com/releases/view/59864</a></li>
 <li>Open the sample Sitecore Nuget package. Sitecore.NuGet.Sample
-<p>[caption id="attachment_83" align="alignnone" ]<a href="http://mikerobbinssitecore.files.wordpress.com/2013/09/open-nuget-package.png"><img class="size-medium wp-image-83" alt="Open NuGet Package" src="{{ site.baseurl }}/assets/open-nuget-package.png"  height="260" /></a> Open NuGet Package</p>
-<p>[caption id="attachment_84" align="alignnone" ]<a href="http://mikerobbinssitecore.files.wordpress.com/2013/09/sitecore-nuget-package.png"><img class="size-medium wp-image-84" alt="Sitecore NuGet Package" src="{{ site.baseurl }}/assets/sitecore-nuget-package.png"  height="214" /></a> Sitecore NuGet Package</li>
+<p>
+    <img alt="Open NuGet Package" src="{{ site.baseurl }}/assets/open-nuget-package.png"/>
+  <p>Open NuGet Package</p> </p>
+<p><img alt="Sitecore NuGet Package" src="{{ site.baseurl }}/assets/sitecore-nuget-package.png"/>
+ <p> Sitecore NuGet Package</p></li>
 <li>Edit the metadata for the package using the edit button on the left.</li>
 <li>The content folder if for any items (css, c# files, java script etc.) you want to add to your solution. The files will be added to reflect the folder structure here.
-<p>[caption id="attachment_63" align="alignnone" ]<a href="http://mikerobbinssitecore.files.wordpress.com/2013/09/content.png"><img class="size-medium wp-image-63" alt="Content Node" src="{{ site.baseurl }}/assets/content.png"  height="184" /></a> Content Node for adding to the VS solution</li>
+<p><img alt="Content Node" src="{{ site.baseurl }}/assets/content.png"/> <p>Content Node for adding to the VS solution</p></li>
 <li>The tools folder is where the Powershell and DLL for Sitecore NuGet are contained. You can extend the powershell for pre-install and post-install events.
-<p>[caption id="attachment_67" align="alignnone" ]<a href="http://mikerobbinssitecore.files.wordpress.com/2013/09/tools.png"><img class="size-medium wp-image-67" alt="Tools Node" src="{{ site.baseurl }}/assets/tools.png"  height="222" /></a> Tools Node</li>
+<p><img alt="Tools Node" src="{{ site.baseurl }}/assets/tools.png" /><p> Tools Node</p></li>
 <li>Next we want to serialise Sitecore items to include them in the package. Within the Sitecore content editor navigate to the items you want to serialise and press the Serialize Tree button to serialise the content item and all decendants, do this for all items you want to include in your package.
-<p>[caption id="attachment_90" align="alignnone" ]<a href="http://mikerobbinssitecore.files.wordpress.com/2013/09/serialise-sitecore-items.png"><img class="size-medium wp-image-90" alt="Serialise Sitecore Items" src="{{ site.baseurl }}/assets/serialise-sitecore-items.png"  height="137" /></a> Serialise Sitecore Items</li>
+<p><img alt="Serialise Sitecore Items" src="{{ site.baseurl }}/assets/serialise-sitecore-items.png" /><p> Serialise Sitecore Items</p></li>
 <li>The items are then serialised to the disk. Navigate to your sealisation folder. (C:\inetpub\wwwroot\(ProjectName)\Data\serialization) Copy the serialised items you need into the serialsation folder in NuGet.
-<p>[caption id="attachment_65" align="alignnone" ]<a href="http://mikerobbinssitecore.files.wordpress.com/2013/09/serialisation.png"><img class="size-medium wp-image-65" alt="Serialisation" src="{{ site.baseurl }}/assets/serialisation.png"  height="210" /></a> Serialisation</li>
+<p><img alt="Serialisation" src="{{ site.baseurl }}/assets/serialisation.png" /><p> Serialisation</p></li>
 <li>Save or publish your package to your NuGet repository</li>
 </ol>
 <p><strong>Using Your NuGet Package</strong></p>
 <ol>
 <li>Install Sitecore Rocks</li>
 <li>Create a connection to your Sitecore instance (Make sure the connection is outside the  folder Sitecore NuGet can't see the connection in here)
-<p>[caption id="attachment_94" align="alignnone" ]<a href="http://mikerobbinssitecore.files.wordpress.com/2013/09/sitecore-rocks1.png"><img class="size-medium wp-image-94" alt="Sitecore Rocks" src="{{ site.baseurl }}/assets/sitecore-rocks1.png"  height="225" /></a> Sitecore Rocks</li>
+<p><img alt="Sitecore Rocks" src="{{ site.baseurl }}/assets/sitecore-rocks1.png" /><p> Sitecore Rocks</p></li>
 <li>Add a connection between your project and the Sitecore Rocks connection
-<p>[caption id="attachment_69" align="alignnone" ]<a href="http://mikerobbinssitecore.files.wordpress.com/2013/09/connect-project.png"><img class="size-medium wp-image-69" alt="Connect to Sitecore" src="{{ site.baseurl }}/assets/connect-project.png"  height="190" /></a> Connect to Sitecore</li>
-<li>Now you can install your NuGet package directly into your solution and Sitecore instance [caption id="attachment_64" align="alignnone" ]<a href="http://mikerobbinssitecore.files.wordpress.com/2013/09/nugetpackageinstaller.png"><img src="{{ site.baseurl }}/assets/nugetpackageinstaller.png" alt="NuGet Package Installer"  height="173" class="size-medium wp-image-64" /></a> Nuget Package Installer</li>
+<p><img alt="Connect to Sitecore" src="{{ site.baseurl }}/assets/connect-project.png" /><p>Connect to Sitecore</p></li>
+<li>Now you can install your NuGet package directly into your solution and Sitecore instance <img src="{{ site.baseurl }}/assets/nugetpackageinstaller.png" alt="NuGet Package Installer" /><p>Nuget Package Installer</p></li>
 <li>Powershell and Sitecore rocks will now copy any files into your project and push your serialised items into the master Sitecore database</li>
 </ol>

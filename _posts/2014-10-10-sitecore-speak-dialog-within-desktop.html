@@ -33,18 +33,18 @@ author:
   first_name: ''
   last_name: ''
 ---
-<p>Here is a short useful tutorial for anyone wanting to add a SPEAK Dialog control within the Sitecore desktop view. Basically it uses a Sitecore sheer ui application as a proxy to point at the url of the SPEAK application.<!--more--></p>
-<p>[caption id="attachment_226" align="aligncenter"  class=" "]<a href="https://mikerobbinssitecore.files.wordpress.com/2014/10/speakdialog.png"><img class="size-medium wp-image-226" src="{{ site.baseurl }}/assets/speakdialog.png" alt="SPEAK Dialog"  height="181" /></a> SPEAK Dialog</p>
+<p>Here is a short useful tutorial for anyone wanting to add a SPEAK Dialog control within the Sitecore desktop view. Basically it uses a Sitecore sheer ui application as a proxy to point at the url of the SPEAK application.</p>
+<p><img src="{{ site.baseurl }}/assets/speakdialog.png" alt="SPEAK Dialog" /><p>SPEAK Dialog</p></p>
 <ul>
 <li>Create a Sitecore dialog application using Sitecore rocks within the core database.
-<p>[caption id="attachment_227" align="aligncenter"  class=" "]<a href="https://mikerobbinssitecore.files.wordpress.com/2014/10/speak-dialog-application.png"><img class="size-medium wp-image-227" src="{{ site.baseurl }}/assets/speak-dialog-application.png" alt="SPEAK Dialog Application"  height="180" /></a> SPEAK Dialog Application</li>
+<p><img src="{{ site.baseurl }}/assets/speak-dialog-application.png" alt="SPEAK Dialog Application" /><p> SPEAK Dialog Application</p></li>
 <li>Create a standard application item under content / applications in the core database.Set the application field to an link pointing at the url at the SPEAK application.Example Raw Value: <link url="/sitecore/client/MikeRobbins/Dialogs/RolePermissions" linktype="internal" id="" />
-<p>[caption id="attachment_229" align="aligncenter"  class=" "]<a href="https://mikerobbinssitecore.files.wordpress.com/2014/10/applicationitem.png"><img class="size-medium wp-image-229" src="{{ site.baseurl }}/assets/applicationitem.png" alt="Application Item"  height="144" /></a> Application Item</li>
-<li>Create an application shortcut pointing at the application within the applications folder.<link linktype="internal" url="/applications/RolePermissions" querystring="" target="" id="{5DD732CF-67CE-4EF3-9F76-D53E16225693}" bdgtk
-<p>[caption id="attachment_231" align="aligncenter"  class=" "]<a href="https://mikerobbinssitecore.files.wordpress.com/2014/10/shortcut.png"><img class="size-medium wp-image-231" src="{{ site.baseurl }}/assets/shortcut.png" alt="Application Shortcut"  height="144" /></a> Application Shortcut</li>
+<p><img src="{{ site.baseurl }}/assets/applicationitem.png" alt="Application Item" /><p> Application Item</p></li>
+<li>Create an application shortcut pointing at the application within the applications folder.<link linktype="internal" url="/applications/RolePermissions" querystring="" target="" id="{5DD732CF-67CE-4EF3-9F76-D53E16225693}" bdgtk />
+<p><img src="{{ site.baseurl }}/assets/shortcut.png" alt="Application Shortcut" /><p> Application Shortcut</p></li>
 </ul>
-<p>An example of this method can be seen in my bulk user permissions module on GitHub https://github.com/komainu85/SitecoreSPEAKBulkRolePermissions</p>
+<p>An example of this method can be seen in my bulk user permissions module on GitHub <a href="https://github.com/komainu85/SitecoreSPEAKBulkRolePermissions">https://github.com/komainu85/SitecoreSPEAKBulkRolePermissions</a></p>
 <p>The next stage is to use this method to create a command button in the content editor and pass in the context item using query string parameters.</p>
 <p><span style="text-decoration:underline;"><strong>Update</strong></span></p>
 <p>I have discovered this method also works in Sitecore 8.</p>
-<p>[caption id="attachment_327" align="aligncenter" ]<a href="https://mikerobbinssitecore.files.wordpress.com/2014/10/sitecore-8.png"><img class="size-medium wp-image-327" src="{{ site.baseurl }}/assets/sitecore-8.png" alt="Sitecore 8 SPEAK Dialog"  height="186" /></a> Sitecore 8 SPEAK Dialog</p>
+<p><img src="{{ site.baseurl }}/assets/sitecore-8.png" alt="Sitecore 8 SPEAK Dialog" /><p> Sitecore 8 SPEAK Dialog</p></p>

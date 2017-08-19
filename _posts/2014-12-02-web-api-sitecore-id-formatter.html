@@ -35,55 +35,61 @@ author:
   last_name: ''
 ---
 <p>When using Web API, Sitecore ID's serialise with {} around the IDs. This can cause issues when working with JSON as this denotes objects encapsulation.<!--more--></p>
-<p>[caption id="attachment_307" align="aligncenter" ]<a href="https://mikerobbinssitecore.files.wordpress.com/2014/12/json.png"><img class="size-medium wp-image-307" src="{{ site.baseurl }}/assets/json.png" alt="JSON Sitecore ID's"  height="199" /></a> JSON Sitecore ID's</p>
+<p><img src="{{ site.baseurl }}/assets/json.png" alt="JSON Sitecore ID's" /><p> JSON Sitecore ID's</p></p>
 <p>Below is a custom formatter to format Sitecore item IDs without the {}. This example has Web API registered to run alongside Web Item API.</p>
 <p>See Patrick Delancy's blog post about running Web API alongside Web Item API http://patrickdelancy.com/2013/08/sitecore-webapi-living-harmony/</p>
-<p>[caption id="attachment_311" align="aligncenter" ]<a href="https://mikerobbinssitecore.files.wordpress.com/2014/12/jsonfixed.png"><img class="size-medium wp-image-311" src="{{ site.baseurl }}/assets/jsonfixed.png" alt="The corresponding JSON "  height="162" /></a> The corresponding JSON</p>
-<p>{% highlight csharp %}
-  public class RegisterWebApiRoute<br />
+<p><img src="{{ site.baseurl }}/assets/jsonfixed.png" alt="The corresponding JSON " /><p> The corresponding JSON</p></p>
+{% highlight csharp %}
+public class RegisterWebApiRoute
+{
+  public void Process(PipelineArgs args)
+  {
+    var config = GlobalConfiguration.Configuration;
+    config.Routes.MapHttpRoute("DefaultApiRoute",
+    "mikerobbinsapi/{controller}/{id}",
+    new { id = RouteParameter.Optional });
+     
+    var appXmlType = config.Formatters.XmlFormatter.SupportedMediaTypes.FirstOrDefault(t => t.MediaType == "application/xml");
+    config.Formatters.XmlFormatter.SupportedMediaTypes.Remove(appXmlType);
+    config.Formatters.JsonFormatter.SerializerSettings.Converters.Add(new IDConverter());
+  }
+}
+{% endhighlight %}
+
+{% highlight csharp %}
+public class IDConverter : JsonConverter
+{
+  public override bool CanConvert(Type objectType)
+  {
+    return objectType == typeof(ID);
+  }
+  
+  public override bool CanRead
+  {
+    get
     {
-        public void Process(PipelineArgs args)
-        {
-            var config = GlobalConfiguration.Configuration;
-            config.Routes.MapHttpRoute("DefaultApiRoute",<br />
-                                     "mikerobbinsapi/{controller}/{id}",<br />
-                                     new { id = RouteParameter.Optional });
-       var appXmlType = config.Formatters.XmlFormatter.SupportedMediaTypes.FirstOrDefault(t => t.MediaType == "application/xml");
-            config.Formatters.XmlFormatter.SupportedMediaTypes.Remove(appXmlType);
-           config.Formatters.JsonFormatter.SerializerSettings.Converters.Add(new IDConverter());
-        }
+      return false;
     }
-{% endhighlight %}</p>
-<p>{% highlight csharp %}
-public class IDConverter : JsonConverter<br />
-   {
-        public override bool CanConvert(Type objectType)
-        {
-            return objectType == typeof(ID);
-        }
-        public override bool CanRead<br />
-        {
-            get<br />
-            {
-                return false;
-            }
-        }
-        public override bool CanWrite<br />
-        {
-            get<br />
-            {
-                return true;
-            }
-        }</p>
-<p>        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
-        {
-            var id = (ID)value;
-            writer.WriteValue(id.ToString().Replace("{", "").Replace("}", "").ToUpperInvariant());
-        }</p>
-<p>        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
-        {
-            // Default reader used<br />
-            throw new NotImplementedException();
-        }
-    }
-{% endhighlight %}</p>
+  }
+
+  public override bool CanWrite
+  {
+    get
+    {
+      return true;
+    }
+  }
+
+  public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+  {
+    var id = (ID)value;
+    writer.WriteValue(id.ToString().Replace("{", "").Replace("}", "").ToUpperInvariant());
+  }
+
+  public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+  {
+    // Default reader used
+    throw new NotImplementedException();
+  }
+}
+{% endhighlight %}

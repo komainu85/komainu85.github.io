@@ -29,10 +29,10 @@ author:
   first_name: ''
   last_name: ''
 ---
-<p>Out of the box Sitecore offers Content Editors the power to create tags, and assign them to content items using the Tagging field in standard values.<!--more--></p>
-<p>[caption id="attachment_203" align="aligncenter" ]<a href="https://mikerobbinssitecore.files.wordpress.com/2014/07/tagging.png"><img class="size-medium wp-image-203" src="{{ site.baseurl }}/assets/tagging.png" alt="Tagging Standard Value"  height="110" /></a> Tagging Standard Value</p>
+<p>Out of the box Sitecore offers Content Editors the power to create tags, and assign them to content items using the Tagging field in standard values.</p>
+<p><img src="{{ site.baseurl }}/assets/tagging.png" alt="Tagging Standard Value" /></a> <p>Tagging Standard Value></p></p>
 <p>When analysing the indexes using LUKE, you can see that Sitecore indexes the ID's of each tag. This makes it difficult to perform a text based content search that also matches on tags.</p>
-<p>[caption id="attachment_201" align="aligncenter" ]<a href="https://mikerobbinssitecore.files.wordpress.com/2014/07/luke.png"><img class="size-medium wp-image-201" src="{{ site.baseurl }}/assets/luke.png" alt="Luke Index View"  height="136" /></a> Luke Index View</p>
+<p><img src="{{ site.baseurl }}/assets/luke.png" alt="Luke Index View" /></a> <p>Luke Index View</p></p>
 <p>However Sitecore gives us the power to create computed fields in search indexes. This means we can create new fields within the index and programmatically create text into the index.</p>
 <p>This example below uses a computed field that instead of indexing the ID of the tag, instead adds the item name of each tag seperated by a space. This then allows you to perform a text based search against the tag. (Sitecore by default indexes the __Semantics field, so here i'm creating a new field in the index called "tags" not to override any standard Sitecore functionality)</p>
 <p>&nbsp;
@@ -40,33 +40,33 @@ author:
 <p>{% highlight csharp %}
 namespace MikeRobbins.CMS.ComputedFields<br />
 {
-public class Tags : IComputedIndexField<br />
-{
-public object ComputeFieldValue(Sitecore.ContentSearch.IIndexable indexable)
-{
-var tags = new StringBuilder();
-<p>Item obj = (Item)(indexable as SitecoreIndexableItem);
-<p>if (obj != null)
-{
-var tagField = (Sitecore.Data.Fields.MultilistField)obj.Fields["__Semantics"];
-<p>if (tagField != null)
-{
-var items = tagField.GetItems();
-<p>foreach (var item in items)
-{
-tags.Append(item.Name + " ");
+  public class Tags : IComputedIndexField<br />
+  {
+    public object ComputeFieldValue(Sitecore.ContentSearch.IIndexable indexable)
+    {
+      var tags = new StringBuilder();
+      Item obj = (Item)(indexable as SitecoreIndexableItem);
+      if (obj != null)
+      {
+        var tagField = (Sitecore.Data.Fields.MultilistField)obj.Fields["__Semantics"];
+        if (tagField != null)
+        {
+          var items = tagField.GetItems();
+          foreach (var item in items)
+          {
+            tags.Append(item.Name + " ");
+          }
+        }
+      }
+      return tags.Length != 0? tags.ToString():null;
+    }
+    public string FieldName { get; set; }
+    public string ReturnType { get; set; }
+  }
 }
-}
-}</p>
-<p>return tags.Length != 0? tags.ToString():null;
-}</p>
-<p>public string FieldName { get; set; }
-public string ReturnType { get; set; }
-}
-}
-{% endhighlight %}</p>
+{% endhighlight %}
 <h2>XML Config</h2>
 <p>Add this XML to the "AddComputedIndexField" section of your search index config.</p>
-<p>{% highlight xml %}
-<field fieldName="tags"                           >MikeRobbins.CMS.ComputedFields.Tags,MikeRobbins.CMS</field><br />
-{% endhighlight %}</p>
+{% highlight xml %}
+<field fieldName="tags" >MikeRobbins.CMS.ComputedFields.Tags,MikeRobbins.CMS</field>
+{% endhighlight %}

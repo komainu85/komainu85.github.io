@@ -35,15 +35,15 @@ author:
   last_name: ''
 ---
 <p>One of the features I think has been missing from Sitecore SPEAK is a Rich Text component. This blog post is a custom Rich Text Editor I have created for Sitecore SPEAK, The underlying Rich Text Editor is provided by <a href="http://www.tinymce.com">Tiny MCE</a>.<!--more--></p>
-<p><a href="https://mikerobbinssitecore.files.wordpress.com/2015/08/screenshot1.png"><img class="size-medium wp-image-879" src="{{ site.baseurl }}/assets/screenshot1.png" alt="Sitecore SPEAK Rich Text Editor"  height="162" /></a> Sitecore SPEAK Rich Text Editor</p>
-<p><a href="https://mikerobbinssitecore.files.wordpress.com/2015/08/edittor.png"><img class="size-medium wp-image-903" src="{{ site.baseurl }}/assets/edittor.png" alt="Toolbar"  height="163" /></a> Toolbar</p>
+<p><img src="{{ site.baseurl }}/assets/screenshot1.png" alt="Sitecore SPEAK Rich Text Editor" /><p>Sitecore SPEAK Rich Text Editor</p></p>
+<p><img src="{{ site.baseurl }}/assets/edittor.png" alt="Toolbar"/><p> Toolbar</p></p>
 <h2>Configuration</h2>
 <p>Once the Sitecore package has been installed (Releases at the end of this page), the component is ready to be used in SPEAK applications. The Rich Text Editor will then appear when you insert a rendering into the design layout of your SPEAK application.</p>
-<p><a href="https://mikerobbinssitecore.files.wordpress.com/2015/08/renderings.png"><img class="size-medium wp-image-888" src="{{ site.baseurl }}/assets/renderings.png" alt="Rich Text Editor Rendering"  height="200" /></a> Rich Text Editor Rendering</p>
+<p><img src="{{ site.baseurl }}/assets/renderings.png" alt="Rich Text Editor Rendering" /><p> Rich Text Editor Rendering</p></p>
 <p>The parameter template of the Rich Text Editor allows you to set the ID, and both the height and width of the rendered editor. The text property will get bound to the html value within the editor, you can also set an initial value for the html in the editor.</p>
-<p><a href="https://mikerobbinssitecore.files.wordpress.com/2015/08/params.png"><img class="size-medium wp-image-889" src="{{ site.baseurl }}/assets/params.png?w=281" alt="Rendering Parameters" width="281" height="300" /></a> Rendering Parameters</p>
+<p><img src="{{ site.baseurl }}/assets/params.png?w=281" alt="Rendering Parameters" /><p>Rendering Parameters</p></p>
 <p>Multiple Rich Text Editors on a single SPEAK form is supported, ensure each RTE has an ID set and that they are all unique.</p>
-<p><a href="https://mikerobbinssitecore.files.wordpress.com/2015/08/screenshot2.png"><img class="size-medium wp-image-884" src="{{ site.baseurl }}/assets/screenshot2.png" alt="Multiple Rich Text Editors"  height="166" /></a> Multiple Rich Text Editors</p>
+<p><img src="{{ site.baseurl }}/assets/screenshot2.png" alt="Multiple Rich Text Editors" /><p>Multiple Rich Text Editors</p></p>
 <h2>Plugins</h2>
 <p>Tiny MCE Plugings can be added to the RTE, in the rendering parameters there is a field called plugins. This field can take a string of space seperate plugin names to enable on the RTE. For available plugins please see <a href="http://www.tinymce.com/wiki.php/Plugins">http://www.tinymce.com/wiki.php/Plugins</a>.</p>
 <h2>Coding Against The RTE</h2>

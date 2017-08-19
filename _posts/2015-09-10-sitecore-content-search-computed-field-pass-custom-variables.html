@@ -37,4 +37,4 @@ author:
 <p>So below is an example computed field class that uses this method. The computed field generates url's for items using the LinkManager class but takes in the site context from the computed field config.</p>
 <p>The class implements the AbstractComputedIndexField base class. On the constructor, the <span class="pl-k">XmlNode of the computed field is passed in and using  XmlUtil.GetAttribute(<span class="pl-s"><span class="pl-pds">"</span>siteName<span class="pl-pds">"</span></span>, configurationNode); we can read XML elements of the config and populate our properties in our computed field.</span></p>
 <p>I'm tapping into the standard urllink property within the index configuration, this means when inheriting from SearchResultItem base class the property Url is populated. This is normally null by default, <a href="http://www.ehabelgindy.com/sitecore-7-solr-why-searchresultitem-url-is-always-null/">Ehab ElGindy</a> also talks about the Url being null.</p>
-<p>{% gist komainu85/3a6efad20ab1b2a56385 %}</p>
+<p>{% gist komainu85/3a6efad20ab1b2a56385 %}

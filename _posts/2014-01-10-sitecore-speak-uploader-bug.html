@@ -29,6 +29,6 @@ author:
 <p>I needed to use the Sitecore SPEAK uploader to upload Docx and csv files to Sitecore. However attaching and uploading these files threw a warning in the SPEAK application.</p>
 <p>It appears that in this version of Sitecore (7.1), the ImageType setting within the web.config is used to control which types of files are accepted by the SPEAK uploader component. If you want to be able to upload any additional file types using the SPEAK uploader, they need to be specified here.</p>
 <p>{% highlight xml %}
-     <setting name="ImageTypes" value="|gif|jpg|png|pdf|docx" /><br />
-{% endhighlight %}</p>
+     <setting name="ImageTypes" value="|gif|jpg|png|pdf|docx" />
+{% endhighlight %}
 <p>This issue has been raised and confirmed as a bug with Sitecore Support, so hopefully a fix will come in a new version of Sitecore.</p>
