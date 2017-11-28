@@ -18,6 +18,8 @@ author:
   last_name: ''
 ---
 
+In this blog post I will show how to programmatically trigger a publish using the Sitecore Publishing Service via its Web API. This example shows how this can be used to create an Azure Timer function to trigger publishing on a schedule.
+
 ## GitHub Source
 
 Full source code is available on GitHub.
