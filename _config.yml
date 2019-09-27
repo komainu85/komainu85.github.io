@@ -23,7 +23,7 @@ github_username:  Komainu85
 
 # Build settings
 markdown: kramdown
-theme: jekyll-theme-architect
+theme: jekyll-theme-Cayman
 highlighter: rouge
 pygments: false
 plugins:
